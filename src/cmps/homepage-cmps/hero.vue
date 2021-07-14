@@ -1,5 +1,6 @@
 <template>
   <section class="hero-image">
+    <!-- <main-header /> -->
     <div class="hero-filter-container">
       <form @submit.prevent="filter">
         <img
@@ -20,7 +21,11 @@
   </section>
 </template>
 <script>
+import mainHeader from "@/cmps/main-layout-cmps/main-header.vue";
 export default {
+  components: {
+    mainHeader,
+  },
   data() {
     return {
       filterBy: {

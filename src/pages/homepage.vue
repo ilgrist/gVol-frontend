@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
+  <div class="home main-layout">
     <hero />
-    <h1>Welcome to gVol!</h1>
     <short-list />
     <categories-grid />
   </div>

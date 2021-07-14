@@ -5,7 +5,7 @@
       <p>See all</p>
     </div>
     <section class="cards-cont">
-      <div v-for="num in 4" :key="num" class="card-preview">
+      <div v-for="num in 3" :key="num" class="card-preview">
         <h2>Save the Elephants</h2>
         <p><span>Nairoby,</span><span>Kenya</span></p>
         <img src="@/assets/img/generic-vol-img.png" />

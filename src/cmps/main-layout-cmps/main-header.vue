@@ -9,7 +9,7 @@
 
       <p v-if="!isLoggedIn">Hello Guest</p>
       <router-link v-else :to="/user/" +loggedinUser._id>
-        | Profile/Loutout</router-link
+        | Profile/Logout</router-link
       >
     </nav>
   </header>

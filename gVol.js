@@ -1,14 +1,13 @@
-//TBD - whether to (A) create a user that can be an org or a vol, or (B) create two types of users (userVol, userOrg)
 
-const vol = 
+const user = 
 	{
 		_id: 'u101',
 		fullname: 'User 1',
 		username: 'user1',
 		password: 'secret',
 		imgUrl: '/img/img1.jpg',
-		skills: ['Teaching', 'Web-Design'],
-		registeredVolOps: ['v101', 'v102'],
+		skills: ['teaching', 'web-design'],
+		
 	},
 ;
 
@@ -23,26 +22,10 @@ const org = {
 		city: 'Nairobi',
 		country: 'Kenya',
 	},
-	volOps: ['W101', 'W102'], //Option A - aggregation
-	volOps: [
-		{
-			_id: 'j101',
-			title: 'Save cats',
-			desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-			imgUrl: 'https://ak1.picdn.net/shutterstock/videos/5898101/thumb/1.jpg',
-			loc: {
-				lat: 11.11,
-				lng: 22.22,
-				city: 'Mombasa',
-				country: 'Kenya',
-			},
-			registeredVols: ['u101', 'u102'], // agregation vs duplication
-		},
-	], // Option B
-	//TBD - agregation vs duplication
+
 };
 
-const volOp = {
+const vol = {
 	_id: 'j101',
 	title: 'Save cats',
 	desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
@@ -60,7 +43,7 @@ const volOp = {
 		country: 'Kenya',
 		isOnsite: false,
 	},
-	category: ['animals', 'child-friendly'],
+	// tags: ['animals', 'child-friendly'],
 	reviews: [
 		{
 			id_: 'r101',
@@ -69,5 +52,5 @@ const volOp = {
 			createdAt: '543543534543535',
 		},
 	],
-	registeredVols: ['u101', 'u102'], // TBD - agregation vs duplication
+	members: ['u101', 'u102'], 
 };

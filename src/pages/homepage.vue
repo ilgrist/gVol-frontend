@@ -1,16 +1,23 @@
 <template>
   <div class="home">
+    <hero />
     <h1>Welcome to gVol!</h1>
     <short-list />
+    <categories-grid />
   </div>
 </template>
 
 <script>
-import shortList from '@/cmps/homepage-cmps/short-volOp-list.vue'
+import hero from "../cmps/homepage-cmps/hero.vue";
+import categoriesGrid from "../cmps/homepage-cmps/categories-grid.vue";
+import shortList from '../cmps/homepage-cmps/short-volOp-list.vue';
+
 export default {
   name: "Home",
   components: {
-    shortList,
+    hero,
+    categoriesGrid,
+    shortList
   },
 };
 </script>

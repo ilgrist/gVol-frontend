@@ -1,15 +1,18 @@
 <template>
   <section class="explore-list">
-    <volOp-prev v-for="num in 10" :key="num"></volOp-prev>
+    <vol-prev v-for="vol in vols" :key="vol._id" :vol="vol"></vol-prev>
   </section>
 </template>
 
 <script>
-import volOpPrev from "./volOp-preview.vue"
+import volPrev from "./vol-preview.vue"
 
 export default {
+  props:{
+    vols: Array
+  },
  components: {
-    volOpPrev
+    volPrev
   },
 }
 </script>

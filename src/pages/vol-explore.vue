@@ -6,19 +6,24 @@
       <label for="onsite">On-site
           <input id="onsite" type="checkbox">
       </label>
-    <volOp-filter></volOp-filter>
-    <volOp-list />
+    <vol-filter></vol-filter>
+    <vol-list :vols="vols"/>
   </div>
 </template>
 
 <script>
-import volOpList from "../cmps/explore-cmps/volOp-list.vue"
-import volOpFilter from "../cmps/explore-cmps/volOp-filter.vue"
+import volList from "../cmps/explore-cmps/vol-list.vue"
+import volFilter from "../cmps/explore-cmps/vol-filter.vue"
 export default {
   name: "Home",
   components: {
-    volOpList,
-    volOpFilter
+    volList,
+    volFilter
   },
+  computed:{
+    vols(){
+      return this.$store.getters.volsToShow
+      }
+  }
 };
 </script>

@@ -18,5 +18,13 @@ export default {
     categoriesGrid,
     shortList,
   },
+  computed:{
+    vols(){
+      return this.$store.getters.volsToShow
+    }
+  },
+   created(){
+     this.$store.dispatch({type: 'loadVols'})
+  }
 };
 </script>

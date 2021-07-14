@@ -1,17 +1,17 @@
 import { utilService } from './util.service.js';
 import { storageService } from './async-storage.service.js';
-import { volsInit } from '../../gVol.js';
+const volsInit = require('../../volsInit.json');
 import axios from 'axios';
 
 const VOL_KEY = 'vols';
 const gVols = _createVols();
 
 export const volService = {
-  getVols,
+  query,
   getById,
 };
 
-async function getVols(filterBy) {
+async function query(filterBy) {
   return storageService.query(VOL_KEY);
 }
 
@@ -23,7 +23,7 @@ function _createVols() {
   let vols = utilService.loadFromStorage(VOL_KEY);
   if (!vols || !vols.length) {
     vols = volsInit;
-    utilService.saveToStorage(VOL_KEY);
+    utilService.saveToStorage(VOL_KEY, vols);
   }
 }
 

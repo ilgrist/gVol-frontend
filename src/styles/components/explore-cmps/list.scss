@@ -1,10 +1,19 @@
-*{
-    box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .explore-list{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
 }
+=======
+.explore-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+}
+>>>>>>> 9f26c0d5b27490838c74b76b0daba04dd27ada4c

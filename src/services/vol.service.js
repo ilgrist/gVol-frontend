@@ -16,7 +16,7 @@ async function query(filterBy) {
 }
 
 function getById(volId) {
-  return storageService.getById(VOL_KEY, volId);
+	return storageService.getById(VOL_KEY, volId);
 }
 
 function _createVols() {

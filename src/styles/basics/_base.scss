@@ -1,14 +1,14 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  font-family: Montserrat, sans-serif;
+	font-family: Montserrat, sans-serif;
 }
 
 body {
-  margin: 0;
-  background-color: beige;
+	margin: 0;
+	background-color: beige;
 }
 
 h1,
@@ -18,13 +18,17 @@ h4,
 h5,
 h6,
 p {
-  margin: 0 0 1rem;
+	margin: 0 0 1rem;
 }
 
 img {
-  width: 100%;
+	width: 100%;
 }
 
 ul {
-  list-style: none;
+	list-style: none;
+}
+
+button {
+	cursor: pointer;
 }

@@ -7,24 +7,24 @@ const VOL_KEY = 'vols';
 const gVols = _createVols();
 
 export const volService = {
-  query,
-  getById,
+	query,
+	getById,
 };
 
 async function query(filterBy) {
-  return storageService.query(VOL_KEY);
+	return storageService.query(VOL_KEY);
 }
 
 function getById(volId) {
-	return storageService.getById(VOL_KEY, volId);
+	return storageService.get(VOL_KEY, volId);
 }
 
 function _createVols() {
-  let vols = utilService.loadFromStorage(VOL_KEY);
-  if (!vols || !vols.length) {
-    vols = volsInit;
-    utilService.saveToStorage(VOL_KEY, vols);
-  }
+	let vols = utilService.loadFromStorage(VOL_KEY);
+	if (!vols || !vols.length) {
+		vols = volsInit;
+		utilService.saveToStorage(VOL_KEY, vols);
+	}
 }
 
 // function save(vol){

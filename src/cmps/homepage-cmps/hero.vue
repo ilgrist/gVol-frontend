@@ -5,7 +5,7 @@
       <form @submit.prevent="filter">
         <img
           class="hero-filter-img"
-          src="../../assets/img/search.svg"
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626286701/volApp/icons/search_z9wby8.svg"
           alt="search"
         />
 
@@ -16,6 +16,7 @@
           @keydown.enter.prevent="filter"
           placeholder="Try 'Teaching'"
         />
+        <!-- <button class="homepage-btn">Search</button> -->
         <button class="homepage-btn">Search</button>
       </form>
     </div>

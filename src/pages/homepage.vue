@@ -1,7 +1,6 @@
 <template>
   <div class="home main-layout">
     <hero />
-    {{ vols }}
     <short-list />
     <categories-grid />
   </div>
@@ -18,13 +17,13 @@ export default {
     categoriesGrid,
     shortList,
   },
-  computed:{
-    vols(){
-      return this.$store.getters.volsToShow
-    }
+  computed: {
+    vols() {
+      return this.$store.getters.volsToShow;
+    },
   },
-   created(){
-     this.$store.dispatch({type: 'loadVols'})
-  }
+  created() {
+    this.$store.dispatch({ type: "loadVols" });
+  },
 };
 </script>

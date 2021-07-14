@@ -8,6 +8,7 @@
           src="../../assets/img/search.svg"
           alt="search"
         />
+
         <input
           class="hero-input"
           type="text"

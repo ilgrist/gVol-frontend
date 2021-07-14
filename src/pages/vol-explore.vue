@@ -1,24 +1,26 @@
 <template>
   <div class="explore-page">
-     <label for="online">Online
-          <input id="online" type="checkbox">
-      </label>
-      <label for="onsite">On-site
-          <input id="onsite" type="checkbox">
-      </label>
-    <volOp-filter></volOp-filter>
-    <volOp-list />
+    <label for="online"
+      >Online
+      <input id="online" type="checkbox" />
+    </label>
+    <label for="onsite"
+      >On-site
+      <input id="onsite" type="checkbox" />
+    </label>
+    <vol-filter />
+    <vol-list />
   </div>
 </template>
 
 <script>
-import volOpList from "../cmps/explore-cmps/volOp-list.vue"
-import volOpFilter from "../cmps/explore-cmps/volOp-filter.vue"
+import volList from "../cmps/explore-cmps/vol-list.vue";
+import volFilter from "../cmps/explore-cmps/vol-filter.vue";
 export default {
   name: "Home",
   components: {
-    volOpList,
-    volOpFilter
+    volList,
+    volFilter,
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <section class="main-footer">
-    <h2>I'm a footer</h2>
+    <p>© The Elephants in the Room, July 2021</p>
   </section>
 </template>
 

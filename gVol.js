@@ -73,7 +73,7 @@ const volsInit = [
 			imgUrl:
 				'http://res.cloudinary.com/dvbqwqxqs/image/upload/v1576345445/k1cioaulnf5thlncx2yr.jpg',
 		},
-		reqSkills: ['teaching', 'translation', 'design'],
+		reqSkills: ['teaching', 'designing'],
 		loc: {
 			lat: 11.11,
 			lng: 22.22,
@@ -81,7 +81,7 @@ const volsInit = [
 			country: 'Kenya',
 			isOnsite: false,
 		},
-		// tags: ['animals', 'child-friendly'],
+		tags: ['animals'],
 		reviews: [
 			{
 				id_: 'r101',
@@ -105,7 +105,7 @@ const volsInit = [
 			imgUrl:
 				'http://res.cloudinary.com/dvbqwqxqs/image/upload/v1576345445/k1cioaulnf5thlncx2yr.jpg',
 		},
-		reqSkills: ['teaching', 'translation', 'design'],
+		reqSkills: ['translating', 'typing'],
 		loc: {
 			lat: 11.11,
 			lng: 22.22,
@@ -113,7 +113,7 @@ const volsInit = [
 			country: 'Kenya',
 			isOnsite: true,
 		},
-		// tags: ['animals', 'child-friendly'],
+		tags: ['children'],
 		reviews: [
 			{
 				id_: 'r101',
@@ -137,7 +137,7 @@ const volsInit = [
 			imgUrl:
 				'http://res.cloudinary.com/dvbqwqxqs/image/upload/v1576345445/k1cioaulnf5thlncx2yr.jpg',
 		},
-		reqSkills: ['teaching', 'translation', 'design'],
+		reqSkills: ['dreaming', 'building'],
 		loc: {
 			lat: 11.11,
 			lng: 22.22,
@@ -145,7 +145,7 @@ const volsInit = [
 			country: 'Israel',
 			isOnsite: true,
 		},
-		// tags: ['animals', 'child-friendly'],
+		tags: ['elderly'],
 		reviews: [
 			{
 				id_: 'r101',

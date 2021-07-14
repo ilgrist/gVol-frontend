@@ -1,0 +1,11 @@
+// SETUP
+@import url('./setup/_typography.scss');
+
+//BASICS
+@import url('./basics/_base.scss');
+@import url('./basics/_layout.scss');
+
+// COMPONENTS
+@import url('./components/_app.scss');
+@import url('./components/_main-footer.scss');
+@import url('./components/_main-header.scss');

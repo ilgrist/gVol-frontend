@@ -9,7 +9,12 @@
         <span class="details-tag">{{ tag }}</span>
       </div>
     </header>
-    <img class="details-img" :src="vol.imgUrls" alt="VolIMG" />
+    <div class="img-gallery">
+      <img class="details-img" :src="vol.imgUrls" alt="VolIMG" />
+      <img class="details-img" src="../../assets/img/dragon2.jpg" alt="" />
+      <img class="details-img" src="../../assets/img/dragon.jpg" alt="" />
+      <img class="details-img" src="../../assets/img/dragon4.jpg" alt="" />
+    </div>
     <div class="more-details">
       <h3>More Details</h3>
       <h4>{{ vol.desc }}</h4>

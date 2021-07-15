@@ -57,6 +57,26 @@
 	margin-bottom: 5px;
 }
 
+//figure out rules
+.img-gallery {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-auto-flow: dense;
+
+	> *:nth-child(2n) {
+		grid-column: span 2;
+		grid-row: span 2;
+	}
+
+	.details-img {
+		@include aspect-ratio(1, 1);
+		cursor: pointer;
+		transition: opacity 0.3s;
+		border-radius: 0.5rem;
+	}
+}
+
 .more-details {
 	border: 1px solid lightgray;
 	padding: 2px;

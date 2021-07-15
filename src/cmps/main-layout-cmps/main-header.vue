@@ -1,7 +1,11 @@
 <template>
   <header class="main-header">
-    <img class="logo" src="../../assets/img/logo3.png" alt="logo" />
-    <!-- <h4>Logo</h4> -->
+    <img
+      @click="goToHome"
+      class="logo"
+      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281313/volApp/logo3_wuazzc.png"
+      alt="logo"
+    />
     <nav id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/volApp">Explore</router-link>
@@ -21,6 +25,12 @@ export default {
     return {
       isLoggedIn: false,
     };
+  },
+  methods: {
+    goToHome() {
+      const path = "/";
+      if (this.$route.path !== path) this.$router.push("/");
+    },
   },
 
   computed: {

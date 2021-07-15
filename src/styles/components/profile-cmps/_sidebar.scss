@@ -1,0 +1,108 @@
+$green: #05668d;
+
+.details-sidebar {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding: 3px;
+	text-align: center;
+	background-color: #f8f8ff;
+	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.33' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+	border: 1px solid gray;
+	border-radius: 1rem;
+	position: fixed;
+	top: 12%;
+	right: 0;
+}
+
+.sidebar-users {
+	background-color: $clr1;
+	border: 1px solid lightgray;
+	border-radius: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 5px;
+
+	p {
+		background-color: $clr4;
+		border-radius: 50%;
+		padding: 5px;
+		margin-inline-end: 5px;
+	}
+}
+
+.btn-container {
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.details-btn {
+	outline: none;
+	height: 40px;
+	text-align: center;
+	width: 80%;
+	border-radius: 40px;
+	background: $clr1;
+	border: 2px solid $clr6;
+	color: $clr6;
+	letter-spacing: 1px;
+	text-shadow: 0;
+
+	font: {
+		size: 12px;
+		weight: bold;
+	}
+
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: $clr2;
+		background: $clr6;
+	}
+	&:active {
+		letter-spacing: 2px;
+	}
+
+	&:after {
+		content: 'Click to Volunteer';
+	}
+}
+
+.onclick {
+	width: 40px;
+	border-color: $clr6;
+	border-width: 3px;
+	font-size: 0;
+	border-left-color: $clr2;
+	animation: rotating 2s 0.25s linear infinite;
+
+	&:after {
+		content: '';
+	}
+	&:hover {
+		color: $clr2;
+		background: $clr6;
+	}
+}
+
+.validate {
+	font-size: 13px;
+	color: white;
+	background: $clr6;
+	&:after {
+		font-family: 'FontAwesome';
+		content: '\f00c';
+	}
+}
+
+@keyframes rotating {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

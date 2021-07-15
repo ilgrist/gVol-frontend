@@ -1,142 +1,42 @@
-$green: #05668d;
-$gray: whitesmoke;
-
-
 .vol-details {
-	position: relative;
-	padding: 10px;
-	display: grid;
-	grid-template-columns: 1fr 300px;
+	display: flex;
+	flex-direction: column;
+	grid-template-columns: 1fr;
 	grid-template-rows: repeat(7, 150px);
 }
 
 .details-header {
-	background-color: whitesmoke;
+	// grid-column: 1/2;
+	// grid-row: 1/2;
+	background-color: $clr2;
+	border: 1px solid lightgray;
 	margin-bottom: 5px;
-}
-.details-img {
-	object-fit: cover;
-}
-.details-sidebar {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	padding: 3px;
-	text-align: center;
-	background-color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 1rem;
-	position: fixed;
-	top: 7%;
-	right: 0;
-}
-
-.sidebar-users{
-	background-color: $green ;
-	border-radius: 1rem;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content:flex-start;
+	border-radius: 10px;
 	padding: 5px;
+}
 
-	p{
-		background-color: whitesmoke;
-		border-radius: 50%;
-		padding: 5px;
-		margin-inline-end: 5px;
-	}
+.details-tag {
+	background-color: $clr3;
+	border-radius: 8px;
+	padding: 2px;
+	cursor: pointer;
+}
 
+.details-img {
+	border-radius: 10px;
+	height: 500px;
+	margin-bottom: 5px;
+	// grid-column: 1/2;
+	// grid-row: 2/5;
+	// object-fit: cover;
 }
 
 .more-details {
-	background-color: whitesmoke;
-	border-bottom: 1px solid slategrey;
-}
-
-.details-reviews {
-	padding: 5px;
-	background-color: whitesmoke;
-	button{
-		margin-bottom: 10px;
-	}
-}
-
-
-
-* {
-	font-family: 'Roboto', sans-serif;
-}
-.btn-container {
-	width: 300px;
-	height: 40px;
-	text-align: center;
-	margin-bottom: 15px;
-}
-.details-btn {
-	outline: none;
-	height: 40px;
-	text-align: center;
-	width: 130px;
-	border-radius: 40px;
-	background: $clr1;
-	border: 2px solid $clr6;
-	color: $clr6;
-	letter-spacing: 1px;
-	text-shadow: 0;
-
-	font: {
-		size: 12px;
-		weight: bold;
-	}
-
-	cursor: pointer;
-	transition: all 0.25s ease;
-
-	&:hover {
-		color: $clr2;
-		background: $clr6;
-	}
-	&:active {
-		letter-spacing: 2px;
-	}
-
-	&:after {
-		content: 'Click to Volunteer';
-	}
-}
-
-.onclick {
-	width: 40px;
-	border-color: $clr6;
-	border-width: 3px;
-	font-size: 0;
-	border-left-color: $clr2;
-	animation: rotating 2s 0.25s linear infinite;
-
-	&:after {
-		content: '';
-	}
-	&:hover {
-		color: $clr2;
-		background: $clr6;
-	}
-}
-
-.validate {
-	font-size: 13px;
-	color: white;
-	background: $clr6;
-	&:after {
-		font-family: 'FontAwesome';
-		content: '\f00c';
-	}
-}
-
-@keyframes rotating {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+	border: 1px solid lightgray;
+	padding: 2px;
+	border-radius: 10px;
+	// grid-column: 1/2;
+	// grid-row: 5/7;
+	background-color: $clr2;
+	border-bottom: 1px solid lightgray;
 }

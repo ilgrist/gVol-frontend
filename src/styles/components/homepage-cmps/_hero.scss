@@ -36,6 +36,7 @@
 
 .hero-input {
 	position: relative;
+	background-color: $clr2;
 	outline: none;
 	border-radius: unset;
 	border: none;
@@ -52,7 +53,7 @@
 }
 
 .homepage-btn {
-	background-color: #00a896;
+	background-color: $clr5;
 	border: none;
 	border-radius: 20px;
 	float: right;

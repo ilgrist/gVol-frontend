@@ -17,10 +17,10 @@ export default {
     categoriesGrid,
     shortList,
   },
-  data(){
-    return{
-      isload: false
-    }
+  data() {
+    return {
+      isload: false,
+    };
   },
   computed: {
     vols() {

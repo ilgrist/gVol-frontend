@@ -1,17 +1,50 @@
 .category-grid {
-  height: 400px;
+  padding: 1rem 200px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 1fr;
   gap: 1rem;
-  position: relative;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-flow: dense;
 
-  > :nth-child(3n) {
+  > *:nth-child(3n) {
     grid-column: span 2;
     grid-row: span 2;
   }
-  .homepage-grid-card {
+
+  .card {
+    @include aspect-ratio(1, 1);
+    cursor: pointer;
+    transition: opacity 0.3s;
+    border-radius: 0.5rem;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
     p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: whitesmoke;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
   }
+
+  // height: 350px;
+  // padding: 1rem 200px;
+  // display: grid;
+  // grid-template-columns: repeat(6, 1fr);
+  // grid-template-rows: repeat(6, 1fr);
+  // grid-auto-flow: dense;
+  // gap: 1rem;
+  // position: relative;
+  // .card1 {
+  //   grid-area: span 2 / span 3;
+  // }
+  // .card2 {
+  //   grid-area: span 6 / span 3;
+  // }
+  // .card3 {
+  //   grid-area: span 3 / span 6;
+  // }
 }

@@ -1,20 +1,8 @@
 <template>
-  <section class="category-grid">
-    <div class="homepage-grid-card card1">
-      <img src="../../assets/img/grid-imgs/grid1.jpg" />
-      <p>Korea</p>
+  <section class="category-grid main-layout">
+    <div v-for="category in categories" :key="category.loc">
+      <category-card :category="category" @cardClicked="cardClicked" />
     </div>
-    <div class="homepage-grid-card card2">
-      <img src="../../assets/img/grid-imgs/grid2.jpg" />
-      <p>Indonesia</p>
-    </div>
-    <div class="homepage-grid-card card3">
-      <img src="../../assets/img/grid-imgs/grid3.jpg" />
-      <p>Africa</p>
-    </div>
-    <!-- <div v-for="category in categories" :key="category.loc">
-      <category-card :category="category" />
-    </div> -->
   </section>
 </template>
 
@@ -32,6 +20,11 @@ export default {
         { name: "Europe", url: "grid3.jpg" },
       ],
     };
+  },
+  methods: {
+    cardClicked(categoryName) {
+      this.$router.push("/volApp");
+    },
   },
   components: {
     categoryCard,

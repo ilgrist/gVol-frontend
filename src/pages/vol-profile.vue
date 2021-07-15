@@ -2,6 +2,7 @@
   <section>
     <ul v-if="vol" class="vol-det">
       <volDetails :vol="vol" />
+      <volSideBar :vol="vol" />
       <volReviews :vol="vol" />
     </ul>
   </section>

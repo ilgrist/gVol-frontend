@@ -1,6 +1,6 @@
 <template>
   <section class="explore-list">
-    <vol-prev v-for="vol in vols" :key="vol._id" :vol="vol"></vol-prev>
+    <vol-prev v-for="vol,idx in vols" :key="idx" :vol="vol"></vol-prev>
   </section>
 </template>
 

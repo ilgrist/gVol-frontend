@@ -3,11 +3,11 @@ import { volService } from '../services/vol.service.js';
 export default {
 	state: {
 		vols: [],
-		currerntFilterBy: { txt: '' },
+		filterBy: { txt: '', category:'all',skills:'all'}
 	},
 	mutations: {
 		setFilter(state, { filterBy }) {
-			state.currentFilterBy = filterBy;
+			state.filterBy = filterBy;
 		},
 		addVol(state, { savedVol }) {
 			state.vols.push(savedVol);
@@ -25,17 +25,17 @@ export default {
 		},
 	},
 	getters: {
-		async getVols() {
-			try {
-				const vols = await volService.getVols();
-				return vols;
-			} catch (err) {
-				console.log(err);
-			}
-		},
 		volsToShow(state) {
-			return state.vols;
+			return state.vols
 		},
+		shortListRandVols(state){
+			let randomVols=[]
+			for (var i =0; i<5; i++){
+				var item = state.vols[Math.floor(Math.random()*state.vols.length)];
+				 randomVols.push(item)
+			}
+			return randomVols
+		}
 	},
 	actions: {
 		async saveVol({ commit }, { vol }) {
@@ -57,9 +57,7 @@ export default {
 		},
 		async loadVols(context) {
 			try {
-				const vols = await volService.query(
-					context.state.currentFilterBy
-				);
+				const vols = await volService.query(context.state.filterBy);
 				context.commit({ type: 'setVols', vols });
 			} catch (err) {
 				console.log("Can't load vols", err);

@@ -1,70 +1,68 @@
+$green: #05668d;
+$gray: whitesmoke;
+
+
 .vol-details {
+	position: relative;
+	padding: 10px;
 	display: grid;
-	grid-template-areas:
-		'header header header header sidebar'
-		'gallery gallery gallery gallery sidebar'
-		'gallery gallery gallery gallery sidebar'
-		'gallery gallery gallery gallery sidebar'
-		'more-details more-details more-details more-details sidebar'
-		'more-details more-details more-details more-details sidebar'
-		'reviews reviews reviews reviews sidebar';
-	margin: 10px 20px;
-	gap: 10px;
+	grid-template-columns: 1fr 300px;
+	grid-template-rows: repeat(7, 150px);
 }
 
 .details-header {
-	grid-area: header;
-	background-color: #f0f3bd;
-	border-radius: 10px;
-	width: 600px;
-	border: 1px solid gray;
-	padding: 5px;
+	background-color: whitesmoke;
+	margin-bottom: 5px;
 }
 .details-img {
-	grid-area: gallery;
-	width: 600px;
-	border-radius: 10px;
+	object-fit: cover;
 }
 .details-sidebar {
-	grid-area: sidebar;
-	background-color: lightgrey;
-	width: 250px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	border-radius: 10px;
-	border: 1px solid gray;
+	flex-wrap: wrap;
+	padding: 3px;
+	text-align: center;
+	background-color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 1rem;
+	position: fixed;
+	top: 7%;
+	right: 0;
 }
 
-//ADD EFFECT
-// .details-btn {
-// 	// background-color: #05668d;
-// 	border: none;
-// 	border-radius: 8px;
-// 	width: 150px;
-// 	height: 30px;
-// 	margin-bottom: 10px;
-// }
+.sidebar-users{
+	background-color: $green ;
+	border-radius: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:flex-start;
+	padding: 5px;
+
+	p{
+		background-color: whitesmoke;
+		border-radius: 50%;
+		padding: 5px;
+		margin-inline-end: 5px;
+	}
+
+}
 
 .more-details {
-	background-color: #f0f3bd;
-	//TBD- WHY DOESN'T IT TAKE THE ENTIRE SPACE W/O WIDTH?
-	width: 600px;
-	border-radius: 10px;
-	border: 1px solid gray;
-	padding: 5px;
-}
-.details-reviews {
-	grid-area: reviews;
-	background-color: #f0f3bd;
-	border: 1px solid gray;
-	border-radius: 10px;
-	width: 600px;
+	background-color: whitesmoke;
+	border-bottom: 1px solid slategrey;
 }
 
-$green: #05668d;
-$gray: whitesmoke;
+.details-reviews {
+	padding: 5px;
+	background-color: whitesmoke;
+	button{
+		margin-bottom: 10px;
+	}
+}
+
+
+
 * {
 	font-family: 'Roboto', sans-serif;
 }

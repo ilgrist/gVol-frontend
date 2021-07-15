@@ -6,7 +6,7 @@
       <label for="onsite">On-site
           <input id="onsite" type="checkbox">
       </label>
-    <vol-filter></vol-filter>
+    <vol-filter @filter="filter"></vol-filter>
     <vol-list :vols="vols"/>
   </div>
 </template>
@@ -24,6 +24,15 @@ export default {
     vols(){
       return this.$store.getters.volsToShow
       }
+  },
+  methods:{
+    filter(filterBy){
+    this.$store.commit({type: 'setFilter', filterBy})
+    this.$store.dispatch({type:'loadVols'})
+    }
+  },
+  created(){
+        this.$store.dispatch({type:'loadVols'})
   }
 };
 </script>

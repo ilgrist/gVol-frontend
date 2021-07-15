@@ -1,26 +1,41 @@
 <template>
   <section class="short-list">
     <div class="short-header">
-      <h1>Popular:</h1>
+      <h1>{{name}}:</h1>
       <p>See all</p>
     </div>
-    <section class="cards-cont">
-      <div v-for="num in 3" :key="num" class="card-preview">
-        <h2>Save the Elephants</h2>
-        <p><span>Nairoby,</span><span>Kenya</span></p>
-        <img src="@/assets/img/generic-vol-img.png" />
+    <section v-if="randVols" class="cards-cont">
+      <div v-for="vol,idx in randVols" :key="idx" class="card-preview">
+        <h2>{{vol.title}}</h2>
+        <p><span>{{vol.loc.city}},</span><span>{{vol.loc.country}}</span></p>
+        <img :src="vol.imgUrls[0]" />
         <p class="rev-com">⭐ <span>4.5</span> 💬 <span>Reviews</span></p>
         <hr />
-        <p>
-          lorem ipsum dolor sit amet lorem, consectet lorem ipsum lorem ipsum
-        </p>
+        <p>{{vol.desc}}</p>
         <hr />
-        <p>Skills: <span>Teaching,</span> <span>Web-Design</span></p>
+        <p v-for="skill,idx in vol.reqSkills" :key="idx"><span>{{skill}}</span> </p>
       </div>
     </section>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props:{
+    name:String
+  },
+  data(){
+    return{
+      
+    }
+  },
+  computed:{
+    randVols(){
+      return this.$store.getters.shortListRandVols
+      }
+  },
+  created(){
+    this.$store.dispatch({ type: "loadVols" });
+  }
+};
 </script>

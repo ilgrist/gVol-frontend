@@ -1,7 +1,7 @@
 <template>
   <div class="home main-layout">
     <hero />
-    <short-list />
+    <short-list v-if="isload" :name="'Popular'" />
     <categories-grid />
   </div>
 </template>
@@ -17,13 +17,21 @@ export default {
     categoriesGrid,
     shortList,
   },
+  data(){
+    return{
+      isload: false
+    }
+  },
   computed: {
     vols() {
       return this.$store.getters.volsToShow;
     },
   },
-  created() {
-    this.$store.dispatch({ type: "loadVols" });
+  async created() {
+    await this.$store.dispatch({ type: "loadVols" });
+    this.isload =true
+    var x = this.$store.getters.shortListRandVols
+    console.log('x:', x)
   },
 };
 </script>

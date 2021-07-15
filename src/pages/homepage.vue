@@ -2,6 +2,7 @@
   <div class="home main-layout">
     <hero />
     <short-list v-if="isload" :name="'Popular'" />
+    <short-list v-if="isload" :name="'Newest'" />
     <categories-grid />
   </div>
 </template>

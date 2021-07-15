@@ -1,19 +1,25 @@
 <template>
-  <section class="homepage-grid">
-    <!-- <div v-for="img in imgs"></div> -->
+  <section class="category-grid">
+    <div v-for="category in categories" :key="category.loc">
+      <category-card :category="category" />
+    </div>
   </section>
 </template>
 
 <script>
+import categoryCard from "./category-card.vue";
 export default {
   data() {
     return {
-      imgs: [
-        { loc: "Korea", link: "@/assets/img/grid-imgs/grid1.jpg" },
-        { loc: "Africa", link: "@/assets/img/grid-imgs/grid2.jpg" },
-        { loc: "Europe", link: "@/assets/img/grid-imgs/grid3.jpg" },
+      categories: [
+        { name: "Korea", url: "../../assets/img/grid-imgs/grid1.jpg" },
+        { name: "Africa", url: "../../assets/img/grid-imgs/grid2.jpg" },
+        { name: "Europe", url: "../../assets/img/grid-imgs/grid3.jpg" },
       ],
     };
+  },
+  components: {
+    categoryCard,
   },
 };
 </script>

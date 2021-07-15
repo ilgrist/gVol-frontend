@@ -1,15 +1,14 @@
 <template>
   <div class="homepage-grid-card">
-    <img src="url" />
-    <p>{{ locName }}</p>
+    <img src="../../assets/img/grid-imgs/grid1.jpg" />
+    <p>{{ category.name }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    url: String,
-    locName: String,
+    category: Object,
   },
 };
 </script>

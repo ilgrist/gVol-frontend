@@ -1,15 +1,19 @@
 <template>
   <div class="homepage-grid-card">
-    <img src="url" />
-    <p>{{ locName }}</p>
+    <img :src="require('../../assets/img/grid-imgs/' + category.url)" />
+    <p>{{ category.name }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    url: String,
-    locName: String,
+    category: Object,
+  },
+  computed: {
+    img() {
+      return "/grid1.jpg";
+    },
   },
 };
 </script>

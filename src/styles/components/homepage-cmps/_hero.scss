@@ -12,25 +12,29 @@
 .hero-title {
 	color: $clr1;
 	position: absolute;
-	top: 47%;
+	top: 28%;
 	left: 4%;
 	font-family: Halant, sans-serif;
-	font-size: 3em;
+	font-size: 4em;
+}
+
+.filter-form {
+	display: flex;
 }
 
 .hero-filter-container {
 	background-color: $clr2;
-	width: 300px;
+	width: 35rem;
 	margin: 0 auto;
 	text-align: center;
+	// align-items: center;
 	display: flex;
-	justify-content: center;
 	position: absolute;
-	top: 66%;
-	left: 16%;
+	top: 54%;
+	left: 28%;
 	transform: translate(-50%, -50%);
 	border-radius: 15px;
-	padding: 1px;
+	padding: 0.5rem;
 	font-family: NunitoSans, sans-serif;
 }
 
@@ -42,13 +46,15 @@
 	border: none;
 	border-bottom: 1px solid gray;
 	font-family: NunitoSans, sans-serif;
+	width: 100%;
+	left: 10%;
+	font-size: 1.3rem;
 }
 
 .hero-filter-img {
-	max-width: 10%;
+	max-width: 15%;
 	position: relative;
-	left: -5px;
-	top: 3px;
+	left: 0;
 	z-index: 1;
 }
 
@@ -56,9 +62,11 @@
 	background-color: $clr5;
 	border: none;
 	border-radius: 20px;
-	float: right;
 	position: relative;
-	right: -9px;
+	left: 18%;
+	// right: 0;
 	width: 30%;
 	font-family: NunitoSans, sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
 }

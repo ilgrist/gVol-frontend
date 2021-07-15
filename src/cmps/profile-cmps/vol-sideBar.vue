@@ -1,16 +1,24 @@
 <template>
-  <div class="details-sidebar">
-    SideBar
-    <div class="btn-container">
-      <button class="details-btn"></button>
+  <section class="sidebar-container">
+    <div class="details-sidebar">
+      <h3 class="title-sidebar">Action Bar</h3>
+      <div class="btn-container">
+        <button @click="onVol" class="details-btn">Click to Volunteer</button>
+        <button @click="onShare" class="details-btn">Share</button>
+      </div>
+      <h4>Participating Members</h4>
+      <div class="sidebar-users">
+        <!-- <p class="users-avatar" v-for="member in vol.members" :key="member"> </p>-->
+        <img
+          v-for="member in vol.members"
+          :key="member._id"
+          class="img-profile"
+          :src="member.imgURL"
+          alt="imgProfile"
+        />
+      </div>
     </div>
-    <h4>Participating Members</h4>
-    <div class="sidebar-users">
-      <p class="users-avatar" v-for="member in vol.members" :key="member">
-        {{ member }}
-      </p>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -18,6 +26,14 @@ export default {
   props: {
     vol: {
       type: Object,
+    },
+  },
+  methods: {
+    onVol() {
+      this.$router.push("/login");
+    },
+    onShare() {
+      console.log("shared!");
     },
   },
 };

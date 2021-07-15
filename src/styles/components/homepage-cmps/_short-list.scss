@@ -27,6 +27,7 @@
 .cards-cont{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 20px;
     grid-row:2/3 ;
 }
@@ -35,7 +36,7 @@
     cursor: pointer;
     border:1px solid black;
     border-radius: 0.5rem;
-    background-color: whitesmoke;
+    background-color: #FBFCEE;
     width: 300px;
     height: 350px;
     padding: 10px;
@@ -54,7 +55,7 @@
     p.rev-com{
         padding: 5px;
         cursor: pointer;
-        background-color: darkblue;
+        background-color: #05668D;
         color: white;
     }
     span{

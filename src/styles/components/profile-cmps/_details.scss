@@ -1,0 +1,144 @@
+.vol-details {
+	display: grid;
+	grid-template-areas:
+		'header header header header sidebar'
+		'gallery gallery gallery gallery sidebar'
+		'gallery gallery gallery gallery sidebar'
+		'gallery gallery gallery gallery sidebar'
+		'more-details more-details more-details more-details sidebar'
+		'more-details more-details more-details more-details sidebar'
+		'reviews reviews reviews reviews sidebar';
+	margin: 10px 20px;
+	gap: 10px;
+}
+
+.details-header {
+	grid-area: header;
+	background-color: #f0f3bd;
+	border-radius: 10px;
+	width: 600px;
+	border: 1px solid gray;
+	padding: 5px;
+}
+.details-img {
+	grid-area: gallery;
+	width: 600px;
+	border-radius: 10px;
+}
+.details-sidebar {
+	grid-area: sidebar;
+	background-color: lightgrey;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+	border: 1px solid gray;
+}
+
+//ADD EFFECT
+// .details-btn {
+// 	// background-color: #05668d;
+// 	border: none;
+// 	border-radius: 8px;
+// 	width: 150px;
+// 	height: 30px;
+// 	margin-bottom: 10px;
+// }
+
+.more-details {
+	background-color: #f0f3bd;
+	//TBD- WHY DOESN'T IT TAKE THE ENTIRE SPACE W/O WIDTH?
+	width: 600px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	padding: 5px;
+}
+.details-reviews {
+	grid-area: reviews;
+	background-color: #f0f3bd;
+	border: 1px solid gray;
+	border-radius: 10px;
+	width: 600px;
+}
+
+$green: #05668d;
+$gray: whitesmoke;
+* {
+	font-family: 'Roboto', sans-serif;
+}
+.btn-container {
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.details-btn {
+	outline: none;
+	height: 40px;
+	text-align: center;
+	width: 130px;
+	border-radius: 40px;
+	background: #fff;
+	border: 2px solid $green;
+	color: $green;
+	letter-spacing: 1px;
+	text-shadow: 0;
+
+	font: {
+		size: 12px;
+		weight: bold;
+	}
+
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: $gray;
+		background: $green;
+	}
+	&:active {
+		letter-spacing: 2px;
+	}
+
+	&:after {
+		content: 'Click to Volunteer';
+	}
+}
+
+.onclick {
+	width: 40px;
+	border-color: $green;
+	border-width: 3px;
+	font-size: 0;
+	border-left-color: $gray;
+	animation: rotating 2s 0.25s linear infinite;
+
+	&:after {
+		content: '';
+	}
+	&:hover {
+		color: $gray;
+		background: $green;
+	}
+}
+
+.validate {
+	font-size: 13px;
+	color: white;
+	background: $green;
+	&:after {
+		font-family: 'FontAwesome';
+		content: '\f00c';
+	}
+}
+
+@keyframes rotating {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

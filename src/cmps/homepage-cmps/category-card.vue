@@ -1,6 +1,6 @@
 <template>
   <div class="homepage-grid-card">
-    <img src="../../assets/img/grid-imgs/grid1.jpg" />
+    <img :src="require('../../assets/img/grid-imgs/' + category.url)" />
     <p>{{ category.name }}</p>
   </div>
 </template>
@@ -9,6 +9,11 @@
 export default {
   props: {
     category: Object,
+  },
+  computed: {
+    img() {
+      return "/grid1.jpg";
+    },
   },
 };
 </script>

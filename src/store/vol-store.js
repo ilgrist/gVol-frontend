@@ -25,14 +25,6 @@ export default {
     },
   },
   getters: {
-    async getVols() {
-      try {
-        const vols = await volService.getVols();
-        return vols;
-      } catch (err) {
-        console.log(err);
-      }
-    },
     volsToShow(state) {
       return state.vols;
     },
@@ -52,7 +44,7 @@ export default {
         await volService.remove(payload.volId);
         commit(payload);
       } catch (err) {
-        console.log("Could't remove vol", vol, err);
+        console.log("Couldn't remove vol", vol, err);
       }
     },
     async loadVols(context) {

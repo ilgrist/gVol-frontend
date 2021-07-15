@@ -30,8 +30,6 @@ export default {
   async created() {
     await this.$store.dispatch({ type: "loadVols" });
     this.isload =true
-    var x = this.$store.getters.shortListRandVols
-    console.log('x:', x)
   },
 };
 </script>

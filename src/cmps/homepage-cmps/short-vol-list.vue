@@ -2,7 +2,7 @@
   <section class="short-list">
     <div class="short-header">
       <h1>{{name}}:</h1>
-      <p>See all</p>
+      <p @click="goExplore">See all</p>
     </div>
     <section v-if="randVols" class="cards-cont">
       <div v-for="vol,idx in randVols" :key="idx" class="card-preview">
@@ -33,6 +33,11 @@ export default {
     randVols(){
       return this.$store.getters.shortListRandVols
       }
+  },
+  methods:{
+    goExplore(){
+      this.$router.push('/volApp')
+    }
   },
   created(){
     this.$store.dispatch({ type: "loadVols" });

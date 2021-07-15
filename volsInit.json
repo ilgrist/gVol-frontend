@@ -29,7 +29,8 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u101", "u102"]
+		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"},
+			{"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}]
 	},
 	{
 		"_id": "v102",
@@ -61,7 +62,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u103"]
+		"members": [{"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	},
 	{
 		"_id": "v103",
@@ -93,7 +94,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u101", "u103"]
+		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg" }, {"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	},
 	{
 		"_id": "v104",
@@ -125,7 +126,7 @@
 				"createdAt": 5435436845435
 			}
 		],
-		"members": ["u102", "u101"]
+		"members": [{"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}, {"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg" }]
 	},
 	{
 		"_id": "v104",
@@ -157,7 +158,7 @@
 				"createdAt": 5435436845435
 			}
 		],
-		"members": ["u102", "u101"]
+		"members": [{"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}, {"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}]
 	},
 	{
 		"_id": "v102",
@@ -189,7 +190,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u103"]
+		"members": [{"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	},
 	{
 		"_id": "v104",
@@ -221,7 +222,7 @@
 				"createdAt": 5435436845435
 			}
 		],
-		"members": ["u102", "u101"]
+		"members": [{"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}, {"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}]
 	},
 	{
 		"_id": "v104",
@@ -253,7 +254,7 @@
 				"createdAt": 5435436845435
 			}
 		],
-		"members": ["u102", "u101"]
+		"members": [{"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}, {"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}]
 	},
 	{
 		"_id": "v102",
@@ -285,7 +286,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u103"]
+		"members": [{"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	},
 	{
 		"_id": "v101",
@@ -317,7 +318,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u101", "u102"]
+		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}, {"_id":"u102", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626358995/volApp/userImg/user1_d3dl7g.jpg"}]
 	},
 	{
 		"_id": "v103",
@@ -349,7 +350,7 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u101", "u103"]
+		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}, {"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	},
 	{
 		"_id": "v103",
@@ -381,6 +382,6 @@
 				"createdAt": 543543534543535
 			}
 		],
-		"members": ["u101", "u103"]
+		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"}, {"_id":"u103", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359266/volApp/userImg/user3_dczwzp.jpg"}]
 	}
 ]

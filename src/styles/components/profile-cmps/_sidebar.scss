@@ -1,40 +1,71 @@
-$green: #05668d;
+.sidebar-container {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	width: 38%;
+	position: absolute;
+	right: 0;
+}
 
 .details-sidebar {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
-	padding: 3px;
 	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0.5rem;
 	background-color: #f8f8ff;
 	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.33' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 	border: 1px solid gray;
 	border-radius: 1rem;
-	position: fixed;
-	top: 12%;
+	position: sticky;
+	box-shadow: 0px 1px 5px 0px $clr6;
+	top: 5px;
 	right: 0;
+}
+
+//figure out how to correlate between title and shape of sidebar
+.title-sidebar {
+	// background-color: $clr4;
+	width: 100%;
+	// border-radius: 5px;
+	border-bottom: 1px solid $clr6;
+	border-top: 1px solid $clr6;
+	color: $clr6;
+	font-family: Halant;
 }
 
 .sidebar-users {
 	background-color: $clr1;
 	border: 1px solid lightgray;
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: flex-start;
-	padding: 5px;
+	width: 70%;
+	box-shadow: 0px 0px 2px 0px #000000;
+	padding: 0.3rem;
 
-	p {
-		background-color: $clr4;
+	// p {
+	// 	background-color: $clr4;
+	// 	border-radius: 50%;
+	// 	padding: 5px;
+	// 	margin-inline-end: 5px;
+	// }
+
+	.img-profile {
+		width: 2rem;
+		height: 2rem;
 		border-radius: 50%;
-		padding: 5px;
-		margin-inline-end: 5px;
+		padding: 0.1rem;
+		object-fit: cover;
+		margin-inline-end: 0.1rem;
+		cursor: pointer;
 	}
 }
 
 .btn-container {
-	width: 300px;
-	height: 40px;
+	width: 70%;
+	height: 100px;
 	text-align: center;
 	margin-bottom: 15px;
 }
@@ -49,6 +80,7 @@ $green: #05668d;
 	color: $clr6;
 	letter-spacing: 1px;
 	text-shadow: 0;
+	margin: 5px;
 
 	font: {
 		size: 12px;
@@ -66,9 +98,9 @@ $green: #05668d;
 		letter-spacing: 2px;
 	}
 
-	&:after {
-		content: 'Click to Volunteer';
-	}
+	// &:after {
+	// content: 'Click to Volunteer';
+	// }
 }
 
 .onclick {

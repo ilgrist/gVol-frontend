@@ -3,7 +3,7 @@
     <!-- <main-header /> -->
     <h1 class="hero-title">Volunteering globally</h1>
     <div class="hero-filter-container">
-      <form @submit.prevent="filter">
+      <form class="filter-form" @submit.prevent="filter">
         <img
           class="hero-filter-img"
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626286701/volApp/icons/search_z9wby8.svg"

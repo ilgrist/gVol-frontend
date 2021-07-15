@@ -1,9 +1,9 @@
 <template>
   <div class="home main-layout">
     <hero />
-    <short-list v-if="isload" :name="'Popular'" />
-    <short-list v-if="isload" :name="'Newest'" />
-    <categories-grid />
+    <short-list class="homepage-layout" v-if="isload" :name="'Popular'" />
+    <short-list class="homepage-layout" v-if="isload" :name="'Newest'" />
+    <categories-grid class="homepage-layout" />
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadVols" });
-    this.isload =true
+    this.isload = true;
   },
 };
 </script>

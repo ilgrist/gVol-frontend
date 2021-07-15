@@ -14,7 +14,7 @@
       <!-- <router-link :to="/user/" +loggedinUser._id>
         | Profile/Logout</router-link
       > -->
-      <router-link to="/user/"> | Welcome Guest</router-link>
+      <router-link to="/login"> | Welcome Guest</router-link>
     </nav>
   </header>
 </template>

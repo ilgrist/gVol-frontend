@@ -14,10 +14,10 @@
 
 .details-header {
 	grid-area: header;
-	background-color: #f0f3bd;
+	background-color: $clr1;
+	border: 1px solid lightgray;
 	border-radius: 10px;
 	width: 600px;
-	border: 1px solid gray;
 	padding: 5px;
 }
 .details-img {
@@ -27,14 +27,14 @@
 }
 .details-sidebar {
 	grid-area: sidebar;
-	background-color: lightgrey;
+	background-color: $clr2;
 	width: 250px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	border-radius: 10px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 }
 
 //ADD EFFECT
@@ -48,26 +48,25 @@
 // }
 
 .more-details {
-	background-color: #f0f3bd;
+	background-color: $clr1;
 	//TBD- WHY DOESN'T IT TAKE THE ENTIRE SPACE W/O WIDTH?
 	width: 600px;
 	border-radius: 10px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 	padding: 5px;
 }
 .details-reviews {
 	grid-area: reviews;
-	background-color: #f0f3bd;
-	border: 1px solid gray;
+	background-color: $clr1;
+	border: 1px solid lightgray;
 	border-radius: 10px;
 	width: 600px;
+	padding: 5px;
 }
 
-$green: #05668d;
-$gray: whitesmoke;
-* {
-	font-family: 'Roboto', sans-serif;
-}
+// * {
+// font-family: 'NunitoSans', sans-serif;
+// }
 .btn-container {
 	width: 300px;
 	height: 40px;
@@ -80,9 +79,9 @@ $gray: whitesmoke;
 	text-align: center;
 	width: 130px;
 	border-radius: 40px;
-	background: #fff;
-	border: 2px solid $green;
-	color: $green;
+	background: $clr1;
+	border: 2px solid $clr6;
+	color: $clr6;
 	letter-spacing: 1px;
 	text-shadow: 0;
 
@@ -95,8 +94,8 @@ $gray: whitesmoke;
 	transition: all 0.25s ease;
 
 	&:hover {
-		color: $gray;
-		background: $green;
+		color: $clr2;
+		background: $clr6;
 	}
 	&:active {
 		letter-spacing: 2px;
@@ -109,25 +108,25 @@ $gray: whitesmoke;
 
 .onclick {
 	width: 40px;
-	border-color: $green;
+	border-color: $clr6;
 	border-width: 3px;
 	font-size: 0;
-	border-left-color: $gray;
+	border-left-color: $clr2;
 	animation: rotating 2s 0.25s linear infinite;
 
 	&:after {
 		content: '';
 	}
 	&:hover {
-		color: $gray;
-		background: $green;
+		color: $clr2;
+		background: $clr6;
 	}
 }
 
 .validate {
 	font-size: 13px;
 	color: white;
-	background: $green;
+	background: $clr6;
 	&:after {
 		font-family: 'FontAwesome';
 		content: '\f00c';

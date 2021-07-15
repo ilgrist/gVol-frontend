@@ -1,18 +1,16 @@
 <template>
   <section>
     <ul v-if="vol" class="vol-details">
-      <!-- {{
-        vol
-      }} -->
       <volDetails :vol="vol" />
+      <volReviews :vol="vol" />
     </ul>
   </section>
 </template>
 
 <script>
-import volReviews from "@/cmps/details-cmps/vol-reviews.vue";
-import volSideBar from "@/cmps/details-cmps/vol-sideBar.vue";
-import volDetails from "@/cmps/details-cmps/vol-details.vue";
+import volReviews from "@/cmps/profile-cmps/vol-reviews.vue";
+import volSideBar from "@/cmps/profile-cmps/vol-sideBar.vue";
+import volDetails from "@/cmps/profile-cmps/vol-details.vue";
 import { volService } from "@/services/vol.service.js";
 export default {
   components: {

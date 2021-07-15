@@ -1,23 +1,51 @@
 // SETUP
-@import url('./setup/_typography.scss');
+@import '/setup/_typography';
+@import 'setup/variables';
 
 //BASICS
-@import url('./basics/_base.scss');
-@import url('./basics/_layout.scss');
+@import '/basics/base.scss';
+@import '/basics/layout.scss';
 
 // COMPONENTS
-@import url('./components/_app.scss');
-@import url('./components/_main-footer.scss');
-@import url('./components/_main-header.scss');
+@import '/components/app.scss';
+@import '/components/main-footer.scss';
+@import '/components/main-header.scss';
 
 //HOMEPAGE-CMPS
-@import url('./components/homepage-cmps/_short-list.scss');
-@import url('./components/homepage-cmps/_hero.scss');
+@import '/components/homepage-cmps/short-list.scss';
+@import '/components/homepage-cmps/hero.scss';
 
 //EXPLORE-CMPS
-@import url('./components/explore-cmps/filter.scss');
-@import url('./components/explore-cmps/list.scss');
-@import url('./components/explore-cmps/preview.scss');
+@import '/components/explore-cmps/filter.scss';
+@import '/components/explore-cmps/list.scss';
+@import '/components/explore-cmps/preview.scss';
 
-// PRFILE-CMPS
-@import url('./components//profile-cmps/_details.scss');
+// PROFILE-CMPS
+@import '/components/profile-cmps/details.scss';
+
+//FONTS
+// header option
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+// Oswald
+@import url('https://fonts.googleapis.com/css2?family=Halant:wght@600&display=swap');
+//Halant
+
+//main font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+// Montserrat
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+//Roboto
+@import url('https://fonts.googleapis.com/css2?&family=Raleway&display=swap');
+//Raleway
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+// Poppins
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+//Nunito Sans
+
+//TITLES OPTION
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+// Patua One
+
+// LOGO OPTION
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+// Lobster Two

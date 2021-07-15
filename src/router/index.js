@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import homepage from '../pages/homepage.vue';
 import volExplore from '../pages/vol-explore.vue';
 import volProfile from '../pages/vol-profile.vue';
+import login from '../pages/login.vue';
 
 Vue.use(VueRouter);
 
@@ -27,11 +28,11 @@ const routes = [
 	//   name: 'userDashboard',
 	//   component: userDashboard
 	// },
-	// {
-	//   path: '/signup',
-	//   name: 'signup',
-	//   component: signup
-	// },
+	{
+		path: '/login',
+		name: 'login',
+		component: login,
+	},
 ];
 
 const router = new VueRouter({

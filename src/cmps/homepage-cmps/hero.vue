@@ -1,6 +1,7 @@
 <template>
   <section class="hero-image">
     <!-- <main-header /> -->
+    <h1 class="hero-title">Volunteering globally</h1>
     <div class="hero-filter-container">
       <form @submit.prevent="filter">
         <img
@@ -17,8 +18,8 @@
           placeholder="Try 'Teaching'"
         />
         <!-- <button class="homepage-btn">Search</button> -->
-        <button class="homepage-btn">Search</button>
       </form>
+      <button class="homepage-btn">Volunteer</button>
     </div>
   </section>
 </template>

@@ -1,6 +1,7 @@
 .hero-image {
 	background-image: url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
 	height: 450px;
+	display: flex;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -8,10 +9,18 @@
 	margin: 0;
 }
 
-.hero-filter-container {
-	background-color: white;
+.hero-title {
+	color: $clr1;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	font-family: Halant, sans-serif;
+	font-size: 3em;
+}
 
-	width: 230px;
+.hero-filter-container {
+	background-color: $clr2;
+	width: 300px;
 	margin: 0 auto;
 	text-align: center;
 	display: flex;
@@ -21,7 +30,8 @@
 	left: 30%;
 	transform: translate(-50%, -50%);
 	border-radius: 15px;
-	padding-bottom: 5px;
+	padding: 1px;
+	font-family: NunitoSans, sans-serif;
 }
 
 .hero-input {
@@ -30,18 +40,24 @@
 	border-radius: unset;
 	border: none;
 	border-bottom: 1px solid gray;
+	font-family: NunitoSans, sans-serif;
 }
 
 .hero-filter-img {
 	max-width: 10%;
 	position: relative;
-	left: 0px;
-	top: 5px;
+	left: -5px;
+	top: 3px;
 	z-index: 1;
 }
 
 .homepage-btn {
 	background-color: #00a896;
 	border: none;
-	border-radius: 8px;
+	border-radius: 20px;
+	float: right;
+	position: relative;
+	right: -9px;
+	width: 30%;
+	font-family: NunitoSans, sans-serif;
 }

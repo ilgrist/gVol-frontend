@@ -31,12 +31,6 @@
         <span v-for="skill in vol.reqSkills" :key="skill"> {{ skill }} |</span>
       </p>
     </div>
-    <div class="details-reviews">
-      <h3>Reviews</h3>
-      <ul v-for="review in vol.reviews" :key="review._id">
-        <li>{{ review.createdBy }}: {{ review.txt }}</li>
-      </ul>
-    </div>
   </section>
 </template>
 

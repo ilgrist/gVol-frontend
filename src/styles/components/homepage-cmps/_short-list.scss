@@ -1,5 +1,5 @@
-*{
-    box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
 
 .short-list{
@@ -9,26 +9,26 @@
     grid-template-rows: 20px, 1fr;
 }
 
-.short-header{
-    grid-row:1/2;
-    display: flex;
-    justify-content: space-between;
+.short-header {
+	grid-row: 1/2;
+	display: flex;
+	justify-content: space-between;
 
-    p{
-        cursor: pointer;
-        text-decoration: underline;
-        &:hover{
-            font-weight: bold;
-        }
-    }
+	p {
+		cursor: pointer;
+		text-decoration: underline;
+		&:hover {
+			font-weight: bold;
+		}
+	}
 }
 
-.cards-cont{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    grid-row:2/3 ;
+.cards-cont {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+	grid-row: 2/3;
 }
 
 .card-preview{
@@ -62,8 +62,8 @@
         margin-inline-end: 1rem;
         font-size: small;
 
-        &:hover{
-            text-decoration: underline;
-        }
-    }
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }

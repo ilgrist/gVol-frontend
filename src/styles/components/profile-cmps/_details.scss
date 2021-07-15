@@ -78,9 +78,9 @@ $gray: whitesmoke;
 	text-align: center;
 	width: 130px;
 	border-radius: 40px;
-	background: #fff;
-	border: 2px solid $green;
-	color: $green;
+	background: $clr1;
+	border: 2px solid $clr6;
+	color: $clr6;
 	letter-spacing: 1px;
 	text-shadow: 0;
 
@@ -93,8 +93,8 @@ $gray: whitesmoke;
 	transition: all 0.25s ease;
 
 	&:hover {
-		color: $gray;
-		background: $green;
+		color: $clr2;
+		background: $clr6;
 	}
 	&:active {
 		letter-spacing: 2px;
@@ -107,25 +107,25 @@ $gray: whitesmoke;
 
 .onclick {
 	width: 40px;
-	border-color: $green;
+	border-color: $clr6;
 	border-width: 3px;
 	font-size: 0;
-	border-left-color: $gray;
+	border-left-color: $clr2;
 	animation: rotating 2s 0.25s linear infinite;
 
 	&:after {
 		content: '';
 	}
 	&:hover {
-		color: $gray;
-		background: $green;
+		color: $clr2;
+		background: $clr6;
 	}
 }
 
 .validate {
 	font-size: 13px;
 	color: white;
-	background: $green;
+	background: $clr6;
 	&:after {
 		font-family: 'FontAwesome';
 		content: '\f00c';

@@ -17,10 +17,10 @@ export default {
     categoriesGrid,
     shortList,
   },
-  data(){
-    return{
-      isload: false
-    }
+  data() {
+    return {
+      isload: false,
+    };
   },
   computed: {
     vols() {
@@ -29,9 +29,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadVols" });
-    this.isload =true
-    var x = this.$store.getters.shortListRandVols
-    console.log('x:', x)
+    this.isload = true;
   },
 };
 </script>

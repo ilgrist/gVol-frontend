@@ -1,7 +1,6 @@
 <template>
   <div class="home main-layout">
     <hero />
-    {{ vols }}
     <short-list />
     <categories-grid />
   </div>

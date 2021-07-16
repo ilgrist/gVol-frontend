@@ -32,6 +32,11 @@
 	margin: 0.2rem;
 }
 
+.details-tag:hover {
+	border: 1px solid $clr4;
+	text-decoration: underline;
+}
+
 .req-skill {
 	cursor: pointer;
 	background-color: $clr1;
@@ -46,7 +51,6 @@
 }
 
 .details-online {
-	border: 1px solid $clr2;
 	background-color: $clr5;
 	color: $clr2;
 }
@@ -81,8 +85,6 @@
 	border: 1px solid lightgray;
 	padding: 2px;
 	border-radius: 10px;
-	background-color: $clr2;
-	border-bottom: 1px solid lightgray;
 	box-shadow: 0px 0px 1.5px 0px #000000;
 
 	background-color: #f8f8ff;

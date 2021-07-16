@@ -1,42 +1,90 @@
 .vol-details {
 	display: flex;
 	flex-direction: column;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(7, 150px);
+	width: 60%;
+	gap: 0.5rem;
+	// grid-template-columns: 1fr;
+	// grid-template-rows: repeat(7, 150px);
 }
 
 .details-header {
 	// grid-column: 1/2;
 	// grid-row: 1/2;
-	background-color: $clr2;
+
 	border: 1px solid lightgray;
-	margin-bottom: 5px;
-	border-radius: 10px;
-	padding: 5px;
+	margin-bottom: 0.5rem;
+	border-radius: 1rem;
+	padding: 0.8rem;
+	box-shadow: 0px 0px 1.5px 0px #000000;
+	background-color: #f8f8ff;
+	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.33' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .details-tag {
-	background-color: $clr3;
-	border-radius: 8px;
-	padding: 2px;
 	cursor: pointer;
+	background-color: $clr1;
+	font-style: italic;
+	font-size: 0.6rem;
+	border-radius: 1rem;
+	text-align: center;
+	border: 1px solid gray;
+	padding: 0.4rem;
+	margin: 0.2rem;
+}
+
+.req-skill {
+	cursor: pointer;
+	background-color: $clr1;
+	font-style: italic;
+	border-radius: 1rem;
+	text-align: center;
+	border: 1px solid gray;
+	padding: 0.4rem;
+	margin: 0.2rem;
+	font-weight: bold;
+	font-size: 0.8rem;
+}
+
+.details-online {
+	border: 1px solid $clr2;
+	background-color: $clr5;
+	color: $clr2;
 }
 
 .details-img {
 	border-radius: 10px;
 	height: 500px;
 	margin-bottom: 5px;
-	// grid-column: 1/2;
-	// grid-row: 2/5;
-	// object-fit: cover;
+}
+
+//figure out rules
+.img-gallery {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-auto-flow: dense;
+
+	> *:nth-child(2n) {
+		grid-column: span 2;
+		grid-row: span 2;
+	}
+
+	.details-img {
+		@include aspect-ratio(1, 1);
+		cursor: pointer;
+		transition: opacity 0.3s;
+		border-radius: 0.5rem;
+	}
 }
 
 .more-details {
 	border: 1px solid lightgray;
 	padding: 2px;
 	border-radius: 10px;
-	// grid-column: 1/2;
-	// grid-row: 5/7;
 	background-color: $clr2;
 	border-bottom: 1px solid lightgray;
+	box-shadow: 0px 0px 1.5px 0px #000000;
+
+	background-color: #f8f8ff;
+	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.33' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }

@@ -1,8 +1,9 @@
 <template>
   <div class="home main-layout">
     <hero />
-    <short-list v-if="isload" :name="'Popular'" />
-    <categories-grid />
+    <short-list class="homepage-layout" v-if="isload" :name="'Popular'" />
+    <short-list class="homepage-layout" v-if="isload" :name="'Newest'" />
+    <categories-grid class="homepage-layout" />
   </div>
 </template>
 <script>
@@ -44,10 +45,13 @@ export default {
     document.addEventListener("scroll", this.handleScrollY);
     await this.$store.dispatch({ type: "loadVols" });
     this.isload = true;
+<<<<<<< HEAD
   },
   destroyed() {
     this.$store.commit({ type: "setTransHeader", isTransHeader: false });
     document.removeEventListener("scroll", this.handleScrollY);
+=======
+>>>>>>> b5e4092b2fa69cf7c0461f5d58fe233e02d328de
   },
 };
 </script>

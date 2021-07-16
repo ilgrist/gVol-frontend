@@ -30,7 +30,7 @@ export default {
 		},
 		shortListRandVols(state){
 			let randomVols=[]
-			for (var i =0; i<5; i++){
+			for (var i =0; i<4; i++){
 				var item = state.vols[Math.floor(Math.random()*state.vols.length)];
 				 randomVols.push(item)
 			}

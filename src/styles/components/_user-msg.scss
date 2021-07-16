@@ -6,7 +6,7 @@
     border: 1px solid lightgray;
     border-radius: 10px;
     z-index: 1;
-    position: absolute;
+    position: fixed;
     right: 45%;
     top: 1%;
     animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) ;

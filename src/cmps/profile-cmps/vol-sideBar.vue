@@ -38,12 +38,15 @@ export default {
   methods: {
     onVol() {
       // this.$router.push("/login");
-      this.msg = 'Your request has been sent'
-      showMsg(this.msg, 'danger')
+      this.msg = 'Your request has been sent !'
+      showMsg(this.msg, 'success')
       this.msg = ''
     },
     onShare() {
       console.log("shared!");
+      this.msg = 'Volunteering shared !'
+      showMsg(this.msg, 'success')
+      this.msg = ''
     },
   },
 };

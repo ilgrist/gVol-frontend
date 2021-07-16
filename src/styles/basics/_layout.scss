@@ -1,24 +1,26 @@
 .main-layout {
-	margin: 0 auto;
-	padding: 0;
-	overflow-x: hidden;
-	width: 1800px;
-	width: 100%;
-	margin-top: 40px; //Header account for
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+  width: 1800px;
+  width: 100%;
+  margin-top: 40px; //Header account for
 }
 
 .card {
-	cursor: pointer;
-	border-radius: 10px;
-	box-shadow: 0px 10px 13px -7px #000000,
-		-49px -50px 12px -23px rgba(0, 0, 0, 0);
-	transition: 0.3s ease;
-	&:hover {
-		box-shadow: 0px 1px 10px 0px #000000;
-	}
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  &:hover {
+    box-shadow: 0px 1px 10px 0px #000000;
+    transform: translateY(-1%);
+    transition: transform 0.3s;
+    box-shadow: 0px 0px 10px 0px #000000;
+    transition: box-shadow 0.3s;
+  }
 }
 
 .homepage-layout {
-	max-width: 1060px;
-	margin: 0 auto;
+  max-width: 1060px;
+  margin: 0 auto;
 }

@@ -22,15 +22,25 @@
 </template>
 
 <script>
+  import { showMsg } from '../../services/event-bus.service.js';
 export default {
+
   props: {
     vol: {
       type: Object,
     },
   },
+  data(){
+    return{
+      msg: ''
+    }
+  },
   methods: {
     onVol() {
-      this.$router.push("/login");
+      // this.$router.push("/login");
+      this.msg = 'Your request has been sent'
+      showMsg(this.msg, 'alert')
+      this.msg = ''
     },
     onShare() {
       console.log("shared!");

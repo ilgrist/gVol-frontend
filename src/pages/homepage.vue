@@ -45,13 +45,10 @@ export default {
     document.addEventListener("scroll", this.handleScrollY);
     await this.$store.dispatch({ type: "loadVols" });
     this.isload = true;
-<<<<<<< HEAD
   },
   destroyed() {
     this.$store.commit({ type: "setTransHeader", isTransHeader: false });
     document.removeEventListener("scroll", this.handleScrollY);
-=======
->>>>>>> b5e4092b2fa69cf7c0461f5d58fe233e02d328de
   },
 };
 </script>

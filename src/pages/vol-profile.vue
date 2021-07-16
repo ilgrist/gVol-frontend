@@ -1,9 +1,9 @@
 <template>
   <section class="vol-profile main-layout">
-    <ul v-if="vol" class="vol-det">
+    <div v-if="vol" class="vol-det">
       <volDetails :vol="vol" />
       <volSideBar :vol="vol" />
-    </ul>
+    </div>
   </section>
 </template>
 

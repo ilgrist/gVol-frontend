@@ -12,6 +12,7 @@ const routes = [
 		path: '/',
 		name: 'homepage',
 		component: homepage,
+		//RESEARCH SCROLLBHEAVIOR
 	},
 	{
 		path: '/volApp',

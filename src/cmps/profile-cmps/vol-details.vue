@@ -10,7 +10,7 @@
       </div>
     </header>
     <div class="img-gallery">
-      <img class="details-img" :src="vol.imgUrls" alt="VolIMG" />
+      <img class="details-img main-img" :src="vol.imgUrls" alt="VolIMG" />
       <img class="details-img" src="../../assets/img/dragon2.jpg" alt="" />
       <img class="details-img" src="../../assets/img/dragon.jpg" alt="" />
       <img class="details-img" src="../../assets/img/dragon4.jpg" alt="" />

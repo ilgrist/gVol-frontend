@@ -1,0 +1,70 @@
+*{
+    box-sizing: border-box;
+}
+
+.signup{
+    background-color: $clr1;
+    padding: 30px;
+    background-color: $clr1;
+    margin-bottom: 20px;
+    width: 20%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 250px 20px;
+   border: 2px solid lightgray;
+   border-radius: 20px;
+    box-shadow: 0px 3px 0px 2px rgba(0,0,0,0.1), 0px 6px 0px 4px rgba(0,0,0,0.1), -1px 12px 27px -11px #000000;
+    transition: box-shadow 0.3s;
+
+    &:hover{
+        box-shadow: 0px 3px 0px 2px rgba(0,0,0,0.1), 0px 6px 0px 4px rgba(0,0,0,0.1), -1px 15px 30px -9px #000000;
+        transition: box-shadow 0.3s;
+   }
+   h2{
+    text-align: center;
+    text-decoration: underline;
+   }
+
+    img{
+        width: 30px;
+        transform: translateY(25%);
+    }
+    .skills{
+        select{
+            width:178px ;
+        }
+    }
+    .profile-img{
+        margin-bottom: 10px;
+    }
+    
+
+    input{
+        &#img{
+            display: none;
+        }
+    } 
+    .signup-btn{
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       align-items: center;
+       >*{
+           width: 25%;
+        }
+        :first-child{
+        margin-bottom: 10px;
+       }
+    }
+    .label-input{
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+
+        p{
+            margin: 0;
+        }
+    }
+}

@@ -5,7 +5,7 @@
       <p @click="goExplore">See all</p>
     </div>
     <section v-if="randVols" class="cards-cont">
-      <div v-for="vol,idx in randVols" :key="idx" @click="goToProfile(vol._id)" class="card-preview">
+      <div v-for="vol,idx in randVols" :key="idx" @click="goToProfile(vol._id)" class="card-preview short">
         <h2>{{vol.title}}</h2>
         <p><span>{{vol.loc.city}},</span><span>{{vol.loc.country}}</span></p>
         <img :src="vol.imgUrls[0]" />

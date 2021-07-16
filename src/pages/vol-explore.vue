@@ -8,8 +8,20 @@
       >On-site
       <input id="onsite" type="checkbox" />
     </label>
-    <vol-filter @filter="filter"></vol-filter>
-    <vol-list :vols="vols" />
+    <div class="explore-page">
+      <div class="online-onsite">
+        <label for="online"
+          >Online
+          <input id="online" type="checkbox" />
+        </label>
+        <label for="onsite"
+          >On-site
+          <input id="onsite" type="checkbox" />
+        </label>
+      </div>
+      <vol-filter @filter="filter"></vol-filter>
+      <vol-list :vols="vols" />
+    </div>
   </div>
 </template>
 

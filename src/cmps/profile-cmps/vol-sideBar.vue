@@ -39,7 +39,7 @@ export default {
     onVol() {
       // this.$router.push("/login");
       this.msg = 'Your request has been sent'
-      showMsg(this.msg, 'alert')
+      showMsg(this.msg, 'danger')
       this.msg = ''
     },
     onShare() {

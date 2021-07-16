@@ -1,5 +1,5 @@
 <template>
-  <section class="main-layout vol-profile">
+  <section class="vol-profile main-layout">
     <ul v-if="vol" class="vol-det">
       <volDetails :vol="vol" />
       <volSideBar :vol="vol" />

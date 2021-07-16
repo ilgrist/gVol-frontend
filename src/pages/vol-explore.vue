@@ -1,15 +1,7 @@
 <template>
   <div class="explore-page main-layout">
-    <label for="online"
-      >Online
-      <input id="online" type="checkbox" />
-    </label>
-    <label for="onsite"
-      >On-site
-      <input id="onsite" type="checkbox" />
-    </label>
     <div class="explore-page">
-      <div class="online-onsite">
+      <!-- <div class="online-onsite">
         <label for="online"
           >Online
           <input id="online" type="checkbox" />
@@ -17,8 +9,8 @@
         <label for="onsite"
           >On-site
           <input id="onsite" type="checkbox" />
-        </label>
-      </div>
+        </label> -->
+      <!-- </div> -->
       <vol-filter @filter="filter"></vol-filter>
       <vol-list :vols="vols" />
     </div>

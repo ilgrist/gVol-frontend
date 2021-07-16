@@ -13,6 +13,12 @@
 @import '/components/main-footer.scss';
 @import '/components/main-header.scss';
 
+// PAGES
+@import '/pages/login-page/login';
+@import '/pages/login-page/signup';
+@import '/pages/explore-page';
+@import '/pages/homepage';
+
 //HOMEPAGE-CMPS
 @import '/components/homepage-cmps/short-list.scss';
 @import '/components/homepage-cmps/hero.scss';
@@ -28,11 +34,6 @@
 @import '/components/profile-cmps/details.scss';
 @import '/components/profile-cmps/sidebar.scss';
 @import '/components/profile-cmps/reviews.scss';
-
-//LOGIN/SIGNUP-CMPS
-@import '/components/login-page/login.scss';
-@import '/components/login-page/signup.scss';
-
 
 //FONTS
 // header option

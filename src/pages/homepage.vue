@@ -1,5 +1,5 @@
 <template>
-  <div class="home main-layout">
+  <div class="homepage main-layout">
     <hero />
     <short-list class="homepage-layout" v-if="isload" :name="'Popular'" />
     <short-list class="homepage-layout" v-if="isload" :name="'Newest'" />

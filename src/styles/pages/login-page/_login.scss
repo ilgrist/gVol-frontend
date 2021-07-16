@@ -1,0 +1,21 @@
+.login-page-cont {
+  background-color: $clr2;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  button {
+    border-radius: 10px;
+  }
+}
+
+.login-signup-area {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  button {
+    border-radius: 10px;
+  }
+}

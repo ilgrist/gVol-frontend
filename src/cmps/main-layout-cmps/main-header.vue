@@ -15,6 +15,7 @@
       <!-- <router-link :to="/user/" +loggedinUser._id>
         | Profile/Logout</router-link
       > -->
+      <router-link to="/addVol"> Add Vol </router-link> |
       <router-link to="/login"> Welcome Guest</router-link>
     </nav>
   </header>

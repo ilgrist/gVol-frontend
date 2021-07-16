@@ -5,8 +5,19 @@ import volStore from './vol-store.js';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    transHeader: false,
+  },
+  mutations: {
+    setTransHeader(state, { isTransHeader }) {
+      state.transHeader = isTransHeader;
+    },
+  },
+  getters: {
+    isTransHeader(state) {
+      return state.transHeader;
+    },
+  },
   actions: {},
   modules: {
     volStore,

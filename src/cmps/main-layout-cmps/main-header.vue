@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header">
+  <header class="main-header" :class="{ transparent: isTransparent }">
     <img
       @click="goToHome"
       class="logo"
@@ -32,8 +32,10 @@ export default {
       if (this.$route.path !== path) this.$router.push("/");
     },
   },
-
   computed: {
+    isTransparent() {
+      return this.$store.getters.isTransHeader;
+    },
     // loggedinUser() {
     //   return this.$store.getters.loggedinUser;
     // },

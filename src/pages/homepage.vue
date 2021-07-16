@@ -21,6 +21,8 @@ export default {
   data() {
     return {
       isload: false,
+      scrollY: 0,
+      isHeaderTrans: true,
     };
   },
   computed: {
@@ -28,9 +30,25 @@ export default {
       return this.$store.getters.volsToShow;
     },
   },
+  methods: {
+    handleScrollY() {
+      this.scrollY = window.scrollY;
+      this.scrollY ? (this.isTransHeader = false) : (this.isTransHeader = true);
+      this.$store.commit({
+        type: "setTransHeader",
+        isTransHeader: this.isTransHeader,
+      });
+    },
+  },
   async created() {
+    this.$store.commit({ type: "setTransHeader", isTransHeader: true });
+    document.addEventListener("scroll", this.handleScrollY);
     await this.$store.dispatch({ type: "loadVols" });
     this.isload = true;
+  },
+  destroyed() {
+    this.$store.commit({ type: "setTransHeader", isTransHeader: false });
+    document.removeEventListener("scroll", this.handleScrollY);
   },
 };
 </script>

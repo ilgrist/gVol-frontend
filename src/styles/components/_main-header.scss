@@ -1,36 +1,44 @@
 header.main-header {
-	background-color: $clr6;
-	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f5f5f5' fill-opacity='0.15' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-	color: $clr1;
-	font-family: Halant, sans-serif;
+  background-color: $clr6;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f5f5f5' fill-opacity='0.15' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  color: $clr1;
+  font-family: Halant, sans-serif;
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	border-bottom: 1px solid $clr2;
-	padding-right: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $clr2;
+  padding-right: 5px;
 
-	// TRANSPARENT
-	// background-color: transparent;
-	// position: absolute;
-	// top: 0;
-	// right:0
-	// z-index: 1;
+  &.transparent {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  // TRANSPARENT
+  //   background-color: transparent;
+  //   position: absolute;
+  //   top: 0;
+  //   right:0
+  //   z-index: 1;
 }
 
 .logo {
-	width: 40px;
-	height: 50%;
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
+  width: 40px;
+  height: 50%;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .nav {
-	display: flex;
+  display: flex;
 }
 
 a {
-	color: whitesmoke;
+  color: whitesmoke;
 }

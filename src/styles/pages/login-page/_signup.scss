@@ -1,0 +1,14 @@
+.signup {
+  background-color: $clr2;
+
+  img {
+    width: 30px;
+    transform: translateY(25%);
+  }
+
+  input {
+    &#img {
+      display: none;
+    }
+  }
+}

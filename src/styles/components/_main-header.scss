@@ -10,21 +10,16 @@ header.main-header {
   width: 100%;
   border-bottom: 1px solid $clr2;
   padding-right: 5px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  transition: 0.3s;
 
   &.transparent {
     background-color: transparent;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
+    border-bottom: unset;
+    background-image: unset;
   }
-
-  // TRANSPARENT
-  //   background-color: transparent;
-  //   position: absolute;
-  //   top: 0;
-  //   right:0
-  //   z-index: 1;
 }
 
 .logo {

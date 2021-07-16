@@ -11,7 +11,7 @@
         >Password:
         <input v-model="user.password" id="password" type="password" />
       </label>
-      <button @click="login">login</button>
+      <button @click="login">Login</button>
     </div>
     <div class="login-signup-area" v-if="isRegistered">
       <h1>Not registered ?</h1>
@@ -58,7 +58,7 @@
 
 <script>
 import { uploadImg } from "../services/img-upload.service.js";
-import { showMsg } from '../services/event-bus.service.js';
+import { showMsg } from "../services/event-bus.service.js";
 
 export default {
   data() {
@@ -77,8 +77,8 @@ export default {
         imgUrl: "",
       },
       skills: ["-", "teaching", "translating", "designing"],
-      msg:''
-    }
+      msg: "",
+    };
   },
   methods: {
     register() {
@@ -92,16 +92,16 @@ export default {
     login() {
       const userCopy = JSON.parse(JSON.stringify(this.user));
       console.log("userCopy:", userCopy);
-      this.msg = `wellcome back - ${userCopy.username} !`
-      showMsg(this.msg, 'success')
-      this.msg = ''
+      this.msg = `wellcome back - ${userCopy.username} !`;
+      showMsg(this.msg, "success");
+      this.msg = "";
     },
     signup() {
       const userCopy = JSON.parse(JSON.stringify(this.newUser));
       console.log("userCopy:", userCopy);
-      this.msg = `Wellcome to gVol family !`
-      showMsg(this.msg, 'success')
-      this.msg = ''
+      this.msg = `Wellcome to gVol family !`;
+      showMsg(this.msg, "success");
+      this.msg = "";
     },
     async handleFile(ev) {
       const file = ev.target.files[0];

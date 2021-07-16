@@ -3,9 +3,10 @@
     <img
       @click="goToHome"
       class="logo"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281313/volApp/logo3_wuazzc.png"
+      src="../../assets/img/logo4.png"
       alt="logo"
     />
+    <!-- src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281313/volApp/logo3_wuazzc.png" -->
     <nav id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/volApp">Explore</router-link>

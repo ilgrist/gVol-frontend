@@ -1,5 +1,5 @@
 <template>
-  <div class="card-preview short">
+  <div class="card-preview short card">
     <h2>{{ title }}</h2>
     <p>
       <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>

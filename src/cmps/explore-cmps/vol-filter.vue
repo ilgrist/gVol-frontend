@@ -1,5 +1,13 @@
 <template>
   <section class="explore-filter">
+    <label class="onlineOnSite" for="online">
+      <img src="" alt="" />
+      <input id="online" type="checkbox" />
+    </label>
+    <label for="onsite"
+      >On-site
+      <input id="onsite" type="checkbox" />
+    </label>
     <label for="search"
       >Search:
       <input

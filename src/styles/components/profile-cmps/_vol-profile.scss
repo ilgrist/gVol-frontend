@@ -5,8 +5,13 @@
 	gap: 1rem;
 	margin: 0 1rem;
 	flex-direction: column;
+
 	// display: grid;
 	// grid-template-columns: 1fr 300px;
 	// grid-template-rows: repeat(7, 150px);
 	// gap: 1rem;
+}
+
+.vol-profile {
+	overflow-x: unset;
 }

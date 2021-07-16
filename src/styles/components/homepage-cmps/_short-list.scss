@@ -1,8 +1,8 @@
 .short-list {
-  // padding: 20px;
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 20px, 1fr;
+  margin-bottom: 1rem;
   > * {
     margin-bottom: 1rem;
   }
@@ -17,19 +17,16 @@
   border-bottom: 1px solid lightgray;
 
   p {
-    background-color: $clr1;
     border-radius: 1rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     transition: background-color 1s;
-    transition: padding 0.3s;
+    transition: all 0.3s ease;
     cursor: pointer;
     text-decoration: underline;
     &:hover {
       font-weight: bold;
       background-color: $clr3;
-      border-radius: 1rem;
-      padding: 0.5rem;
-      transition: background-color 1s;
+      color: $clr2;
     }
   }
 }
@@ -47,54 +44,38 @@
   cursor: pointer;
   background-color: $clr2;
   padding: 10px;
-  height: 400px;
+  height: 370px;
   width: 350px;
 
-  &:hover {
-    transform: translateY(-1%);
-    transition: transform 0.3s;
-    box-shadow: 0px 0px 10px 0px #000000;
-    transition: box-shadow 0.3s;
-  }
-  &.short {
-    // width: 50%;
-  }
-
-  &:hover {
-    transform: translateY(-1%);
-    transition: transform 0.3s;
-    box-shadow: 0px 0px 10px 0px #000000;
-    transition: box-shadow 0.3s;
-  }
-  &.short {
-    width: 50%;
-  }
-
-  h2 {
+  h3 {
     text-decoration: underline;
-    margin: 0;
     margin-bottom: 0.3em;
   }
   img {
     height: 150px;
     object-fit: cover;
   }
-  p {
-    margin: 0;
 
-    &.rev-com {
-      padding: 5px;
-      cursor: pointer;
-      background-color: $clr3;
-      border-radius: 10px;
-      color: white;
-      img {
-        width: 9%;
-        height: 100%;
-        transform: translateY(20%);
-      }
+  .rev-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    cursor: pointer;
+    background-color: $clr3;
+    border-radius: 10px;
+    color: $clr2;
+    > * {
+      display: flex;
+      gap: 5px;
+    }
+    img {
+      width: 1rem;
+      height: 100%;
+      transform: translateY(20%);
     }
   }
+
   article {
     display: flex;
     font-weight: bold;

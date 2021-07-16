@@ -1,22 +1,26 @@
 <template>
-  <div class="card-preview short card">
-    <h2>{{ title }}</h2>
+  <section class="card-preview card">
+    <h3>{{ title }}</h3>
     <p>
       <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>
     </p>
     <img :src="vol.imgUrls[0]" />
-    <p class="rev-com">
-      <img
-        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
-      />
-      <span>4.5</span>
-      <img
-        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365582/volApp/icons/mode_black_24dp_iqmj5f.svg"
-      />
-      <span>Reviews</span>
-    </p>
+    <div class="rev-cont">
+      <div class="rating">
+        <img
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
+        />
+        <span>4.5</span>
+      </div>
+      <div class="reviews">
+        <img
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365582/volApp/icons/mode_black_24dp_iqmj5f.svg"
+        />
+        <span>Reviews</span>
+      </div>
+    </div>
     <hr />
-    <p>{{ vol.desc }}</p>
+    <p>{{ description }}</p>
     <hr />
     <article class="skills">
       Skills:
@@ -24,19 +28,21 @@
         <span class="skill-span">{{ skill }}</span>
       </p>
     </article>
-  </div>
+  </section>
 </template>
 
 <script>
+import { utilService } from "../../services/util.service.js";
 export default {
   props: {
     vol: Object,
   },
   computed: {
     title() {
-      let title = this.vol.title;
-      if (title.length > 15) return title.substring(0, 10) + "...";
-      return title;
+      return utilService.shortTxt(this.vol.title, 25);
+    },
+    description() {
+      return utilService.shortTxt(this.vol.desc, 50);
     },
   },
 };

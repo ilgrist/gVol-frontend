@@ -1,8 +1,7 @@
 <template>
   <section class="hero-image">
-    <!-- <main-header /> -->
     <div class="hero-container">
-      <h1 class="hero-title">Volunteering globally</h1>
+      <h1 class="hero-title">Volunteering. Globally.</h1>
       <div class="hero-filter-container">
         <form class="filter-form" @submit.prevent="filter">
           <img
@@ -10,15 +9,14 @@
             src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626286701/volApp/icons/search_z9wby8.svg"
             alt="search"
           />
-
           <input
             class="hero-input"
             type="text"
             v-model="filterBy.txt"
             @keydown.enter.prevent="filter"
-            placeholder="Try 'Teaching'"
+            placeholder="Make a difference in..."
+            ref="search"
           />
-          <!-- <button class="homepage-btn">Search</button> -->
         </form>
         <button class="homepage-btn">Volunteer</button>
       </div>
@@ -43,6 +41,9 @@ export default {
       console.log(this.filterBy);
       this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
     },
+  },
+  mounted() {
+    this.$refs.search.focus();
   },
 };
 </script>

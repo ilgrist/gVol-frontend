@@ -1,26 +1,41 @@
-.category-grid {
-  padding: 1rem;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-flow: dense;
-
-  > *:nth-child(3n) {
-    grid-column: span 2;
-    grid-row: span 2;
-    p {
-      font-size: 3rem;
-    }
+.category-grid-cont {
+  margin-bottom: 1rem;
+  .short-header {
+    margin-bottom: 1rem;
   }
-  .card {
-    @include aspect-ratio(1, 1);
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: whitesmoke;
-      font-size: 3rem;
-      font-weight: bold;
+  .category-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-flow: dense;
+    .card {
+      @include aspect-ratio(1, 1);
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: whitesmoke;
+        font-size: 2rem;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+      &:hover {
+        p {
+          font-size: 300%;
+        }
+      }
+    }
+    > *:nth-child(3n) {
+      grid-column: span 2;
+      grid-row: span 2;
+      p {
+        font-size: 3rem;
+      }
+      &:hover {
+        p {
+          font-size: 400%;
+        }
+      }
     }
   }
 }

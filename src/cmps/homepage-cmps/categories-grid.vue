@@ -1,7 +1,13 @@
 <template>
-  <section class="category-grid main-layout">
-    <div v-for="category in categories" :key="category.loc">
-      <category-card :category="category" @cardClicked="cardClicked" />
+  <section class="category-grid-cont main-layout">
+    <div class="short-header">
+      <h1>Volunteer in:</h1>
+      <p @click="goExplore">See all</p>
+    </div>
+    <div class="category-grid">
+      <div v-for="category in categories" :key="category.loc">
+        <category-card :category="category" @cardClicked="cardClicked" />
+      </div>
     </div>
   </section>
 </template>

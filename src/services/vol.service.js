@@ -9,6 +9,9 @@ const gVols = _createVols();
 export const volService = {
 	query,
 	getById,
+	getEmptyVol,
+	remove,
+	save,
 };
 
 async function query(filterBy) {
@@ -27,14 +30,29 @@ function _createVols() {
 	}
 }
 
-// function save(vol){
-//     if(vol._id) {
-//         storageService.put(VOL_KEY, vol)
-//     } else {
-//         storageService.post(VOL_KEY, vol)
-//     }
-// }
+function save(vol) {
+	console.log(vol);
+	if (vol._id) {
+		storageService.put(VOL_KEY, vol);
+	} else {
+		vol._id = utilService.makeId();
+		vol.imgUrls = [
+			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
+		];
+		storageService.post(VOL_KEY, vol);
+	}
+}
 
-// function remove(volId){
-//     return storageService.remove(VOL_KEY, volId)
-// }
+function remove(volId) {
+	return storageService.remove(VOL_KEY, volId);
+}
+
+function getEmptyVol() {
+	return {
+		title: '',
+		desc: '',
+		reqSkills: '',
+		tags: '',
+		org: '',
+	};
+}

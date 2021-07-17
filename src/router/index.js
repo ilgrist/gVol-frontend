@@ -21,14 +21,14 @@ const routes = [
 		component: volExplore,
 	},
 	{
-		path: '/volApp/:_id',
-		name: 'volProfile',
-		component: volProfile,
-	},
-	{
 		path: '/addVol',
 		name: 'addVol',
 		component: addVol,
+	},
+	{
+		path: '/volApp/:_id',
+		name: 'volProfile',
+		component: volProfile,
 	},
 	// {
 	//   path: '/user/:_id',

@@ -3,7 +3,7 @@ import { volService } from '../services/vol.service.js';
 export default {
 	state: {
 		vols: [],
-		filterBy: { txt: '', category:'all',skills:'all'}
+		filterBy: { txt: '', category: 'all', skills: 'all' },
 	},
 	mutations: {
 		setFilter(state, { filterBy }) {
@@ -21,30 +21,34 @@ export default {
 			state.vols.splice(idx, 1);
 		},
 		setVols(state, { vols }) {
+			console.log(vols);
 			state.vols = vols;
 		},
 	},
 	getters: {
 		volsToShow(state) {
-			return state.vols
+			return state.vols;
 		},
-		shortListRandVols(state){
-			let randomVols=[]
-			for (var i =0; i<4; i++){
-				var item = state.vols[Math.floor(Math.random()*state.vols.length)];
-				 randomVols.push(item)
+		shortListRandVols(state) {
+			let randomVols = [];
+			for (var i = 0; i < 4; i++) {
+				var item =
+					state.vols[Math.floor(Math.random() * state.vols.length)];
+				randomVols.push(item);
 			}
-			return randomVols
-		}
+			return randomVols;
+		},
 	},
 	actions: {
 		async saveVol({ commit }, { vol }) {
+			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
-				const type = vol._id ? 'updateVol' : 'addVol';
-				const vol = await volService.save(vol);
+				console.log('file: vol-store.js ~ line 47 ~ type', type);
+				const savedVol = await volService.save(vol);
 				commit({ type, savedVol });
+				return savedVol;
 			} catch (err) {
-				console.log("Could't save the vol", vol, err);
+				console.log("Couldn't save the vol", vol, err);
 			}
 		},
 		async removeVol({ commit }, { payload }) {

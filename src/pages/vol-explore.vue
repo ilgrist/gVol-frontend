@@ -1,6 +1,7 @@
 <template>
   <div class="explore-page main-layout">
     <img
+      class="loading-img"
       v-if="isLoading"
       src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
       alt="loading"
@@ -39,9 +40,9 @@ export default {
       this.$store.dispatch({ type: "loadVols" });
     },
   },
-  created() {
+  async created() {
     this.isLoading = true;
-    this.$store.dispatch({ type: "loadVols" });
+    await this.$store.dispatch({ type: "loadVols" });
     this.isLoading = false;
   },
 };

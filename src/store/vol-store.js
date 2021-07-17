@@ -43,7 +43,6 @@ export default {
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
-				console.log('file: vol-store.js ~ line 47 ~ type', type);
 				const savedVol = await volService.save(vol);
 				commit({ type, savedVol });
 				return savedVol;

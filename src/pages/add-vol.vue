@@ -1,44 +1,82 @@
 <template>
   <section class="addVol-page main-layout">
     <div class="form-container">
+      <h3>Add a Vol</h3>
       <form @submit.prevent="saveVol" class="addVol-form" action="addVol">
-        <label for="volTitle"
-          >Title:
-          <input placeholder="Enter Title" v-model="vol.title" type="text"
-        /></label>
-        <label for="volDesc"
-          >Description:
-          <input placeholder="Describe Vol" v-model="vol.desc" type="text"
-        /></label>
+        <label>
+          Title:
+          <input placeholder="Enter Title" v-model="vol.title" type="text" />
+        </label>
+
+        <label>
+          Description:
+          <input placeholder="Describe Vol" v-model="vol.desc" type="text" />
+        </label>
+
+        <label class="loc-label">
+          Location of Vol:
+          <div class="switch-button">
+            <input
+              v-model="vol.loc.isOnsite"
+              class="switch-button-checkbox"
+              type="checkbox"
+            />
+            <label class="switch-button-label" for="">
+              <span class="switch-button-label-span">Online</span></label
+            >
+          </div>
+          {{ vol.loc.isOnsite }}
+
+          <div v-if="vol.loc.isOnsite">
+            <input
+              placeholder="Enter City"
+              v-model="vol.loc.city"
+              type="text"
+            />
+            <input
+              placeholder="Enter Country"
+              v-model="vol.loc.country"
+              type="text"
+            />
+          </div>
+        </label>
+
         <label for="reqSkills">List Required Skills</label>
-        <!-- TODO: amend to a multipule select -->
-        <select multipule v-model="vol.reqSkills" name="reqSkills">
-          <option value="teaching">Teaching</option>
-          <option value="dreaming">Dreaming</option>
-          <option value="translating">Translating</option>
-        </select>
-        <label for="tags">List Tags</label>
-        <select v-model="vol.tags" name="tags">
-          <option value="children">Children</option>
-          <option value="animals">Animals</option>
-          <option value="Elderly">Elderly</option>
-        </select>
-        <label for="location">Location of Vol</label>
-        <input placeholder="Enter City" v-model="vol.loc.city" type="text" />
-        <input
-          placeholder="Enter Country"
-          v-model="vol.loc.country"
-          type="text"
-        />
-        <select v-model="vol.loc.isOnsite" name="location">
-          <option value="false">Online</option>
-          <option value="true">On-site</option>
-        </select>
-        <label for="volOrg"> Orgs </label>
-        <select v-model="vol.org.name" name="org">
+
+        <el-select
+          v-model="vol.reqSkills"
+          multiple
+          placeholder="Select Required Skills"
+        >
+          <el-option
+            v-for="skill in skills"
+            :key="skill.value"
+            :label="skill.label"
+            :value="skill.value"
+          >
+          </el-option>
+        </el-select>
+
+        <label for="reqSkills">List Relevant Tags</label>
+        <el-select
+          v-model="vol.tags"
+          multiple
+          placeholder="Select Relevant Tags"
+        >
+          <el-option
+            v-for="tag in tags"
+            :key="tag.value"
+            :label="tag.label"
+            :value="tag.value"
+          >
+          </el-option>
+        </el-select>
+
+        <!-- <label for="volOrg"> Orgs </label> -->
+        <!-- <select v-model="vol.org.name" name="org">
           <option value="org1">Org1</option>
           Org1
-        </select>
+        </select> -->
 
         <button>Submit</button>
       </form>
@@ -66,21 +104,63 @@ export default {
         reqSkills: [],
         tags: [],
       },
+      tags: [
+        {
+          value: "children",
+          label: "Children",
+        },
+        {
+          value: "animals",
+          label: "Animals",
+        },
+        {
+          value: "elderly",
+          label: "Elderly",
+        },
+        {
+          value: "music",
+          label: "Music",
+        },
+        {
+          value: "art",
+          label: "Art",
+        },
+      ],
+      skills: [
+        {
+          value: "dreaming",
+          label: "Dreaming",
+        },
+        {
+          value: "building",
+          label: "Building",
+        },
+        {
+          value: "translating",
+          label: "Translating",
+        },
+        {
+          value: "hugging",
+          label: "Hugging",
+        },
+        {
+          value: "saving",
+          label: "Saving",
+        },
+      ],
     };
   },
   methods: {
     async saveVol() {
-      // this.vol._id = "aaa123";
-      // this.vol._id = "";
       try {
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
       } catch (err) {
         console.log("cannot save vol", err);
         throw err;
+      } finally {
+        this.$router.push(`volApp/`);
+        // this.closeModal();
       }
-      // finally {
-      //   this.closeModal();
-      // }
     },
 
     // closeModal() {

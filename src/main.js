@@ -4,6 +4,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import Element from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import './styles/styles.scss';
 
@@ -11,7 +12,7 @@ Vue.config.productionTip = false;
 Vue.use(Element);
 
 new Vue({
-  router,
-  store,
-  render: (h) => h(volApp),
+	router,
+	store,
+	render: (h) => h(volApp),
 }).$mount('#app');

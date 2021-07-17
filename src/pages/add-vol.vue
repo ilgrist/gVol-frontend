@@ -11,6 +11,12 @@
         <label>
           Description:
           <input placeholder="Describe Vol" v-model="vol.desc" type="text" />
+          <!-- <textarea
+            v-model="vol.desc"
+            name="vol-desc"
+            cols="30"
+            rows="10"
+          ></textarea> -->
         </label>
 
         <label class="loc-label">
@@ -21,11 +27,10 @@
               class="switch-button-checkbox"
               type="checkbox"
             />
-            <label class="switch-button-label" for="">
+            <label class="switch-button-label">
               <span class="switch-button-label-span">Online</span></label
             >
           </div>
-          {{ vol.loc.isOnsite }}
 
           <div v-if="vol.loc.isOnsite">
             <input
@@ -78,7 +83,7 @@
           Org1
         </select> -->
 
-        <button>Submit</button>
+        <button class="submit-btn">Submit</button>
       </form>
     </div>
   </section>

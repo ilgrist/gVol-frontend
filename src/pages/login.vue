@@ -92,14 +92,14 @@ export default {
     login() {
       const userCopy = JSON.parse(JSON.stringify(this.user));
       console.log("userCopy:", userCopy);
-      this.msg = `wellcome back - ${userCopy.username} !`;
+      this.msg = `Welcome Back - ${userCopy.username} !`;
       showMsg(this.msg, "success");
       this.msg = "";
     },
     signup() {
       const userCopy = JSON.parse(JSON.stringify(this.newUser));
       console.log("userCopy:", userCopy);
-      this.msg = `Wellcome to gVol family !`;
+      this.msg = `Welcome to the gVol family!`;
       showMsg(this.msg, "success");
       this.msg = "";
     },

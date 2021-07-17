@@ -4,6 +4,7 @@ const usersInit = require('../../usersInit.json');
 import axios from 'axios';
 
 const USER_KEY = 'users';
+const LOGGED_USER_KEY = 'loggedUser';
 const gUsers = query();
 
 export const userService = {
@@ -12,6 +13,7 @@ export const userService = {
   getLoggedinUser,
   login,
   logout,
+  signup,
 };
 
 async function query(filterBy) {
@@ -27,21 +29,49 @@ async function getById(userId) {
   return await storageService.getById(USER_KEY, userId);
 }
 
-function getLoggedinUser() {
-  return gUsers[0];
+async function getLoggedinUser() {
+  return storageService.get(LOGGED_USER_KEY);
 }
 
 async function login(userCred) {
-  const users = await query();
-  let user = users.find((user) => {
-    return user.username === userCred.username + '' && user.password === userCred.password + '';
-  });
-  if (user) {
-    user = { ...user };
-    delete user.password;
-    return user;
-  } else {
-    // throw err;
+  try {
+    const users = await query();
+    let user = users.find((user) => {
+      return user.username === userCred.username && user.password === userCred.password;
+    });
+    if (user) {
+      user = { ...user };
+      delete user.password;
+      utilService.clearStorage();
+      storageService.post(LOGGED_USER_KEY, user);
+      return user;
+    } else {
+      throw 'No such user';
+    }
+  } catch (err) {
+    console.log('user.service: error in login', err);
+    throw err;
+  }
+}
+
+async function signup(user) {
+  try {
+    const users = await query();
+    users.find((user) => {
+      return user.username === userCred.username;
+    });
+    if (user) {
+      throw 'User already exists';
+    } else {
+      user.id = utilService._makeId();
+      storageService.post(USER_KEY, user);
+      delete user.password;
+      storageService.post(LOGGED_USER_KEY, user);
+      return user;
+    }
+  } catch (err) {
+    console.log('user.service: error in signup', err);
+    throw err;
   }
 }
 

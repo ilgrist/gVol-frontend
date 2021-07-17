@@ -45,9 +45,10 @@ export default {
         throw err;
       }
     },
-    async signup({ commit }, { userCred }) {
+    async signup({ commit }, { newUser }) {
+      console.log('newUser:', newUser);
       try {
-        const user = await userService.signup(userCred);
+        const user = await userService.signup(newUser);
         commit({ type: 'setLoggedinUser', user });
         return user;
       } catch (err) {

@@ -1,6 +1,7 @@
 <template>
   <section class="login-page-cont main-layout">
     <h1>Welcome to gVol</h1>
+    <button @click="logout" v-if="loggedInUser">Logout</button>
     <div class="login" v-if="isRegistered && !loggedInUser">
       <h2>Login</h2>
       <label for="username">
@@ -13,10 +14,7 @@
       </label>
       <button @click="login">Login</button>
     </div>
-
-    <button @click="logout" v-if="loggedInUser">Logout</button>
-
-    <div class="login-signup-area" v-if="isRegistered">
+    <div class="login-signup-area" v-if="isRegistered && !loggedInUser">
       <h1>Not registered ?</h1>
       <button @click="register">Sign-up Now</button>
     </div>
@@ -113,13 +111,27 @@ export default {
     },
     logout() {
       this.$store.dispatch({ type: "logout" });
+      this.msg = `Goodbye, - ${this.user.username} !`;
+      showMsg(this.msg, "danger");
     },
-    signup() {
-      const userCopy = JSON.parse(JSON.stringify(this.newUser));
-      console.log("userCopy:", userCopy);
-      this.msg = `Wellcome to gVol family !`;
-      showMsg(this.msg, "success");
-      this.msg = "";
+    async signup() {
+      try {
+        const user = await this.$store.dispatch({
+          type: "signup",
+          newUser: this.newUser,
+        });
+        this.msg = `Wellcome to gVol family, ${user.username} !`;
+        showMsg(this.msg, "success");
+        this.msg = "";
+      } catch {
+        this.msg = `Can't sign up, try again!`;
+        showMsg(this.msg, "danger");
+      }
+      // const userCopy = JSON.parse(JSON.stringify(this.newUser));
+      // console.log("userCopy:", userCopy);
+      // this.msg = `Wellcome to gVol family !`;
+      // showMsg(this.msg, "success");
+      // this.msg = "";
     },
     async handleFile(ev) {
       const file = ev.target.files[0];

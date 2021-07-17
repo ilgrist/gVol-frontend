@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import volStore from './vol-store.js';
+import userStore from './user-store.js';
 
 Vue.use(Vuex);
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     volStore,
+    userStore,
   },
 });

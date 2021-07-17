@@ -16,7 +16,7 @@
         | Profile/Logout</router-link
       > -->
       <router-link to="/addVol"> Add Vol </router-link> |
-      <router-link to="/login"> Welcome Guest</router-link>
+      <router-link to="/login"> Welcome {{ loggedinUser }}</router-link>
     </nav>
   </header>
 </template>
@@ -38,9 +38,11 @@ export default {
     isTransparent() {
       return this.$store.getters.isTransHeader;
     },
-    // loggedinUser() {
-    //   return this.$store.getters.loggedinUser;
-    // },
+    loggedinUser() {
+      const user = this.$store.getters.loggedinUser;
+      if (user) return user.fullname;
+      return "Guest";
+    },
   },
 };
 </script>

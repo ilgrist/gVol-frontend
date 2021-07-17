@@ -1,5 +1,5 @@
 <template>
-  <section class="card-preview card">
+  <section class="card-preview card" @click="cardClicked">
     <h3>{{ title }}</h3>
     <p>
       <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>
@@ -36,6 +36,11 @@ import { utilService } from "../../services/util.service.js";
 export default {
   props: {
     vol: Object,
+  },
+  methods: {
+    cardClicked() {
+      this.$emit("cardClicked", this.vol._id);
+    },
   },
   computed: {
     title() {

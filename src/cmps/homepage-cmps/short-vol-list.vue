@@ -9,7 +9,7 @@
         :vol="vol"
         v-for="(vol, idx) in randVols"
         :key="idx"
-        @click="goToProfile(vol._id)"
+        @cardClicked="goToProfile"
       />
     </section>
   </section>

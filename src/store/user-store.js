@@ -4,7 +4,7 @@ import { userService } from '../services/user.service';
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
 
-export const userStore = {
+export default {
   state: {
     loggedinUser: userService.getLoggedinUser(),
     users: [],
@@ -39,16 +39,16 @@ export const userStore = {
       try {
         const user = await userService.login(userCred);
         commit({ type: 'setLoggedinUser', user });
-
         return user;
       } catch (err) {
         console.log('userStore: Error in login', err);
         throw err;
       }
     },
-    async signup({ commit }, { userCred }) {
+    async signup({ commit }, { newUser }) {
+      console.log('newUser:', newUser);
       try {
-        const user = await userService.signup(userCred);
+        const user = await userService.signup(newUser);
         commit({ type: 'setLoggedinUser', user });
         return user;
       } catch (err) {

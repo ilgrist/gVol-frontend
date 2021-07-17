@@ -1,7 +1,8 @@
 <template>
   <section class="login-page-cont main-layout">
     <h1>Welcome to gVol</h1>
-    <div class="login" v-if="isRegistered">
+    <button @click="logout" v-if="loggedInUser">Logout</button>
+    <div class="login" v-if="isRegistered && !loggedInUser">
       <h2>Login</h2>
       <label for="username">
         Username:
@@ -13,7 +14,7 @@
       </label>
       <button @click="login">Login</button>
     </div>
-    <div class="login-signup-area" v-if="isRegistered">
+    <div class="login-signup-area" v-if="isRegistered && !loggedInUser">
       <h1>Not registered ?</h1>
       <button @click="register">Sign-up Now</button>
     </div>
@@ -66,8 +67,8 @@ export default {
       isRegistered: true,
       isNewUser: false,
       user: {
-        username: "",
-        password: "",
+        username: "user1",
+        password: "secret",
       },
       newUser: {
         fullname: "",
@@ -80,6 +81,11 @@ export default {
       msg: "",
     };
   },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedinUser;
+    },
+  },
   methods: {
     register() {
       this.isNewUser = true;
@@ -89,19 +95,43 @@ export default {
       this.isNewUser = false;
       this.isRegistered = true;
     },
-    login() {
-      const userCopy = JSON.parse(JSON.stringify(this.user));
-      console.log("userCopy:", userCopy);
-      this.msg = `Welcome Back - ${userCopy.username} !`;
-      showMsg(this.msg, "success");
-      this.msg = "";
+    async login() {
+      try {
+        const user = await this.$store.dispatch({
+          type: "login",
+          userCred: this.user,
+        });
+        this.msg = `Welcome back - ${user.username} !`;
+        showMsg(this.msg, "success");
+        this.msg = "";
+      } catch {
+        this.msg = `Wrong credentials, try again!`;
+        showMsg(this.msg, "danger");
+      }
     },
-    signup() {
-      const userCopy = JSON.parse(JSON.stringify(this.newUser));
-      console.log("userCopy:", userCopy);
-      this.msg = `Welcome to the gVol family!`;
-      showMsg(this.msg, "success");
-      this.msg = "";
+    logout() {
+      this.$store.dispatch({ type: "logout" });
+      this.msg = `Goodbye, - ${this.user.username} !`;
+      showMsg(this.msg, "danger");
+    },
+    async signup() {
+      try {
+        const user = await this.$store.dispatch({
+          type: "signup",
+          newUser: this.newUser,
+        });
+        this.msg = `Welcome to the gVol family, ${user.username} !`;
+        showMsg(this.msg, "success");
+        this.msg = "";
+      } catch {
+        this.msg = `Can't sign up, try again!`;
+        showMsg(this.msg, "danger");
+      }
+      // const userCopy = JSON.parse(JSON.stringify(this.newUser));
+      // console.log("userCopy:", userCopy);
+      // this.msg = `Wellcome to gVol family !`;
+      // showMsg(this.msg, "success");
+      // this.msg = "";
     },
     async handleFile(ev) {
       const file = ev.target.files[0];
@@ -109,9 +139,6 @@ export default {
       console.log("res:", res);
       this.newUser.imgUrl = res.url;
     },
-  },
-  created() {
-    this.$store.dispatch.loadUsers;
   },
 };
 </script>

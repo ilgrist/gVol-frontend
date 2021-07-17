@@ -4,38 +4,48 @@ const usersInit = require('../../usersInit.json');
 import axios from 'axios';
 
 const USER_KEY = 'users';
-const gUsers = _createUsers();
+const gUsers = query();
 
 export const userService = {
   query,
   getById,
+  getLoggedinUser,
+  login,
+  logout,
 };
 
 async function query(filterBy) {
-  const users = JSON.parse(JSON.stringify(gUsers));
+  let users = await storageService.get(USER_KEY);
+  if (!users || !users.length) {
+    users = usersInit;
+    storageService.post(USER_KEY, users);
+  }
   return users;
 }
 
-function getById(userId) {
-  return storageService.getById(USER_KEY, userId);
+async function getById(userId) {
+  return await storageService.getById(USER_KEY, userId);
 }
 
-function _createUsers() {
-  let users = utilService.loadFromStorage(USER_KEY);
-  if (!users || !users.length) {
-    users = usersInit;
-    utilService.saveToStorage(USER_KEY);
+function getLoggedinUser() {
+  return gUsers[0];
+}
+
+async function login(userCred) {
+  const users = await query();
+  let user = users.find((user) => {
+    return user.username === userCred.username + '' && user.password === userCred.password + '';
+  });
+  if (user) {
+    user = { ...user };
+    delete user.password;
+    return user;
+  } else {
+    // throw err;
   }
 }
 
-// function save(user){
-//     if(user._id) {
-//         storageService.put(USER_KEY, user)
-//     } else {
-//         storageService.post(USER_KEY, user)
-//     }
-// }
-
-// function remove(userId){
-//     return storageService.remove(USER_KEY, userId)
-// }
+function logout() {
+  utilService.clearStorage();
+  // return await httpService.post('auth/logout');
+}

@@ -4,7 +4,7 @@ import { userService } from '../services/user.service';
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
 
-export const userStore = {
+export default {
   state: {
     loggedinUser: userService.getLoggedinUser(),
     users: [],
@@ -39,7 +39,6 @@ export const userStore = {
       try {
         const user = await userService.login(userCred);
         commit({ type: 'setLoggedinUser', user });
-
         return user;
       } catch (err) {
         console.log('userStore: Error in login', err);

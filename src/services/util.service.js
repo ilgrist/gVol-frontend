@@ -4,6 +4,7 @@ export const utilService = {
   makeId,
   getRandomIntInclusive,
   shortTxt,
+  clearStorage,
 };
 
 function saveToStorage(key, value) {
@@ -13,6 +14,10 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
   let data = localStorage.getItem(key);
   return data ? JSON.parse(data) : undefined;
+}
+
+function clearStorage() {
+  sessionStorage.clear();
 }
 
 function shortTxt(txt, num) {

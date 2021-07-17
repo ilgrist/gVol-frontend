@@ -1,7 +1,7 @@
 <template>
   <section class="login-page-cont main-layout">
     <h1>Welcome to gVol</h1>
-    <div class="login" v-if="isRegistered">
+    <div class="login" v-if="isRegistered && !loggedInUser">
       <h2>Login</h2>
       <label for="username">
         Username:
@@ -13,6 +13,9 @@
       </label>
       <button @click="login">Login</button>
     </div>
+
+    <button @click="logout" v-if="loggedInUser">Logout</button>
+
     <div class="login-signup-area" v-if="isRegistered">
       <h1>Not registered ?</h1>
       <button @click="register">Sign-up Now</button>
@@ -66,8 +69,8 @@ export default {
       isRegistered: true,
       isNewUser: false,
       user: {
-        username: "",
-        password: "",
+        username: "user1",
+        password: "secret",
       },
       newUser: {
         fullname: "",
@@ -80,6 +83,11 @@ export default {
       msg: "",
     };
   },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedinUser;
+    },
+  },
   methods: {
     register() {
       this.isNewUser = true;
@@ -89,12 +97,22 @@ export default {
       this.isNewUser = false;
       this.isRegistered = true;
     },
-    login() {
-      const userCopy = JSON.parse(JSON.stringify(this.user));
-      console.log("userCopy:", userCopy);
-      this.msg = `wellcome back - ${userCopy.username} !`;
-      showMsg(this.msg, "success");
-      this.msg = "";
+    async login() {
+      try {
+        const user = await this.$store.dispatch({
+          type: "login",
+          userCred: this.user,
+        });
+        this.msg = `wellcome back - ${user.username} !`;
+        showMsg(this.msg, "success");
+        this.msg = "";
+      } catch {
+        this.msg = `Wrong credentials, try again!`;
+        showMsg(this.msg, "danger");
+      }
+    },
+    logout() {
+      this.$store.dispatch({ type: "logout" });
     },
     signup() {
       const userCopy = JSON.parse(JSON.stringify(this.newUser));
@@ -109,9 +127,6 @@ export default {
       console.log("res:", res);
       this.newUser.imgUrl = res.url;
     },
-  },
-  created() {
-    this.$store.dispatch.loadUsers;
   },
 };
 </script>

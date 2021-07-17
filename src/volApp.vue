@@ -18,5 +18,8 @@ export default {
     mainFooter,
     userMsg,
   },
+  created() {
+    this.$store.dispatch.loadUsers;
+  },
 };
 </script>

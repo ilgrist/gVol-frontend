@@ -1,6 +1,6 @@
 <template>
   <div @click="goToProfile(vol._id)" class="card-preview card">
-    <h2>{{ vol.title }}</h2>
+    <h2>{{ title }}</h2>
     <p>
       <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>
     </p>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <hr />
-    <p>{{ vol.desc }}</p>
+    <p>{{ description }}</p>
     <hr />
     <p>
       Skills:
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { utilService } from "../../services/util.service.js";
 export default {
   props: {
     vol: Object,
@@ -37,6 +38,14 @@ export default {
   methods: {
     goToProfile(volId) {
       this.$router.push(`volApp/${volId}`);
+    },
+  },
+  computed: {
+    title() {
+      return utilService.shortTxt(this.vol.title, 30);
+    },
+    description() {
+      return utilService.shortTxt(this.vol.desc, 80);
     },
   },
 };

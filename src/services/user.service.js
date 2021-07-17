@@ -1,19 +1,19 @@
 import { utilService } from './util.service.js';
 import { storageService } from './async-storage.service.js';
-import { usersInit } from '../../gVol.js';
+const usersInit = require('../../usersInit.json');
 import axios from 'axios';
-import { util } from 'vue/types/umd';
 
 const USER_KEY = 'users';
 const gUsers = _createUsers();
 
 export const userService = {
-  getUsers,
+  query,
   getById,
 };
 
-async function getUsers(filterBy) {
-  return storageService.query(USER_KEY);
+async function query(filterBy) {
+  const users = JSON.parse(JSON.stringify(gUsers));
+  return users;
 }
 
 function getById(userId) {

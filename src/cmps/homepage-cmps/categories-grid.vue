@@ -2,7 +2,7 @@
   <section class="category-grid-cont main-layout">
     <div class="short-header">
       <h1>Volunteer in:</h1>
-      <p @click="goExplore">See all</p>
+      <p @click="cardClicked">See all</p>
     </div>
     <div class="category-grid">
       <div v-for="category in categories" :key="category.loc">

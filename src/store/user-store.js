@@ -46,7 +46,6 @@ export default {
       }
     },
     async signup({ commit }, { newUser }) {
-      console.log('newUser:', newUser);
       try {
         const user = await userService.signup(newUser);
         commit({ type: 'setLoggedinUser', user });

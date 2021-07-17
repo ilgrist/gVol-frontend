@@ -42,7 +42,6 @@ async function login(userCred) {
     if (user) {
       user = { ...user };
       delete user.password;
-      utilService.clearStorage();
       storageService.post(LOGGED_USER_KEY, user);
       return user;
     } else {

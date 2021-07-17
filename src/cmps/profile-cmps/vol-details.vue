@@ -3,12 +3,22 @@
     <header class="details-header">
       <h2>{{ vol.title }}</h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
-      <p v-if="vol.loc">Located at {{ vol.loc.city }}, {{ vol.loc.country }}</p>
-      <div v-for="tag in vol.tags" :key="tag">
-        <span class="details-tag details-online">{{ displayOnline }}</span>
+      <p v-if="vol.loc.country">
+        <span class="details-location">
+          {{ vol.loc.city }}, {{ vol.loc.country }}
+        </span>
+      </p>
+      <p class="details-location" v-else>Online</p>
+      <!-- <p class="tag-container" v-for="tag in vol.tags" :key="tag">
         <span class="details-tag">{{ tag }}</span>
-      </div>
+      </p> -->
+      <p>
+        <span class="details-tag" v-for="tag in vol.tags" :key="tag">
+          {{ tag }}
+        </span>
+      </p>
     </header>
+
     <div class="img-gallery">
       <img class="details-img main-img" :src="vol.imgUrls" alt="VolIMG" />
       <img class="details-img" src="../../assets/img/dragon2.jpg" alt="" />
@@ -25,7 +35,7 @@
         </span>
       </p>
     </div>
-    <volReviews :vol="vol" />
+    <volReviews v-if="vol.reviews" :vol="vol" />
   </section>
 </template>
 
@@ -46,20 +56,14 @@ export default {
     };
   },
   computed: {
-    isOnline() {
-      console.log(this.vol.loc);
-      if (this.vol.loc.isOnline) this.displayOnline = "Online";
-      else this.displayOnline = "On Site ";
-    },
+    // isOnline() {
+    //   console.log(this.vol.loc);
+    //   if (this.vol.loc.isOnline) this.displayOnline = "Online";
+    //   else this.displayOnline = "On Site ";
+    // },
   },
 
   methods: {},
 };
 </script>
 
-// $(function() { // $( "#button" ).click(function() { // $( "#button"
-).addClass( "onclic", 250, validate); // }); // function validate() { //
-setTimeout(function() { // $( "#button" ).removeClass( "onclic" ); // $(
-"#button" ).addClass( "validate", 450, callback ); // }, 2250 ); // } //
-function callback() { // setTimeout(function() { // $( "#button" ).removeClass(
-"validate" ); // }, 1250 ); // } // });

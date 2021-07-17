@@ -39,6 +39,7 @@ function save(vol) {
 		vol.imgUrls = [
 			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
 		];
+		vol.org.name = 'Duckies United';
 		storageService.post(VOL_KEY, vol);
 	}
 }

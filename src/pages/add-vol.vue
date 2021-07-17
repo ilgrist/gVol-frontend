@@ -90,9 +90,12 @@
 </template>
 
 <script>
+import { showMsg } from "@/services/event-bus.service.js";
+
 export default {
   data() {
     return {
+      msg: "",
       vol: {
         imgUrls: [],
         loc: {
@@ -163,6 +166,11 @@ export default {
         console.log("cannot save vol", err);
         throw err;
       } finally {
+        //TBD - hack for now, intended to make sure that when redirects to volApp - new vol was added
+        this.msg = "new Vol added !";
+        showMsg(this.msg, "success");
+        this.msg = "";
+        await this.$store.dispatch({ type: "loadVols" });
         this.$router.push(`volApp/`);
         // this.closeModal();
       }

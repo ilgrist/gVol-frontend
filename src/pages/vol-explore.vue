@@ -47,3 +47,5 @@ export default {
   },
 };
 </script>
+
+// TODO: REVERSE ORDER OF DISPLAY SO NEWEST CARD WILL BE DISPLAYED FIRST

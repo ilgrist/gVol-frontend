@@ -4,6 +4,7 @@ import homepage from '../pages/homepage.vue';
 import volExplore from '../pages/vol-explore.vue';
 import volProfile from '../pages/vol-profile.vue';
 import login from '../pages/login.vue';
+import addVol from '../pages/add-vol.vue';
 
 Vue.use(VueRouter);
 
@@ -12,6 +13,7 @@ const routes = [
 		path: '/',
 		name: 'homepage',
 		component: homepage,
+		//RESEARCH SCROLLBHEAVIOR
 	},
 	{
 		path: '/volApp',
@@ -22,6 +24,11 @@ const routes = [
 		path: '/volApp/:_id',
 		name: 'volProfile',
 		component: volProfile,
+	},
+	{
+		path: '/addVol',
+		name: 'addVol',
+		component: addVol,
 	},
 	// {
 	//   path: '/user/:_id',

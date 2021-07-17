@@ -1,9 +1,16 @@
 <template>
   <section class="vol-profile main-layout">
-    <ul v-if="vol" class="vol-det">
+    <img
+      class="loading-img"
+      v-if="!vol"
+      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      alt="loading"
+    />
+    <!-- <div v-if="vol" class="vol-det"> -->
+    <div v-else class="vol-det">
       <volDetails :vol="vol" />
       <volSideBar :vol="vol" />
-    </ul>
+    </div>
   </section>
 </template>
 

@@ -1,19 +1,16 @@
 <template>
   <div class="explore-page main-layout">
-    <div class="explore-page">
-      <!-- <div class="online-onsite">
-        <label for="online"
-          >Online
-          <input id="online" type="checkbox" />
-        </label>
-        <label for="onsite"
-          >On-site
-          <input id="onsite" type="checkbox" />
-        </label> -->
-      <!-- </div> -->
-      <vol-filter @filter="filter"></vol-filter>
-      <vol-list :vols="vols" />
-    </div>
+    <img
+      v-if="isLoading"
+      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      alt="loading"
+    />
+    <template v-else>
+      <div class="explore-page">
+        <vol-filter @filter="filter"></vol-filter>
+        <vol-list :vols="vols" />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -25,6 +22,11 @@ export default {
   components: {
     volList,
     volFilter,
+  },
+  data() {
+    return {
+      isLoading: false,
+    };
   },
   computed: {
     vols() {
@@ -38,7 +40,9 @@ export default {
     },
   },
   created() {
+    this.isLoading = true;
     this.$store.dispatch({ type: "loadVols" });
+    this.isLoading = false;
   },
 };
 </script>

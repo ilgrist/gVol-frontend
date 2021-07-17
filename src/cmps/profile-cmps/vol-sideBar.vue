@@ -3,7 +3,7 @@
     <div class="details-sidebar">
       <h3 class="title-sidebar">Action Bar</h3>
       <div class="btn-container">
-        <button @click="onVol" class="details-btn">Click to Volunteer</button>
+        <button @click="onVol" class="details-btn">Volunteer</button>
         <button @click="onShare" class="details-btn">Share</button>
       </div>
       <h4>Participating Members</h4>
@@ -22,31 +22,30 @@
 </template>
 
 <script>
-  import { showMsg } from '../../services/event-bus.service.js';
+import { showMsg } from "../../services/event-bus.service.js";
 export default {
-
   props: {
     vol: {
       type: Object,
     },
   },
-  data(){
-    return{
-      msg: ''
-    }
+  data() {
+    return {
+      msg: "",
+    };
   },
   methods: {
     onVol() {
       // this.$router.push("/login");
-      this.msg = 'Your request has been sent !'
-      showMsg(this.msg, 'success')
-      this.msg = ''
+      this.msg = "Your request has been sent !";
+      showMsg(this.msg, "success");
+      this.msg = "";
     },
     onShare() {
       console.log("shared!");
-      this.msg = 'Volunteering shared !'
-      showMsg(this.msg, 'success')
-      this.msg = ''
+      this.msg = "Volunteering shared !";
+      showMsg(this.msg, "success");
+      this.msg = "";
     },
   },
 };

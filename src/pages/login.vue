@@ -11,7 +11,7 @@
         >Password:
         <input v-model="user.password" id="password" type="password" />
       </label>
-      <button @click="login">login</button>
+      <button @click="login">Login</button>
     </div>
     <div class="login-signup-area" v-if="isRegistered">
       <h1>Not registered ?</h1>

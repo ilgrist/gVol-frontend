@@ -5,13 +5,17 @@
       <button class="review-btn" @click="addReview">Add a Review</button>
     </header>
     <ul v-for="review in vol.reviews" :key="review._id">
-      <li>{{ review.createdBy }}: {{ review.txt }}</li>
+      <li>
+        <span class="review-user"> {{ review.createdBy }} </span>:
+        <!-- {{ timeDisplay(review.createdAt) }} -->
+        "{{ review.txt }}"
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { showMsg } from '../../services/event-bus.service.js';
+import { showMsg } from "../../services/event-bus.service.js";
 
 export default {
   props: {
@@ -19,18 +23,23 @@ export default {
       type: Object,
     },
   },
-  data(){
-    return{
-      msg:''
-    }
+  data() {
+    return {
+      msg: "",
+    };
   },
-  methods:{
-    addReview(){
-      console.log('add review');
-      this.msg = 'Review added !'
-      showMsg(this.msg, 'success')
-      this.msg = ''
-    }
+
+  computed: {},
+  methods: {
+    addReview() {
+      console.log("add review");
+      this.msg = "Review added !";
+      showMsg(this.msg, "success");
+      this.msg = "";
+    },
+    // timeDisplay(time) {
+    //   return time.toLocaleTimeString("en-US");
+    // },
   },
 };
 </script>

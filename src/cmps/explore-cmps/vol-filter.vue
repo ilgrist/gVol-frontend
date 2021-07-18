@@ -70,5 +70,6 @@ export default {
       this.$emit("filter", copyFilterBy);
     },
   },
+
 };
 </script>

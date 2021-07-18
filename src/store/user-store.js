@@ -66,9 +66,8 @@ export default {
     },
     async loadUsers({ commit }) {
       // TODO: loading
-      console.log('Loading users');
       try {
-        const users = await userService.getUsers();
+        const users = await userService.query();
         const loggedinUser = await userService.getLoggedinUser();
         commit({ type: 'setUsers', users });
         commit({ type: 'setLoggedinUser', loggedinUser });

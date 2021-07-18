@@ -31,7 +31,6 @@ function _createVols() {
 }
 
 function save(vol) {
-	console.log(vol);
 	if (vol._id) {
 		storageService.put(VOL_KEY, vol);
 	} else {

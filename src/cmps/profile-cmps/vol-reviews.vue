@@ -31,14 +31,19 @@ export default {
   data() {
     return {
       msg: "",
-      isNewReview: false
+      isNewReview: false,
+      isLoggedinUser:false
     };
   },
 
   computed: {},
   methods: {
     addReview() {
-      this.isNewReview = true
+      if(this.isLoggedinUser){
+        this.isNewReview = true
+      }else{
+        this.$router.push("/login");
+      }
     },
     async sendReview(newReview) {
       this.isNewReview = false
@@ -48,6 +53,9 @@ export default {
     // timeDisplay(time) {
     //   return time.toLocaleTimeString("en-US");
     // },
+  },
+  created(){
+    this.isLoggedinUser = this.$store.getters.loggedinUser
   },
   components:{
     addReview,

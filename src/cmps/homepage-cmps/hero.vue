@@ -18,7 +18,7 @@
             ref="search"
           />
         </form>
-        <button class="homepage-btn">Volunteer</button>
+        <button class="homepage-btn" @click="filter">Volunteer</button>
       </div>
     </div>
   </section>
@@ -31,15 +31,19 @@ export default {
   },
   data() {
     return {
-      filterBy: {
+       filterBy: {
         txt: "",
+        category: "all",
+        skills: "all",
+        isOnSite: false,
+        isOnLine: false,
       },
     };
   },
   methods: {
     filter() {
-      console.log(this.filterBy);
-      this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
+      const filterBy = JSON.parse(JSON.stringify(this.filterBy))
+      this.$emit("filter", filterBy );
     },
   },
   mounted() {

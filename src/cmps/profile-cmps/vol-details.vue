@@ -90,21 +90,21 @@ export default {
     toggleMore() {
       this.isShort = !this.isShort;
     },
-  },
-  computed: {
-
-  },
-
-  methods: {
-       async sendReview(newReview) {
+        async sendReview(newReview) {
       this.$emit('sendRev' , newReview)
     },
   },
+  computed: {
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
-    
-   
+    },
   },
+
+  // methods: {
+  //      async sendReview(newReview) {
+  //     this.$emit('sendRev' , newReview)
+  //   },
+  // },
 };
 </script>
 

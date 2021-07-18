@@ -72,6 +72,7 @@ export default {
 			return randomVols;
 		},
 	},
+	
 	actions: {
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
@@ -110,10 +111,9 @@ export default {
 			commit({type:'addReview', payload:{review, volId}})
 
 		},
-		getVol(context, {_id}){
-			console.log('_id:', _id)
+		async getVol(context, {_id}){
+			await context.dispatch({type: 'loadVols'})
 			const vol = context.state.vols.find(vol => vol._id === _id)
-			console.log('context.state.vols:', context.state.vols)
 			if (!vol) return 'cannot find vol'
 			return vol
 		}

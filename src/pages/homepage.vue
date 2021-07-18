@@ -1,6 +1,6 @@
 <template>
   <div class="homepage main-layout">
-    <hero />
+    <hero/>
     <short-list class="homepage-layout" v-if="isload" :name="'Popular'" />
     <short-list class="homepage-layout" v-if="isload" :name="'Newest'" />
     <categories-grid class="homepage-layout" />

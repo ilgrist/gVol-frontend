@@ -69,7 +69,9 @@ export default {
       console.log('Loading users');
       try {
         const users = await userService.getUsers();
+        const loggedinUser = await userService.getLoggedinUser();
         commit({ type: 'setUsers', users });
+        commit({ type: 'setLoggedinUser', loggedinUser });
       } catch (err) {
         console.log('userStore: Error in loadUsers', err);
         throw err;

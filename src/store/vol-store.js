@@ -3,7 +3,7 @@ import { volService } from '../services/vol.service.js';
 export default {
 	state: {
 		vols: [],
-		filterBy: { txt: '', category: 'all', skills: 'all' },
+		filterBy: { txt: '', category: 'all', skills: 'all', isOnSite: false, isOnLine: false },
 	},
 	mutations: {
 		setFilter(state, { filterBy }) {
@@ -40,6 +40,12 @@ export default {
 					const skills = vol.reqSkills
 					return skills.some(skill => skill === state.filterBy.skills)
 				})
+			}
+			if(state.filterBy.isOnLine){
+				filteredVols = filteredVols.filter(vol => !vol.loc.isOnsite)
+			}
+			if(state.filterBy.isOnSite){
+				filteredVols = filteredVols.filter(vol => vol.loc.isOnsite)
 			}
 			if(state.filterBy.txt){
 				const regex = new RegExp(state.filterBy.txt, "i");

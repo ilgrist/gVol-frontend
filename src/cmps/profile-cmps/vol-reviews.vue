@@ -16,6 +16,7 @@
 
 <script>
 import { showMsg } from "../../services/event-bus.service.js";
+import addReview from "./add-review.vue"
 
 export default {
   props: {
@@ -41,6 +42,9 @@ export default {
     //   return time.toLocaleTimeString("en-US");
     // },
   },
+  components:{
+    addReview,
+  }
 };
 </script>
 

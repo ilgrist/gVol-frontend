@@ -17,8 +17,15 @@
 		margin-block-start: 1rem;
 	}
 
+	label {
+		width: 70%;
+	}
+
 	textarea {
 		border: 1px solid $clr6;
+		// width: 500px;
+		width: 100%;
+
 		outline: none;
 		resize: none;
 		font-family: NunitoSans, sans-serif;

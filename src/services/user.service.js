@@ -29,8 +29,8 @@ async function getById(userId) {
   return await storageService.getById(USER_KEY, userId);
 }
 
-async function getLoggedinUser() {
-  return storageService.get(LOGGED_USER_KEY);
+function getLoggedinUser() {
+  return utilService.loadFromStorage(LOGGED_USER_KEY);
 }
 
 async function login(userCred) {
@@ -42,7 +42,7 @@ async function login(userCred) {
     if (user) {
       user = { ...user };
       delete user.password;
-      storageService.post(LOGGED_USER_KEY, user);
+      utilService.saveToStorage(LOGGED_USER_KEY, user);
       return user;
     } else {
       throw 'No such user';
@@ -51,6 +51,11 @@ async function login(userCred) {
     console.log('user.service: error in login', err);
     throw err;
   }
+}
+
+async function logout() {
+  const loggedInUser = await getLoggedinUser();
+  utilService.removeFromStorage(LOGGED_USER_KEY);
 }
 
 async function signup(user) {
@@ -72,9 +77,4 @@ async function signup(user) {
     console.log('user.service: error in signup', err);
     throw err;
   }
-}
-
-function logout() {
-  utilService.clearStorage();
-  // return await httpService.post('auth/logout');
 }

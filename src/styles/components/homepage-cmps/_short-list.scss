@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 20px, 1fr;
-  margin-bottom: 1rem;
   > * {
     margin-bottom: 1rem;
   }
@@ -87,15 +86,5 @@
   }
   span {
     font-size: large;
-
-    &.skill-span {
-      cursor: pointer;
-      margin-inline-end: 1rem;
-      font-size: small;
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }

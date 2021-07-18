@@ -1,21 +1,30 @@
 <template>
   <section class="login-page-cont main-layout">
     <h1>Welcome to gVol</h1>
-    <button @click="logout" v-if="loggedInUser">Logout</button>
-    <login class="login" @login="login" v-if="isRegistered && !loggedInUser"></login>
-    <div class="login-signup-area" v-if="isRegistered && !loggedInUser">
+    <button @click="logout" v-if="loggedinUser">Logout</button>
+    <login
+      class="login"
+      @login="login"
+      v-if="isRegistered && !loggedinUser"
+    ></login>
+    <div class="login-signup-area" v-if="isRegistered && !loggedinUser">
       <h1>Not registered ?</h1>
       <button @click="register">Sign-up Now</button>
     </div>
-    <signup v-if="isNewUser" class="signup" @back="back" @signup="signup"></signup>
+    <signup
+      v-if="isNewUser"
+      class="signup"
+      @back="back"
+      @signup="signup"
+    ></signup>
   </section>
 </template>
 
 <script>
 import { uploadImg } from "../services/img-upload.service.js";
 import { showMsg } from "../services/event-bus.service.js";
-import signup from "../cmps/login-page.cmps/signup.vue"
-import login from "../cmps/login-page.cmps/login.vue"
+import signup from "../cmps/login-page.cmps/signup.vue";
+import login from "../cmps/login-page.cmps/login.vue";
 
 export default {
   data() {
@@ -23,11 +32,11 @@ export default {
       isRegistered: true,
       isNewUser: false,
       msg: "",
-      currUserName: 'user1'
+      currUserName: "user1",
     };
   },
   computed: {
-    loggedInUser() {
+    loggedinUser() {
       return this.$store.getters.loggedinUser;
     },
   },
@@ -46,7 +55,7 @@ export default {
           type: "login",
           userCred,
         });
-        this.currUserName = user.username
+        this.currUserName = user.username;
         this.msg = `Welcome back - ${user.username} !`;
         showMsg(this.msg, "success");
         this.msg = "";
@@ -81,9 +90,9 @@ export default {
       this.newUser.imgUrl = res.url;
     },
   },
-  components:{
+  components: {
     signup,
-    login
-  }
+    login,
+  },
 };
 </script>

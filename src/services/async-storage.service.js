@@ -18,6 +18,7 @@ function query(entityType, delay = 500) {
 function get(entityType, entityId) {
   return query(entityType).then((entities) => entities.find((entity) => entity._id === entityId));
 }
+
 function post(entityType, newEntity) {
   newEntity._id = _makeId();
   return query(entityType).then((entities) => {
@@ -37,6 +38,7 @@ function put(entityType, updatedEntity) {
 }
 
 function remove(entityType, entityId) {
+  console.log('entityType:', entityType);
   return query(entityType).then((entities) => {
     const idx = entities.findIndex((entity) => entity._id === entityId);
     if (idx < 0) throw new Error(`Unknown Entity ${entityId}`);

@@ -1,10 +1,11 @@
 <template>
   <div class="details-reviews">
     <header class="review-header">
-      <h3>{{ vol.reviews.length }} Review(s) relating to {{ vol.title }}:</h3>
+      <h3>{{ reviews.length }} Review(s):</h3>
       <button class="review-btn" @click="addReview">Add a Review</button>
     </header>
-    <ul v-for="review in vol.reviews" :key="review._id">
+    <add-review v-if="isNewReview" @sendRev="sendReview"></add-review>
+    <ul v-for="review in reviews" :key="review._id">
       <li>
         <span class="review-user"> {{ review.createdBy }} </span>:
         <!-- {{ timeDisplay(review.createdAt) }} -->
@@ -20,23 +21,29 @@ import addReview from "./add-review.vue"
 
 export default {
   props: {
-    vol: {
-      type: Object,
+    reviews: {
+      type: Array,
     },
+    volId:{
+      type:String
+    }
   },
   data() {
     return {
       msg: "",
+      isNewReview: false
     };
   },
 
   computed: {},
   methods: {
     addReview() {
-      console.log("add review");
-      this.msg = "Review added !";
-      showMsg(this.msg, "success");
-      this.msg = "";
+      this.isNewReview = true
+    },
+    async sendReview(newReview) {
+      this.isNewReview = false
+      newReview.volId = this.volId
+      this.$emit ("sendRev", newReview)
     },
     // timeDisplay(time) {
     //   return time.toLocaleTimeString("en-US");

@@ -13,14 +13,22 @@ export default {
     return {
       review: {
         txt: "",
+        createdBy: ""
       },
     };
   },
   methods:{
       sendReview(){
           const copyReview = JSON.parse(JSON.stringify(this.review))
-          console.log('copyReview:', copyReview)
+          this.$emit('sendRev', copyReview )
+      },
+      setUser(){
+          const loggedinUser = this.$store.getters.loggedinUser
+          this.review.createdBy = loggedinUser.username
       }
+  },
+  created(){
+      this.setUser()
   }
 };
 </script>

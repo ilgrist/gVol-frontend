@@ -37,7 +37,7 @@
         </span>
       </p>
     </div>
-    <volReviews v-if="vol.reviews" :vol="vol" />
+    <volReviews v-if="vol.reviews" :reviews="vol.reviews"  :volId="vol._id" @sendRev="sendReview"/>
   </section>
 </template>
 
@@ -45,6 +45,9 @@
 
 <script>
 import volReviews from "@/cmps/profile-cmps/vol-reviews.vue";
+import { showMsg } from "../../services/event-bus.service.js";
+
+
 export default {
   components: {
     volReviews,
@@ -60,14 +63,14 @@ export default {
     };
   },
   computed: {
-    // isOnline() {
-    //   console.log(this.vol.loc);
-    //   if (this.vol.loc.isOnline) this.displayOnline = "Online";
-    //   else this.displayOnline = "On Site ";
-    // },
+
   },
 
-  methods: {},
+  methods: {
+       async sendReview(newReview) {
+      this.$emit('sendRev' , newReview)
+    },
+  },
 };
 </script>
 

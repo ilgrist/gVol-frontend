@@ -1,3 +1,4 @@
+import { utilService } from '../services/util.service.js';
 import { volService } from '../services/vol.service.js';
 
 export default {
@@ -23,6 +24,14 @@ export default {
 		setVols(state, { vols }) {
 			state.vols = vols;
 		},
+		addReview(state, { payload }){
+			const volId = payload.volId
+			const review = payload.review
+			const idx = state.vols.findIndex(vol => vol._id === volId)
+			if(idx) {
+				state.vols[idx].reviews.push(review)
+			}
+		}
 	},
 	getters: {
 		volsToShow(state) {
@@ -90,5 +99,23 @@ export default {
 				console.log("Can't load vols", err);
 			}
 		},
+		async addReview({commit}, { newReview }){
+			const volId = newReview.volId
+			const review = {
+				id: utilService.makeId(),
+				txt: newReview.txt,
+				createdBy: newReview.createdBy,
+				createdAt: Date.now()
+			}
+			commit({type:'addReview', payload:{review, volId}})
+
+		},
+		getVol(context, {_id}){
+			console.log('_id:', _id)
+			const vol = context.state.vols.find(vol => vol._id === _id)
+			console.log('context.state.vols:', context.state.vols)
+			if (!vol) return 'cannot find vol'
+			return vol
+		}
 	},
 };

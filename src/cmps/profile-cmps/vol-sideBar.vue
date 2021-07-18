@@ -8,10 +8,9 @@
       </div>
       <h4 v-if="vol.members">Participating Members</h4>
       <div v-if="vol.members" class="sidebar-users">
-        <!-- <p class="users-avatar" v-for="member in vol.members" :key="member"> </p>-->
         <img
-          v-for="member in vol.members"
-          :key="member._id"
+          v-for="member,idx in vol.members"
+          :key="idx"
           class="img-profile"
           :src="member.imgURL"
           alt="imgProfile"
@@ -35,11 +34,6 @@ export default {
       loggedinUser: null
     };
   },
-  computed:{
-    setUser(){
-      this.loggedinUser = this.$store.getters.loggedinUser
-    }
-  },
   methods: {
     onVol() {
       if(this.loggedinUser){
@@ -56,6 +50,9 @@ export default {
       showMsg(this.msg, "success");
       this.msg = "";
     },
+     setUser(){
+      this.loggedinUser = this.$store.getters.loggedinUser
+    }
   },
   created(){
     this.setUser()

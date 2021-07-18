@@ -19,7 +19,8 @@ export default {
     userMsg,
   },
   created() {
-    this.$store.dispatch.loadUsers;
+    this.$store.dispatch({type:'loadUsers'})
+    this.$store.dispatch({type:'loadVols'})
   },
 };
 </script>

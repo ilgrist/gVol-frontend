@@ -1,17 +1,13 @@
 <template>
-  <div class="explore-page main-layout">
-    <img
-      class="loading-img"
-      v-if="isLoading"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
-      alt="loading"
-    />
-    <template v-else>
-      <div class="explore-page">
-        <vol-filter @filter="filter"></vol-filter>
-        <vol-list :vols="vols" />
-      </div>
-    </template>
+  <div class="main-layout explore-page">
+    <vol-filter @filter="filter"></vol-filter>
+    <div class="loading-container" v-if="isLoading">
+      <img
+        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+        alt="loading"
+      />
+    </div>
+    <vol-list v-else :vols="vols" />
   </div>
 </template>
 

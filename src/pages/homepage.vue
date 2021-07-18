@@ -1,6 +1,13 @@
 <template>
   <div class="homepage main-layout">
     <hero @filterBy="goExplore" />
+    <!-- <img
+      class="loading-img"
+      v-if="isLoading"
+      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      alt="loading"
+    />
+    <template v-else> -->
     <short-list
       class="homepage-layout"
       v-if="isload"
@@ -14,6 +21,7 @@
       @filterBy="goExplore"
     />
     <categories-grid class="homepage-layout" />
+    <!-- </template> -->
   </div>
 </template>
 <script>
@@ -33,6 +41,7 @@ export default {
       isload: false,
       scrollY: 0,
       isHeaderTrans: true,
+      // isLoading: false,
     };
   },
   computed: {
@@ -57,7 +66,9 @@ export default {
   async created() {
     this.$store.commit({ type: "setTransHeader", isTransHeader: true });
     document.addEventListener("scroll", this.handleScrollY);
+    // this.isLoading = true;
     await this.$store.dispatch({ type: "loadVols" });
+    // this.isLoading = false;
     this.isload = true;
   },
   destroyed() {
@@ -66,3 +77,4 @@ export default {
   },
 };
 </script>
+

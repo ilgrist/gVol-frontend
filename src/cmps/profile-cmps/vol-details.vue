@@ -3,12 +3,14 @@
     <header class="details-header">
       <h2>{{ vol.title }}</h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
-      <p v-if="vol.loc.country">
+      <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
+        Online
+      </p>
+      <p v-else>
         <span class="details-location">
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <p class="details-location" v-else>Online</p>
       <!-- <p class="tag-container" v-for="tag in vol.tags" :key="tag">
         <span class="details-tag">{{ tag }}</span>
       </p> -->

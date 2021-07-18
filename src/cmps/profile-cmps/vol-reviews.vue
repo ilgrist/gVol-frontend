@@ -2,7 +2,9 @@
   <div class="details-reviews">
     <header class="review-header">
       <h3>{{ reviews.length }} Review(s):</h3>
-      <button class="review-btn" @click="addReview">Add a Review</button>
+      <button v-if="!isNewReview" class="review-btn" @click="addReview">
+        Add a Review
+      </button>
     </header>
     <add-review v-if="isNewReview" @sendRev="sendReview"></add-review>
     <ul v-for="review in reviews" :key="review._id">
@@ -17,41 +19,41 @@
 
 <script>
 import { showMsg } from "../../services/event-bus.service.js";
-import addReview from "./add-review.vue"
+import addReview from "./add-review.vue";
 
 export default {
   props: {
     reviews: {
       type: Array,
     },
-    volId:{
-      type:String
-    }
+    volId: {
+      type: String,
+    },
   },
   data() {
     return {
       msg: "",
-      isNewReview: false
+      isNewReview: false,
     };
   },
 
   computed: {},
   methods: {
     addReview() {
-      this.isNewReview = true
+      this.isNewReview = true;
     },
     async sendReview(newReview) {
-      this.isNewReview = false
-      newReview.volId = this.volId
-      this.$emit ("sendRev", newReview)
+      this.isNewReview = false;
+      newReview.volId = this.volId;
+      this.$emit("sendRev", newReview);
     },
     // timeDisplay(time) {
     //   return time.toLocaleTimeString("en-US");
     // },
   },
-  components:{
+  components: {
     addReview,
-  }
+  },
 };
 </script>
 

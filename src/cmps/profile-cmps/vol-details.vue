@@ -60,7 +60,12 @@
         </span>
       </p>
     </div>
-    <volReviews v-if="vol.reviews" :reviews="vol.reviews"  :volId="vol._id" @sendRev="sendReview"/>
+    <volReviews
+      v-if="vol.reviews"
+      :reviews="vol.reviews"
+      :volId="vol._id"
+      @sendRev="sendReview"
+    />
   </section>
 </template>
 
@@ -90,20 +95,14 @@ export default {
     toggleMore() {
       this.isShort = !this.isShort;
     },
-  },
-  computed: {
-
-  },
-
-  methods: {
-       async sendReview(newReview) {
-      this.$emit('sendRev' , newReview)
+    async sendReview(newReview) {
+      this.$emit("sendRev", newReview);
     },
   },
+  computed: {
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
-    
-   
+    },
   },
 };
 </script>

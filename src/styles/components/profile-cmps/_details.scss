@@ -3,8 +3,6 @@
 	flex-direction: column;
 	width: 60%;
 	gap: 0.5rem;
-	// grid-template-columns: 1fr;
-	// grid-template-rows: repeat(7, 150px);
 }
 
 .details-header {
@@ -12,7 +10,7 @@
 	border-radius: 1rem;
 
 	margin-bottom: 0.5rem;
-	padding: 0.8rem;
+	padding: 1rem;
 }
 
 .details-tag {
@@ -35,7 +33,7 @@
 }
 
 .more-details {
-	padding: 1px;
+	padding: 1rem;
 	border-radius: 10px;
 
 	background-color: $clr2;

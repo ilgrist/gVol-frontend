@@ -6,8 +6,8 @@
         <button @click="onVol" class="details-btn">Volunteer</button>
         <button @click="onShare" class="details-btn">Share</button>
       </div>
-      <h4>Participating Members</h4>
-      <div class="sidebar-users">
+      <h4 v-if="vol.members">Participating Members</h4>
+      <div v-if="vol.members" class="sidebar-users">
         <!-- <p class="users-avatar" v-for="member in vol.members" :key="member"> </p>-->
         <img
           v-for="member in vol.members"

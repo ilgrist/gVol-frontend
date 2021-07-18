@@ -22,14 +22,24 @@
 
 .details-tag {
 	cursor: pointer;
-	background-color: $clr1;
+
+	// background-color: $clr1;
+	// border-radius: 1rem;
+	// border: 1px solid gray;
+
+	// background-color: lightsteelblue;
+	background-color: $clr6;
+	color: whitesmoke;
+
+	// font-weight: bold;
 	font-style: italic;
-	font-size: 0.6rem;
-	border-radius: 1rem;
+	font-size: 0.8rem;
+
 	text-align: center;
-	border: 1px solid gray;
-	padding: 0.4rem;
+
+	padding: 0.2rem;
 	margin: 0.2rem;
+
 	&:hover {
 		text-decoration: underline;
 	}
@@ -67,9 +77,12 @@
 	}
 }
 
-.details-online {
-	background-color: $clr5;
-	color: $clr2;
+.details-location {
+	// background-color: $clr5;
+	color: $clr4;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 // .details-img {

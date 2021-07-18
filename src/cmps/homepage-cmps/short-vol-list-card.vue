@@ -2,7 +2,7 @@
   <section class="card-preview card" @click="cardClicked">
     <h3>{{ title }}</h3>
     <p>
-      <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>
+      <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
     </p>
     <img :src="vol.imgUrls[0]" />
     <div class="rev-cont">
@@ -24,8 +24,12 @@
     <hr />
     <article class="skills">
       Skills:
-      <p v-for="(skill, idx) in vol.reqSkills" :key="idx">
-        <span class="skill-span">{{ skill }}</span>
+      <p
+        class="skill-span-cont"
+        v-for="(skill, idx) in vol.reqSkills"
+        :key="idx"
+      >
+        <span>{{ skill }}</span>
       </p>
     </article>
   </section>

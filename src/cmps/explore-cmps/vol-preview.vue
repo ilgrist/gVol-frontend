@@ -2,7 +2,7 @@
   <div @click="goToProfile(vol._id)" class="card-preview card">
     <h2>{{ title }}</h2>
     <p>
-      <span>{{ vol.loc.city }},</span><span>{{ vol.loc.country }}</span>
+      <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
     </p>
     <img :src="vol.imgUrls[0]" />
     <div class="rev-cont">
@@ -22,10 +22,16 @@
     <hr />
     <p>{{ description }}</p>
     <hr />
-    <p>
+    <article class="skills">
       Skills:
-      <span v-for="(skill, idx) in vol.reqSkills" :key="idx">{{ skill }}</span>
-    </p>
+      <p
+        class="skill-span-cont"
+        v-for="(skill, idx) in vol.reqSkills"
+        :key="idx"
+      >
+        <span>{{ skill }}</span>
+      </p>
+    </article>
   </div>
 </template>
 

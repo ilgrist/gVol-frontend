@@ -11,9 +11,7 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <!-- <p class="tag-container" v-for="tag in vol.tags" :key="tag">
-        <span class="details-tag">{{ tag }}</span>
-      </p> -->
+
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
           {{ tag }}
@@ -22,14 +20,39 @@
     </header>
 
     <div class="img-gallery">
-      <img class="details-img main-img" :src="vol.imgUrls" alt="VolIMG" />
-      <img class="details-img" src="../../assets/img/dragon2.jpg" alt="" />
-      <img class="details-img" src="../../assets/img/dragon.jpg" alt="" />
-      <img class="details-img" src="../../assets/img/dragon4.jpg" alt="" />
+      <!-- ASK SHACHAR PROMISE ALL -->
+      <div v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img class="details-img" :src="img" alt="img-details-grid" />
+      </div>
     </div>
+
     <div class="more-details">
-      <h3>More Details</h3>
-      <h4>{{ vol.desc }}</h4>
+      <h3>
+        More Details
+        <img
+          title="Read More"
+          v-if="isShort && vol.desc.length > 200"
+          class="toggleMore"
+          @click="toggleMore"
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/more_rurxqi.svg"
+          alt="readMore"
+        />
+        <img
+          title="Read Less"
+          v-if="!isShort && vol.desc.length > 200"
+          class="toggleMore"
+          @click="toggleMore"
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/less_nafgg8.svg"
+          alt="readLess"
+        />
+      </h3>
+      <h4 v-if="isShort">
+        {{ description }}
+      </h4>
+      <h4 v-else>
+        {{ vol.desc }}
+      </h4>
+
       <p>
         Required Skills:
         <span class="req-skill" v-for="skill in vol.reqSkills" :key="skill">
@@ -46,7 +69,7 @@
 <script>
 import volReviews from "@/cmps/profile-cmps/vol-reviews.vue";
 import { showMsg } from "../../services/event-bus.service.js";
-
+import { utilService } from "@/services/util.service.js";
 
 export default {
   components: {
@@ -60,7 +83,13 @@ export default {
   data() {
     return {
       displayOnline: "Online",
+      isShort: true,
     };
+  },
+  methods: {
+    toggleMore() {
+      this.isShort = !this.isShort;
+    },
   },
   computed: {
 
@@ -70,6 +99,11 @@ export default {
        async sendReview(newReview) {
       this.$emit('sendRev' , newReview)
     },
+  },
+    description() {
+      return utilService.shortTxt(this.vol.desc, 200);
+    
+   
   },
 };
 </script>

@@ -4,7 +4,7 @@ export const utilService = {
   makeId,
   getRandomIntInclusive,
   shortTxt,
-  clearStorage,
+  removeFromStorage,
 };
 
 function saveToStorage(key, value) {
@@ -16,8 +16,8 @@ function loadFromStorage(key) {
   return data ? JSON.parse(data) : undefined;
 }
 
-function clearStorage() {
-  sessionStorage.clear();
+function removeFromStorage(key) {
+  localStorage.removeItem(key);
 }
 
 function shortTxt(txt, num) {

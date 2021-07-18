@@ -31,16 +31,16 @@ export default {
   data() {
     return {
       msg: "",
-      loggedinUser: null
+      loggedinUser: null,
     };
   },
   methods: {
     onVol() {
-      if(this.loggedinUser){
+      if (this.loggedinUser) {
         this.msg = "Your request has been sent !";
         showMsg(this.msg, "success");
         this.msg = "";
-      }else{
+      } else {
         this.$router.push("/login");
       }
     },
@@ -54,9 +54,9 @@ export default {
       this.loggedinUser = this.$store.getters.loggedinUser
     }
   },
-  created(){
-    this.setUser()
-  }
+  created() {
+    this.setUser();
+  },
 };
 </script>
 

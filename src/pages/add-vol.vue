@@ -3,21 +3,20 @@
     <div class="form-container">
       <h3>Add a Vol</h3>
       <form @submit.prevent="saveVol" class="addVol-form" action="addVol">
-        <label>
+        <label class="vol-title">
           Title:
           <input placeholder="Enter Title" v-model="vol.title" type="text" />
         </label>
 
-        <label>
-          Description:
-          <input placeholder="Describe Vol" v-model="vol.desc" type="text" />
-          <!-- <textarea
-            v-model="vol.desc"
-            name="vol-desc"
-            cols="30"
-            rows="10"
-          ></textarea> -->
-        </label>
+        <label> Description: </label>
+        <!-- <input placeholder="Describe Vol" v-model="vol.desc" type="text" /> -->
+        <textarea
+          v-model="vol.desc"
+          name="vol-desc"
+          cols="8"
+          rows="8"
+          placeholder="Enter Vol Description"
+        ></textarea>
 
         <label class="loc-label">
           Location of Vol:
@@ -83,7 +82,7 @@
           Org1
         </select> -->
 
-        <button class="submit-btn">Submit</button>
+        <button class="submit-btn">Submit New Vol</button>
       </form>
     </div>
   </section>

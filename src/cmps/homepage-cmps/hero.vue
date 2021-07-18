@@ -43,7 +43,7 @@ export default {
   methods: {
     filter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
-      this.$emit("filter", filterBy );
+      this.$emit("filterBy", filterBy );
     },
   },
   mounted() {

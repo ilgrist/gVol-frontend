@@ -32,21 +32,21 @@ export default {
   data() {
     return {
       msg: "",
-      loggedinUser: null
+      loggedinUser: null,
     };
   },
-  computed:{
-    setUser(){
-      this.loggedinUser = this.$store.getters.loggedinUser
-    }
+  computed: {
+    // setUser() {
+    //   this.loggedinUser = this.$store.getters.loggedinUser;
+    // },
   },
   methods: {
     onVol() {
-      if(this.loggedinUser){
+      if (this.loggedinUser) {
         this.msg = "Your request has been sent !";
         showMsg(this.msg, "success");
         this.msg = "";
-      }else{
+      } else {
         this.$router.push("/login");
       }
     },
@@ -57,9 +57,9 @@ export default {
       this.msg = "";
     },
   },
-  created(){
-    this.setUser()
-  }
+  created() {
+    // this.setUser();
+  },
 };
 </script>
 

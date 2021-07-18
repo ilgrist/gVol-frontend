@@ -2,7 +2,7 @@
   <section class="short-list">
     <div class="short-header">
       <h1>{{ name }}:</h1>
-      <p @click="goExplore">See all</p>
+      <p @click="filter()">See all</p>
     </div>
     <section v-if="randVols" class="cards-cont">
       <shortVolListCard
@@ -10,6 +10,7 @@
         :vol="vol"
         :key="idx"
         @cardClicked="goToProfile"
+        @filterBySkill="filter"
       />
     </section>
   </section>
@@ -22,7 +23,15 @@ export default {
     name: String,
   },
   data() {
-    return {};
+    return {
+      filterBy: {
+        txt: "",
+        category: "all",
+        skills: "all",
+        isOnSite: false,
+        isOnLine: false,
+      },
+    };
   },
   computed: {
     randVols() {
@@ -30,8 +39,10 @@ export default {
     },
   },
   methods: {
-    goExplore() {
-      this.$router.push("/volApp");
+    filter(skill = "all") {
+      this.filterBy.skills = skill;
+      let filterBy = JSON.parse(JSON.stringify(this.filterBy));
+      this.$emit("filterBy", filterBy);
     },
     goToProfile(volId) {
       this.$router.push(`volApp/${volId}`);

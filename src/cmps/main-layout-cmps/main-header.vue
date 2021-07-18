@@ -16,7 +16,7 @@
         | Profile/Logout</router-link
       > -->
       <router-link to="/addVol"> Add Vol </router-link> |
-      <router-link to="/login"> Welcome, {{ loggedinUser }}</router-link>
+      <router-link to="/login"> Welcome {{ loggedinUser }}</router-link>
     </nav>
   </header>
 </template>

@@ -29,7 +29,7 @@
         v-for="(skill, idx) in vol.reqSkills"
         :key="idx"
       >
-        <span>{{ skill }}</span>
+        <span @click.stop="filterBySkill(skill)">{{ skill }}</span>
       </p>
     </article>
   </section>
@@ -41,9 +41,15 @@ export default {
   props: {
     vol: Object,
   },
+  data() {
+    return {};
+  },
   methods: {
     cardClicked() {
       this.$emit("cardClicked", this.vol._id);
+    },
+    filterBySkill(skill) {
+      this.$emit("filterBySkill", skill);
     },
   },
   computed: {

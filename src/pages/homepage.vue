@@ -1,8 +1,18 @@
 <template>
   <div class="homepage main-layout">
     <hero />
-    <short-list class="homepage-layout" v-if="isload" :name="'Popular'" />
-    <short-list class="homepage-layout" v-if="isload" :name="'Newest'" />
+    <short-list
+      class="homepage-layout"
+      v-if="isload"
+      :name="'Popular'"
+      @filterBy="goExplore"
+    />
+    <short-list
+      class="homepage-layout"
+      v-if="isload"
+      :name="'Newest'"
+      @filterBy="goExplore"
+    />
     <categories-grid class="homepage-layout" />
   </div>
 </template>
@@ -31,6 +41,10 @@ export default {
     },
   },
   methods: {
+    goExplore(filterBy) {
+      this.$store.commit({ type: "setFilter", filterBy });
+      this.$router.push("/volApp");
+    },
     handleScrollY() {
       this.scrollY = window.scrollY;
       this.scrollY ? (this.isTransHeader = false) : (this.isTransHeader = true);

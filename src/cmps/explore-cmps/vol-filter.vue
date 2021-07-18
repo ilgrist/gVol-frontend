@@ -33,7 +33,7 @@
           <option value="all">All</option>
           <option value="animals">Animals</option>
           <option value="children">Children</option>
-          <option value="Elderly">Elderly</option>
+          <option value="elderly">Elderly</option>
         </select>
       </label>
       <label for="skills">

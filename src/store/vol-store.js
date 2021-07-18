@@ -21,13 +21,31 @@ export default {
 			state.vols.splice(idx, 1);
 		},
 		setVols(state, { vols }) {
-			console.log(vols);
 			state.vols = vols;
 		},
 	},
 	getters: {
 		volsToShow(state) {
-			return state.vols;
+			let filteredVols = JSON.parse(JSON.stringify(state.vols))
+			if(state.filterBy.category === 'all') filteredVols = filteredVols
+			if(state.filterBy.category !== 'all') {
+				filteredVols = filteredVols.filter(vol => {
+					const tags = vol.tags
+					return tags.some(tag => tag === state.filterBy.category)
+				})
+			}
+			if(state.filterBy.skills === 'all') filteredVols = filteredVols
+			if(state.filterBy.skills !== 'all') {
+				filteredVols = filteredVols.filter(vol => {
+					const skills = vol.reqSkills
+					return skills.some(skill => skill === state.filterBy.skills)
+				})
+			}
+			if(state.filterBy.txt){
+				const regex = new RegExp(state.filterBy.txt, "i");
+        		filteredVols = state.vols.filter((vol) => regex.test(vol.title));
+			}
+			return filteredVols;
 		},
 		shortListRandVols(state) {
 			let randomVols = [];

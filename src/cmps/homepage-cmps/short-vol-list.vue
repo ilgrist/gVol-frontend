@@ -6,8 +6,8 @@
     </div>
     <section v-if="randVols" class="cards-cont">
       <shortVolListCard
-        :vol="vol"
         v-for="(vol, idx) in randVols"
+        :vol="vol"
         :key="idx"
         @cardClicked="goToProfile"
       />

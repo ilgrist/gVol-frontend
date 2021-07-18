@@ -32,14 +32,23 @@ export default {
   data() {
     return {
       msg: "",
+      loggedinUser: null
     };
+  },
+  computed:{
+    setUser(){
+      this.loggedinUser = this.$store.getters.loggedinUser
+    }
   },
   methods: {
     onVol() {
-      // this.$router.push("/login");
-      this.msg = "Your request has been sent !";
-      showMsg(this.msg, "success");
-      this.msg = "";
+      if(this.loggedinUser){
+        this.msg = "Your request has been sent !";
+        showMsg(this.msg, "success");
+        this.msg = "";
+      }else{
+        this.$router.push("/login");
+      }
     },
     onShare() {
       console.log("shared!");
@@ -48,6 +57,9 @@ export default {
       this.msg = "";
     },
   },
+  created(){
+    this.setUser()
+  }
 };
 </script>
 

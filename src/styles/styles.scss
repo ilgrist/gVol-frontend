@@ -19,6 +19,7 @@
 @import '/pages/explore-page';
 @import '/pages/homepage';
 @import '/pages/vol-profile.scss';
+@import '/pages/user-profile.scss';
 @import '/pages/add-vol.scss';
 
 //HOMEPAGE-CMPS
@@ -36,6 +37,9 @@
 @import '/components/profile-cmps/details.scss';
 @import '/components/profile-cmps/sidebar.scss';
 @import '/components/profile-cmps/reviews.scss';
+
+// USER-PROFILE_CMPS
+// @import '/components/user-profile-cmps/details.scss';
 
 //FONTS
 // header option

@@ -17,16 +17,16 @@ export const userService = {
 };
 
 async function query(filterBy) {
-  let users = await storageService.get(USER_KEY);
+  let users = await storageService.query(USER_KEY);
   if (!users || !users.length) {
     users = usersInit;
-    storageService.post(USER_KEY, users);
+    utilService.saveToStorage(USER_KEY, users);
   }
   return users;
 }
 
 async function getById(userId) {
-  return await storageService.getById(USER_KEY, userId);
+  return await storageService.get(USER_KEY, userId);
 }
 
 function getLoggedinUser() {

@@ -85,6 +85,7 @@ export default {
         // socketService.on(SOCKET_EVENT_USER_UPDATED, (user) => {
         //   commit({ type: 'setWatchedUser', user });
         // });
+        return user;
       } catch (err) {
         console.log('userStore: Error in loadAndWatchUser', err);
         throw err;

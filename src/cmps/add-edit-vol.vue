@@ -178,7 +178,7 @@ export default {
     },
     closeModal() {
       this.$emit("closeModal");
-      this.$store.commit({ type: "setVolToUpdate", vol: null });
+      // this.$store.commit({ type: "setVolToUpdate", vol: null });
       this.vol = null;
     },
 

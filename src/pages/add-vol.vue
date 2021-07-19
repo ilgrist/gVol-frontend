@@ -174,12 +174,6 @@ export default {
         // this.closeModal();
       }
     },
-
-    // closeModal() {
-    //   this.$emit("closeModal");
-    //   this.vol = null;
-    //   this.$store.commit({ type: "setVolToUpdate", vol: null });
-    // },
   },
 };
 </script>

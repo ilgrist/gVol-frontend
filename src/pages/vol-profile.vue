@@ -61,8 +61,8 @@ export default {
       this.$store.commit({ type: "setVolToUpdate", vol });
       this.isEditing = !this.isEditing;
     },
-    async closeModal() {
-      // this.setVol();
+    closeModal() {
+      // await this.setVol();
       console.log("sanity");
       this.vol = this.$store.getters.volToUpdate;
       this.isEditing = false;
@@ -83,6 +83,7 @@ export default {
       this.msg = "";
     },
     async setVol() {
+      console.log("sanity set");
       const { _id } = this.$route.params;
       if (_id)
         try {

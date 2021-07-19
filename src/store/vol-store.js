@@ -22,6 +22,7 @@ export default {
 			state.vols.push(savedVol);
 		},
 		updateVol(state, { vol }) {
+			state.volToUpdate = vol;
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
 		},

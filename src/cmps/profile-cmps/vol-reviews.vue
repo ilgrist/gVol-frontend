@@ -52,8 +52,8 @@ export default {
         ratingLength++;
         ratingSum += review.rating;
       });
-      console.log(ratingSum);
-      console.log(ratingLength);
+      console.log("rating", ratingSum);
+      console.log("length", ratingLength);
       console.log((ratingSum / ratingLength).toFixed(2));
 
       return (ratingSum / ratingLength).toFixed(2);

@@ -52,59 +52,54 @@ export default {
     },
   },
 
-	getters: {
-		volToUpdate(state) {
-			console.log(state.volToUpdate);
-			return state.volToUpdate;
-		},
-		volsToShow(state) {
-			// there is filter process in the backend 
-			//TODO: remove the filter logic from this getter and 
-			// change the func to loadVols after setFilter
-			let filteredVols = JSON.parse(JSON.stringify(state.vols));
-			if (state.filterBy.category === 'all') filteredVols = filteredVols;
-			if (state.filterBy.category !== 'all') {
-				filteredVols = filteredVols.filter((vol) => {
-					const tags = vol.tags;
-					return tags.some((tag) => tag === state.filterBy.category);
-				});
-			}
-			if (state.filterBy.skills === 'all') filteredVols = filteredVols;
-			if (state.filterBy.skills !== 'all') {
-				filteredVols = filteredVols.filter((vol) => {
-					const skills = vol.reqSkills;
-					return skills.some(
-						(skill) => skill === state.filterBy.skills
-					);
-				});
-			}
-			if (state.filterBy.isOnLine) {
-				filteredVols = filteredVols.filter((vol) => !vol.loc.isOnsite);
-			}
-			if (state.filterBy.isOnSite) {
-				filteredVols = filteredVols.filter((vol) => vol.loc.isOnsite);
-			}
-			if (state.filterBy.txt) {
-				const regex = new RegExp(state.filterBy.txt, 'i');
-				filteredVols = state.vols.filter((vol) =>
-					regex.test(vol.title)
-				);
-			}
-			return filteredVols;
-		},
-		filterBy(state) {
-			return state.filterBy;
-		},
-		shortListRandVols(state) {
-			let randomVols = [];
-			for (var i = 0; i < 4; i++) {
-				var item =
-					state.vols[Math.floor(Math.random() * state.vols.length)];
-				randomVols.push(item);
-			}
-			return randomVols;
-		},
-	},
+  getters: {
+    volToUpdate(state) {
+      console.log(state.volToUpdate);
+      return state.volToUpdate;
+    },
+    volsToShow(state) {
+      // there is filter process in the backend
+      //TODO: remove the filter logic from this getter and
+      // change the func to loadVols after setFilter
+      let filteredVols = JSON.parse(JSON.stringify(state.vols));
+      if (state.filterBy.category === 'all') filteredVols = filteredVols;
+      if (state.filterBy.category !== 'all') {
+        filteredVols = filteredVols.filter((vol) => {
+          const tags = vol.tags;
+          return tags.some((tag) => tag === state.filterBy.category);
+        });
+      }
+      if (state.filterBy.skills === 'all') filteredVols = filteredVols;
+      if (state.filterBy.skills !== 'all') {
+        filteredVols = filteredVols.filter((vol) => {
+          const skills = vol.reqSkills;
+          return skills.some((skill) => skill === state.filterBy.skills);
+        });
+      }
+      if (state.filterBy.isOnLine) {
+        filteredVols = filteredVols.filter((vol) => !vol.loc.isOnsite);
+      }
+      if (state.filterBy.isOnSite) {
+        filteredVols = filteredVols.filter((vol) => vol.loc.isOnsite);
+      }
+      if (state.filterBy.txt) {
+        const regex = new RegExp(state.filterBy.txt, 'i');
+        filteredVols = state.vols.filter((vol) => regex.test(vol.title));
+      }
+      return filteredVols;
+    },
+    filterBy(state) {
+      return state.filterBy;
+    },
+    shortListRandVols(state) {
+      let randomVols = [];
+      for (var i = 0; i < 4; i++) {
+        var item = state.vols[Math.floor(Math.random() * state.vols.length)];
+        randomVols.push(item);
+      }
+      return randomVols;
+    },
+  },
 
   actions: {
     async joinVol({ commit }, { memberId }, { vol }) {

@@ -1,192 +1,197 @@
 .addEdit-modal {
-	margin-top: unset;
-	max-height: 80vh;
-
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
+  margin-top: unset;
+  max-height: 80vh;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .addEdit-form {
-	padding-top: 80px;
-	width: 500px;
-	height: 700px;
-	margin: 0 auto;
-	padding: 1rem;
-	background-color: $clr1;
-	border-radius: 1rem;
+  padding-top: 80px;
+  width: 500px;
+  // height: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: $clr1;
+  border-radius: 1rem;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
 
-	border: 1px solid lightgray;
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
 
-	display: flex;
-	flex-direction: column;
-	// justify-content: space-between;
+  header > .closeModal {
+    cursor: pointer;
 
-	header {
-		display: flex;
-		justify-content: space-between;
-		// padding-bottom: 1rem;
-	}
+    h3 {
+      font-family: Halant;
+      width: 35%;
+    }
+  }
 
-	header > .closeModal {
-		cursor: pointer;
+  label {
+    display: flex;
+    flex-direction: column;
+    // gap: 0.5rem;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+  }
 
-		h3 {
-			font-family: Halant;
-			width: 35%;
-		}
-	}
+  textarea {
+    border: 1px solid lightgray;
+    outline: none;
+    resize: none;
+    font-family: NunitoSans, sans-serif;
+    font-size: 0.8rem;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    &:focus {
+      border: 1px solid lightgray;
+    }
+  }
 
-	label {
-		font-size: 0.8rem;
-		padding-bottom: 5px;
-		gap: 10px;
-	}
+  input {
+    border: none;
+    background-color: white;
+    outline: none;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 80%;
+  }
+  &:focus {
+    border: none;
+  }
 
-	textarea {
-		border: 1px solid lightgray;
-		outline: none;
-		resize: none;
-		font-family: NunitoSans, sans-serif;
-		font-size: 0.8rem;
-		width: 80%;
-		height: 100px;
-		&:focus {
-			border: 1px solid lightgray;
-		}
-	}
+  .el-select,
+  .el-input {
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+  }
 
-	input {
-		border: none;
-		background-color: white;
-		outline: none;
-		font-size: 0.8rem;
-		padding-top: 5px;
-		border-radius: 10px;
-		width: 80%;
-	}
-	&:focus {
-		border: none;
-	}
+  .btns-container {
+    display: flex;
+    justify-content: space-between;
 
-	.el-select,
-	.el-input {
-		width: 80%;
-		background-color: white;
-		border-radius: 10px;
-	}
+    .delete {
+      background-color: red;
+    }
+  }
 
-	.btns-container {
-		display: flex;
-		justify-content: space-between;
+  select {
+    border: none;
+    background-color: white;
+    font-size: 0.8rem;
+  }
 
-		.delete {
-			background-color: red;
-		}
-	}
+  .loc-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-	select {
-		border: none;
-		background-color: white;
-		font-size: 0.8rem;
-	}
-
-	.loc-label {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.vol-title {
-		width: 90%;
-	}
+  .vol-title {
+    width: 90%;
+  }
+  .loc-input-cont {
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .edit-btn {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border: 2px solid $clr6;
-	color: $clr6;
-	background-color: white;
-	border-radius: 15px;
-	padding: 5px;
-	width: 150px;
-	max-height: 30px;
-	font-weight: bold;
-	&:hover {
-		background-color: $clr6;
-		color: white;
-		border: 2px solid white;
-	}
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid $clr6;
+  color: $clr6;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
+  width: 150px;
+  max-height: 30px;
+  font-weight: bold;
+  &:hover {
+    background-color: $clr6;
+    color: white;
+    border: 2px solid white;
+  }
 }
 
 .switch-button {
-	background: rgba(255, 255, 255, 0.56);
-	border-radius: 10px;
-	overflow: hidden;
-	width: 240px;
-	text-align: center;
-	font-size: 0.8rem;
-	letter-spacing: 1px;
-	color: black;
-	position: relative;
-	padding-right: 120px;
-	position: relative;
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: black;
+  position: relative;
+  padding-right: 120px;
+  position: relative;
 
-	&:before {
-		content: 'On-Site';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		width: 120px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 3;
-		pointer-events: none;
-	}
+  &:before {
+    content: 'On-Site';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
 
-	&-checkbox {
-		cursor: pointer;
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		z-index: 2;
+  &-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
 
-		&:checked + .switch-button-label:before {
-			transform: translateX(120px);
-			transition: transform 300ms linear;
-		}
+    &:checked + .switch-button-label:before {
+      transform: translateX(120px);
+      transition: transform 300ms linear;
+    }
 
-		& + .switch-button-label {
-			position: relative;
-			padding: 0.05rem 0;
-			display: block;
-			user-select: none;
-			pointer-events: none;
+    & + .switch-button-label {
+      position: relative;
+      padding: 0.05rem 0;
+      display: block;
+      user-select: none;
+      pointer-events: none;
 
-			&:before {
-				content: '';
-				background: $clr3;
-				height: 100%;
-				width: 100%;
-				position: absolute;
-				left: 0;
-				top: 0;
-				border-radius: 10px;
-				transform: translateX(0);
-				transition: transform 300ms;
-			}
+      &:before {
+        content: '';
+        background: $clr3;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        transform: translateX(0);
+        transition: transform 300ms;
+      }
 
-			.switch-button-label-span {
-				position: relative;
-			}
-		}
-	}
+      .switch-button-label-span {
+        position: relative;
+      }
+    }
+  }
 }

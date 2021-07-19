@@ -41,6 +41,9 @@ export default {
 	},
 	getters: {
 		volsToShow(state) {
+			// there is filter process in the backend 
+			//TODO: remove the filter logic from this getter and 
+			// change the func to loadVols after setFilter
 			let filteredVols = JSON.parse(JSON.stringify(state.vols));
 			if (state.filterBy.category === 'all') filteredVols = filteredVols;
 			if (state.filterBy.category !== 'all') {

@@ -4,66 +4,39 @@
 @import 'setup/mixins';
 
 //BASICS
-@import '/basics/base.scss';
-@import '/basics/layout.scss';
+@import '/basics/base';
+@import '/basics/layout';
 
 // COMPONENTS
-@import '/components/app.scss';
-@import '/components/_user-msg.scss';
-@import '/components/main-footer.scss';
-@import '/components/main-header.scss';
+@import '/components/app';
+@import '/components/_user-msg';
+@import '/components/main-footer';
+@import '/components/main-header';
 
 // PAGES
 @import '/pages/login-page/login';
 @import '/pages/login-page/signup';
 @import '/pages/explore-page';
 @import '/pages/homepage';
-@import '/pages/vol-profile.scss';
-@import '/pages/user-profile.scss';
-@import '/pages/add-vol.scss';
+@import '/pages/vol-profile';
+@import '/pages/user-profile';
+@import '/pages/add-vol';
 
 //HOMEPAGE-CMPS
-@import '/components/homepage-cmps/short-list.scss';
-@import '/components/homepage-cmps/hero.scss';
-@import '/components/homepage-cmps/category-grid.scss';
+@import '/components/homepage-cmps/short-list';
+@import '/components/homepage-cmps/hero';
+@import '/components/homepage-cmps/category-grid';
 
 //EXPLORE-CMPS
-@import '/components/explore-cmps/filter.scss';
-@import '/components/explore-cmps/list.scss';
-@import '/components/explore-cmps/preview.scss';
+@import '/components/explore-cmps/filter';
+@import '/components/explore-cmps/list';
+@import '/components/explore-cmps/preview';
 
 // PROFILE-CMPS
 
-@import '/components/profile-cmps/details.scss';
-@import '/components/profile-cmps/sidebar.scss';
-@import '/components/profile-cmps/reviews.scss';
+@import '/components/profile-cmps/details';
+@import '/components/profile-cmps/sidebar';
+@import '/components/profile-cmps/reviews';
 
 // USER-PROFILE_CMPS
-// @import '/components/user-profile-cmps/details.scss';
-
-//FONTS
-// header option
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-// Oswald
-@import url('https://fonts.googleapis.com/css2?family=Halant:wght@600&display=swap');
-//Halant
-
-//main font
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-// Montserrat
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-//Roboto
-@import url('https://fonts.googleapis.com/css2?&family=Raleway&display=swap');
-//Raleway
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-// Poppins
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-//Nunito Sans
-
-//TITLES OPTION
-@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
-// Patua One
-
-// LOGO OPTION
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
-// Lobster Two
+// @import '/components/user-profile-cmps/details';

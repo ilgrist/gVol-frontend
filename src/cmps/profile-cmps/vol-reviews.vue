@@ -43,18 +43,14 @@ export default {
 
   computed: {
     avgRating() {
-      console.log(this.reviews);
       let ratingSum = 0;
       let ratingLength = 0;
+
       this.reviews.forEach((review) => {
         if (!review.rating) return;
-        console.log("ratingLength", ratingLength);
         ratingLength++;
         ratingSum += review.rating;
       });
-      console.log(ratingSum);
-      console.log(ratingLength);
-      console.log((ratingSum / ratingLength).toFixed(2));
 
       return (ratingSum / ratingLength).toFixed(2);
     },
@@ -72,9 +68,6 @@ export default {
       newReview.volId = this.volId;
       this.$emit("sendRev", newReview);
     },
-    // timeDisplay(time) {
-    //   return time.toLocaleTimeString("en-US");
-    // },
   },
   created() {
     this.isLoggedinUser = this.$store.getters.loggedinUser;

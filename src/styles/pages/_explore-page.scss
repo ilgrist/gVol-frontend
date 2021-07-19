@@ -1,11 +1,13 @@
 .explore-page {
-	margin-top: 70px;
-	height: 85%;
+	padding-top: 60px;
+	margin-top: unset;
+	min-height: 95vh;
 }
 
 .loading-container {
 	img {
 		width: 15%;
+		// height: 15%;
 		position: absolute;
 		margin: auto auto;
 
@@ -13,7 +15,4 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
-
-	// top: 30vh;
-	// right: 70vh;
 }

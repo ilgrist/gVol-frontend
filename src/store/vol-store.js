@@ -4,7 +4,13 @@ import { volService } from '../services/vol.service.js';
 export default {
 	state: {
 		vols: [],
-		filterBy: { txt: '', category: 'all', skills: 'all', isOnSite: false, isOnLine: false },
+		filterBy: {
+			txt: '',
+			category: 'all',
+			skills: 'all',
+			isOnSite: false,
+			isOnLine: false,
+		},
 	},
 	mutations: {
 		setFilter(state, { filterBy }) {
@@ -24,41 +30,45 @@ export default {
 		setVols(state, { vols }) {
 			state.vols = vols;
 		},
-		addReview(state, { payload }){
-			const volId = payload.volId
-			const review = payload.review
-			const idx = state.vols.findIndex(vol => vol._id === volId)
-			if(idx) {
-				state.vols[idx].reviews.push(review)
+		addReview(state, { payload }) {
+			const volId = payload.volId;
+			const review = payload.review;
+			const idx = state.vols.findIndex((vol) => vol._id === volId);
+			if (idx) {
+				state.vols[idx].reviews.unshift(review);
 			}
-		}
+		},
 	},
 	getters: {
 		volsToShow(state) {
-			let filteredVols = JSON.parse(JSON.stringify(state.vols))
-			if(state.filterBy.category === 'all') filteredVols = filteredVols
-			if(state.filterBy.category !== 'all') {
-				filteredVols = filteredVols.filter(vol => {
-					const tags = vol.tags
-					return tags.some(tag => tag === state.filterBy.category)
-				})
+			let filteredVols = JSON.parse(JSON.stringify(state.vols));
+			if (state.filterBy.category === 'all') filteredVols = filteredVols;
+			if (state.filterBy.category !== 'all') {
+				filteredVols = filteredVols.filter((vol) => {
+					const tags = vol.tags;
+					return tags.some((tag) => tag === state.filterBy.category);
+				});
 			}
-			if(state.filterBy.skills === 'all') filteredVols = filteredVols
-			if(state.filterBy.skills !== 'all') {
-				filteredVols = filteredVols.filter(vol => {
-					const skills = vol.reqSkills
-					return skills.some(skill => skill === state.filterBy.skills)
-				})
+			if (state.filterBy.skills === 'all') filteredVols = filteredVols;
+			if (state.filterBy.skills !== 'all') {
+				filteredVols = filteredVols.filter((vol) => {
+					const skills = vol.reqSkills;
+					return skills.some(
+						(skill) => skill === state.filterBy.skills
+					);
+				});
 			}
-			if(state.filterBy.isOnLine){
-				filteredVols = filteredVols.filter(vol => !vol.loc.isOnsite)
+			if (state.filterBy.isOnLine) {
+				filteredVols = filteredVols.filter((vol) => !vol.loc.isOnsite);
 			}
-			if(state.filterBy.isOnSite){
-				filteredVols = filteredVols.filter(vol => vol.loc.isOnsite)
+			if (state.filterBy.isOnSite) {
+				filteredVols = filteredVols.filter((vol) => vol.loc.isOnsite);
 			}
-			if(state.filterBy.txt){
-				const regex = new RegExp(state.filterBy.txt, "i");
-        		filteredVols = state.vols.filter((vol) => regex.test(vol.title));
+			if (state.filterBy.txt) {
+				const regex = new RegExp(state.filterBy.txt, 'i');
+				filteredVols = state.vols.filter((vol) =>
+					regex.test(vol.title)
+				);
 			}
 			return filteredVols;
 		},
@@ -75,7 +85,7 @@ export default {
 			return randomVols;
 		},
 	},
-	
+
 	actions: {
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
@@ -103,22 +113,22 @@ export default {
 				console.log("Can't load vols", err);
 			}
 		},
-		async addReview({commit}, { newReview }){
-			const volId = newReview.volId
+		async addReview({ commit }, { newReview }) {
+			const volId = newReview.volId;
 			const review = {
 				id: utilService.makeId(),
 				txt: newReview.txt,
 				createdBy: newReview.createdBy,
-				createdAt: Date.now()
-			}
-			commit({type:'addReview', payload:{review, volId}})
-
+				createdAt: Date.now(),
+				rating: newReview.rating,
+			};
+			commit({ type: 'addReview', payload: { review, volId } });
 		},
-		async getVol(context, {_id}){
-			await context.dispatch({type: 'loadVols'})
-			const vol = context.state.vols.find(vol => vol._id === _id)
-			if (!vol) return 'cannot find vol'
-			return vol
-		}
+		async getVol(context, { _id }) {
+			await context.dispatch({ type: 'loadVols' });
+			const vol = context.state.vols.find((vol) => vol._id === _id);
+			if (!vol) return 'cannot find vol';
+			return vol;
+		},
 	},
 };

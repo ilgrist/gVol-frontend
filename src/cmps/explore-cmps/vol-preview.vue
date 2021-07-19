@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     goToProfile(volId) {
-      this.$router.push(`volApp/${volId}`);
+      this.$router.push(`/volApp/${volId}`);
     },
   },
   computed: {

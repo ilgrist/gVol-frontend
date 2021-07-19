@@ -1,8 +1,11 @@
 <template>
-  <section class="addVol-page main-layout">
-    <div class="form-container">
-      <h3>Add a Vol</h3>
-      <form @submit.prevent="saveVol" class="addVol-form" action="addVol">
+  <section class="addEdit-modal">
+    <form class="addEdit-form">
+      <header>
+        <h3>{{ title }} a Vol</h3>
+        <span class="closeModal" @click="closeModal">Close</span>
+      </header>
+      <section class="main-form">
         <label class="vol-title">
           Title:
           <input placeholder="Enter Title" v-model="vol.title" type="text" />
@@ -80,36 +83,35 @@
           <option value="org1">Org1</option>
           Org1
         </select> -->
-
-        <button class="submit-btn">Submit New Vol</button>
-      </form>
-    </div>
+      </section>
+      <div class="btns-container">
+        <button @click="saveVol" class="edit-btn submit">
+          {{ title }} Vol
+        </button>
+        <button
+          @click.stop.prevent="removeVol(vol._id)"
+          class="edit-btn delete"
+          v-if="isEdit"
+        >
+          Delete Vol
+        </button>
+      </div>
+    </form>
   </section>
 </template>
 
 <script>
 import { showMsg } from "@/services/event-bus.service.js";
+import { volService } from "@/services/vol.service.js";
 
 export default {
   data() {
     return {
+      title: "",
       msg: "",
-      vol: {
-        imgUrls: [],
-        loc: {
-          lat: 12.12,
-          lng: 11.11,
-          city: "",
-          country: "",
-          isOnsite: false,
-        },
-        org: {
-          name: "",
-          imgUrl: "",
-        },
-        reqSkills: [],
-        tags: [],
-      },
+      vol: null,
+      isEdit: false,
+
       tags: [
         {
           value: "children",
@@ -157,29 +159,46 @@ export default {
     };
   },
 
+  created() {
+    if (this.$store.getters.volToUpdate) {
+      this.isEdit = true;
+      this.vol = JSON.parse(JSON.stringify(this.$store.getters.volToUpdate));
+      this.title = "Update ";
+    } else {
+      this.isEdit = false;
+      this.vol = volService.getEmptyVol();
+      this.title = "Add a New";
+    }
+  },
+
   methods: {
-    async saveVol() {
-      try {
-        await this.$store.dispatch({ type: "saveVol", vol: this.vol });
-      } catch (err) {
-        console.log("cannot save vol", err);
-        throw err;
-      } finally {
-        //TBD - hack for now, intended to make sure that when redirects to volApp - new vol was added
-        this.msg = "new Vol added !";
-        showMsg(this.msg, "success");
-        this.msg = "";
-        // await this.$store.dispatch({ type: "loadVols" });
-        this.$router.push("/volApp");
-        // this.closeModal();
-      }
+    removeVol(volId) {
+      console.log("sanity cmp", volId);
+      this.$emit("remove", volId);
+    },
+    closeModal() {
+      this.$emit("closeModal");
+      this.vol = null;
+      // this.$store.commit({ type: "setVolToUpdate", vol: null });
     },
 
-    // closeModal() {
-    //   this.$emit("closeModal");
-    //   this.vol = null;
-    //   this.$store.commit({ type: "setVolToUpdate", vol: null });
-    // },
+    async saveVol() {
+      try {
+        this.$store.dispatch({ type: "saveVol", vol: this.vol });
+        if (this.isEdit) this.msg = "Vol Updated!";
+        else this.msg = "new Vol added!";
+        showMsg(this.msg, "success");
+        if (this.isEdit) this.closeModal();
+        else this.$router.push(`/volApp`);
+      } catch (err) {
+        this.msg = "Cannot save Vol";
+        console.log("Cannot Save Vol", err);
+        showMsg(this.msg, "danger");
+        throw err;
+      } finally {
+        this.msg = "";
+      }
+    },
   },
 };
 </script>

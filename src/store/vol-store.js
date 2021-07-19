@@ -11,6 +11,7 @@ export default {
 			isOnSite: false,
 			isOnLine: false,
 		},
+		volToUpdate: null,
 	},
 	mutations: {
 		setFilter(state, { filterBy }) {
@@ -19,11 +20,12 @@ export default {
 		addVol(state, { savedVol }) {
 			state.vols.push(savedVol);
 		},
-		updateVol(state, { savedVol }) {
-			const idx = state.vols.findIndex((td) => td._id === savedVol._id);
-			state.vols.splice(idx, 1, savedVol);
+		updateVol(state, { vol }) {
+			const idx = state.vols.findIndex((td) => td._id === vol._id);
+			state.vols.splice(idx, 1, vol);
 		},
 		removeVol(state, { volId }) {
+			console.log('sanity from commit');
 			const idx = state.vols.findIndex((td) => td._id === volId);
 			state.vols.splice(idx, 1);
 		},
@@ -38,8 +40,16 @@ export default {
 				state.vols[idx].reviews.unshift(review);
 			}
 		},
+
+		setVolToUpdate(state, { vol }) {
+			state.volToUpdate = vol;
+		},
 	},
 	getters: {
+		volToUpdate(state) {
+			console.log(state.volToUpdate);
+			return state.volToUpdate;
+		},
 		volsToShow(state) {
 			let filteredVols = JSON.parse(JSON.stringify(state.vols));
 			if (state.filterBy.category === 'all') filteredVols = filteredVols;
@@ -72,8 +82,8 @@ export default {
 			}
 			return filteredVols;
 		},
-		filterBy(state){
-			return state.filterBy
+		filterBy(state) {
+			return state.filterBy;
 		},
 		shortListRandVols(state) {
 			let randomVols = [];
@@ -90,19 +100,21 @@ export default {
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
-				const savedVol = await volService.save(vol);
-				commit({ type, savedVol });
-				return savedVol;
+				commit({ type, vol });
+				volService.save(vol);
 			} catch (err) {
-				console.log("Couldn't save the vol", vol, err);
+				console.log("Couldn't save Vol", vol, err);
 			}
 		},
-		async removeVol({ commit }, { payload }) {
+		async removeVol({ commit }, payload) {
 			try {
+				// await volService.remove(payload.volId);
 				await volService.remove(payload.volId);
+				console.log('sanity action');
 				commit(payload);
+				console.log('sanity');
 			} catch (err) {
-				console.log("Couldn't remove vol", vol, err);
+				console.log("STORE: Couldn't remove Vol", err);
 			}
 		},
 		async loadVols(context) {

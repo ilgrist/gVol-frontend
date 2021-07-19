@@ -45,11 +45,11 @@ export default {
       this.$emit("filterBy", filterBy);
     },
     goToProfile(volId) {
-      this.$router.push(`volApp/${volId}`);
+      this.$router.push(`/volApp/${volId}`);
     },
   },
   created() {
-    this.$store.dispatch({ type: "loadVols" });
+    // this.$store.dispatch({ type: "loadVols" });
   },
   components: {
     shortVolListCard,

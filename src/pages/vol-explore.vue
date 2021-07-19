@@ -39,7 +39,7 @@ export default {
   async created() {
     this.isLoading = true;
     await this.$store.dispatch({ type: "loadVols" });
-    this.isLoading = false;
+    // this.isLoading = false;
   },
 };
 </script>

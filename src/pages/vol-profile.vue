@@ -15,7 +15,7 @@
           @openModal="openModal"
           @closeModal="closeModal"
         />
-        <volSideBar :vol="vol" />
+        <volSideBar :vol="vol" @joinVol="joinVol" />
       </div>
     </div>
     <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
@@ -42,6 +42,10 @@ export default {
     };
   },
   methods: {
+    joinVol() {
+      this.vol = this.$store.getters.volToUpdate;
+    },
+
     async remove(volId) {
       try {
         await this.$store.dispatch({ type: "removeVol", volId });

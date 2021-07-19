@@ -4,8 +4,9 @@
       <div class="user-profile-img-cont">
         <img :src="require('../../assets/img/userImg/' + user.imgUrl)" />
       </div>
-      <h2>Name:{{ user.fullname }}</h2>
+      <h2>Name: {{ user.fullname }}</h2>
       <p>
+        Skills:
         <span class="details-tag" v-for="skill in user.skills" :key="skill">
           {{ skill }}
         </span>

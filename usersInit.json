@@ -4,7 +4,7 @@
 		"fullname": "User 1",
 		"username": "user1",
 		"password": "secret",
-		"imgUrl": "user1.jpg",
+		"imgURL": "https://fortmyersradon.com/wp-content/uploads/2019/12/dummy-user-img-1-300x300.png",
 		"skills": ["teaching", "web-design"]
 	},
 	{
@@ -12,7 +12,7 @@
 		"fullname": "User 2",
 		"username": "user2",
 		"password": "secret",
-		"imgUrl": "user2.jpg",
+		"imgURL": "user2.jpg",
 		"skills": ["translation", "law"]
 	},
 	{
@@ -20,7 +20,7 @@
 		"fullname": "User 3",
 		"username": "user3",
 		"password": "secret",
-		"imgUrl": "user3.jpg",
+		"imgURL": "user3.jpg",
 		"skills": ["building", "teaching"]
 	}
 ]

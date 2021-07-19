@@ -23,6 +23,11 @@ export default {
 		},
 		updateVol(state, { vol }) {
 			state.volToUpdate = vol;
+			console.log(
+				'file: vol-store.js ~ line 25 ~ vol',
+				state.volToUpdate
+			);
+
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
 		},
@@ -48,6 +53,11 @@ export default {
 		},
 
 		joinVol(state, { volToUpdate }) {
+			console.log(
+				'file: vol-store.js ~ line 52 ~ volToUpdate',
+				volToUpdate
+			);
+
 			const idx = state.vols.findIndex(
 				(vol) => vol._id === volToUpdate._id
 			);
@@ -110,14 +120,16 @@ export default {
 	},
 
 	actions: {
-		async joinVol({ commit }, { memberId }, { vol }) {
-			const user = userService.getById(memberId);
-			const member = { _id: user._id, imgUrl: user.imgUrl };
+		async joinVol({ commit, dispatch }, { memberId, vol }) {
+			const user = await userService.getById(memberId);
+			const member = { _id: user._id, imgURL: user.imgURL };
+
 			const volToUpdate = JSON.parse(JSON.stringify(vol));
 			volToUpdate.members.push(member);
 			try {
-				await this.saveVol(volToUpdate);
-				commit(volToUpdate);
+				dispatch({ type: 'saveVol', vol: volToUpdate });
+				commit({ type: 'joinVol', volToUpdate: volToUpdate });
+				console.log('sanity store');
 			} catch (err) {
 				console.log('Failed to add Member', err);
 			}

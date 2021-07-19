@@ -35,14 +35,15 @@ export default {
     };
   },
   methods: {
-    onVol() {
+    async onVol() {
       if (this.loggedinUser) {
-        this.$store.dispatch({
+        await this.$store.dispatch({
           type: "joinVol",
           memberId: this.loggedinUser._id,
           vol: this.vol,
         });
-
+        this.$emit("joinVol");
+        // this.vol = this.$store.getters.volToUpdate;
         this.msg = "Your request has been sent !";
         showMsg(this.msg, "success");
         this.msg = "";

@@ -33,6 +33,7 @@ function _createVols() {
 function save(vol) {
 	if (vol._id) {
 		storageService.put(VOL_KEY, vol);
+		return vol;
 	} else {
 		vol._id = utilService.makeId();
 		vol.imgUrls = [
@@ -44,6 +45,7 @@ function save(vol) {
 }
 
 function remove(volId) {
+	console.log('sanity service');
 	return storageService.remove(VOL_KEY, volId);
 }
 
@@ -54,5 +56,6 @@ function getEmptyVol() {
 		reqSkills: '',
 		tags: '',
 		org: '',
+		loc: {},
 	};
 }

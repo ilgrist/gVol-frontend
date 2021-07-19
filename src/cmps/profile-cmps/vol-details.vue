@@ -1,7 +1,10 @@
 <template>
   <section class="vol-details">
     <header class="details-header">
-      <h2>{{ vol.title }}</h2>
+      <h2>
+        {{ vol.title }}
+        <button title="Edit Vol" @click="openModal" class="edit-btn">🖊</button>
+      </h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
@@ -92,12 +95,24 @@ export default {
     };
   },
   methods: {
+    openModal() {
+      this.$emit("openModal");
+    },
+    closeModal() {
+      console.log("sanity");
+      this.$emit("closeModal");
+    },
+
     toggleMore() {
       this.isShort = !this.isShort;
     },
     async sendReview(newReview) {
       this.$emit("sendRev", newReview);
     },
+
+    // goToEdit() {
+    //   this.$router.push(`/addVol/${this.vol._id}`);
+    // },
   },
   computed: {
     description() {

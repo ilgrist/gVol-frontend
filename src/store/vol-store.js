@@ -1,5 +1,6 @@
 import { utilService } from '../services/util.service.js';
 import { volService } from '../services/vol.service.js';
+import { userService } from '../services/user.service.js';
 
 export default {
 	state: {
@@ -44,7 +45,15 @@ export default {
 		setVolToUpdate(state, { vol }) {
 			state.volToUpdate = vol;
 		},
+
+		joinVol(state, { volToUpdate }) {
+			const idx = state.vols.findIndex(
+				(vol) => vol._id === volToUpdate._id
+			);
+			state.vols.splice(idx, 1, volToUpdate);
+		},
 	},
+
 	getters: {
 		volToUpdate(state) {
 			console.log(state.volToUpdate);
@@ -97,6 +106,19 @@ export default {
 	},
 
 	actions: {
+		async joinVol({ commit }, { memberId }, { vol }) {
+			const user = userService.getById(memberId);
+			const member = { _id: user._id, imgUrl: user.imgUrl };
+			const volToUpdate = JSON.parse(JSON.stringify(vol));
+			volToUpdate.members.push(member);
+			try {
+				await this.saveVol(volToUpdate);
+				commit(volToUpdate);
+			} catch (err) {
+				console.log('Failed to add Member', err);
+			}
+		},
+
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {

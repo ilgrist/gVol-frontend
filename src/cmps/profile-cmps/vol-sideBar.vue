@@ -3,13 +3,13 @@
     <div class="details-sidebar">
       <h3 class="title-sidebar">Action Bar</h3>
       <div class="btn-container">
-        <button @click="onVol" class="details-btn">Volunteer</button>
+        <button @click="onVol" class="details-btn focus">Volunteer</button>
         <button @click="onShare" class="details-btn">Share</button>
       </div>
       <h4 v-if="vol.members">Participating Members</h4>
       <div v-if="vol.members" class="sidebar-users">
         <img
-          v-for="member,idx in vol.members"
+          v-for="(member, idx) in vol.members"
           :key="idx"
           class="img-profile"
           :src="member.imgURL"
@@ -37,6 +37,12 @@ export default {
   methods: {
     onVol() {
       if (this.loggedinUser) {
+        this.$store.dispatch({
+          type: "joinVol",
+          memberId: this.loggedinUser._id,
+          vol: this.vol,
+        });
+
         this.msg = "Your request has been sent !";
         showMsg(this.msg, "success");
         this.msg = "";
@@ -50,9 +56,9 @@ export default {
       showMsg(this.msg, "success");
       this.msg = "";
     },
-     setUser(){
-      this.loggedinUser = this.$store.getters.loggedinUser
-    }
+    setUser() {
+      this.loggedinUser = this.$store.getters.loggedinUser;
+    },
   },
   created() {
     this.setUser();

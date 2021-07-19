@@ -95,10 +95,20 @@
 
 	&:hover {
 		color: $clr2;
-		background: $clr6;
+		background-color: $clr6;
 	}
 	&:active {
 		letter-spacing: 2px;
+	}
+}
+
+.focus {
+	font-size: 1rem;
+	color: $clr6;
+	background-color: $clr4;
+	&:hover {
+		color: $clr2;
+		background-color: $clr6;
 	}
 }
 

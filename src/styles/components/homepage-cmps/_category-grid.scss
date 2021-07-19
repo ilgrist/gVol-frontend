@@ -10,19 +10,17 @@
     grid-auto-flow: dense;
     .card {
       @include aspect-ratio(1, 1);
+      display: flex;
+      flex-direction: column;
       p {
         display: flex;
         align-items: center;
         justify-content: center;
         color: whitesmoke;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         transition: all 0.3s;
-      }
-      &:hover {
-        p {
-          font-size: 300%;
-        }
+        background: rgba(47, 79, 79, 0.4);
       }
     }
     > *:nth-child(3n) {
@@ -30,11 +28,6 @@
       grid-row: span 2;
       p {
         font-size: 3rem;
-      }
-      &:hover {
-        p {
-          font-size: 400%;
-        }
       }
     }
   }

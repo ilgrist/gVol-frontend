@@ -4,7 +4,7 @@
 		"fullname": "User 1",
 		"username": "user1",
 		"password": "secret",
-		"imgUrl": "/img/img1.jpg",
+		"imgUrl": "user1.jpg",
 		"skills": ["teaching", "web-design"]
 	},
 	{
@@ -12,7 +12,7 @@
 		"fullname": "User 2",
 		"username": "user2",
 		"password": "secret",
-		"imgUrl": "/img/2.jpg",
+		"imgUrl": "user2.jpg",
 		"skills": ["translation", "law"]
 	},
 	{
@@ -20,7 +20,7 @@
 		"fullname": "User 3",
 		"username": "user3",
 		"password": "secret",
-		"imgUrl": "/img/3.jpg",
+		"imgUrl": "user3.jpg",
 		"skills": ["building", "teaching"]
 	}
 ]

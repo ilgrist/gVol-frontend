@@ -25,7 +25,7 @@ header.main-header {
 }
 
 .logo {
-	width: 3.5rem;
+	width: 3rem;
 	padding: 0;
 	margin: 0;
 	cursor: pointer;
@@ -37,8 +37,9 @@ header.main-header {
 
 a {
 	color: $clr1;
+	transition: 0.3s;
 	&:hover {
-		text-decoration: underline;
+		box-shadow: inset 0px -2px 0px 0px $clr1;
 	}
 	&:focus {
 		color: $clr3;

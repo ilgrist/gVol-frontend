@@ -5,9 +5,12 @@
       <p @click="cardClicked">See all</p>
     </div>
     <div class="category-grid">
-      <div v-for="category in categories" :key="category.loc">
-        <category-card :category="category" @cardClicked="cardClicked" />
-      </div>
+      <category-card
+        :category="category"
+        @cardClicked="cardClicked"
+        v-for="category in categories"
+        :key="category.loc"
+      />
     </div>
   </section>
 </template>
@@ -19,11 +22,11 @@ export default {
   data() {
     return {
       categories: [
-        { name: "Korea", url: "grid1.jpg" },
+        { name: "Israel", url: "grid1.jpg" },
+        { name: "Kenya", url: "grid2.jpg" },
+        { name: "Nevada", url: "grid3.jpg" },
         { name: "Africa", url: "grid2.jpg" },
-        { name: "Europe", url: "grid3.jpg" },
-        { name: "Africa", url: "grid2.jpg" },
-        { name: "Europe", url: "grid3.jpg" },
+        { name: "Kenya", url: "grid3.jpg" },
       ],
     };
   },

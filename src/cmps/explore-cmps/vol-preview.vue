@@ -1,8 +1,9 @@
 <template>
   <div @click="goToProfile(vol._id)" class="card-preview card">
     <h2>{{ title }}</h2>
-    <p>
-      <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
+    <p v-if="!vol.loc.city && !vol.loc.country">Online</p>
+    <p v-else>
+      <span> {{ vol.loc.city }}, {{ vol.loc.country }} </span>
     </p>
     <img :src="vol.imgUrls[0]" />
     <div class="rev-cont">

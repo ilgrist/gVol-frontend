@@ -18,7 +18,7 @@
             ref="search"
           />
         </form>
-        <button class="homepage-btn" @click="filter">Search</button>
+        <button class="homepage-btn" @click="filter">Explore Options</button>
       </div>
     </div>
   </section>

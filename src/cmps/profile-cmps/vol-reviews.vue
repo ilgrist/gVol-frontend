@@ -43,13 +43,18 @@ export default {
 
   computed: {
     avgRating() {
+      console.log(this.reviews);
       let ratingSum = 0;
       let ratingLength = 0;
       this.reviews.forEach((review) => {
         if (!review.rating) return;
+        console.log("ratingLength", ratingLength);
         ratingLength++;
         ratingSum += review.rating;
       });
+      console.log(ratingSum);
+      console.log(ratingLength);
+      console.log((ratingSum / ratingLength).toFixed(2));
 
       return (ratingSum / ratingLength).toFixed(2);
     },

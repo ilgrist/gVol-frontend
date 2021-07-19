@@ -1,7 +1,14 @@
 <template>
   <section class="add-review">
+    <label>
+      <div class="rating">
+        Rate the Vol:
+        <span v-for="(star, idx) in 5" :key="idx" @click="saveRate(star)">
+          {{ getAStar(idx) }}
+        </span>
+      </div>
+    </label>
     <label for="txt">
-      <!-- <input id="txt" v-model="review.txt" type="text" /> -->
       <textarea
         cols="20"
         rows="3"
@@ -22,6 +29,7 @@ export default {
       review: {
         txt: "",
         createdBy: "",
+        rating: "",
       },
     };
   },
@@ -33,6 +41,13 @@ export default {
     setUser() {
       const loggedinUser = this.$store.getters.loggedinUser;
       this.review.createdBy = loggedinUser.username;
+    },
+    getAStar(idx) {
+      if (this.review.rating <= idx) return "☆";
+      return "★";
+    },
+    saveRate(idx) {
+      this.review.rating = idx;
     },
   },
   created() {

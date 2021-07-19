@@ -1,5 +1,8 @@
 <template>
   <div class="details-reviews">
+    <header class="rating-header">
+      <h3>⭐{{ avgRating }}</h3>
+    </header>
     <header class="review-header">
       <h3>{{ reviews.length }} Review(s):</h3>
       <button v-if="!isNewReview" class="review-btn" @click="addReview">
@@ -34,16 +37,28 @@ export default {
     return {
       msg: "",
       isNewReview: false,
-      isLoggedinUser:false
+      isLoggedinUser: false,
     };
   },
 
-  computed: {},
+  computed: {
+    avgRating() {
+      let ratingSum = 0;
+      let ratingLength = 0;
+      this.reviews.forEach((review) => {
+        if (!review.rating) return;
+        ratingLength++;
+        ratingSum += review.rating;
+      });
+
+      return (ratingSum / ratingLength).toFixed(2);
+    },
+  },
   methods: {
     addReview() {
-      if(this.isLoggedinUser){
-        this.isNewReview = true
-      }else{
+      if (this.isLoggedinUser) {
+        this.isNewReview = true;
+      } else {
         this.$router.push("/login");
       }
     },
@@ -56,10 +71,10 @@ export default {
     //   return time.toLocaleTimeString("en-US");
     // },
   },
-  created(){
-    this.isLoggedinUser = this.$store.getters.loggedinUser
+  created() {
+    this.isLoggedinUser = this.$store.getters.loggedinUser;
   },
-  components:{
+  components: {
     addReview,
   },
 };

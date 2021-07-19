@@ -30,19 +30,22 @@
 				"id_": "r101",
 				"txt": "So awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3
 			},
 			{
 				"id_": "r102",
 				"txt": "Really important goal!",
 				"createdBy": "Elik Belik",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 4.5
 			},
 			{
 				"id_": "r103",
 				"txt": "It was a real pleasure to meet the Prince!",
 				"createdBy": "Royal Fan",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 2
 			}
 		],
 		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"},
@@ -83,13 +86,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3
 			},
 			{
 				"id_": "r102",
 				"txt": "Pooh is so ZEN!",
 				"createdBy": "Piglet",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 5
 			}
 		],
 		"members": [
@@ -101,6 +106,7 @@
 		
 		]
 	},
+
 	{
 		"_id": "v103",
 		"title": "Save Dragons",
@@ -131,13 +137,15 @@
 				"id_": "r101",
 				"txt": "Dragons are such a rarity!",
 				"createdBy": "Mooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 2.5
 			},
 			{
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 4
 			}
 		],
 		"members": [
@@ -148,6 +156,7 @@
 			{"_id":"u108", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg"}
 		]
 	},
+
 	{
 		"_id": "v104",
 		"title": "Teaching Children",
@@ -178,13 +187,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Maya",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 3
 			},
 			{
 				"id_": "r102",
 				"txt": "Children are alright",
 				"createdBy": "The Grinch",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 3.5
 			}
 		],
 		"members": [
@@ -225,13 +236,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Maya",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 5
 			},
 			{
 				"id_": "r102",
 				"txt": "Children are alright",
 				"createdBy": "The Grinch",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 2.5
 			}],
 		"members": 
 		[
@@ -240,6 +253,7 @@
 			{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg" }
 		]
 	},
+
 	{
 		"_id": "v106",
 		"title": "Save Pooh the Bear",
@@ -270,13 +284,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 2
 			},
 			{
 				"id_": "r102",
 				"txt": "Pooh is so ZEN!",
 				"createdBy": "Piglet",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 5
 			}
 		],
 		"members": [
@@ -288,6 +304,7 @@
 		
 		]
 	},
+
 	{
 		"_id": "v107",
 		"title": "Teaching Children",
@@ -318,13 +335,16 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Maya",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 4.5
+
 			},
 			{
 				"id_": "r102",
 				"txt": "Children are alright",
 				"createdBy": "The Grinch",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 4
 			}
 		],
 		"members": [
@@ -334,6 +354,7 @@
 		
 		]
 	},
+
 	{
 		"_id": "v108",
 		"title": "Teaching Children",
@@ -364,13 +385,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Maya",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 3
 			},
 			{
 				"id_": "r102",
 				"txt": "Children are alright",
 				"createdBy": "The Grinch",
-				"createdAt": 5435436845435
+				"createdAt": 5435436845435,
+				"rating": 4.5
 			}
 		],
 		"members": [
@@ -380,6 +403,7 @@
 		
 		]
 	},
+
 	{
 		"_id": "v109",
 		"title": "Save Pooh the Bear",
@@ -410,13 +434,15 @@
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 2
 			},
 			{
 				"id_": "r102",
 				"txt": "Pooh is so ZEN!",
 				"createdBy": "Piglet",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3
 			}
 		],
 		"members": [
@@ -428,6 +454,7 @@
 		
 		]
 	},
+
 	{
 		"_id": "v110",
 		"title": "Save Prince Charming",
@@ -459,19 +486,22 @@
 				"id_": "r101",
 				"txt": "So awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 5
 			},
 			{
 				"id_": "r102",
 				"txt": "Really important goal!",
 				"createdBy": "Elik Belik",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3.5
 			},
 			{
 				"id_": "r103",
 				"txt": "It was a real pleasure to meet the Prince!",
 				"createdBy": "Royal Fan",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 4
 			}
 		],
 		"members": [{"_id":"u101", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626359000/volApp/userImg/user2_vl9uj7.jpg"},
@@ -481,6 +511,7 @@
 			{"_id":"u105", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg"}
 		]
 	},
+
 	{
 		"_id": "v111",
 		"title": "Save Dragons",
@@ -511,13 +542,15 @@
 				"id_": "r101",
 				"txt": "Dragons are such a rarity!",
 				"createdBy": "Mooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3
 			},
 			{
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 4
 			}
 		],
 		"members": [
@@ -528,6 +561,7 @@
 			{"_id":"u108", "imgURL": "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg"}
 		]
 	},
+
 	{
 		"_id": "v112",
 		"title": "Save Dragons",
@@ -558,13 +592,15 @@
 				"id_": "r101",
 				"txt": "Dragons are such a rarity!",
 				"createdBy": "Mooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 3
 			},
 			{
 				"id_": "r101",
 				"txt": "So very awesome!",
 				"createdBy": "Shooki",
-				"createdAt": 543543534543535
+				"createdAt": 543543534543535,
+				"rating": 5
 			}
 		],
 		"members": [

@@ -19,6 +19,9 @@
 		button {
 			border: none;
 			background-color: transparent;
+			&:hover {
+				border-radius: 5px;
+			}
 		}
 	}
 }

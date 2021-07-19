@@ -7,7 +7,6 @@ header.main-header {
   font-family: Halant, sans-serif;
   font-size: 1.5rem;
 
-<<<<<<< HEAD
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,17 +15,6 @@ header.main-header {
   top: 0;
   z-index: 1;
   transition: 0.3s;
-=======
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	// border-bottom: 1px solid $clr2;
-	padding-right: 5px;
-	position: fixed;
-	top: 0;
-	z-index: 1;
-	transition: 0.3s;
->>>>>>> 032a288a06b423f518c340aae081f9f5ef759d67
 
   &.transparent {
     background-color: transparent;

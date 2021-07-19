@@ -30,36 +30,34 @@ export default {
       vol: null,
     };
   },
-  methods:{
+  methods: {
     async sendReview(newReview) {
-      console.log("send review");
-      this.isNewReview = false
-      newReview.volId = this.vol._id
-      try{
-        await this.$store.dispatch({type: "addReview", newReview })
-        this.msg = "Review added !";
+      console.log("send review", newReview);
+      this.isNewReview = false;
+      newReview.volId = this.vol._id;
+      try {
+        await this.$store.dispatch({ type: "addReview", newReview });
+        this.msg = "Review added!";
         showMsg(this.msg, "success");
-      }
-      catch{
+      } catch {
         this.msg = "Cannot add review, Try again later..";
         showMsg(this.msg, "danger");
-
       }
       this.msg = "";
     },
-    async setVol(){
+    async setVol() {
       const { _id } = this.$route.params;
       if (_id)
-      try {
-        this.vol = await this.$store.dispatch({type:'getVol', _id})
-      } catch (err) {
-        console.log("Vol not available", err);
-        throw err;
-      }
-    }
+        try {
+          this.vol = await this.$store.dispatch({ type: "getVol", _id });
+        } catch (err) {
+          console.log("Vol not available", err);
+          throw err;
+        }
+    },
   },
   async created() {
-    this.setVol()
+    this.setVol();
   },
 };
 </script>

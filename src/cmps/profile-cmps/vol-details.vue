@@ -95,8 +95,8 @@ export default {
     toggleMore() {
       this.isShort = !this.isShort;
     },
-        async sendReview(newReview) {
-      this.$emit('sendRev' , newReview)
+    async sendReview(newReview) {
+      this.$emit("sendRev", newReview);
     },
   },
   computed: {
@@ -104,12 +104,6 @@ export default {
       return utilService.shortTxt(this.vol.desc, 200);
     },
   },
-
-  // methods: {
-  //      async sendReview(newReview) {
-  //     this.$emit('sendRev' , newReview)
-  //   },
-  // },
 };
 </script>
 

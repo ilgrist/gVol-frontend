@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout explore-page">
+  <div class="explore-page main-layout">
     <vol-filter @filter="filter"></vol-filter>
     <div class="loading-container" v-if="isLoading">
       <img

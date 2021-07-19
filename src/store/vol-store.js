@@ -72,6 +72,9 @@ export default {
 			}
 			return filteredVols;
 		},
+		filterBy(state){
+			return state.filterBy
+		},
 		shortListRandVols(state) {
 			let randomVols = [];
 			for (var i = 0; i < 4; i++) {

@@ -1,6 +1,6 @@
 <template>
-  <div class="homepage main-layout">
-    <hero @filterBy="goExplore" />
+  <div>
+    <hero @filterBy="goExplore"/>
     <!-- <img
       class="loading-img"
       v-if="isLoading"
@@ -9,18 +9,18 @@
     />
     <template v-else> -->
     <short-list
-      class="homepage-layout"
+      class="main-layout"
       v-if="isload"
       :name="'Popular'"
       @filterBy="goExplore"
     />
     <short-list
-      class="homepage-layout"
+      class="main-layout"
       v-if="isload"
       :name="'Newest'"
       @filterBy="goExplore"
     />
-    <categories-grid class="homepage-layout" />
+    <categories-grid class="main-layout" />
     <!-- </template> -->
   </div>
 </template>

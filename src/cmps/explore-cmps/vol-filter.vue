@@ -70,6 +70,10 @@ export default {
       this.$emit("filter", copyFilterBy);
     },
   },
+  created(){
+    this.filterBy = this.$store.getters.filterBy
+    this.filter()
+  }
 
 };
 </script>

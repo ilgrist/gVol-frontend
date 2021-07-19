@@ -15,7 +15,7 @@
         <textarea
           v-model="vol.desc"
           name="vol-desc"
-          cols="8"
+          cols="15"
           rows="8"
           placeholder="Enter Vol Description"
         ></textarea>
@@ -33,7 +33,7 @@
             >
           </div>
 
-          <div v-if="vol.loc.isOnsite">
+          <div v-if="vol.loc.isOnsite" class="loc-input-cont">
             <input
               placeholder="Enter City"
               v-model="vol.loc.city"

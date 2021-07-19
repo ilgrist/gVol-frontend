@@ -12,6 +12,7 @@
 @import '/components/_user-msg';
 @import '/components/main-footer';
 @import '/components/main-header';
+@import '/components/add-edit-vol';
 
 // PAGES
 @import '/pages/login-page/login';
@@ -20,7 +21,7 @@
 @import '/pages/homepage';
 @import '/pages/vol-profile';
 @import '/pages/user-profile';
-@import '/pages/add-vol';
+// @import '/pages/add-vol';
 
 //HOMEPAGE-CMPS
 @import '/components/homepage-cmps/short-list';

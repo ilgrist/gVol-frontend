@@ -11,6 +11,16 @@
 
 	margin-bottom: 0.5rem;
 	padding: 1rem;
+
+	h2 {
+		display: flex;
+		justify-content: space-between;
+
+		button {
+			border: none;
+			background-color: transparent;
+		}
+	}
 }
 
 .details-tag {

@@ -1,16 +1,24 @@
 <template>
   <section class="vol-profile main-layout">
-    <img
-      class="loading-img"
-      v-if="!vol"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
-      alt="loading"
-    />
-    <!-- <div v-if="vol" class="vol-det"> -->
-    <div v-else class="vol-det">
-      <volDetails @sendRev="sendReview" :vol="vol" />
-      <volSideBar :vol="vol" />
+    <div class="displayProfile">
+      <img
+        class="loading-img"
+        v-if="!vol"
+        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+        alt="loading"
+      />
+      <!-- <div v-if="vol" class="vol-det"> -->
+      <div v-else class="vol-det">
+        <volDetails
+          @sendRev="sendReview"
+          :vol="vol"
+          @openModal="openModal"
+          @closeModal="closeModal"
+        />
+        <volSideBar :vol="vol" />
+      </div>
     </div>
+    <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
   </section>
 </template>
 
@@ -19,18 +27,47 @@ import volSideBar from "@/cmps/profile-cmps/vol-sideBar.vue";
 import volDetails from "@/cmps/profile-cmps/vol-details.vue";
 import { volService } from "@/services/vol.service.js";
 import { showMsg } from "../services/event-bus.service.js";
+import addEditVol from "@/cmps/add-edit-vol.vue";
 
 export default {
   components: {
     volSideBar,
     volDetails,
+    addEditVol,
   },
   data() {
     return {
       vol: null,
+      isEditing: false,
     };
   },
   methods: {
+    async remove(volId) {
+      try {
+        await this.$store.dispatch({ type: "removeVol", volId });
+        this.closeModal();
+        this.msg = "Vol deleted Successfully!";
+        showMsg(this.msg, "success");
+        this.$router.push("/volApp");
+      } catch (err) {
+        this.msg = "Failed to delete Vol";
+        showMsg(this.msg, "danger");
+        console.log("cannot remove Vol", err);
+        throw err;
+      }
+    },
+    openModal() {
+      const vol = this.vol;
+      this.$store.commit({ type: "setVolToUpdate", vol });
+      this.isEditing = !this.isEditing;
+    },
+    async closeModal() {
+      // this.setVol();
+      console.log("sanity");
+      this.vol = this.$store.getters.volToUpdate;
+      this.isEditing = false;
+    },
+
     async sendReview(newReview) {
       console.log("send review", newReview);
       this.isNewReview = false;

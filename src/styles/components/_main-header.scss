@@ -7,16 +7,6 @@ header.main-header {
 	font-family: Halant, sans-serif;
 	font-size: 1.5rem;
 
-<<<<<<< HEAD
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 5px;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  transition: 0.3s;
-=======
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -26,7 +16,6 @@ header.main-header {
 	top: 0;
 	z-index: 1;
 	transition: 0.3s;
->>>>>>> bf5d1e4ce7c520a863d681eb6c033f76c68a38d8
 
 	&.transparent {
 		background-color: transparent;

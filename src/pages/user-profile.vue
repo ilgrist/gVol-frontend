@@ -9,6 +9,11 @@
     <div v-else class="vol-det">
       <userDetails :user="user" />
       <userSideBar :user="user" @openModal="openModal" />
+      <user-vol-list
+        :vols="userVols"
+        :name="'User vols'"
+        class="user-vol-list"
+      />
     </div>
     <add-edit-vol v-if="isEditing" @closeModal="closeModal" />
   </section>
@@ -17,6 +22,7 @@
 <script>
 import userSideBar from "@/cmps/user-profile-cmps/user-sideBar.vue";
 import userDetails from "@/cmps/user-profile-cmps/user-details.vue";
+import userVolList from "@/cmps/user-profile-cmps/user-vol-list.vue";
 import addEditVol from "@/cmps/add-edit-vol.vue";
 import { showMsg } from "../services/event-bus.service.js";
 
@@ -25,11 +31,13 @@ export default {
     userSideBar,
     userDetails,
     addEditVol,
+    userVolList,
   },
   data() {
     return {
       user: null,
       isEditing: false,
+      userVols: [],
     };
   },
   methods: {
@@ -49,15 +57,23 @@ export default {
             type: "loadAndWatchUser",
             userId: _id,
           });
-          console.log("this.user", this.user);
         } catch (err) {
           console.log("User not available", err);
           throw err;
         }
     },
+    async loadUserVols() {
+      const vols = await this.$store.dispatch({
+        type: "userVols",
+        userId: this.user._id,
+      });
+      this.userVols = vols;
+      return vols;
+    },
   },
   async created() {
-    this.setUser();
+    await this.setUser();
+    this.loadUserVols();
   },
 };
 </script>

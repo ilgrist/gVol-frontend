@@ -67,7 +67,7 @@ export default {
     this.$store.commit({ type: "setTransHeader", isTransHeader: true });
     document.addEventListener("scroll", this.handleScrollY);
     // this.isLoading = true;
-    // await this.$store.dispatch({ type: "loadVols" });
+    await this.$store.dispatch({ type: "loadVols" });
     // this.isLoading = false;
     this.isload = true;
   },

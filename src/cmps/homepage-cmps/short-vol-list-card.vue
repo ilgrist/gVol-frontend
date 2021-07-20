@@ -10,13 +10,10 @@
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
         />
-        <span>4.5</span>
+        <span>{{avgRating}}</span>
       </div>
       <div class="reviews">
-        <img
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365582/volApp/icons/mode_black_24dp_iqmj5f.svg"
-        />
-        <span>Reviews</span>
+        <span> Reviews ({{reviewNum}})</span>
       </div>
     </div>
     <hr />
@@ -42,7 +39,9 @@ export default {
     vol: Object,
   },
   data() {
-    return {};
+    return {
+      reviews: this.vol.reviews
+    };
   },
   methods: {
     cardClicked() {
@@ -59,6 +58,22 @@ export default {
     description() {
       return utilService.shortTxt(this.vol.desc, 50);
     },
+    avgRating() {
+      let ratingSum = 0;
+      let ratingLength = 0;
+
+      this.reviews.forEach((review) => {
+        if (!review.rating) return;
+        ratingLength++;
+        ratingSum += review.rating;
+      });
+
+      return (ratingSum / ratingLength).toFixed(2);
+    },
+    reviewNum(){
+      return this.reviews.length
+    }
+  
   },
 };
 </script>

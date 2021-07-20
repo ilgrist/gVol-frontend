@@ -69,7 +69,6 @@ export default {
     },
 
     async sendReview(newReview) {
-      console.log("send review", newReview);
       this.isNewReview = false;
       newReview.volId = this.vol._id;
       try {
@@ -83,7 +82,6 @@ export default {
       this.msg = "";
     },
     async setVol() {
-      console.log("sanity set");
       const { _id } = this.$route.params;
       if (_id)
         try {

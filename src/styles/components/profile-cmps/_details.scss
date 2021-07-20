@@ -27,8 +27,6 @@
 }
 
 .details-tag {
-	cursor: pointer;
-
 	background-color: $clr6;
 	color: whitesmoke;
 
@@ -40,6 +38,8 @@
 	padding: 0.2rem;
 	margin: 0.2rem;
 
+	//tbd if to keep
+	cursor: pointer;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -79,11 +79,9 @@
 	font-style: italic;
 	border-radius: 1px;
 	text-align: center;
-	// border: 1px solid gray;
 	padding: 0.2rem;
 	margin: 0.2rem;
 
-	// margin-bottom: 5px;
 	font-weight: bold;
 	font-size: 0.8rem;
 	&:hover {
@@ -92,7 +90,6 @@
 }
 
 .details-location {
-	// background-color: $clr5;
 	color: $clr4;
 	font-style: italic;
 	font-weight: bold;

@@ -36,6 +36,12 @@ export default {
   },
   methods: {
     async onVol() {
+      if (this.vol.members.find(() => this.loggedinUser)) {
+        this.msg = "Member Already Registered ";
+        showMsg(this.msg, "success");
+        this.msg = "";
+        return;
+      }
       if (this.loggedinUser) {
         await this.$store.dispatch({
           type: "joinVol",
@@ -43,8 +49,7 @@ export default {
           vol: this.vol,
         });
         this.$emit("joinVol");
-        // this.vol = this.$store.getters.volToUpdate;
-        this.msg = "Your request has been sent !";
+        this.msg = "Your request has been sent!";
         showMsg(this.msg, "success");
         this.msg = "";
       } else {
@@ -53,7 +58,7 @@ export default {
     },
     onShare() {
       console.log("shared!");
-      this.msg = "Volunteering shared !";
+      this.msg = "Volunteering shared!";
       showMsg(this.msg, "success");
       this.msg = "";
     },

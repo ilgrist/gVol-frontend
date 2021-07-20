@@ -23,7 +23,6 @@
     </header>
 
     <div class="img-gallery">
-      <!-- ASK SHACHAR PROMISE ALL -->
       <div v-for="(img, idx) in vol.imgUrls" :key="idx">
         <img class="details-img" :src="img" alt="img-details-grid" />
       </div>
@@ -109,10 +108,6 @@ export default {
     async sendReview(newReview) {
       this.$emit("sendRev", newReview);
     },
-
-    // goToEdit() {
-    //   this.$router.push(`/addVol/${this.vol._id}`);
-    // },
   },
   computed: {
     description() {

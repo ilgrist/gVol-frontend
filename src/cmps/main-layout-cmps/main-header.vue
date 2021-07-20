@@ -9,7 +9,7 @@
     <!-- src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281313/volApp/logo3_wuazzc.png" -->
     <nav id="nav">
       <router-link to="/volApp">Explore</router-link> |
-      <router-link to="/user/u101">User</router-link> |
+      <router-link to="/user/60f69d281863063fc020ea9f">User</router-link> |
       <router-link to="/login"> Welcome {{ loggedinUser }}</router-link>
     </nav>
   </header>

@@ -10,7 +10,7 @@
       <userDetails :user="user" />
       <userSideBar :user="user" @openModal="openModal" />
     </div>
-    <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
+    <add-edit-vol v-if="isEditing" @closeModal="closeModal" />
   </section>
 </template>
 

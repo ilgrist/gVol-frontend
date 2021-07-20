@@ -12,7 +12,9 @@ export const httpService = {
 	get(endpoint, data) {
 		return ajax(endpoint, 'GET', data);
 	},
-	post(endpoint, data) {
+	async post(endpoint, data) {
+		console.log('file: http.service.js ~ line 16 ~ data', data);
+		console.log('file: http.service.js ~ line 16 ~ endpoint', endpoint);
 		return ajax(endpoint, 'POST', data);
 	},
 	put(endpoint, data) {
@@ -34,7 +36,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
 		return res.data;
 	} catch (err) {
 		console.log(
-			`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`
+			`Had Issues ${method}ing to the backend, endpoint: ${endpoint} , with data: ${data}`
 		);
 		console.dir(err);
 		if (err.response && err.response.status === 401) {

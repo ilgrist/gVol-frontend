@@ -61,13 +61,13 @@ async function logout() {
 async function signup(user) {
   try {
     const users = await query();
-    users.find((user) => {
-      return user.username === userCred.username;
+    const existUser = users.find((currUser) => {
+      return currUser.username === user.username;
     });
-    if (user) {
+    if (existUser) {
       throw 'User already exists';
     } else {
-      user.id = utilService._makeId();
+      user.id = utilService.makeId();
       storageService.post(USER_KEY, user);
       delete user.password;
       storageService.post(LOGGED_USER_KEY, user);

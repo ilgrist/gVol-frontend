@@ -23,10 +23,6 @@ export default {
 		},
 		updateVol(state, { vol }) {
 			state.volToUpdate = vol;
-			console.log(
-				'file: vol-store.js ~ line 25 ~ vol',
-				state.volToUpdate
-			);
 
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
@@ -53,10 +49,6 @@ export default {
 		},
 
 		joinVol(state, { volToUpdate }) {
-			console.log(
-				'file: vol-store.js ~ line 52 ~ volToUpdate',
-				volToUpdate
-			);
 
 			const idx = state.vols.findIndex(
 				(vol) => vol._id === volToUpdate._id
@@ -67,7 +59,6 @@ export default {
 
 	getters: {
 		volToUpdate(state) {
-			console.log(state.volToUpdate);
 			return state.volToUpdate;
 		},
 		volsToShow(state) {
@@ -129,7 +120,6 @@ export default {
 			try {
 				dispatch({ type: 'saveVol', vol: volToUpdate });
 				commit({ type: 'joinVol', volToUpdate: volToUpdate });
-				console.log('sanity store');
 			} catch (err) {
 				console.log('Failed to add Member', err);
 			}

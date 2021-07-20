@@ -102,13 +102,23 @@
             @change.stop.prevent="handleFile"
           />
           <div v-if="this.vol.imgUrls.length" class="img-preview-gallery">
-            <img
-              class="img-preview"
+            <div
+              class="img-container"
               v-for="(imgUrl, idx) in vol.imgUrls"
               :key="idx"
-              :src="imgUrl"
-              @click.stop.prevent="removeImg(idx)"
-            />
+            >
+              <img
+                class="img-preview"
+                :src="imgUrl"
+                @click.stop.prevent="removeImg(idx)"
+              />
+              <img
+                class="clear-img"
+                src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626788807/volApp/icons/whiteClear_izkynd.svg"
+                alt="removeImg"
+                @click.stop.prevent="removeImg(idx)"
+              />
+            </div>
           </div>
         </label>
       </section>

@@ -59,6 +59,9 @@ export default {
 		setVols(state, { vols }) {
 			state.vols = vols;
 		},
+
+		// TBD - DISCUSS APPROACH, IF WE ARE SAVING ENTIRE VOL EACH TIME, WE CAN SIMPLY USE UPDATE MUTATIONS FOR EVERYTHING
+
 		// addReview(state, { payload }) {
 		// 	const volId = payload.volId;
 		// 	const review = payload.review;
@@ -116,13 +119,10 @@ export default {
 		},
 		async removeVol({ commit }, payload) {
 			try {
-				// await volService.remove(payload.volId);
 				await volService.remove(payload.volId);
-				console.log('sanity action');
 				commit(payload);
-				console.log('sanity');
 			} catch (err) {
-				console.log("STORE: Couldn't remove Vol", err);
+				console.log("Couldn't remove Vol", err);
 			}
 		},
 		async loadVols(context) {
@@ -135,6 +135,7 @@ export default {
 		},
 		async addReview({ dispatch }, { newReview }) {
 			const updatedVol = newReview.updatedVol;
+			// TBD - DISCUSS APPROACH, SEND ENTIRE VOL VS VOLID
 			// const volId = newReview.volId;
 			const review = {
 				id: utilService.makeId(),
@@ -145,7 +146,6 @@ export default {
 			};
 
 			updatedVol.reviews.push(review);
-			// commit({ type: 'addReview', payload: { review, volId } });
 
 			try {
 				dispatch({ type: 'saveVol', vol: updatedVol });
@@ -158,7 +158,7 @@ export default {
 			// const updatedVol = JSON.parse(
 			// 	JSON.stringify(removedReview.updatedVol)
 			// );
-			// TBD: SHOULD PROBABLY MAKE A COPY OF THE VOL OBJECT????
+			// TBD: SHOULD PROBABLY MAKE A COPY OF THE VOL OBJECT???? THIS ACTS FUNNY
 			const updatedVol = removedReview.updatedVol;
 			const revIdx = removedReview.revIdx;
 
@@ -171,7 +171,7 @@ export default {
 			}
 		},
 
-		// tbd: rewrite - we're currently getting all of the vols from the service, we probably shouldnt
+		// tbd: rewrite - we're currently getting all of the vols from the service, we ,maybe shouldnt?
 
 		async getVol(context, { _id }) {
 			await context.dispatch({ type: 'loadVols' });

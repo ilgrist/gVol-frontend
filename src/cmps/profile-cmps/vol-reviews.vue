@@ -50,7 +50,6 @@ export default {
       let ratingSum = this.reviews.reduce((acc, review) => {
         if (!review.rating) return acc;
         ratingLength++;
-        console.log(review.rating);
         return acc + review.rating;
       }, 0);
 
@@ -69,7 +68,7 @@ export default {
         this.$router.push("/login");
       }
     },
-    async sendReview(newReview) {
+    sendReview(newReview) {
       this.isNewReview = false;
       // newReview.volId = this.volId;
       this.$emit("sendReview", newReview);

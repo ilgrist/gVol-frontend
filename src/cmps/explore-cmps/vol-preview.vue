@@ -59,7 +59,7 @@ export default {
      avgRating() {
       let ratingSum = 0;
       let ratingLength = 0;
-
+      if(!this.reviews) return 'None'
       this.reviews.forEach((review) => {
         if (!review.rating) return;
         ratingLength++;
@@ -69,6 +69,7 @@ export default {
       return (ratingSum / ratingLength).toFixed(2);
     },
      reviewNum(){
+      if(!this.reviews) return '0'
       return this.reviews.length
     }
   },

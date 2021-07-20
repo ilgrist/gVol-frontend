@@ -10,11 +10,14 @@
       </button>
     </header>
     <add-review v-if="isNewReview" @sendRev="sendReview"></add-review>
-    <ul v-for="review in reviews" :key="review._id">
+    <ul v-for="(review, idx) in reviews" :key="idx">
       <li>
-        <span class="review-user"> {{ review.createdBy }} </span>:
-        <!-- {{ timeDisplay(review.createdAt) }} -->
-        "{{ review.txt }}"
+        <button @click.prevent.stop="removeRev(idx)" class="reviews-btn">
+          X
+        </button>
+        <span class="review-user"> {{ review.createdBy }} </span> "{{
+          review.txt
+        }}" - {{ review.rating }} Stars
       </li>
     </ul>
   </div>
@@ -43,6 +46,7 @@ export default {
 
   computed: {
     avgRating() {
+      // TODO: TURN TO REDUCE
       let ratingSum = 0;
       let ratingLength = 0;
 
@@ -51,7 +55,7 @@ export default {
         ratingLength++;
         ratingSum += review.rating;
       });
-
+      if (!this.reviews.length) return "None";
       return (ratingSum / ratingLength).toFixed(2);
     },
   },
@@ -68,7 +72,13 @@ export default {
       newReview.volId = this.volId;
       this.$emit("sendRev", newReview);
     },
+
+    removeRev(revIdx) {
+      console.log("file: vol-reviews.vue ~ line 82 ~ reviewIdx", revIdx);
+      this.$emit("removeRev", revIdx, this.volId);
+    },
   },
+
   created() {
     this.isLoggedinUser = this.$store.getters.loggedinUser;
   },

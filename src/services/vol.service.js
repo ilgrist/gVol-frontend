@@ -30,9 +30,11 @@ async function save(vol) {
 	if (vol._id) return httpService.put('vol/', vol);
 	else {
 		vol.org.name = 'Duckies United';
-		vol.imgUrls = [
-			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
-		];
+		vol.reviews = [];
+		if (!vol.imgUrls.length)
+			vol.imgUrls = [
+				'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
+			];
 		return await httpService.post('vol', vol);
 	}
 }
@@ -50,6 +52,8 @@ function getEmptyVol() {
 		tags: [],
 		org: {},
 		loc: {},
+		imgUrls: [],
+		reviews: [],
 	};
 }
 

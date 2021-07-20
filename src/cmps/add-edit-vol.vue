@@ -8,7 +8,12 @@
       <section class="main-form">
         <label class="vol-title">
           Title:
-          <input placeholder="Enter Title" v-model="vol.title" type="text" />
+          <input
+            multiple
+            placeholder="Enter Title"
+            v-model="vol.title"
+            type="text"
+          />
         </label>
 
         <label> Description: </label>
@@ -83,7 +88,41 @@
           <option value="org1">Org1</option>
           Org1
         </select> -->
+
+        <label class="vol-imgs" for="img"
+          >Upload Images (up to 4 Images):
+          <img
+            class="upload-img"
+            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626782582/volApp/icons/uploadImg_ysu2jj.svg"
+          />
+          <input
+            click.stop.prevent
+            id="img"
+            type="file"
+            @change.stop.prevent="handleFile"
+          />
+          <div v-if="this.vol.imgUrls.length" class="img-preview-gallery">
+            <div
+              class="img-container"
+              v-for="(imgUrl, idx) in vol.imgUrls"
+              :key="idx"
+            >
+              <img
+                class="img-preview"
+                :src="imgUrl"
+                @click.stop.prevent="removeImg(idx)"
+              />
+              <img
+                class="clear-img"
+                src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626788807/volApp/icons/whiteClear_izkynd.svg"
+                alt="removeImg"
+                @click.stop.prevent="removeImg(idx)"
+              />
+            </div>
+          </div>
+        </label>
       </section>
+
       <div class="btns-container">
         <button @click.stop.prevent="saveVol" class="edit-btn submit">
           {{ title }} Vol
@@ -103,6 +142,7 @@
 <script>
 import { showMsg } from "@/services/event-bus.service.js";
 import { volService } from "@/services/vol.service.js";
+import { uploadImg } from "@/services/img-upload.service.js";
 
 export default {
   data() {
@@ -112,6 +152,7 @@ export default {
       vol: null,
       isEdit: false,
 
+      // TBD: ASK SHACHAR HOW TO DO THIS BETTER AND FROM DB?
       tags: [
         {
           value: "children",
@@ -172,6 +213,32 @@ export default {
   },
 
   methods: {
+    removeImg(imgIdx) {
+      console.log(
+        "file: add-edit-vol.vue ~ line 209 ~ this.vol.imgUrls",
+        this.vol.imgUrls
+      );
+      this.vol.imgUrls.splice(imgIdx, 1);
+      console.log(
+        "file: add-edit-vol.vue ~ line 208 ~  this.vol.imgUrls",
+        this.vol.imgUrls
+      );
+    },
+
+    async handleFile(ev) {
+      if (this.vol.imgUrls.length > 3) {
+        this.msg = "Not more than 4 Images";
+        showMsg(this.msg, "danger");
+        console.log("Not more than 4 Images");
+        return;
+      }
+      const file = ev.target.files[0];
+      const res = await uploadImg(ev);
+      // console.log("res:", res);
+      this.vol.imgUrls.push(res.url);
+      console.log(this.vol);
+    },
+
     removeVol(volId) {
       console.log("sanity cmp", volId);
       this.$emit("remove", volId);
@@ -184,6 +251,10 @@ export default {
 
     async saveVol() {
       try {
+        console.log("onsite", this.vol.loc.isOnsite);
+        if (this.vol.loc.isOnsite) this.vol.loc.isOnsite = false;
+        console.log("onsite", this.vol.loc.isOnsite);
+
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 
         if (this.isEdit) this.msg = "Vol Updated!";

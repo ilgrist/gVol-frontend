@@ -2,7 +2,7 @@
   <section class="vol-details">
     <header class="details-header">
       <div class="user-profile-img-cont">
-        <img :src="user.imgURL" />
+        <img :src="user.imgUrl" />
       </div>
       <h2>{{ user.fullname }}</h2>
       <p>
@@ -14,8 +14,6 @@
     </header>
   </section>
 </template>
-
-
 
 <script>
 export default {

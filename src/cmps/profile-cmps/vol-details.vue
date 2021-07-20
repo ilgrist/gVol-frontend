@@ -63,10 +63,10 @@
       </p>
     </div>
     <volReviews
-      v-if="vol.reviews"
       :reviews="vol.reviews"
       :volId="vol._id"
       @sendRev="sendReview"
+      @removeRev="removeRev"
     />
   </section>
 </template>
@@ -107,6 +107,9 @@ export default {
     },
     async sendReview(newReview) {
       this.$emit("sendRev", newReview);
+    },
+    removeRev(revIdx, volId) {
+      this.$emit("removeRev", revIdx, volId);
     },
   },
   computed: {

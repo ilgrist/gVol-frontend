@@ -49,6 +49,7 @@ export default {
             type: "loadAndWatchUser",
             userId: _id,
           });
+          console.log("this.user", this.user);
         } catch (err) {
           console.log("User not available", err);
           throw err;

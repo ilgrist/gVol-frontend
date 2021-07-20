@@ -31,8 +31,6 @@
         </label>
         <img v-if="isSelectImg" class="img-prev" :src="newUser.imgUrl">
       </div>
-      <!-- <div v-if="isSelectImg" > -->
-      <!-- </div> -->
       <div class="signup-btn">
         <button @click="signup">Sign-up</button>
         <button @click="back">Back</button>
@@ -41,7 +39,6 @@
 </template>
 
 <script>
-
 import { uploadImg } from "../../services/img-upload.service.js";
 
 export default {

@@ -14,6 +14,7 @@
           :vol="vol"
           @openModal="openModal"
           @closeModal="closeModal"
+          @removeRev="removeRev"
         />
         <volSideBar :vol="vol" @joinVol="joinVol" />
       </div>
@@ -46,6 +47,20 @@ export default {
       this.vol = this.$store.getters.volToUpdate;
     },
 
+    async removeRev(revIdx, volId) {
+      console.log("file: vol-profile.vue ~ line 51 ~ revId", revIdx);
+      const revRemove = { revIdx: revIdx, volId: volId };
+      try {
+        await this.$store.dispatch({ type: "removeReview", revRemove });
+        this.msg = "Review Deleted!";
+        showMsg(this.msg, "success");
+      } catch {
+        this.msg = "Cannot remove review, Try again later..";
+        showMsg(this.msg, "danger");
+      }
+      this.msg = "";
+    },
+
     async remove(volId) {
       try {
         await this.$store.dispatch({ type: "removeVol", volId });
@@ -66,8 +81,6 @@ export default {
       this.isEditing = !this.isEditing;
     },
     closeModal() {
-      // await this.setVol();
-      console.log("sanity");
       this.vol = this.$store.getters.volToUpdate;
       this.isEditing = false;
     },

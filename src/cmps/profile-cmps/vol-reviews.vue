@@ -60,11 +60,7 @@ export default {
   },
   methods: {
     starsDisplay(rating) {
-      let display = "";
-      for (let i = 0; i < rating; i++) {
-        display += "★";
-      }
-      return display;
+      return "★".repeat(rating);
     },
     addReview() {
       if (this.isLoggedinUser) {

@@ -14,6 +14,7 @@
           class="img-profile"
           :src="member.imgURL"
           alt="imgProfile"
+          @click="goToUserProfile(member._id)"
         />
       </div>
     </div>
@@ -35,6 +36,9 @@ export default {
     };
   },
   methods: {
+    goToUserProfile(userId) {
+      this.$router.push(`/user/${userId}`);
+    },
     async onVol() {
       if (this.vol.members.find(() => this.loggedinUser)) {
         this.msg = "Member Already Registered ";

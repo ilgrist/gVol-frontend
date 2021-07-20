@@ -2,9 +2,6 @@
 	border-radius: 10px;
 	padding: 1rem;
 	background-color: $clr2;
-	// border: 1px solid lightgray;
-	// box-shadow: 0px 0px 1.5px 0px #000000;
-	// height: 100%;
 	grid-row: 7/8;
 
 	input {
@@ -45,6 +42,26 @@
 
 	ul {
 		padding: 0;
+		li {
+			display: flex;
+			gap: 1rem;
+			.btns-control {
+				align-self: flex-start;
+			}
+		}
+		.reviews-btn {
+			background-color: unset;
+			width: unset;
+			padding: unset;
+			margin: 0 0.5rem;
+			border: unset;
+			border-radius: unset;
+			&:hover {
+				color: $clr6;
+				border: 2px solid white;
+				text-decoration: underline;
+			}
+		}
 	}
 }
 

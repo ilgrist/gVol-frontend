@@ -251,6 +251,10 @@ export default {
 
     async saveVol() {
       try {
+        console.log("onsite", this.vol.loc.isOnsite);
+        if (this.vol.loc.isOnsite) this.vol.loc.isOnsite = false;
+        console.log("onsite", this.vol.loc.isOnsite);
+
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 
         if (this.isEdit) this.msg = "Vol Updated!";

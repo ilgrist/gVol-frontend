@@ -14,48 +14,6 @@ export default {
 		},
 		volToUpdate: null,
 	},
-	mutations: {
-		setFilter(state, { filterBy }) {
-			state.filterBy = filterBy;
-		},
-		addVol(state, { vol }) {
-			state.volToUpdate = vol;
-			state.vols.push(vol);
-		},
-		updateVol(state, { vol }) {
-			state.volToUpdate = vol;
-
-			const idx = state.vols.findIndex((td) => td._id === vol._id);
-			state.vols.splice(idx, 1, vol);
-		},
-		removeVol(state, { volId }) {
-			console.log('sanity from commit');
-			const idx = state.vols.findIndex((td) => td._id === volId);
-			state.vols.splice(idx, 1);
-		},
-		setVols(state, { vols }) {
-			state.vols = vols;
-		},
-		addReview(state, { payload }) {
-			const volId = payload.volId;
-			const review = payload.review;
-			const idx = state.vols.findIndex((vol) => vol._id === volId);
-			if (idx) {
-				state.vols[idx].reviews.unshift(review);
-			}
-		},
-
-		setVolToUpdate(state, { vol }) {
-			state.volToUpdate = vol;
-		},
-
-		joinVol(state, { volToUpdate }) {
-			const idx = state.vols.findIndex(
-				(vol) => vol._id === volToUpdate._id
-			);
-			state.vols.splice(idx, 1, volToUpdate);
-		},
-	},
 
 	getters: {
 		volToUpdate(state) {
@@ -109,6 +67,54 @@ export default {
 			return randomVols;
 		},
 	},
+	mutations: {
+		setFilter(state, { filterBy }) {
+			state.filterBy = filterBy;
+		},
+		addVol(state, { vol }) {
+			state.volToUpdate = vol;
+			state.vols.push(vol);
+		},
+		updateVol(state, { vol }) {
+			state.volToUpdate = vol;
+
+			const idx = state.vols.findIndex((td) => td._id === vol._id);
+			state.vols.splice(idx, 1, vol);
+		},
+		removeVol(state, { volId }) {
+			console.log('sanity from commit');
+			const idx = state.vols.findIndex((td) => td._id === volId);
+			state.vols.splice(idx, 1);
+		},
+		setVols(state, { vols }) {
+			state.vols = vols;
+		},
+		addReview(state, { payload }) {
+			const volId = payload.volId;
+			const review = payload.review;
+			const idx = state.vols.findIndex((vol) => vol._id === volId);
+			if (idx) {
+				state.vols[idx].reviews.unshift(review);
+			}
+		},
+		removeReview(state, { payload }) {
+			const volId = payload.volId;
+			const revIdx = payload.revIdx;
+
+			state.vols[volId].reviews.splice(revIdx, 1);
+		},
+
+		setVolToUpdate(state, { vol }) {
+			state.volToUpdate = vol;
+		},
+
+		joinVol(state, { volToUpdate }) {
+			const idx = state.vols.findIndex(
+				(vol) => vol._id === volToUpdate._id
+			);
+			state.vols.splice(idx, 1, volToUpdate);
+		},
+	},
 
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
@@ -152,6 +158,11 @@ export default {
 			} catch (err) {
 				console.log("Can't load vols", err);
 			}
+		},
+		async removeReview({ commit }, { revRemove }) {
+			const volId = revRemove.volId;
+			const revIdx = revRemove.revIdx;
+			commit({ type: 'removeReview', payload: { volId, revIdx } });
 		},
 		async addReview({ commit }, { newReview }) {
 			const volId = newReview.volId;

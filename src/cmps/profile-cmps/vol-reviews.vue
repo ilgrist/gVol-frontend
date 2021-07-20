@@ -74,7 +74,6 @@ export default {
     },
 
     removeReview(revIdx) {
-      console.log("file: vol-reviews.vue ~ line 82 ~ reviewIdx", revIdx);
       this.$emit("removeReview", revIdx);
     },
   },

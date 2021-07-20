@@ -59,23 +59,23 @@ export default {
 		setVols(state, { vols }) {
 			state.vols = vols;
 		},
-		addReview(state, { payload }) {
-			const volId = payload.volId;
-			const review = payload.review;
-			const idx = state.vols.findIndex((vol) => vol._id === volId);
-			if (idx) {
-				state.vols[idx].reviews.unshift(review);
-			}
-			console.log('addreview,', state.vols[idx]);
-			console.log('addreview', state.vols);
-		},
+		// addReview(state, { payload }) {
+		// 	const volId = payload.volId;
+		// 	const review = payload.review;
+		// 	const idx = state.vols.findIndex((vol) => vol._id === volId);
+		// 	if (idx) {
+		// 		state.vols[idx].reviews.unshift(review);
+		// 	}
+		// 	console.log('addreview,', state.vols[idx]);
+		// 	console.log('addreview', state.vols);
+		// },
 
-		removeReview(state, { payload }) {
-			const volId = payload.volId;
-			const revIdx = payload.revIdx;
+		// removeReview(state, { payload }) {
+		// 	const volId = payload.volId;
+		// 	const revIdx = payload.revIdx;
 
-			state.vols[volId].reviews.splice(revIdx, 1);
-		},
+		// 	state.vols[volId].reviews.splice(revIdx, 1);
+		// },
 
 		setVolToUpdate(state, { vol }) {
 			state.volToUpdate = vol;
@@ -104,6 +104,7 @@ export default {
 			}
 		},
 		async saveVol({ commit, dispatch }, { vol }) {
+			console.log('file: vol-store.js ~ line 107 ~ vol', vol);
 			console.log('sanity from savevol');
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
@@ -153,10 +154,21 @@ export default {
 			}
 		},
 
-		async removeReview({ commit }, { revRemove }) {
-			const volId = revRemove.volId;
-			const revIdx = revRemove.revIdx;
-			commit({ type: 'removeReview', payload: { volId, revIdx } });
+		async removeReview({ dispatch }, { removedReview }) {
+			// const updatedVol = JSON.parse(
+			// 	JSON.stringify(removedReview.updatedVol)
+			// );
+			// TBD: SHOULD PROBABLY MAKE A COPY OF THE VOL OBJECT????
+			const updatedVol = removedReview.updatedVol;
+			const revIdx = removedReview.revIdx;
+
+			updatedVol.reviews.splice(revIdx, 1);
+
+			try {
+				dispatch({ type: 'saveVol', vol: updatedVol });
+			} catch {
+				console.log('Failed to add Member', err);
+			}
 		},
 
 		// tbd: rewrite - we're currently getting all of the vols from the service, we probably shouldnt

@@ -10,10 +10,10 @@
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
         />
-        <span>{{avgRating}}</span>
+        <span>{{ avgRating }}</span>
       </div>
       <div class="reviews">
-        <span> Reviews ({{reviewNum}})</span>
+        <span> Reviews ({{ reviewNum }})</span>
       </div>
     </div>
     <hr />
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      reviews: this.vol.reviews
+      reviews: this.vol.reviews,
     };
   },
   methods: {
@@ -61,7 +61,8 @@ export default {
     avgRating() {
       let ratingSum = 0;
       let ratingLength = 0;
-      if(!this.reviews) return 'None'
+
+      if (!this.reviews) return "None";
       this.reviews.forEach((review) => {
         if (!review.rating) return;
         ratingLength++;
@@ -70,11 +71,10 @@ export default {
 
       return (ratingSum / ratingLength).toFixed(2);
     },
-    reviewNum(){
-      if(!this.reviews) return '0'
-      return this.reviews.length
-    }
-  
+    reviewNum() {
+      if (!this.reviews) return "0";
+      return this.reviews.length;
+    },
   },
 };
 </script>

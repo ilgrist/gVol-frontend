@@ -11,10 +11,10 @@
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
         />
-        <span>{{avgRating}}</span>
+        <span>{{ avgRating }}</span>
       </div>
       <div class="reviews">
-        <span>Reviews ({{reviewNum}})</span>
+        <span>Reviews ({{ reviewNum }})</span>
       </div>
     </div>
     <hr />
@@ -39,10 +39,10 @@ export default {
   props: {
     vol: Object,
   },
-  data(){
-    return{
-      reviews:this.vol.reviews
-    }
+  data() {
+    return {
+      reviews: this.vol.reviews,
+    };
   },
   methods: {
     goToProfile(volId) {
@@ -56,10 +56,11 @@ export default {
     description() {
       return utilService.shortTxt(this.vol.desc, 80);
     },
-     avgRating() {
+    avgRating() {
       let ratingSum = 0;
       let ratingLength = 0;
-      if(!this.reviews) return 'None'
+
+      if (!this.reviews) return "None";
       this.reviews.forEach((review) => {
         if (!review.rating) return;
         ratingLength++;
@@ -68,10 +69,10 @@ export default {
 
       return (ratingSum / ratingLength).toFixed(2);
     },
-     reviewNum(){
-      if(!this.reviews) return '0'
-      return this.reviews.length
-    }
+    reviewNum() {
+      if (!this.reviews) return "0";
+      return this.reviews.length;
+    },
   },
 };
 </script>

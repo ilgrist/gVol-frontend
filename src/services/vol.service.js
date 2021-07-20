@@ -9,48 +9,46 @@ const volsInit = require('../../volsInit.json');
 // const API = 'http://localhost:3030/api/volApp';
 
 export const volService = {
-	query,
-	getById,
-	getEmptyVol,
-	remove,
-	save,
+  query,
+  getById,
+  getEmptyVol,
+  remove,
+  save,
 };
 
 async function query(filterBy) {
-	// return storageService.query(VOL_KEY);
-	return httpService.get('vol/', filterBy);
+  // return storageService.query(VOL_KEY);
+  return httpService.get('vol/', filterBy);
 }
 
 function getById(volId) {
-	// return storageService.get(VOL_KEY, volId);
-	return httpService.get(`vol/${volId}`);
+  // return storageService.get(VOL_KEY, volId);
+  return httpService.get(`vol/${volId}`);
 }
 
 async function save(vol) {
-	if (vol._id) return httpService.put('vol/', vol);
-	else {
-		vol.org.name = 'Duckies United';
-		vol.imgUrls = [
-			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
-		];
-		return await httpService.post('vol', vol);
-	}
+  if (vol._id) return httpService.put('vol/', vol);
+  else {
+    vol.org.name = 'Duckies United';
+    vol.imgUrls = ['https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg'];
+    return await httpService.post('vol', vol);
+  }
 }
 
 function remove(volId) {
-	return httpService.delete(`vol/${volId}`);
-	// return storageService.remove(VOL_KEY, volId);
+  return httpService.delete(`vol/${volId}`);
+  // return storageService.remove(VOL_KEY, volId);
 }
 
 function getEmptyVol() {
-	return {
-		title: '',
-		desc: '',
-		reqSkills: [],
-		tags: [],
-		org: {},
-		loc: {},
-	};
+  return {
+    title: '',
+    desc: '',
+    reqSkills: [],
+    tags: [],
+    org: {},
+    loc: {},
+  };
 }
 
 // function _createVols() {

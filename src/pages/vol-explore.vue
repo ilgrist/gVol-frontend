@@ -33,13 +33,13 @@ export default {
   methods: {
     filter(filterBy) {
       this.$store.commit({ type: "setFilter", filterBy });
-      // this.$store.dispatch({ type: "loadVols" });
+      this.$store.dispatch({ type: "loadVols" });
     },
   },
   async created() {
     this.isLoading = true;
-    // await this.$store.dispatch({ type: "loadVols" });
     this.isLoading = false;
+    this.$store.dispatch({ type: "loadVols" });
   },
 };
 </script>

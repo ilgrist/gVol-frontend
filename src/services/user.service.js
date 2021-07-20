@@ -1,12 +1,12 @@
-import { utilService } from "./util.service.js";
-import { storageService } from "./async-storage.service.js";
-import { httpService } from "./http.service.js";
-import axios from "axios";
+import { utilService } from './util.service.js';
+import { storageService } from './async-storage.service.js';
+import { httpService } from './http.service.js';
+import axios from 'axios';
 
-const usersInit = require("../../usersInit.json");
+const usersInit = require('../../usersInit.json');
 
-const USER_KEY = "users";
-const LOGGED_USER_KEY = "loggedUser";
+const USER_KEY = 'users';
+const LOGGED_USER_KEY = 'loggedUser';
 const gUsers = query();
 
 export const userService = {
@@ -19,36 +19,33 @@ export const userService = {
 };
 
 async function query() {
-  return httpService.get(`user/`)
-
+  return httpService.get(`user/`);
 }
 
 async function getById(userId) {
-  return httpService.get(`user/${userId}`)
-
+  return httpService.get(`user/${userId}`);
 }
 
 function getLoggedinUser() {
-  return JSON.parse(sessionStorage.getItem(LOGGED_USER_KEY) || 'null')
+  return JSON.parse(sessionStorage.getItem(LOGGED_USER_KEY) || 'null');
 }
 
 async function login(userCred) {
-  const user = await httpService.post("auth/login", userCred);
+  const user = await httpService.post('auth/login', userCred);
   if (user) return _saveLocalUser(user);
 }
 
 async function logout() {
   sessionStorage.clear();
-  return await httpService.post("auth/logout");
+  return await httpService.post('auth/logout');
 }
 
 async function signup(userCred) {
-  const user = await httpService.post('auth/signup', userCred)
-  return _saveLocalUser(user)
+  const user = await httpService.post('auth/signup', userCred);
+  return _saveLocalUser(user);
 }
 
-
 function _saveLocalUser(user) {
-  sessionStorage.setItem(LOGGED_USER_KEY, JSON.stringify(user))
-  return user
+  sessionStorage.setItem(LOGGED_USER_KEY, JSON.stringify(user));
+  return user;
 }

@@ -77,7 +77,6 @@ export default {
 		},
 		updateVol(state, { vol }) {
 			state.volToUpdate = vol;
-
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
 		},
@@ -173,6 +172,7 @@ export default {
 				createdAt: Date.now(),
 				rating: newReview.rating,
 			};
+
 			commit({ type: 'addReview', payload: { review, volId } });
 		},
 		async getVol(context, { _id }) {

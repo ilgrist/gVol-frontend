@@ -6,7 +6,7 @@ const volsInit = require('../../volsInit.json');
 
 // const VOL_KEY = 'vols';
 // const gVols = _createVols();
-const API = 'http://localhost:3030/api/volApp';
+// const API = 'http://localhost:3030/api/volApp';
 
 export const volService = {
 	query,
@@ -18,7 +18,7 @@ export const volService = {
 
 async function query(filterBy) {
 	// return storageService.query(VOL_KEY);
-	return httpService.get('vol', filterBy);
+	return httpService.get('vol/', filterBy);
 }
 
 function getById(volId) {
@@ -26,14 +26,14 @@ function getById(volId) {
 	return httpService.get(`vol/${volId}`);
 }
 
-function save(vol) {
-	if (vol._id) return httpService.put('vol', vol);
+async function save(vol) {
+	if (vol._id) return httpService.put('vol/', vol);
 	else {
 		vol.org.name = 'Duckies United';
 		vol.imgUrls = [
 			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
 		];
-		return httpService.post('vol', vol);
+		return await httpService.post('vol', vol);
 	}
 }
 
@@ -46,9 +46,9 @@ function getEmptyVol() {
 	return {
 		title: '',
 		desc: '',
-		reqSkills: '',
-		tags: '',
-		org: '',
+		reqSkills: [],
+		tags: [],
+		org: {},
 		loc: {},
 	};
 }

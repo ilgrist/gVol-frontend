@@ -85,7 +85,7 @@
         </select> -->
       </section>
       <div class="btns-container">
-        <button @click="saveVol" class="edit-btn submit">
+        <button @click.stop.prevent="saveVol" class="edit-btn submit">
           {{ title }} Vol
         </button>
         <button
@@ -184,12 +184,20 @@ export default {
 
     async saveVol() {
       try {
-        this.$store.dispatch({ type: "saveVol", vol: this.vol });
+        await this.$store.dispatch({ type: "saveVol", vol: this.vol });
+
         if (this.isEdit) this.msg = "Vol Updated!";
         else this.msg = "new Vol added!";
         showMsg(this.msg, "success");
+
         if (this.isEdit) this.closeModal();
-        else this.$router.push(`/volApp`);
+        else {
+          this.vol = JSON.parse(
+            JSON.stringify(this.$store.getters.volToUpdate)
+          );
+          const volId = this.vol._id;
+          this.$router.push(`/volApp/${volId}`);
+        }
       } catch (err) {
         this.msg = "Cannot save Vol";
         console.log("Cannot Save Vol", err);

@@ -18,8 +18,9 @@ export default {
 		setFilter(state, { filterBy }) {
 			state.filterBy = filterBy;
 		},
-		addVol(state, { savedVol }) {
-			state.vols.push(savedVol);
+		addVol(state, { vol }) {
+			state.volToUpdate = vol;
+			state.vols.push(vol);
 		},
 		updateVol(state, { vol }) {
 			state.volToUpdate = vol;
@@ -49,7 +50,6 @@ export default {
 		},
 
 		joinVol(state, { volToUpdate }) {
-
 			const idx = state.vols.findIndex(
 				(vol) => vol._id === volToUpdate._id
 			);
@@ -128,8 +128,8 @@ export default {
 		async saveVol({ commit }, { vol }) {
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
+				vol = await volService.save(vol);
 				commit({ type, vol });
-				volService.save(vol);
 			} catch (err) {
 				console.log("Couldn't save Vol", vol, err);
 			}

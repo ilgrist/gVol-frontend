@@ -31,7 +31,9 @@ export default {
     openModal() {
       this.$emit("openModal");
     },
-    onExplore() {},
+    onExplore() {
+      this.$router.push("/volApp");
+    },
     onShare() {
       console.log("shared!");
       this.msg = "User profile shared !";

@@ -62,12 +62,7 @@
         </span>
       </p>
     </div>
-    <volReviews
-      v-if="vol.reviews"
-      :reviews="vol.reviews"
-      :volId="vol._id"
-      @sendRev="sendReview"
-    />
+    <volReviews :reviews="vol.reviews" :volId="vol._id" @sendRev="sendReview" />
   </section>
 </template>
 

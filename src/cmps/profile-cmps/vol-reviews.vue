@@ -43,6 +43,7 @@ export default {
 
   computed: {
     avgRating() {
+      // TODO: TURN TO REDUCE
       let ratingSum = 0;
       let ratingLength = 0;
 
@@ -51,7 +52,7 @@ export default {
         ratingLength++;
         ratingSum += review.rating;
       });
-
+      if (!this.reviews.length) return "None";
       return (ratingSum / ratingLength).toFixed(2);
     },
   },

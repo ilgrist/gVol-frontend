@@ -29,7 +29,10 @@
           />
           <input id="img" type="file" @change="handleFile" />
         </label>
+        <img v-if="isSelectImg" class="img-prev" :src="newUser.imgUrl">
       </div>
+      <!-- <div v-if="isSelectImg" > -->
+      <!-- </div> -->
       <div class="signup-btn">
         <button @click="signup">Sign-up</button>
         <button @click="back">Back</button>
@@ -45,7 +48,8 @@ export default {
 
     data(){
         return{
-             newUser: {
+          isSelectImg:false,
+          newUser: {
                 fullname: "",
                 username: "",
                 password: "",
@@ -63,8 +67,8 @@ export default {
         async handleFile(ev) {
         const file = ev.target.files[0];
         const res = await uploadImg(ev);
-        console.log("res:", res);
         this.newUser.imgUrl = res.url;
+        this.isSelectImg = true
         },
         back() {
         this.$emit('back')

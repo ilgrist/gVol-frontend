@@ -38,6 +38,13 @@ a {
 	color: $clr1;
 	transition: 0.3s;
 
+	.nav-user-img{
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		transform: translateY(10%);
+	}
+
 	&.router-link-exact-active{
 		box-shadow: inset 0px -2px 0px 0px $clr1;
 		cursor: pointer;

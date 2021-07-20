@@ -10,7 +10,7 @@
     <nav id="nav">
       <router-link to="/volApp">Explore</router-link> |
       <router-link to="/user/60f69d281863063fc020ea9f">User</router-link> |
-      <router-link to="/login"> Welcome {{ loggedinUser }}</router-link>
+      <router-link to="/login"> Welcome {{ loggedinUser.username }} <img class="nav-user-img" :src="loggedinUser.imgUrl"></router-link>
     </nav>
   </header>
 </template>
@@ -34,7 +34,7 @@ export default {
     },
     loggedinUser() {
       const user = this.$store.getters.loggedinUser;
-      if (user) return user.fullname;
+      if (user) return user;
       return "Guest";
     },
   },

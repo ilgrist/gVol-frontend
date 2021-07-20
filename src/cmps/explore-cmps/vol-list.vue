@@ -1,18 +1,18 @@
 <template>
   <section class="explore-list">
-    <vol-prev v-for="vol,idx in vols" :key="idx" :vol="vol"></vol-prev>
+    <short-prev v-for="vol,idx in vols" :key="idx" :vol="vol"></short-prev>
   </section>
 </template>
 
 <script>
-import volPrev from "./vol-preview.vue"
+import shortPrev from "../homepage-cmps/short-vol-list-card.vue"
 
 export default {
   props:{
     vols: Array
   },
  components: {
-    volPrev
+    shortPrev
   },
 };
 </script>

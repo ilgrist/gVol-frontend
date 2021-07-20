@@ -13,8 +13,6 @@ export const httpService = {
 		return ajax(endpoint, 'GET', data);
 	},
 	async post(endpoint, data) {
-		console.log('file: http.service.js ~ line 16 ~ data', data);
-		console.log('file: http.service.js ~ line 16 ~ endpoint', endpoint);
 		return ajax(endpoint, 'POST', data);
 	},
 	put(endpoint, data) {

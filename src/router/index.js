@@ -5,7 +5,7 @@ import volExplore from '../pages/vol-explore.vue';
 import volProfile from '../pages/vol-profile.vue';
 import userProfile from '../pages/user-profile.vue';
 import login from '../pages/login-page.vue';
-import addVol from '../pages/add-vol.vue';
+// import addVol from '../pages/add-vol.vue';
 
 Vue.use(VueRouter);
 
@@ -45,7 +45,7 @@ const routes = [
 
 const router = new VueRouter({
 	routes,
-	linkActiveClass: "active",
+	linkActiveClass: 'active',
 });
 
 export default router;

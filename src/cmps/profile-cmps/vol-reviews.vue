@@ -17,7 +17,8 @@
         </button>
         <span class="review-user"> {{ review.createdBy }} </span> "{{
           review.txt
-        }}" - {{ review.rating }} Stars
+        }}" ({{ starsDisplay(review.rating) }})
+        <!-- - {{ review.rating }} Stars -->
       </li>
     </ul>
   </div>
@@ -60,6 +61,14 @@ export default {
     },
   },
   methods: {
+    starsDisplay(rating) {
+      let display = "";
+      for (let i = 0; i <= rating; i++) {
+        display += "★";
+      }
+      console.log(display);
+      return display;
+    },
     addReview() {
       if (this.isLoggedinUser) {
         this.isNewReview = true;

@@ -10,11 +10,11 @@
       <!-- <div v-if="vol" class="vol-det"> -->
       <div v-else class="vol-det">
         <volDetails
-          @sendRev="sendReview"
+          @sendReview="sendReview"
           :vol="vol"
           @openModal="openModal"
           @closeModal="closeModal"
-          @removeRev="removeRev"
+          @removeReview="removeReview"
         />
         <volSideBar :vol="vol" @joinVol="joinVol" />
       </div>
@@ -47,11 +47,11 @@ export default {
       this.vol = this.$store.getters.volToUpdate;
     },
 
-    async removeRev(revIdx, volId) {
+    async removeReview(revIdx, volId) {
       console.log("file: vol-profile.vue ~ line 51 ~ revId", revIdx);
-      const revRemove = { revIdx: revIdx, volId: volId };
+      const removedReview = { revIdx: revIdx, volId: volId };
       try {
-        await this.$store.dispatch({ type: "removeReview", revRemove });
+        await this.$store.dispatch({ type: "removeReview", removedReview });
         this.msg = "Review Deleted!";
         showMsg(this.msg, "success");
       } catch {
@@ -87,13 +87,14 @@ export default {
 
     async sendReview(newReview) {
       this.isNewReview = false;
-      newReview.volId = this.vol._id;
+      // newReview.volId = this.vol._id;
+      newReview.updatedVol = this.vol;
       try {
         await this.$store.dispatch({ type: "addReview", newReview });
         this.msg = "Review added!";
         showMsg(this.msg, "success");
       } catch {
-        this.msg = "Cannot add review, Try again later..";
+        this.msg = "Cannot add review, Try again later...";
         showMsg(this.msg, "danger");
       }
       this.msg = "";

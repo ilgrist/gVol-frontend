@@ -9,10 +9,10 @@
         Add a Review
       </button>
     </header>
-    <add-review v-if="isNewReview" @sendRev="sendReview"></add-review>
+    <add-review v-if="isNewReview" @sendReview="sendReview"></add-review>
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li>
-        <button @click.prevent.stop="removeRev(idx)" class="reviews-btn">
+        <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
           X
         </button>
         <span class="review-user"> {{ review.createdBy }} </span> "{{
@@ -69,13 +69,13 @@ export default {
     },
     async sendReview(newReview) {
       this.isNewReview = false;
-      newReview.volId = this.volId;
-      this.$emit("sendRev", newReview);
+      // newReview.volId = this.volId;
+      this.$emit("sendReview", newReview);
     },
 
-    removeRev(revIdx) {
+    removeReview(revIdx) {
       console.log("file: vol-reviews.vue ~ line 82 ~ reviewIdx", revIdx);
-      this.$emit("removeRev", revIdx, this.volId);
+      this.$emit("removeReview", revIdx);
     },
   },
 

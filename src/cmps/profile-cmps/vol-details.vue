@@ -65,8 +65,8 @@
     <volReviews
       :reviews="vol.reviews"
       :volId="vol._id"
-      @sendRev="sendReview"
-      @removeRev="removeRev"
+      @sendReview="sendReview"
+      @removeReview="removeReview"
     />
   </section>
 </template>
@@ -75,7 +75,7 @@
 
 <script>
 import volReviews from "@/cmps/profile-cmps/vol-reviews.vue";
-import { showMsg } from "../../services/event-bus.service.js";
+// import { showMsg } from "../../services/event-bus.service.js";
 import { utilService } from "@/services/util.service.js";
 
 export default {
@@ -106,10 +106,10 @@ export default {
       this.isShort = !this.isShort;
     },
     async sendReview(newReview) {
-      this.$emit("sendRev", newReview);
+      this.$emit("sendReview", newReview);
     },
-    removeRev(revIdx, volId) {
-      this.$emit("removeRev", revIdx, volId);
+    removeReview(revIdx) {
+      this.$emit("removeReview", revIdx);
     },
   },
   computed: {

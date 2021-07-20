@@ -1,6 +1,7 @@
 import { utilService } from '../services/util.service.js';
 import { volService } from '../services/vol.service.js';
 import { userService } from '../services/user.service.js';
+import { Store } from 'vuex';
 
 export default {
 	state: {
@@ -14,6 +15,28 @@ export default {
 		},
 		volToUpdate: null,
 	},
+
+	getters: {
+		volToUpdate(state) {
+			return state.volToUpdate;
+		},
+		volsToShow(state) {
+			return state.vols;
+		},
+		filterBy(state) {
+			return state.filterBy;
+		},
+		shortListRandVols(state) {
+			let randomVols = [];
+			for (var i = 0; i < 4; i++) {
+				var item =
+					state.vols[Math.floor(Math.random() * state.vols.length)];
+				randomVols.push(item);
+			}
+			return randomVols;
+		},
+	},
+
 	mutations: {
 		setFilter(state, { filterBy }) {
 			state.filterBy = filterBy;
@@ -43,6 +66,8 @@ export default {
 			if (idx) {
 				state.vols[idx].reviews.unshift(review);
 			}
+			console.log('addreview,', state.vols[idx]);
+			console.log('addreview', state.vols);
 		},
 
 		removeReview(state, { payload }) {
@@ -64,27 +89,6 @@ export default {
 		},
 	},
 
-	getters: {
-		volToUpdate(state) {
-			return state.volToUpdate;
-		},
-		volsToShow(state) {
-			return state.vols;
-		},
-		filterBy(state) {
-			return state.filterBy;
-		},
-		shortListRandVols(state) {
-			let randomVols = [];
-			for (var i = 0; i < 4; i++) {
-				var item =
-					state.vols[Math.floor(Math.random() * state.vols.length)];
-				randomVols.push(item);
-			}
-			return randomVols;
-		},
-	},
-
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
 			const user = await userService.getById(memberId);
@@ -99,8 +103,8 @@ export default {
 				console.log('Failed to add Member', err);
 			}
 		},
-
-		async saveVol({ commit }, { vol }) {
+		async saveVol({ commit, dispatch }, { vol }) {
+			console.log('sanity from savevol');
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
 				vol = await volService.save(vol);
@@ -128,8 +132,9 @@ export default {
 				console.log("Can't load vols", err);
 			}
 		},
-		async addReview({ commit }, { newReview }) {
-			const volId = newReview.volId;
+		async addReview({ dispatch }, { newReview }) {
+			const updatedVol = newReview.updatedVol;
+			// const volId = newReview.volId;
 			const review = {
 				id: utilService.makeId(),
 				txt: newReview.txt,
@@ -138,7 +143,14 @@ export default {
 				rating: newReview.rating,
 			};
 
-			commit({ type: 'addReview', payload: { review, volId } });
+			updatedVol.reviews.push(review);
+			// commit({ type: 'addReview', payload: { review, volId } });
+
+			try {
+				dispatch({ type: 'saveVol', vol: updatedVol });
+			} catch {
+				console.log('Failed to add Member', err);
+			}
 		},
 
 		async removeReview({ commit }, { revRemove }) {
@@ -146,6 +158,8 @@ export default {
 			const revIdx = revRemove.revIdx;
 			commit({ type: 'removeReview', payload: { volId, revIdx } });
 		},
+
+		// tbd: rewrite - we're currently getting all of the vols from the service, we probably shouldnt
 
 		async getVol(context, { _id }) {
 			await context.dispatch({ type: 'loadVols' });

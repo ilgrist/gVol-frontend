@@ -1,10 +1,10 @@
 <template>
-  <section class="user-details">
+  <section class="vol-details">
     <header class="details-header">
       <div class="user-profile-img-cont">
-        <img :src="require('../../assets/img/userImg/' + user.imgUrl)" />
+        <img :src="user.imgURL" />
       </div>
-      <h2>Name: {{ user.fullname }}</h2>
+      <h2>{{ user.fullname }}</h2>
       <p>
         Skills:
         <span class="details-tag" v-for="skill in user.skills" :key="skill">

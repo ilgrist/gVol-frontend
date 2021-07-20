@@ -1,10 +1,12 @@
-import { utilService } from './util.service.js';
-import { storageService } from './async-storage.service.js';
-const usersInit = require('../../usersInit.json');
-import axios from 'axios';
+import { utilService } from "./util.service.js";
+import { storageService } from "./async-storage.service.js";
+import { httpService } from "./http.service.js";
+import axios from "axios";
 
-const USER_KEY = 'users';
-const LOGGED_USER_KEY = 'loggedUser';
+const usersInit = require("../../usersInit.json");
+
+const USER_KEY = "users";
+const LOGGED_USER_KEY = "loggedUser";
 const gUsers = query();
 
 export const userService = {
@@ -16,65 +18,37 @@ export const userService = {
   signup,
 };
 
-async function query(filterBy) {
-  let users = await storageService.query(USER_KEY);
-  if (!users || !users.length) {
-    users = usersInit;
-    utilService.saveToStorage(USER_KEY, users);
-  }
-  return users;
+async function query() {
+  return httpService.get(`user/`)
+
 }
 
 async function getById(userId) {
-  return await storageService.get(USER_KEY, userId);
+  return httpService.get(`user/${userId}`)
+
 }
 
 function getLoggedinUser() {
-  return utilService.loadFromStorage(LOGGED_USER_KEY);
+  return JSON.parse(sessionStorage.getItem(LOGGED_USER_KEY) || 'null')
 }
 
 async function login(userCred) {
-  try {
-    const users = await query();
-    let user = users.find((user) => {
-      return user.username === userCred.username && user.password === userCred.password;
-    });
-    if (user) {
-      user = { ...user };
-      delete user.password;
-      utilService.saveToStorage(LOGGED_USER_KEY, user);
-      return user;
-    } else {
-      throw 'No such user';
-    }
-  } catch (err) {
-    console.log('user.service: error in login', err);
-    throw err;
-  }
+  const user = await httpService.post("auth/login", userCred);
+  if (user) return _saveLocalUser(user);
 }
 
 async function logout() {
-  const loggedInUser = await getLoggedinUser();
-  utilService.removeFromStorage(LOGGED_USER_KEY);
+  sessionStorage.clear();
+  return await httpService.post("auth/logout");
 }
 
-async function signup(user) {
-  try {
-    const users = await query();
-    const existUser = users.find((currUser) => {
-      return currUser.username === user.username;
-    });
-    if (existUser) {
-      throw 'User already exists';
-    } else {
-      user.id = utilService.makeId();
-      storageService.post(USER_KEY, user);
-      delete user.password;
-      storageService.post(LOGGED_USER_KEY, user);
-      return user;
-    }
-  } catch (err) {
-    console.log('user.service: error in signup', err);
-    throw err;
-  }
+async function signup(userCred) {
+  const user = await httpService.post('auth/signup', userCred)
+  return _saveLocalUser(user)
+}
+
+
+function _saveLocalUser(user) {
+  sessionStorage.setItem(LOGGED_USER_KEY, JSON.stringify(user))
+  return user
 }

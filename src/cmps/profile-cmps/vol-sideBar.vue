@@ -12,7 +12,7 @@
           v-for="(member, idx) in vol.members"
           :key="idx"
           class="img-profile"
-          :src="member.imgURL"
+          :src="member.imgUrl"
           alt="imgProfile"
           @click="goToUserProfile(member._id)"
         />

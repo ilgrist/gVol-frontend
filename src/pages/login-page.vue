@@ -59,7 +59,7 @@ export default {
         this.msg = `Welcome back - ${user.username} !`;
         showMsg(this.msg, "success");
         this.msg = "";
-        this.$router.go(-1)
+        this.$router.go(-1);
       } catch {
         this.msg = `Wrong credentials, try again!`;
         showMsg(this.msg, "danger");
@@ -79,7 +79,7 @@ export default {
         this.msg = `Welcome to the gVol family, ${user.username} !`;
         showMsg(this.msg, "success");
         this.msg = "";
-        this.$router.go(-1)
+        this.$router.go(-1);
       } catch {
         this.msg = `Can't sign up, try again!`;
         showMsg(this.msg, "danger");

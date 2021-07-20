@@ -113,7 +113,7 @@ export default {
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
 			const user = await userService.getById(memberId);
-			const member = { _id: user._id, imgURL: user.imgURL };
+			const member = { _id: user._id, imgUrl: user.imgUrl };
 
 			const volToUpdate = JSON.parse(JSON.stringify(vol));
 			volToUpdate.members.push(member);

@@ -6,29 +6,41 @@
       src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
       alt="loading"
     />
-    <div v-else class="user-det">
+    <div v-else class="vol-det">
       <userDetails :user="user" />
-      <!-- <volSideBar :vol="vol" /> -->
+      <userSideBar :user="user" @openModal="openModal" />
     </div>
+    <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
   </section>
 </template>
 
 <script>
-// import volSideBar from "@/cmps/profile-cmps/vol-sideBar.vue";
+import userSideBar from "@/cmps/user-profile-cmps/user-sideBar.vue";
 import userDetails from "@/cmps/user-profile-cmps/user-details.vue";
+import addEditVol from "@/cmps/add-edit-vol.vue";
 import { showMsg } from "../services/event-bus.service.js";
 
 export default {
   components: {
-    // volSideBar,
+    userSideBar,
     userDetails,
+    addEditVol,
   },
   data() {
     return {
       user: null,
+      isEditing: false,
     };
   },
   methods: {
+    openModal() {
+      this.$store.commit({ type: "setVolToUpdate", vol: null });
+      this.isEditing = !this.isEditing;
+    },
+    closeModal() {
+      this.vol = this.$store.getters.volToUpdate;
+      this.isEditing = false;
+    },
     async setUser() {
       const { _id } = this.$route.params;
       if (_id)

@@ -1,10 +1,12 @@
 import { utilService } from './util.service.js';
-import { storageService } from './async-storage.service.js';
+import { httpService } from './http.service.js';
 const volsInit = require('../../volsInit.json');
-import axios from 'axios';
+// import { storageService } from './async-storage.service.js';
+// import axios from 'axios';
 
-const VOL_KEY = 'vols';
-const gVols = _createVols();
+// const VOL_KEY = 'vols';
+// const gVols = _createVols();
+const API = 'http://localhost:3030/api/volApp';
 
 export const volService = {
 	query,
@@ -15,38 +17,29 @@ export const volService = {
 };
 
 async function query(filterBy) {
-	return storageService.query(VOL_KEY);
+	// return storageService.query(VOL_KEY);
+	return httpService.get('vol', filterBy);
 }
 
 function getById(volId) {
-	return storageService.get(VOL_KEY, volId);
-}
-
-function _createVols() {
-	let vols = utilService.loadFromStorage(VOL_KEY);
-	if (!vols || !vols.length) {
-		vols = volsInit;
-		utilService.saveToStorage(VOL_KEY, vols);
-	}
+	// return storageService.get(VOL_KEY, volId);
+	return httpService.get(`vol/${volId}`);
 }
 
 function save(vol) {
-	if (vol._id) {
-		storageService.put(VOL_KEY, vol);
-		return vol;
-	} else {
-		vol._id = utilService.makeId();
+	if (vol._id) return httpService.put('vol', vol);
+	else {
+		vol.org.name = 'Duckies United';
 		vol.imgUrls = [
 			'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
 		];
-		vol.org.name = 'Duckies United';
-		storageService.post(VOL_KEY, vol);
+		return httpService.post('vol', vol);
 	}
 }
 
 function remove(volId) {
-	console.log('sanity service');
-	return storageService.remove(VOL_KEY, volId);
+	return httpService.delete(`vol/${volId}`);
+	// return storageService.remove(VOL_KEY, volId);
 }
 
 function getEmptyVol() {
@@ -59,3 +52,25 @@ function getEmptyVol() {
 		loc: {},
 	};
 }
+
+// function _createVols() {
+// 	let vols = utilService.loadFromStorage(VOL_KEY);
+// 	if (!vols || !vols.length) {
+// 		vols = volsInit;
+// 		utilService.saveToStorage(VOL_KEY, vols);
+// 	}
+// }
+
+// function save(vol){
+// if (vol._id) {
+// 	storageService.put(VOL_KEY, vol);
+// 	return vol;
+// } else {
+// 	vol._id = utilService.makeId();
+// 	vol.imgUrls = [
+// 		'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
+// 	];
+// 	vol.org.name = 'Duckies United';
+// 	storageService.post(VOL_KEY, vol);
+// }
+// }

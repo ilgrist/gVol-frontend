@@ -2,14 +2,24 @@
   <section class="explore-filter">
     <div class="online-onsite">
       <label class="online" for="online" title="Volunteer Online">
-        <input id="online" type="checkbox" v-model="filterBy.isOnLine" @change="filter"/>
+        <input
+          id="online"
+          type="checkbox"
+          v-model="filterBy.isOnLine"
+          @change="filter"
+        />
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626424950/volApp/icons/online_y28koq.svg"
           alt="online-img"
         />
       </label>
       <label class="onsite" for="onsite" title="Volunteer Onsite">
-        <input id="onsite" type="checkbox" v-model="filterBy.isOnSite" @change="filter"/>
+        <input
+          id="onsite"
+          type="checkbox"
+          v-model="filterBy.isOnSite"
+          @change="filter"
+        />
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626424950/volApp/icons/onsite_ufyohr.svg"
           alt="onsite-img"
@@ -45,6 +55,7 @@
           <option value="translating">Translating</option>
           <option value="building">Building</option>
           <option value="dreaming">Dreaming</option>
+          <option value="typing">Typing</option>
         </select>
       </label>
     </div>
@@ -70,10 +81,9 @@ export default {
       this.$emit("filter", copyFilterBy);
     },
   },
-  created(){
-    this.filterBy = this.$store.getters.filterBy
-    this.filter()
-  }
-
+  created() {
+    this.filterBy = this.$store.getters.filterBy;
+    // this.filter()
+  },
 };
 </script>

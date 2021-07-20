@@ -14,59 +14,6 @@ export default {
 		},
 		volToUpdate: null,
 	},
-
-	getters: {
-		volToUpdate(state) {
-			return state.volToUpdate;
-		},
-		volsToShow(state) {
-			// there is filter process in the backend
-			//TODO: remove the filter logic from this getter and
-			// change the func to loadVols after setFilter
-			let filteredVols = JSON.parse(JSON.stringify(state.vols));
-			if (state.filterBy.category === 'all') filteredVols = filteredVols;
-			if (state.filterBy.category !== 'all') {
-				filteredVols = filteredVols.filter((vol) => {
-					const tags = vol.tags;
-					return tags.some((tag) => tag === state.filterBy.category);
-				});
-			}
-			if (state.filterBy.skills === 'all') filteredVols = filteredVols;
-			if (state.filterBy.skills !== 'all') {
-				filteredVols = filteredVols.filter((vol) => {
-					const skills = vol.reqSkills;
-					return skills.some(
-						(skill) => skill === state.filterBy.skills
-					);
-				});
-			}
-			if (state.filterBy.isOnLine) {
-				filteredVols = filteredVols.filter((vol) => !vol.loc.isOnsite);
-			}
-			if (state.filterBy.isOnSite) {
-				filteredVols = filteredVols.filter((vol) => vol.loc.isOnsite);
-			}
-			if (state.filterBy.txt) {
-				const regex = new RegExp(state.filterBy.txt, 'i');
-				filteredVols = state.vols.filter((vol) =>
-					regex.test(vol.title)
-				);
-			}
-			return filteredVols;
-		},
-		filterBy(state) {
-			return state.filterBy;
-		},
-		shortListRandVols(state) {
-			let randomVols = [];
-			for (var i = 0; i < 4; i++) {
-				var item =
-					state.vols[Math.floor(Math.random() * state.vols.length)];
-				randomVols.push(item);
-			}
-			return randomVols;
-		},
-	},
 	mutations: {
 		setFilter(state, { filterBy }) {
 			state.filterBy = filterBy;
@@ -77,6 +24,7 @@ export default {
 		},
 		updateVol(state, { vol }) {
 			state.volToUpdate = vol;
+
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
 		},
@@ -96,6 +44,7 @@ export default {
 				state.vols[idx].reviews.unshift(review);
 			}
 		},
+
 		removeReview(state, { payload }) {
 			const volId = payload.volId;
 			const revIdx = payload.revIdx;
@@ -115,10 +64,31 @@ export default {
 		},
 	},
 
+	getters: {
+		volToUpdate(state) {
+			return state.volToUpdate;
+		},
+		volsToShow(state) {
+			return state.vols;
+		},
+		filterBy(state) {
+			return state.filterBy;
+		},
+		shortListRandVols(state) {
+			let randomVols = [];
+			for (var i = 0; i < 4; i++) {
+				var item =
+					state.vols[Math.floor(Math.random() * state.vols.length)];
+				randomVols.push(item);
+			}
+			return randomVols;
+		},
+	},
+
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
 			const user = await userService.getById(memberId);
-			const member = { _id: user._id, imgUrl: user.imgUrl };
+			const member = { _id: user._id, imgURL: user.imgURL };
 
 			const volToUpdate = JSON.parse(JSON.stringify(vol));
 			volToUpdate.members.push(member);
@@ -158,11 +128,6 @@ export default {
 				console.log("Can't load vols", err);
 			}
 		},
-		async removeReview({ commit }, { revRemove }) {
-			const volId = revRemove.volId;
-			const revIdx = revRemove.revIdx;
-			commit({ type: 'removeReview', payload: { volId, revIdx } });
-		},
 		async addReview({ commit }, { newReview }) {
 			const volId = newReview.volId;
 			const review = {
@@ -175,6 +140,13 @@ export default {
 
 			commit({ type: 'addReview', payload: { review, volId } });
 		},
+
+		async removeReview({ commit }, { revRemove }) {
+			const volId = revRemove.volId;
+			const revIdx = revRemove.revIdx;
+			commit({ type: 'removeReview', payload: { volId, revIdx } });
+		},
+
 		async getVol(context, { _id }) {
 			await context.dispatch({ type: 'loadVols' });
 			const vol = context.state.vols.find((vol) => vol._id === _id);

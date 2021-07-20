@@ -29,7 +29,6 @@ function getById(volId) {
 async function save(vol) {
 	if (vol._id) return httpService.put('vol/', vol);
 	else {
-		console.log('vol', vol);
 		vol.org.name = 'Duckies United';
 		vol.reviews = [];
 		if (!vol.imgUrls.length)

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { showMsg } from "../../services/event-bus.service.js";
 import addReview from "./add-review.vue";
 
 export default {
@@ -47,26 +46,24 @@ export default {
 
   computed: {
     avgRating() {
-      // TODO: TURN TO REDUCE
-      let ratingSum = 0;
       let ratingLength = 0;
-
-      this.reviews.forEach((review) => {
-        if (!review.rating) return;
+      let ratingSum = this.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
         ratingLength++;
-        ratingSum += review.rating;
-      });
-      if (!this.reviews.length) return "None";
+        console.log(review.rating);
+        return acc + review.rating;
+      }, 0);
+
+      if (!ratingLength) return "None";
       return (ratingSum / ratingLength).toFixed(2);
     },
   },
   methods: {
     starsDisplay(rating) {
       let display = "";
-      for (let i = 0; i <= rating; i++) {
+      for (let i = 0; i < rating; i++) {
         display += "★";
       }
-      console.log(display);
       return display;
     },
     addReview() {

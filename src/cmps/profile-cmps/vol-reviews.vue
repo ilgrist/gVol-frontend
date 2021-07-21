@@ -70,7 +70,6 @@ export default {
     },
     sendReview(newReview) {
       this.isNewReview = false;
-      // newReview.volId = this.volId;
       this.$emit("sendReview", newReview);
     },
 

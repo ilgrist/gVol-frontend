@@ -201,9 +201,9 @@ export default {
   },
 
   created() {
-    if (this.$store.getters.volToUpdate) {
+    if (this.$store.getters.currVol) {
       this.isEdit = true;
-      this.vol = JSON.parse(JSON.stringify(this.$store.getters.volToUpdate));
+      this.vol = JSON.parse(JSON.stringify(this.$store.getters.currVol));
       this.title = "Update ";
     } else {
       this.isEdit = false;
@@ -262,9 +262,7 @@ export default {
 
         if (this.isEdit) this.closeModal();
         else {
-          this.vol = JSON.parse(
-            JSON.stringify(this.$store.getters.volToUpdate)
-          );
+          this.vol = JSON.parse(JSON.stringify(this.$store.getters.currVol));
           const volId = this.vol._id;
           this.$router.push(`/volApp/${volId}`);
         }

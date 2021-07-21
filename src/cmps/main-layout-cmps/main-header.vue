@@ -40,7 +40,6 @@ export default {
     },
     loggedinUser() {
       const user = this.$store.getters.loggedinUser;
-      console.log('user:', user)
       if (user) {
         this.isLoggedIn = true;
         this.currUser = user;

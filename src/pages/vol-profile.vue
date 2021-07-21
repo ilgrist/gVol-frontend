@@ -16,7 +16,7 @@
           @closeModal="closeModal"
           @removeReview="removeReview"
         />
-        <volSideBar :vol="vol" @joinVol="joinVol" />
+        <volSideBar :vol="vol" />
       </div>
     </div>
     <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
@@ -26,9 +26,10 @@
 <script>
 import volSideBar from "@/cmps/profile-cmps/vol-sideBar.vue";
 import volDetails from "@/cmps/profile-cmps/vol-details.vue";
-import { volService } from "@/services/vol.service.js";
-import { showMsg } from "../services/event-bus.service.js";
+// import { volService } from "@/services/vol.service.js";
+import { showMsg } from "@/services/event-bus.service.js";
 import addEditVol from "@/cmps/add-edit-vol.vue";
+import { utilService } from "@/services/util.service.js";
 
 export default {
   components: {
@@ -43,14 +44,9 @@ export default {
     };
   },
   methods: {
-    joinVol() {
-      this.vol = this.$store.getters.volToUpdate;
-    },
-
     async removeReview(revIdx) {
-      const removedReview = { revIdx: revIdx, updatedVol: this.vol };
       try {
-        await this.$store.dispatch({ type: "removeReview", removedReview });
+        await this.$store.dispatch({ type: "removeReview", revIdx });
         this.msg = "Review Deleted!";
         showMsg(this.msg, "success");
       } catch {
@@ -76,20 +72,27 @@ export default {
     },
     openModal() {
       const vol = this.vol;
-      this.$store.commit({ type: "setVolToUpdate", vol });
+      this.$store.commit({ type: "setCurrVol", vol });
       this.isEditing = !this.isEditing;
     },
     closeModal() {
-      this.vol = this.$store.getters.volToUpdate;
+      this.vol = this.$store.getters.currVol;
       this.isEditing = false;
     },
 
     async sendReview(newReview) {
       this.isNewReview = false;
-      // newReview.volId = this.vol._id;
-      newReview.updatedVol = this.vol;
+      newReview.volId = this.vol._id;
+      const reviewToSave = {
+        id: utilService.makeId(),
+        txt: newReview.txt,
+        createdBy: newReview.createdBy,
+        createdAt: Date.now(),
+        rating: newReview.rating,
+      };
+
       try {
-        await this.$store.dispatch({ type: "addReview", newReview });
+        await this.$store.dispatch({ type: "addReview", reviewToSave });
         this.msg = "Review added!";
         showMsg(this.msg, "success");
       } catch {
@@ -100,7 +103,6 @@ export default {
     },
     async setVol() {
       const { _id } = this.$route.params;
-      console.log("file: vol-profile.vue ~ line 103 ~ _id", _id);
       if (_id)
         try {
           this.vol = await this.$store.dispatch({ type: "getVol", _id });

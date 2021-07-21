@@ -1,7 +1,4 @@
-import { utilService } from '../services/util.service.js';
 import { volService } from '../services/vol.service.js';
-import { userService } from '../services/user.service.js';
-import { Store } from 'vuex';
 
 export default {
 	state: {
@@ -13,16 +10,16 @@ export default {
 			isOnSite: false,
 			isOnLine: false,
 		},
-		volToUpdate: null, // currVol
+		currVol: null,
 	},
 
 	getters: {
 		getMembers(state) {
-			return state.volToUpdate.members;
+			return state.currVol.members;
 		},
 
-		volToUpdate(state) {
-			return state.volToUpdate;
+		currVol(state) {
+			return state.currVol;
 		},
 		volsToShow(state) {
 			return state.vols;
@@ -46,11 +43,11 @@ export default {
 			state.filterBy = filterBy;
 		},
 		addVol(state, { vol }) {
-			state.volToUpdate = vol;
+			state.currVol = vol;
 			state.vols.push(vol);
 		},
 		updateVol(state, { vol }) {
-			state.volToUpdate = vol;
+			state.currVol = vol;
 
 			const idx = state.vols.findIndex((td) => td._id === vol._id);
 			state.vols.splice(idx, 1, vol);
@@ -83,8 +80,11 @@ export default {
 		// 	state.vols[volId].reviews.splice(revIdx, 1);
 		// },
 
-		setVolToUpdate(state, { vol }) {
-			state.volToUpdate = vol;
+		// setVolToUpdate(state, { vol }) {
+		// 	state.volToUpdate = vol;
+		// },
+		setCurrVol(state, { vol }) {
+			state.currVol = vol;
 		},
 
 		joinVol(state, { volToUpdate }) {
@@ -96,32 +96,14 @@ export default {
 	},
 
 	actions: {
-		async joinVol({ commit, dispatch }, { memberId, vol }) {
-			const user = await userService.getById(memberId);     //USE LOGGEDIN USER ?? //
-			// console.log('file: vol-store.js ~ line 99 ~ user', user);
-
-			const member = { _id: user._id, imgUrl: user.imgUrl };
-
-			// console.log('file: vol-store.js ~ line 100 ~ member', member);
-			const volToUpdate = JSON.parse(JSON.stringify(vol));
-			volToUpdate.members.push(member);
-			try {
-				dispatch({ type: 'saveVol', vol: volToUpdate });
-				commit({ type: 'joinVol', volToUpdate: volToUpdate });
-			} catch (err) {
-				console.log('Failed to add Member', err);
-			}
-		},
 		async saveVol({ commit, dispatch }, { vol }) {
-			console.log('file: vol-store.js ~ line 107 ~ vol', vol);
-			console.log('sanity from savevol');
 			const type = vol._id ? 'updateVol' : 'addVol';
 			try {
 				vol = await volService.save(vol);
 				commit({ type, vol });
 			} catch (err) {
 				console.log("Couldn't save Vol", vol, err);
-				throw err // catch it in the cmps ans msg to the user
+				throw err; // catch it in the cmps ans msg to the user
 			}
 		},
 		async removeVol({ commit }, payload) {
@@ -130,7 +112,7 @@ export default {
 				commit(payload);
 			} catch (err) {
 				console.log("Couldn't remove Vol", err);
-				throw err // catch it in the cmps ans msg to the user
+				throw err; // catch it in the cmps ans msg to the user
 			}
 		},
 		async loadVols(context) {
@@ -139,56 +121,36 @@ export default {
 				context.commit({ type: 'setVols', vols });
 			} catch (err) {
 				console.log("Can't load vols", err);
-				throw err // catch it in the cmps ans msg to the user
+				throw err; // catch it in the cmps ans msg to the user
 			}
 		},
-		async addReview({ dispatch }, { newReview }) {
-			const updatedVol = newReview.updatedVol;
-			// TBD - DISCUSS APPROACH, SEND ENTIRE VOL VS VOLID
-			// const volId = newReview.volId;
-			const review = {
-				id: utilService.makeId(),
-				txt: newReview.txt,
-				createdBy: newReview.createdBy,
-				createdAt: Date.now(),
-				rating: newReview.rating,
-			};
-
-			updatedVol.reviews.push(review);
+		async addReview(context, { reviewToSave }) {
+			const vol = context.state.currVol;
+			vol.reviews.push(reviewToSave);
 
 			try {
-				dispatch({ type: 'saveVol', vol: updatedVol });
+				context.dispatch({ type: 'saveVol', vol });
 			} catch {
 				console.log('Failed to add Member', err);
-				throw err // catch it in the cmps ans msg to the user
+				throw err; // catch it in the cmps ans msg to the user
 			}
 		},
 
-		async removeReview({ dispatch }, { removedReview }) {
-			// const updatedVol = JSON.parse(
-			// 	JSON.stringify(removedReview.updatedVol)
-			// );
-			// TBD: SHOULD PROBABLY MAKE A COPY OF THE VOL OBJECT???? THIS ACTS FUNNY
-			const updatedVol = removedReview.updatedVol;
-			const revIdx = removedReview.revIdx;
-
-			updatedVol.reviews.splice(revIdx, 1);
+		async removeReview(context, { revIdx }) {
+			const vol = context.state.currVol;
+			vol.reviews.splice(revIdx, 1);
 
 			try {
-				dispatch({ type: 'saveVol', vol: updatedVol });
+				context.dispatch({ type: 'saveVol', vol });
 			} catch {
 				console.log('Failed to add Member', err);
+				throw err;
 			}
 		},
-
-		// tbd: rewrite - we're currently getting all of the vols from the service, we ,maybe shouldnt?
 
 		async getVol(context, { _id }) {
-			await context.dispatch({ type: 'loadVols' });
-			const vol = context.state.vols.find((vol) => vol._id === _id);
-			context.state.volToUpdate = vol;
-			if (!vol) return 'cannot find vol';
-			return vol;
+			context.state.currVol = await volService.getById(_id);
+			return context.state.currVol;
 		},
 	},
 };

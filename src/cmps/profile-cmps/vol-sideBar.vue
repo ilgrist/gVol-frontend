@@ -49,12 +49,13 @@ export default {
         return;
       }
       if (this.loggedinUser) {
-        await this.$store.dispatch({
-          type: "joinVol",
-          memberId: this.loggedinUser._id,
-          vol: this.vol,
-        });
-        this.$emit("joinVol");
+        const vol = this.$store.getters.currVol;
+        const member = {
+          _id: this.loggedinUser._id,
+          imgUrl: this.loggedinUser.imgUrl,
+        };
+        vol.members.push(member);
+        await this.$store.dispatch({ type: "saveVol", vol });
         this.msg = "Your request has been sent!";
         showMsg(this.msg, "success");
         this.msg = "";
@@ -69,12 +70,11 @@ export default {
       this.msg = "";
     },
   },
-  computed:{
-    loggedinUser(){
-      return this.$store.getters.loggedinUser
-    }
+  computed: {
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
   },
-
 };
 </script>
 

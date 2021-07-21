@@ -40,7 +40,9 @@ export default {
       this.$router.push(`/user/${userId}`);
     },
     async onVol() {
-      if (this.vol.members.find(() => this.loggedinUser)) {
+      if (
+        this.vol.members.find((member) => member._id === this.loggedinUser._id)
+      ) {
         this.msg = "Member Already Registered ";
         showMsg(this.msg, "success");
         this.msg = "";

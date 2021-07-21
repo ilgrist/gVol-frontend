@@ -54,6 +54,7 @@ function getEmptyVol() {
 		loc: {},
 		imgUrls: [],
 		reviews: [],
+		members: [],
 	};
 }
 

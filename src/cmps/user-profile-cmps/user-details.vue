@@ -7,7 +7,7 @@
       <h2>{{ user.fullname }}</h2>
       <p>
         Skills:
-        <span class="details-tag" v-for="skill in user.skills" :key="skill">
+        <span class="details-tag" v-for="skill,idx in user.skills" :key="idx">
           {{ skill }}
         </span>
       </p>

@@ -1,6 +1,6 @@
 <template>
   <section class="explore-list">
-    <short-prev v-for="vol,idx in vols" :key="idx" :vol="vol"></short-prev>
+    <short-prev @cardClicked="goToProfile" v-for="vol,idx in vols" :key="idx" :vol="vol"></short-prev>
   </section>
 </template>
 
@@ -14,5 +14,10 @@ export default {
  components: {
     shortPrev
   },
+  methods:{
+    goToProfile(volId) {
+      this.$router.push(`/volApp/${volId}`);
+    },
+  }
 };
 </script>

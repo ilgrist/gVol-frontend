@@ -52,6 +52,7 @@ export default {
         await this.$store.dispatch({ type: "removeReview", revIdx });
         this.msg = "Review Deleted!";
         showMsg(this.msg, "success");
+        // showMsg("Review Deleted!", "success");
       } catch {
         this.msg = "Cannot remove review, Try again later...";
         showMsg(this.msg, "danger");

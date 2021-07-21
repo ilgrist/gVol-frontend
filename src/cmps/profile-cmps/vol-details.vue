@@ -75,7 +75,6 @@
 
 <script>
 import volReviews from "@/cmps/profile-cmps/vol-reviews.vue";
-// import { showMsg } from "../../services/event-bus.service.js";
 import { utilService } from "@/services/util.service.js";
 
 export default {

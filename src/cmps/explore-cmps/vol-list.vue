@@ -1,23 +1,29 @@
 <template>
   <section class="explore-list">
-    <short-prev @cardClicked="goToProfile" v-for="vol,idx in vols" :key="idx" :vol="vol"></short-prev>
+    <short-prev
+      @cardClicked="goToProfile"
+      v-for="(vol, idx) in vols"
+      :key="idx"
+      :vol="vol"
+    ></short-prev>
   </section>
 </template>
 
 <script>
-import shortPrev from "../homepage-cmps/short-vol-list-card.vue"
+import shortPrev from "../homepage-cmps/short-vol-list-card.vue";
 
 export default {
-  props:{
-    vols: Array
+  props: {
+    vols: Array,
   },
- components: {
-    shortPrev
+  components: {
+    shortPrev,
   },
-  methods:{
-    goToProfile(volId) {
-      this.$router.push(`/volApp/${volId}`);
+  methods: {
+    goToProfile(vol) {
+      this.$store.commit({ type: "setCurrVol", vol });
+      this.$router.push(`/volApp/${vol._id}`);
     },
-  }
+  },
 };
 </script>

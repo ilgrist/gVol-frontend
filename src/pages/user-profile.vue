@@ -59,11 +59,11 @@ export default {
   },
   methods: {
     openModal() {
-      this.$store.commit({ type: "setVolToUpdate", vol: null });
+      this.$store.commit({ type: "setCurrVol", vol: null });
       this.isEditing = !this.isEditing;
     },
     closeModal() {
-      this.vol = this.$store.getters.volToUpdate;
+      this.vol = this.$store.getters.currVol;
       this.isEditing = false;
       this.loadUserVols();
     },

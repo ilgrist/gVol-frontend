@@ -44,8 +44,9 @@ export default {
       let filterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$emit("filterBy", filterBy);
     },
-    goToProfile(volId) {
-      this.$router.push(`/volApp/${volId}`);
+    goToProfile(vol) {
+      this.$store.commit({ type: "setCurrVol", vol });
+      this.$router.push(`/volApp/${vol._id}`);
     },
   },
   created() {

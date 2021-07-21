@@ -60,29 +60,6 @@ export default {
 			state.vols = vols;
 		},
 
-		// TBD - DISCUSS APPROACH, IF WE ARE SAVING ENTIRE VOL EACH TIME, WE CAN SIMPLY USE UPDATE MUTATIONS FOR EVERYTHING
-
-		// addReview(state, { payload }) {
-		// 	const volId = payload.volId;
-		// 	const review = payload.review;
-		// 	const idx = state.vols.findIndex((vol) => vol._id === volId);
-		// 	if (idx) {
-		// 		state.vols[idx].reviews.unshift(review);
-		// 	}
-		// 	console.log('addreview,', state.vols[idx]);
-		// 	console.log('addreview', state.vols);
-		// },
-
-		// removeReview(state, { payload }) {
-		// 	const volId = payload.volId;
-		// 	const revIdx = payload.revIdx;
-
-		// 	state.vols[volId].reviews.splice(revIdx, 1);
-		// },
-
-		// setVolToUpdate(state, { vol }) {
-		// 	state.volToUpdate = vol;
-		// },
 		setCurrVol(state, { vol }) {
 			state.currVol = vol;
 		},

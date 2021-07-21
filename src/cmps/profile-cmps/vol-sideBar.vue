@@ -6,8 +6,8 @@
         <button @click="onVol" class="details-btn focus">Volunteer</button>
         <button @click="onShare" class="details-btn">Share</button>
       </div>
-      <h4 v-if="vol.members">Participating Members</h4>
-      <div v-if="vol.members" class="sidebar-users">
+      <h4 v-if="members">Participating Members</h4>
+      <div v-if="members" class="sidebar-users">
         <img
           v-for="(member, idx) in members"
           :key="idx"
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       msg: "",
-      members: this.$store.getters.getMembers,
+      members: this.$store.getters.getMembers || [],
     };
   },
   methods: {
@@ -40,9 +40,7 @@ export default {
       this.$router.push(`/user/${userId}`);
     },
     async onVol() {
-      if (
-        this.vol.members.find((member) => member._id === this.loggedinUser._id)
-      ) {
+      if (this.members.find((member) => member._id === this.loggedinUser._id)) {
         this.msg = "Member Already Registered ";
         showMsg(this.msg, "success");
         this.msg = "";

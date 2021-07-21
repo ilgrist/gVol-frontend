@@ -42,11 +42,9 @@ const router = new VueRouter({
 	linkActiveClass: 'active',
 });
 
-// router.beforeEach((to, from, next) => {
-// 	console.log('from:', from)
-// 	console.log('to:', to)
-// 	if(from.name === 'userProfile' && to.name === 'login') next({path:'/'})
-// 	else next()
-//   })
+router.beforeEach((to, from, next) => {
+	if(from.name === 'login' && to.name === 'userProfile') next({path:'/'})
+	else next()
+  })
 
 export default router;

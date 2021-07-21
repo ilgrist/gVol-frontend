@@ -15,9 +15,11 @@
         <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
           X
         </button>
-        <span class="review-user"> {{ review.createdBy }} </span> "{{
-          review.txt
-        }}" ({{ starsDisplay(review.rating) }})
+        <span class="review-user">
+          {{ review.createdBy }}
+          <span> {{ review.createdAt }}</span>
+        </span>
+        "{{ review.txt }}" ({{ starsDisplay(review.rating) }})
         <!-- - {{ review.rating }} Stars -->
       </li>
     </ul>

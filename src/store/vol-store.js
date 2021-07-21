@@ -149,8 +149,10 @@ export default {
 		},
 
 		async getVol(context, { _id }) {
-			context.state.currVol = await volService.getById(_id);
-			return context.state.currVol;
+			// context.state.currVol = await volService.getById(_id);
+			// return context.state.currVol;
+
+			return await volService.getById(_id);
 		},
 	},
 };

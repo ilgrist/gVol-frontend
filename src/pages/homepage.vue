@@ -20,7 +20,7 @@
       :name="'Newest'"
       @filterBy="goExplore"
     />
-    <categories-grid class="main-layout" />
+    <categories-grid class="main-layout" @filterBy="goExplore" />
     <!-- </template> -->
   </div>
 </template>

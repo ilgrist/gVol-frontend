@@ -69,6 +69,10 @@ export default {
 			);
 			state.vols.splice(idx, 1, volToUpdate);
 		},
+
+		// leaveVol(state){
+
+		// },
 	},
 
 	actions: {

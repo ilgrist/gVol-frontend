@@ -242,7 +242,7 @@ export default {
 
     removeVol(volId) {
       console.log("sanity cmp", volId);
-      this.$emit("remove", volId);
+      this.$emit("removeVol", volId);
     },
     closeModal() {
       this.$emit("closeModal");

@@ -19,14 +19,17 @@
         <volSideBar :vol="vol" />
       </div>
     </div>
-    <add-edit-vol v-if="isEditing" @closeModal="closeModal" @remove="remove" />
+    <add-edit-vol
+      v-if="isEditing"
+      @closeModal="closeModal"
+      @removeVol="removeVol"
+    />
   </section>
 </template>
 
 <script>
 import volSideBar from "@/cmps/profile-cmps/vol-sideBar.vue";
 import volDetails from "@/cmps/profile-cmps/vol-details.vue";
-// import { volService } from "@/services/vol.service.js";
 import { showMsg } from "@/services/event-bus.service.js";
 import addEditVol from "@/cmps/add-edit-vol.vue";
 import { utilService } from "@/services/util.service.js";
@@ -56,7 +59,7 @@ export default {
       this.msg = "";
     },
 
-    async remove(volId) {
+    async removeVol(volId) {
       try {
         await this.$store.dispatch({ type: "removeVol", volId });
         this.closeModal();
@@ -106,7 +109,7 @@ export default {
       if (_id)
         try {
           this.vol = await this.$store.dispatch({ type: "getVol", _id });
-          this.$store.commit({type: "setCurrVol", vol:this.vol })
+          this.$store.commit({ type: "setCurrVol", vol: this.vol });
         } catch (err) {
           console.log("Vol not available", err);
           throw err;

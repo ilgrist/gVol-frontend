@@ -18,6 +18,8 @@
         :vols="userVols"
         :name="'Volunteering in'"
         class="user-vol-list"
+        @filterBy="filterBy"
+        @leaveVol="leaveVol"
       />
       <h3 class="empty-state" v-if="!userVols.length">
         Nowhere yet!
@@ -88,6 +90,13 @@ export default {
       });
       this.userVols = vols;
       return vols;
+    },
+    filterBy(filterBy) {
+      this.$store.commit({ type: "setFilter", filterBy });
+      this.$router.push("/volApp");
+    },
+    leaveVol(vol) {
+      console.log("user ", this.user.username, " is leavingVol", vol);
     },
   },
   async created() {

@@ -1,5 +1,5 @@
 <template>
-  <section class="vol-details">
+  <section class="user-details">
     <header class="details-header">
       <div class="user-profile-img-cont">
         <img :src="user.imgUrl" />
@@ -7,7 +7,11 @@
       <h2>{{ user.fullname }}</h2>
       <p>
         Skills:
-        <span class="details-tag" v-for="skill,idx in user.skills" :key="idx">
+        <span
+          class="details-tag"
+          v-for="(skill, idx) in user.skills"
+          :key="idx"
+        >
           {{ skill }}
         </span>
       </p>

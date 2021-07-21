@@ -100,6 +100,7 @@ export default {
     },
     async setVol() {
       const { _id } = this.$route.params;
+      console.log("file: vol-profile.vue ~ line 103 ~ _id", _id);
       if (_id)
         try {
           this.vol = await this.$store.dispatch({ type: "getVol", _id });

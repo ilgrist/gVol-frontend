@@ -17,6 +17,10 @@ export default {
 	},
 
 	getters: {
+		getMembers(state) {
+			return state.volToUpdate.members;
+		},
+
 		volToUpdate(state) {
 			return state.volToUpdate;
 		},
@@ -95,8 +99,11 @@ export default {
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
 			const user = await userService.getById(memberId);
-			const member = { _id: user._id, imgURL: user.imgURL };
+			console.log('file: vol-store.js ~ line 99 ~ user', user);
 
+			const member = { _id: user._id, imgUrl: user.imgUrl };
+
+			console.log('file: vol-store.js ~ line 100 ~ member', member);
 			const volToUpdate = JSON.parse(JSON.stringify(vol));
 			volToUpdate.members.push(member);
 			try {
@@ -176,6 +183,7 @@ export default {
 		async getVol(context, { _id }) {
 			await context.dispatch({ type: 'loadVols' });
 			const vol = context.state.vols.find((vol) => vol._id === _id);
+			context.state.volToUpdate = vol;
 			if (!vol) return 'cannot find vol';
 			return vol;
 		},

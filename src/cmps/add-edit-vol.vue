@@ -90,7 +90,7 @@
         </select> -->
 
         <label class="vol-imgs" for="img"
-          >Upload Images (up to 4 Images):
+          >Upload Images (up to 5 Images):
           <img
             class="upload-img"
             src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626782582/volApp/icons/uploadImg_ysu2jj.svg"
@@ -225,11 +225,12 @@ export default {
       );
     },
 
+    // TODO: include loading
     async handleFile(ev) {
-      if (this.vol.imgUrls.length > 3) {
-        this.msg = "Not more than 4 Images";
+      if (this.vol.imgUrls.length > 4) {
+        this.msg = "Not more than 5 Images";
         showMsg(this.msg, "danger");
-        console.log("Not more than 4 Images");
+        console.log("Not more than 5 Images");
         return;
       }
       const file = ev.target.files[0];
@@ -250,9 +251,7 @@ export default {
 
     async saveVol() {
       try {
-        console.log("onsite", this.vol.loc.isOnsite);
-        if (this.vol.loc.isOnsite) this.vol.loc.isOnsite = false;
-        console.log("onsite", this.vol.loc.isOnsite);
+        if (this.vol.loc.isOnsite === null) this.vol.loc.isOnsite = false;
 
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 

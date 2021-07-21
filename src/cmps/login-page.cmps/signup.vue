@@ -99,6 +99,8 @@ export default {
           "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg";
       this.$emit("signup", newUserCopy);
     },
+
+    // TODO: include loading
     async handleFile(ev) {
       const file = ev.target.files[0];
       const res = await uploadImg(ev);

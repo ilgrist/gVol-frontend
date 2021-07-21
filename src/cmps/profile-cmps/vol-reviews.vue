@@ -17,7 +17,7 @@
         </button>
         <span class="review-user">
           {{ review.createdBy }}
-          <span> {{ review.createdAt }}</span>
+          <!-- <span> {{ review.createdAt }}</span> -->
         </span>
         "{{ review.txt }}" ({{ starsDisplay(review.rating) }})
         <!-- - {{ review.rating }} Stars -->

@@ -50,7 +50,6 @@ a {
   }
 
   &.router-link-exact-active {
-    box-shadow: inset 0px -2px 0px 0px $clr1;
     cursor: pointer;
     color: $clr3;
   }

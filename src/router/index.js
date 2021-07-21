@@ -14,18 +14,12 @@ const routes = [
 		path: '/',
 		name: 'homepage',
 		component: homepage,
-		//RESEARCH SCROLLBHEAVIOR
 	},
 	{
 		path: '/volApp',
 		name: 'volExplore',
 		component: volExplore,
 	},
-	// {
-	// 	path: '/addVol/:volId?',
-	// 	name: 'addVol',
-	// 	component: addVol,
-	// },
 	{
 		path: '/volApp/:_id',
 		name: 'volProfile',
@@ -47,5 +41,12 @@ const router = new VueRouter({
 	routes,
 	linkActiveClass: 'active',
 });
+
+// router.beforeEach((to, from, next) => {
+// 	console.log('from:', from)
+// 	console.log('to:', to)
+// 	if(from.name === 'userProfile' && to.name === 'login') next({path:'/'})
+// 	else next()
+//   })
 
 export default router;

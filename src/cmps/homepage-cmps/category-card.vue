@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="cardClicked">
-    <img :src="require('../../assets/img/grid-imgs/' + category.url)" />
+    <img :src="category.imgUrl" />
     <p>{{ category.name }}</p>
   </div>
 </template>

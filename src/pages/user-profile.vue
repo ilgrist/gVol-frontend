@@ -7,19 +7,21 @@
       alt="loading"
     />
     <div v-else class="vol-det">
-      <userDetails :user="user" />
+      <div class="user-profile">
+        <userDetails :user="user" />
+        <user-vol-list
+          v-if="userVols"
+          :vols="userVols"
+          :name="'Volunteering in'"
+          class="user-vol-list"
+          @filterBy="filterBy"
+          @leaveVol="leaveVol"
+        />
+      </div>
       <userSideBar
         :user="user"
         :isLoggedSameAsCurr="isLoggedSameAsCurr"
         @openModal="openModal"
-      />
-      <user-vol-list
-        v-if="userVols"
-        :vols="userVols"
-        :name="'Volunteering in'"
-        class="user-vol-list"
-        @filterBy="filterBy"
-        @leaveVol="leaveVol"
       />
       <h3 class="empty-state" v-if="!userVols.length">
         Nowhere yet!

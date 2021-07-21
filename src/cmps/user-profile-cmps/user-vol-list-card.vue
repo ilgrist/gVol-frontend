@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     cardClicked() {
-      this.$emit("cardClicked", this.vol._id);
+      this.$emit("cardClicked", this.vol);
     },
     filterBySkill(skill) {
       this.$emit("filterBySkill", skill);

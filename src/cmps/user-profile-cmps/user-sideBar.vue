@@ -3,7 +3,11 @@
     <div class="details-sidebar">
       <h3 class="title-sidebar">Action Bar</h3>
       <div class="btn-container">
-        <button @click="openModal" class="details-btn focus">
+        <button
+          @click="openModal"
+          v-if="isLoggedSameAsCurr"
+          class="details-btn focus"
+        >
           Add volunteering
         </button>
         <button @click="onExplore" class="details-btn">Explore</button>
@@ -19,6 +23,9 @@ export default {
   props: {
     user: {
       type: Object,
+    },
+    isLoggedSameAsCurr: {
+      type: Boolean,
     },
   },
   data() {

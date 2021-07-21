@@ -59,7 +59,6 @@ export default {
 		setVols(state, { vols }) {
 			state.vols = vols;
 		},
-
 		setCurrVol(state, { vol }) {
 			state.currVol = vol;
 		},
@@ -80,7 +79,7 @@ export default {
 				commit({ type, vol });
 			} catch (err) {
 				console.log("Couldn't save Vol", vol, err);
-				throw err; // catch it in the cmps ans msg to the user
+				throw err;
 			}
 		},
 		async removeVol({ commit }, payload) {
@@ -89,7 +88,7 @@ export default {
 				commit(payload);
 			} catch (err) {
 				console.log("Couldn't remove Vol", err);
-				throw err; // catch it in the cmps ans msg to the user
+				throw err;
 			}
 		},
 		async loadVols(context) {
@@ -98,7 +97,7 @@ export default {
 				context.commit({ type: 'setVols', vols });
 			} catch (err) {
 				console.log("Can't load vols", err);
-				throw err; // catch it in the cmps ans msg to the user
+				throw err;
 			}
 		},
 		async addReview(context, { reviewToSave }) {
@@ -109,7 +108,7 @@ export default {
 				context.dispatch({ type: 'saveVol', vol });
 			} catch {
 				console.log('Failed to add Member', err);
-				throw err; // catch it in the cmps ans msg to the user
+				throw err;
 			}
 		},
 
@@ -126,9 +125,6 @@ export default {
 		},
 
 		async getVol(context, { _id }) {
-			// context.state.currVol = await volService.getById(_id);
-			// return context.state.currVol;
-
 			return await volService.getById(_id);
 		},
 	},

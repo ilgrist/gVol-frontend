@@ -8,7 +8,11 @@
     />
     <div v-else class="vol-det">
       <userDetails :user="user" />
-      <userSideBar :user="user" @openModal="openModal" />
+      <userSideBar
+        :user="user"
+        :isLoggedSameAsCurr="isLoggedSameAsCurr"
+        @openModal="openModal"
+      />
       <user-vol-list
         v-if="userVols"
         :vols="userVols"
@@ -47,6 +51,12 @@ export default {
       userVols: [],
     };
   },
+  computed: {
+    isLoggedSameAsCurr() {
+      const loggedUser = this.$store.getters.loggedinUser;
+      return this.user._id === loggedUser._id;
+    },
+  },
   methods: {
     openModal() {
       this.$store.commit({ type: "setCurrVol", vol: null });
@@ -55,6 +65,7 @@ export default {
     closeModal() {
       this.vol = this.$store.getters.currVol;
       this.isEditing = false;
+      this.loadUserVols();
     },
     async setUser() {
       const { _id } = this.$route.params;

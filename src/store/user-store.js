@@ -1,9 +1,5 @@
 import { userService } from '../services/user.service';
 import { volService } from '../services/vol.service';
-// import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service';
-
-// var localLoggedinUser = null;
-// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
 
 export default {
   state: {
@@ -118,9 +114,9 @@ export default {
         throw err;
       }
     },
-    async setLoggedInUser ({commit}){
-      const user = userService.getLoggedinUser() || null
-      commit({type: 'setLoggedInUser' ,user})
-    }
+    async setLoggedInUser({ commit }) {
+      const user = userService.getLoggedinUser() || null;
+      commit({ type: 'setLoggedInUser', user });
+    },
   },
 };

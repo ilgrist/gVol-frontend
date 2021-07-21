@@ -10,10 +10,17 @@
       <userDetails :user="user" />
       <userSideBar :user="user" @openModal="openModal" />
       <user-vol-list
+        v-if="userVols"
         :vols="userVols"
-        :name="'User vols'"
+        :name="'Volunteering in'"
         class="user-vol-list"
       />
+      <h2 class="empty-state" v-else>
+        Nowhere yet!
+        <router-link class="explore-link" to="/volApp"
+          >Explore Opportunities...</router-link
+        >
+      </h2>
     </div>
     <add-edit-vol v-if="isEditing" @closeModal="closeModal" />
   </section>

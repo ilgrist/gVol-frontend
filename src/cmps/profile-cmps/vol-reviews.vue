@@ -9,22 +9,22 @@
         Add a Review
       </button>
     </header>
-    <add-review v-if="isNewReview" @sendRev="sendReview"></add-review>
+    <add-review v-if="isNewReview" @sendReview="sendReview"></add-review>
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li>
-        <button @click.prevent.stop="removeRev(idx)" class="reviews-btn">
+        <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
           X
         </button>
         <span class="review-user"> {{ review.createdBy }} </span> "{{
           review.txt
-        }}" - {{ review.rating }} Stars
+        }}" ({{ starsDisplay(review.rating) }})
+        <!-- - {{ review.rating }} Stars -->
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { showMsg } from "../../services/event-bus.service.js";
 import addReview from "./add-review.vue";
 
 export default {
@@ -46,20 +46,21 @@ export default {
 
   computed: {
     avgRating() {
-      // TODO: TURN TO REDUCE
-      let ratingSum = 0;
       let ratingLength = 0;
-
-      this.reviews.forEach((review) => {
-        if (!review.rating) return;
+      let ratingSum = this.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
         ratingLength++;
-        ratingSum += review.rating;
-      });
-      if (!this.reviews.length) return "None";
+        return acc + review.rating;
+      }, 0);
+
+      if (!ratingLength) return "None";
       return (ratingSum / ratingLength).toFixed(2);
     },
   },
   methods: {
+    starsDisplay(rating) {
+      return "★".repeat(rating);
+    },
     addReview() {
       if (this.isLoggedinUser) {
         this.isNewReview = true;
@@ -67,15 +68,14 @@ export default {
         this.$router.push("/login");
       }
     },
-    async sendReview(newReview) {
+    sendReview(newReview) {
       this.isNewReview = false;
-      newReview.volId = this.volId;
-      this.$emit("sendRev", newReview);
+      // newReview.volId = this.volId;
+      this.$emit("sendReview", newReview);
     },
 
-    removeRev(revIdx) {
-      console.log("file: vol-reviews.vue ~ line 82 ~ reviewIdx", revIdx);
-      this.$emit("removeRev", revIdx, this.volId);
+    removeReview(revIdx) {
+      this.$emit("removeReview", revIdx);
     },
   },
 

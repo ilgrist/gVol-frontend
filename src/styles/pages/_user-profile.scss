@@ -6,3 +6,14 @@
     border-radius: 50%;
   }
 }
+
+.vol-det {
+  .explore-link {
+    box-shadow: none;
+    cursor: pointer;
+    color: $clr5;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

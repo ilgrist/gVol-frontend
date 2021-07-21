@@ -36,7 +36,7 @@ export default {
   methods: {
     sendReview() {
       const copyReview = JSON.parse(JSON.stringify(this.review));
-      this.$emit("sendRev", copyReview);
+      this.$emit("sendReview", copyReview);
     },
     setUser() {
       const loggedinUser = this.$store.getters.loggedinUser;

@@ -1,4 +1,5 @@
 import { userService } from '../services/user.service';
+import { volService } from '../services/vol.service';
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service';
 
 // var localLoggedinUser = null;
@@ -89,6 +90,15 @@ export default {
       } catch (err) {
         console.log('userStore: Error in loadAndWatchUser', err);
         throw err;
+      }
+    },
+    async userVols({ commit }, { userId }) {
+      try {
+        const filterBy = { userId };
+        const vols = volService.query(filterBy);
+        return vols;
+      } catch (err) {
+        console.log("Couldn't get user's vols", err);
       }
     },
     async removeUser({ commit }, { userId }) {

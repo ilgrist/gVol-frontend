@@ -9,7 +9,7 @@
       <h4 v-if="vol.members">Participating Members</h4>
       <div v-if="vol.members" class="sidebar-users">
         <img
-          v-for="(member, idx) in vol.members"
+          v-for="(member, idx) in members"
           :key="idx"
           class="img-profile"
           :src="member.imgUrl"
@@ -33,6 +33,7 @@ export default {
     return {
       msg: "",
       loggedinUser: null,
+      members: this.$store.getters.getMembers,
     };
   },
   methods: {
@@ -40,7 +41,9 @@ export default {
       this.$router.push(`/user/${userId}`);
     },
     async onVol() {
-      if (this.vol.members.find(() => this.loggedinUser)) {
+      if (
+        this.vol.members.find((member) => member._id === this.loggedinUser._id)
+      ) {
         this.msg = "Member Already Registered ";
         showMsg(this.msg, "success");
         this.msg = "";

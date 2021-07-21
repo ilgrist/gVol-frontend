@@ -10,6 +10,7 @@
       </button>
     </header>
     <add-review v-if="isNewReview" @sendReview="sendReview"></add-review>
+
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li>
         <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
@@ -31,9 +32,6 @@ import addReview from "./add-review.vue";
 
 export default {
   props: {
-    reviews: {
-      type: Array,
-    },
     volId: {
       type: String,
     },
@@ -47,6 +45,9 @@ export default {
   },
 
   computed: {
+    reviews() {
+      return this.$store.getters.currVol.reviews;
+    },
     avgRating() {
       let ratingLength = 0;
       let ratingSum = this.reviews.reduce((acc, review) => {

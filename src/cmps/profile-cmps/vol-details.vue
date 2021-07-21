@@ -63,7 +63,6 @@
       </p>
     </div>
     <volReviews
-      :reviews="vol.reviews"
       :volId="vol._id"
       @sendReview="sendReview"
       @removeReview="removeReview"

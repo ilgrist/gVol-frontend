@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       msg: "",
-      members: this.$store.getters.getMembers || [],
+      members: this.$store.getters.getMembers,
     };
   },
   methods: {
@@ -73,6 +73,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
   },
+
 };
 </script>
 

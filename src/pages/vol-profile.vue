@@ -106,6 +106,7 @@ export default {
       if (_id)
         try {
           this.vol = await this.$store.dispatch({ type: "getVol", _id });
+          this.$store.commit({type: "setCurrVol", vol:this.vol })
         } catch (err) {
           console.log("Vol not available", err);
           throw err;

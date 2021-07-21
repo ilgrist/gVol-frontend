@@ -1,7 +1,9 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
-    <button class="leave-vol-btn" @click.stop="leaveVol">X</button>
-    <h3>{{ title }}</h3>
+    <div class="card-title">
+      <h3>{{ title }}</h3>
+      <button class="leave-vol-btn" @click.stop="leaveVol">X</button>
+    </div>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online

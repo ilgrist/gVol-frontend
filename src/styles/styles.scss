@@ -24,14 +24,15 @@
 // @import '/pages/add-vol';
 
 //HOMEPAGE-CMPS
-@import '/components/homepage-cmps/short-list';
 @import '/components/homepage-cmps/hero';
+@import '/components/homepage-cmps/short-list';
+@import '/components/homepage-cmps/short-list-card';
 @import '/components/homepage-cmps/category-grid';
 
 //EXPLORE-CMPS
-@import '/components/explore-cmps/filter';
-@import '/components/explore-cmps/list';
-@import '/components/explore-cmps/preview';
+@import '/components/explore-cmps/explore-filter';
+@import '/components/explore-cmps/explore-list';
+@import '/components/explore-cmps/explore-list-card';
 
 // PROFILE-CMPS
 

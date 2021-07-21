@@ -19,8 +19,17 @@
 		button {
 			border: none;
 			background-color: transparent;
+			height: 2rem;
 			&:hover {
 				border-radius: 5px;
+				background-color: $clr5;
+			}
+
+			@include for-narrow-layout {
+			}
+			@include for-normal-layout {
+				height: 3rem;
+				width: 3rem;
 			}
 		}
 	}

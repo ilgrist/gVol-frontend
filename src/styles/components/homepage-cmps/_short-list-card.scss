@@ -1,0 +1,75 @@
+.card-preview {
+  cursor: pointer;
+  background-color: $clr2;
+  padding: 10px;
+  height: 370px;
+  width: 350px;
+  flex-wrap: wrap;
+
+  @include for-narrow-layout {
+    max-width: 200px;
+    max-height: 370px;
+  }
+  @include for-normal-layout {
+    max-width: 300px;
+    max-height: 345px;
+  }
+  @include for-wide-layout {
+    max-width: 370px;
+    max-height: 350px;
+  }
+
+  .card-title {
+    @include text-overflow;
+    margin-bottom: 0.3em;
+  }
+
+  // TBD Asi
+  .card-description {
+    @include flex-overflow(2);
+  }
+  img {
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  .rev-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    cursor: pointer;
+    background-color: $clr3;
+    border-radius: 10px;
+    color: $clr2;
+    > * {
+      display: flex;
+      gap: 5px;
+    }
+    img {
+      width: 1rem;
+      height: 100%;
+      transform: translateY(20%);
+      @include for-normal-layout {
+        transform: translateY(0%);
+      }
+    }
+  }
+  .skills {
+    display: flex;
+    font-weight: bold;
+    overflow: hidden;
+
+    span {
+      font-weight: normal;
+      margin-inline-start: 5px;
+    }
+  }
+  span {
+    font-size: large;
+    @include for-normal-layout {
+      font-size: small;
+    }
+  }
+}

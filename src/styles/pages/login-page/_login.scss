@@ -1,5 +1,4 @@
 .login-page-cont {
-	background-color: $clr2;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -8,6 +7,10 @@
 	min-height: 95vh;
 	padding-top: 50px;
 	margin-top: unset;
+
+	h1 {
+		margin-bottom: 1.5rem;
+	}
 
 	button {
 		background-color: $clr1;
@@ -30,6 +33,10 @@
 	button {
 		border-radius: 10px;
 		margin-bottom: 20px;
+		margin-top: 20px;
+		height: 2rem;
+		font-size: medium;
+		font-family: NunitoSans, sans-serif;
 	}
 }
 
@@ -47,35 +54,41 @@
 
 	border: 2px solid lightgray;
 	border-radius: 10px;
-	box-shadow: 0px 3px 0px 2px rgba(0, 0, 0, 0.1),
-		0px 6px 0px 4px rgba(0, 0, 0, 0.1), -1px 12px 27px -11px #000000;
+	box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.2)  ; 
 	transition: box-shadow 0.3s;
 
 	> *:not(:last-child) {
 		margin-bottom: 10px;
 	}
 	&:hover {
-		box-shadow: 0px 3px 0px 2px rgba(0, 0, 0, 0.1),
-			0px 6px 0px 4px rgba(0, 0, 0, 0.1), -1px 15px 30px -9px #000000;
+		box-shadow: -2px -2px 15px rgba(0, 0, 0, 0.2)  ; 
 		transition: box-shadow 0.3s;
 	}
 	h2 {
 		text-align: center;
 		text-decoration: underline;
+		font-family: NunitoSans, sans-serif
 	}
 	button {
 		margin-top: 10px;
 		width: 40%;
+		height: 2rem;
+		font-size: large;
+		font-family: NunitoSans, sans-serif;
+
+		@include for-narrow-layout {
+			width: 40%;
+			height: 1.5rem;
+			font-size: medium;
+			}
 	}
 	input {
-		// border: 1px solid lightgray;
-		// border-radius: 10px;
 		border: none;
 		border-bottom: 1px solid lightgray;
 		background-color: $clr1;
 	}
 	label {
-		// text-decoration: underline;
 		font-weight: 600;
+		font-family: NunitoSans, sans-serif
 	}
 }

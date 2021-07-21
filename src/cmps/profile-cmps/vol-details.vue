@@ -3,7 +3,6 @@
     <header class="details-header">
       <h2>
         {{ vol.title }}
-        <!-- <button title="Edit Vol" @click="openModal">🖊</button> -->
         <button title="Edit Vol" @click="openModal"><img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"></button>
       </h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>

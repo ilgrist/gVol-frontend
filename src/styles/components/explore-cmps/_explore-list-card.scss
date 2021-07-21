@@ -1,0 +1,20 @@
+.explore-list {
+  .card-preview {
+    @include for-narrow-layout {
+      max-width: 200px;
+      max-height: 370px;
+    }
+    @include for-normal-layout {
+      max-width: 300px;
+      max-height: 345px;
+    }
+    @include for-wide-layout {
+      max-width: 300px;
+      max-height: 350px;
+    }
+    @include for-extra-wide-layout {
+      max-width: 350px;
+      max-height: 350px;
+    }
+  }
+}

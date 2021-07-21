@@ -1,12 +1,5 @@
 /* Media queries Breakpoint mixins */
 
-// @mixin for-mobile-layout {
-// 	// @media (max-width: $break-narrow) {
-// 	@media (min-width: $break-narrow) {
-// 		@content;
-// 	}
-// }
-
 @mixin for-narrow-layout {
 	// @media (min-width: $break-narrow) {
 	@media (min-width: $break-narrow) {
@@ -64,4 +57,24 @@
 			@content;
 		}
 	}
+}
+
+//Text mixins
+
+//Single text line overflow
+@mixin text-overflow {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+}
+
+@mixin flex-overflow($linesNum) {
+	-webkit-line-clamp: $linesNum;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: #{$linesNum / 2}unquote('rem');
+	max-height: #{$linesNum}unquote('rem');
 }

@@ -4,22 +4,17 @@
     margin-bottom: 1rem;
   }
   .category-grid {
-    // display: grid;
-    // gap: 1rem;
-    // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    // grid-auto-flow: dense;
-    // > *:nth-child(3n) {
-    //   grid-column: span 2;
-    //   grid-row: span 2;
-    //   p {
-    //     font-size: 3rem;
-    //   }
-    // }
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
     flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 1rem;
+    @include for-narrow-layout {
+      flex-direction: row;
+      margin: 0;
+    }
 
     .card {
       @include aspect-ratio(1, 1);

@@ -4,6 +4,15 @@
     flex-flow: wrap;
     .card {
       max-width: 300px;
+      .card-title {
+        display: flex;
+        justify-content: space-between;
+        button {
+          border: none;
+          height: 1rem;
+          background-color: none;
+        }
+      }
     }
   }
 }

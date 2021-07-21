@@ -1,6 +1,6 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
-    <h3>{{ title }}</h3>
+    <h3 class="card-title">{{ title }}</h3>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
@@ -60,9 +60,11 @@ export default {
   },
   computed: {
     title() {
+      return this.vol.title;
       return utilService.shortTxt(this.vol.title, 25);
     },
     description() {
+      return this.vol.desc;
       return utilService.shortTxt(this.vol.desc, 60);
     },
     avgRating() {

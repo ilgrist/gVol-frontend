@@ -1,65 +1,85 @@
 /* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {
-	@media (max-width: $break-narrow) {
-		@content;
-	}
+  @media (max-width: $break-narrow) {
+    @content;
+  }
 }
 
 @mixin for-narrow-layout {
-	@media (min-width: $break-narrow) {
-		@content;
-	}
+  @media (min-width: $break-narrow) {
+    @content;
+  }
 }
 
 @mixin for-normal-layout {
-	@media (min-width: $break-normal) {
-		@content;
-	}
+  @media (min-width: $break-normal) {
+    @content;
+  }
 }
 
 @mixin for-wide-layout {
-	@media (min-width: $break-wide) {
-		@content;
-	}
+  @media (min-width: $break-wide) {
+    @content;
+  }
 }
 
 @mixin for-extra-wide-layout {
-	@media (min-width: $break-extra-wide) {
-		@content;
-	}
+  @media (min-width: $break-extra-wide) {
+    @content;
+  }
 }
 
 /* Media  Mixins */
 
 //aspect ratio mixin
 @mixin aspect-ratio($width, $height) {
-	position: relative;
-	overflow: hidden;
-	&:before {
-		content: '';
-		display: block;
-		width: 100%;
-		padding-top: ($height / $width) * 100%;
-	}
-	> * {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-	> img {
-		height: 100%;
-		object-fit: cover;
-	}
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 // Mixin for removing hover efects on iphone screen
 @mixin hover-supported {
-	@media not all and (pointer: coarse) {
-		&:hover {
-			@content;
-		}
-	}
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//Text mixins
+
+//Single text line overflow
+@mixin text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+}
+
+@mixin flex-overflow($linesNum) {
+  -webkit-line-clamp: $linesNum;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: #{$linesNum / 2}unquote('rem');
+  max-height: #{$linesNum}unquote('rem');
 }

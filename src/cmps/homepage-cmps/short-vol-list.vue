@@ -38,11 +38,6 @@ export default {
       },
     };
   },
-  computed: {
-    // randVols() {
-    //   return this.$store.getters.shortListRandVols;
-    // },
-  },
   methods: {
     filter(skill = "all") {
       this.filterBy.skills = skill;
@@ -53,9 +48,6 @@ export default {
       this.$store.commit({ type: "setCurrVol", vol });
       this.$router.push(`/volApp/${vol._id}`);
     },
-  },
-  created() {
-    // this.$store.dispatch({ type: "loadVols" });
   },
   components: {
     shortVolListCard,

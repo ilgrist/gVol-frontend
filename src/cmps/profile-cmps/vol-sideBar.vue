@@ -32,7 +32,6 @@ export default {
   data() {
     return {
       msg: "",
-      loggedinUser: null,
       members: this.$store.getters.getMembers,
     };
   },
@@ -69,13 +68,13 @@ export default {
       showMsg(this.msg, "success");
       this.msg = "";
     },
-    setUser() {
-      this.loggedinUser = this.$store.getters.loggedinUser;
-    },
   },
-  created() {
-    this.setUser();
+  computed:{
+    loggedinUser(){
+      return this.$store.getters.loggedinUser
+    }
   },
+
 };
 </script>
 

@@ -14,15 +14,15 @@ export default {
     users({ users }) {
       return users;
     },
-    loggedinUser({ loggedinUser }) {
-      return loggedinUser;
+    loggedinUser(state) {
+      return state.loggedinUser;
     },
     watchedUser({ watchedUser }) {
       return watchedUser;
     },
   },
   mutations: {
-    setLoggedinUser(state, { user }) {
+    setLoggedInUser(state, { user }) {
       state.loggedinUser = user;
     },
     setWatchedUser(state, { user }) {
@@ -39,7 +39,7 @@ export default {
     async login({ commit }, { userCred }) {
       try {
         const user = await userService.login(userCred);
-        commit({ type: 'setLoggedinUser', user });
+        commit({ type: 'setLoggedInUser', user });
         return user;
       } catch (err) {
         console.log('userStore: Error in login', err);
@@ -49,7 +49,7 @@ export default {
     async signup({ commit }, { newUser }) {
       try {
         const user = await userService.signup(newUser);
-        commit({ type: 'setLoggedinUser', user });
+        commit({ type: 'setLoggedInUser', user });
         return user;
       } catch (err) {
         console.log('userStore: Error in signup', err);
@@ -59,7 +59,7 @@ export default {
     async logout({ commit }) {
       try {
         await userService.logout();
-        commit({ type: 'setLoggedinUser', user: null });
+        commit({ type: 'setLoggedInUser', user: null });
       } catch (err) {
         console.log('userStore: Error in logout', err);
         throw err;
@@ -71,7 +71,6 @@ export default {
         const users = await userService.query();
         const loggedinUser = await userService.getLoggedinUser();
         commit({ type: 'setUsers', users });
-        commit({ type: 'setLoggedinUser', loggedinUser });
       } catch (err) {
         console.log('userStore: Error in loadUsers', err);
         throw err;
@@ -119,5 +118,9 @@ export default {
         throw err;
       }
     },
+    async setLoggedInUser ({commit}){
+      const user = userService.getLoggedinUser() || null
+      commit({type: 'setLoggedInUser' ,user})
+    }
   },
 };

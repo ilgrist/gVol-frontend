@@ -105,7 +105,7 @@ export default {
     toggleMore() {
       this.isShort = !this.isShort;
     },
-    async sendReview(newReview) {
+    sendReview(newReview) {
       this.$emit("sendReview", newReview);
     },
     removeReview(revIdx) {

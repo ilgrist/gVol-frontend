@@ -13,7 +13,7 @@ export default {
 			isOnSite: false,
 			isOnLine: false,
 		},
-		volToUpdate: null,
+		volToUpdate: null, // currVol
 	},
 
 	getters: {
@@ -56,7 +56,6 @@ export default {
 			state.vols.splice(idx, 1, vol);
 		},
 		removeVol(state, { volId }) {
-			console.log('sanity from commit');
 			const idx = state.vols.findIndex((td) => td._id === volId);
 			state.vols.splice(idx, 1);
 		},
@@ -98,12 +97,12 @@ export default {
 
 	actions: {
 		async joinVol({ commit, dispatch }, { memberId, vol }) {
-			const user = await userService.getById(memberId);
-			console.log('file: vol-store.js ~ line 99 ~ user', user);
+			const user = await userService.getById(memberId);     //USE LOGGEDIN USER ?? //
+			// console.log('file: vol-store.js ~ line 99 ~ user', user);
 
 			const member = { _id: user._id, imgUrl: user.imgUrl };
 
-			console.log('file: vol-store.js ~ line 100 ~ member', member);
+			// console.log('file: vol-store.js ~ line 100 ~ member', member);
 			const volToUpdate = JSON.parse(JSON.stringify(vol));
 			volToUpdate.members.push(member);
 			try {
@@ -122,6 +121,7 @@ export default {
 				commit({ type, vol });
 			} catch (err) {
 				console.log("Couldn't save Vol", vol, err);
+				throw err // catch it in the cmps ans msg to the user
 			}
 		},
 		async removeVol({ commit }, payload) {
@@ -130,6 +130,7 @@ export default {
 				commit(payload);
 			} catch (err) {
 				console.log("Couldn't remove Vol", err);
+				throw err // catch it in the cmps ans msg to the user
 			}
 		},
 		async loadVols(context) {
@@ -138,6 +139,7 @@ export default {
 				context.commit({ type: 'setVols', vols });
 			} catch (err) {
 				console.log("Can't load vols", err);
+				throw err // catch it in the cmps ans msg to the user
 			}
 		},
 		async addReview({ dispatch }, { newReview }) {
@@ -158,6 +160,7 @@ export default {
 				dispatch({ type: 'saveVol', vol: updatedVol });
 			} catch {
 				console.log('Failed to add Member', err);
+				throw err // catch it in the cmps ans msg to the user
 			}
 		},
 

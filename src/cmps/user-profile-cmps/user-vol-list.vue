@@ -10,6 +10,7 @@
         :key="idx"
         @cardClicked="goToProfile"
         @filterBySkill="filter"
+        @leaveVol="leaveVol"
       />
     </section>
   </section>
@@ -42,6 +43,9 @@ export default {
     goToProfile(vol) {
       this.$store.commit({ type: "setCurrVol", vol });
       this.$router.push(`/volApp/${vol._id}`);
+    },
+    leaveVol(vol) {
+      this.$emit("leaveVol", vol);
     },
   },
   created() {},

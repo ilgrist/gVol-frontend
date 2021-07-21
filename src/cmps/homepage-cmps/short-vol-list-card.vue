@@ -1,5 +1,7 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
+    <!-- {{ vol }} -->
+    <!-- {{ typeof vol }} -->
     <h3>{{ title }}</h3>
     <p>
       <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
@@ -59,16 +61,14 @@ export default {
       return utilService.shortTxt(this.vol.desc, 60);
     },
     avgRating() {
-      let ratingSum = 0;
       let ratingLength = 0;
-
-      if (!this.reviews) return "None";
-      this.reviews.forEach((review) => {
-        if (!review.rating) return;
+      let ratingSum = this.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
         ratingLength++;
-        ratingSum += review.rating;
-      });
+        return acc + review.rating;
+      }, 0);
 
+      if (!ratingLength) return "None";
       return (ratingSum / ratingLength).toFixed(2);
     },
     reviewNum() {

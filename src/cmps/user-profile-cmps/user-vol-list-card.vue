@@ -1,5 +1,6 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
+    <button class="leave-vol-btn" @click.stop="leaveVol">X</button>
     <h3>{{ title }}</h3>
     <p>
       <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
@@ -49,6 +50,9 @@ export default {
     },
     filterBySkill(skill) {
       this.$emit("filterBySkill", skill);
+    },
+    leaveVol() {
+      this.$emit("leaveVol", this.vol);
     },
   },
   computed: {

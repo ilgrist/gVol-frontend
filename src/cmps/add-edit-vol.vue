@@ -225,6 +225,7 @@ export default {
       );
     },
 
+    // TODO: include loading
     async handleFile(ev) {
       if (this.vol.imgUrls.length > 4) {
         this.msg = "Not more than 5 Images";
@@ -241,7 +242,7 @@ export default {
 
     removeVol(volId) {
       console.log("sanity cmp", volId);
-      this.$emit("remove", volId);
+      this.$emit("removeVol", volId);
     },
     closeModal() {
       this.$emit("closeModal");
@@ -250,9 +251,7 @@ export default {
 
     async saveVol() {
       try {
-        console.log("onsite", this.vol.loc.isOnsite);
-        if (this.vol.loc.isOnsite) this.vol.loc.isOnsite = false;
-        console.log("onsite", this.vol.loc.isOnsite);
+        if (this.vol.loc.isOnsite === null) this.vol.loc.isOnsite = false;
 
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 

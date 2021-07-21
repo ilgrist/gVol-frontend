@@ -11,16 +11,18 @@
     <short-list
       class="main-layout"
       v-if="isload"
-      :name="'Popular'"
+      :name="'Most Popular'"
+      :vols="popularVols"
       @filterBy="goExplore"
     />
     <short-list
       class="main-layout"
       v-if="isload"
-      :name="'Newest'"
+      :vols="mostReviewedVols"
+      :name="'Most Reviewed'"
       @filterBy="goExplore"
     />
-    <categories-grid class="main-layout" />
+    <categories-grid class="main-layout" @filterBy="goExplore" />
     <!-- </template> -->
   </div>
 </template>
@@ -41,13 +43,34 @@ export default {
       isload: false,
       scrollY: 0,
       isHeaderTrans: true,
+
       // isLoading: false,
     };
   },
   computed: {
-    vols() {
-      return this.$store.getters.volsToShow;
+    popularVols() {
+      let popularVols = JSON.parse(
+        JSON.stringify(this.$store.getters.volsToShow)
+      );
+
+      popularVols.sort((volA, volB) => {
+        return volB.members.length - volA.members.length;
+      });
+      return popularVols.slice(0, 4);
     },
+
+    mostReviewedVols() {
+      let mostReviewedVols = JSON.parse(
+        JSON.stringify(this.$store.getters.volsToShow)
+      );
+      mostReviewedVols.sort((volA, volB) => {
+        return volB.reviews.length - volA.reviews.length;
+      });
+      return mostReviewedVols.slice(0, 4);
+    },
+    // vols() {
+    //   return this.$store.getters.volsToShow;
+    // },
   },
   methods: {
     goExplore(filterBy) {
@@ -66,9 +89,7 @@ export default {
   async created() {
     this.$store.commit({ type: "setTransHeader", isTransHeader: true });
     document.addEventListener("scroll", this.handleScrollY);
-    // this.isLoading = true;
     await this.$store.dispatch({ type: "loadVols" });
-    // this.isLoading = false;
     this.isload = true;
   },
   destroyed() {

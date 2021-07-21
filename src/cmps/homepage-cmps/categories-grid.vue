@@ -22,17 +22,24 @@ export default {
   data() {
     return {
       categories: [
-        { name: "Israel", url: "grid1.jpg" },
-        { name: "Kenya", url: "grid2.jpg" },
-        { name: "Nevada", url: "grid3.jpg" },
-        { name: "Africa", url: "grid2.jpg" },
-        { name: "Kenya", url: "grid3.jpg" },
+        { name: "Children", url: "grid1.jpg" },
+        { name: "Elderly", url: "grid2.jpg" },
+        { name: "Animals", url: "grid3.jpg" },
       ],
+      filterBy: {
+        txt: "",
+        category: "all",
+        skills: "all",
+        isOnSite: false,
+        isOnLine: false,
+      },
     };
   },
   methods: {
     cardClicked(categoryName) {
-      this.$router.push("/volApp");
+      this.filterBy.category = categoryName.toLowerCase();
+      let filterBy = JSON.parse(JSON.stringify(this.filterBy));
+      this.$emit("filterBy", filterBy);
     },
   },
   components: {

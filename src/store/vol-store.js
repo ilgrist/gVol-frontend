@@ -63,12 +63,16 @@ export default {
 			state.currVol = vol;
 		},
 
-		joinVol(state, { volToUpdate }) {
-			const idx = state.vols.findIndex(
-				(vol) => vol._id === volToUpdate._id
-			);
-			state.vols.splice(idx, 1, volToUpdate);
-		},
+		// joinVol(state, { volToUpdate }) {
+		// 	const idx = state.vols.findIndex(
+		// 		(vol) => vol._id === volToUpdate._id
+		// 	);
+		// 	state.vols.splice(idx, 1, volToUpdate);
+		// },
+
+		// leaveVol(state){
+
+		// },
 	},
 
 	actions: {

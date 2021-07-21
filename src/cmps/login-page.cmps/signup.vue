@@ -85,7 +85,6 @@ export default {
           label: "Saving",
         },
       ],
-      // skills: ["-", "teaching", "translating", "designing"],
     };
   },
   methods: {
@@ -95,6 +94,9 @@ export default {
     },
     signup() {
       const newUserCopy = JSON.parse(JSON.stringify(this.newUser));
+      if (!newUserCopy.imgUrl)
+        newUserCopy.imgUrl =
+          "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg";
       this.$emit("signup", newUserCopy);
     },
     async handleFile(ev) {

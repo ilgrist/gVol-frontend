@@ -3,6 +3,27 @@
 	padding: 1rem;
 	background-color: $clr2;
 	grid-row: 7/8;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	h3 {
+		font-size: 1rem;
+	}
+
+	@include for-narrow-layout {
+	}
+	@include for-normal-layout {
+		padding: 1rem;
+		display: unset;
+		h3 {
+			font-size: unset;
+		}
+	}
+	@include for-wide-layout {
+	}
+	@include for-extra-wide-layout {
+	}
 
 	input {
 		border: none;
@@ -58,7 +79,7 @@
 			border-radius: unset;
 			&:hover {
 				color: $clr6;
-				border: 2px solid white;
+				// border: 2px solid white;
 				text-decoration: underline;
 			}
 		}
@@ -68,6 +89,19 @@
 .review-header {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+
+	@include for-narrow-layout {
+	}
+	@include for-normal-layout {
+		flex-direction: row;
+		align-items: unset;
+	}
+	@include for-wide-layout {
+	}
+	@include for-extra-wide-layout {
+	}
 }
 
 .review-user {

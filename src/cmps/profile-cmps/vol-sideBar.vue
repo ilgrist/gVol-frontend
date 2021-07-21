@@ -6,17 +6,19 @@
         <button @click="onVol" class="details-btn focus">Volunteer</button>
         <button @click="onShare" class="details-btn">Share</button>
       </div>
-      <h4 v-if="members">Participating Members</h4>
-      <div v-if="members" class="sidebar-users">
-        <img
-          v-for="(member, idx) in members"
-          :key="idx"
-          class="img-profile"
-          :src="member.imgUrl"
-          alt="imgProfile"
-          @click="goToUserProfile(member._id)"
-        />
-      </div>
+      <template v-if="members.length > 0">
+        <h4>Participating Members</h4>
+        <div class="sidebar-users">
+          <img
+            v-for="(member, idx) in members"
+            :key="idx"
+            class="img-profile"
+            :src="member.imgUrl"
+            alt="imgProfile"
+            @click="goToUserProfile(member._id)"
+          />
+        </div>
+      </template>
     </div>
   </section>
 </template>
@@ -73,7 +75,6 @@ export default {
       return this.$store.getters.loggedinUser;
     },
   },
-
 };
 </script>
 

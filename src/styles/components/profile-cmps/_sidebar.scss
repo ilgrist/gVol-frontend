@@ -8,9 +8,7 @@
 }
 
 .details-sidebar {
-	// background-color: #f8f8ff;
 	background-color: $clr2;
-	// background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.33' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 	box-shadow: 0px 1px 5px 0px $clr6;
 
 	display: flex;
@@ -18,6 +16,7 @@
 	justify-content: space-around;
 	align-items: center;
 	align-self: auto;
+	width: 100%;
 
 	text-align: center;
 	padding: 0.5rem;
@@ -28,28 +27,62 @@
 	position: sticky;
 	top: 55px;
 	right: 0;
+
+	h4 {
+		// display: none;
+		@include for-narrow-layout {
+			// display: none;
+		}
+		@include for-normal-layout {
+			// display: unset;
+		}
+	}
 }
 
-//figure out how to correlate between title and shape of sidebar
 .title-sidebar {
-	// background-color: $clr4;
 	width: 100%;
-	// border-radius: 5px;
 	border-bottom: 1px solid $clr6;
 	border-top: 1px solid $clr6;
 	color: $clr6;
 	font-family: Halant;
 }
 
+// TODO: action bar to turn into slide in navbar
+
 .sidebar-users {
 	background-color: $clr1;
 	border: 1px solid lightgray;
 	border-radius: 0.5rem;
-	display: flex;
+
+	// flex-direction: column;
 	justify-content: flex-start;
-	width: 70%;
+	width: 100%;
 	box-shadow: 0px 0px 2px 0px #000000;
 	padding: 0.3rem;
+
+	// display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-flow: row;
+	height: auto;
+
+	// display: none;
+
+	@include for-narrow-layout {
+		// display: none;
+	}
+	@include for-normal-layout {
+		width: 100%;
+		display: flex;
+	}
+	@include for-wide-layout {
+		width: 100%;
+		// display: block;
+	}
+	@include for-extra-wide-layout {
+		width: 100%;
+		// display: block;
+	}
 
 	.img-profile {
 		width: 2rem;
@@ -67,16 +100,29 @@
 }
 
 .btn-container {
-	width: 70%;
+	// width: 70%;
 	height: 100px;
 	text-align: center;
 	margin-bottom: 15px;
+
+	@include for-narrow-layout {
+		width: 100%;
+	}
+	@include for-normal-layout {
+		width: 70%;
+	}
+	@include for-wide-layout {
+		width: 70%;
+	}
+	@include for-extra-wide-layout {
+		width: 70%;
+	}
 }
 .details-btn {
 	outline: none;
 	height: 40px;
+	width: 100%;
 	text-align: center;
-	width: 80%;
 	border-radius: 40px;
 	background: $clr1;
 	border: 2px solid $clr6;
@@ -84,9 +130,21 @@
 	letter-spacing: 1px;
 	text-shadow: 0;
 	margin: 5px;
+	@include for-narrow-layout {
+		width: 100%;
+	}
+	@include for-normal-layout {
+		width: 80%;
+	}
+	@include for-wide-layout {
+		width: 80%;
+	}
+	@include for-extra-wide-layout {
+		width: 80%;
+	}
 
 	font: {
-		size: 12px;
+		size: 0.8rem;
 		weight: bold;
 	}
 

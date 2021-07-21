@@ -1,5 +1,9 @@
 .user-vol-list {
   .cards-cont {
     justify-content: flex-start;
+    flex-flow: wrap;
+    .card {
+      max-width: 300px;
+    }
   }
 }

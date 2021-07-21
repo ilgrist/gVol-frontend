@@ -2,9 +2,16 @@
   <section class="card-preview card" @click="cardClicked">
     <button class="leave-vol-btn" @click.stop="leaveVol">X</button>
     <h3>{{ title }}</h3>
-    <p>
-      <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>
-    </p>
+    <div class="details-loc-cont">
+      <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
+        Online
+      </p>
+      <p v-else>
+        <span class="details-location">
+          {{ vol.loc.city }}, {{ vol.loc.country }}
+        </span>
+      </p>
+    </div>
     <img :src="vol.imgUrls[0]" />
     <div class="rev-cont">
       <div class="rating">

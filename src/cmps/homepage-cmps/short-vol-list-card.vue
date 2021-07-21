@@ -1,5 +1,7 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
+    <!-- {{ vol }} -->
+    <!-- {{ typeof vol }} -->
     <h3>{{ title }}</h3>
     <p>
       <span>{{ vol.loc.city }}, </span><span>{{ vol.loc.country }}</span>

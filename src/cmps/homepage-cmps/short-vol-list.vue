@@ -4,9 +4,9 @@
       <h1>{{ name }}:</h1>
       <p @click="filter()">See all</p>
     </div>
-    <section v-if="randVols" class="cards-cont">
+    <section v-if="vols" class="cards-cont">
       <shortVolListCard
-        v-for="(vol, idx) in randVols"
+        v-for="(vol, idx) in vols"
         :vol="vol"
         :key="idx"
         @cardClicked="goToProfile"
@@ -20,7 +20,12 @@
 import shortVolListCard from "./short-vol-list-card.vue";
 export default {
   props: {
-    name: String,
+    name: {
+      type: String,
+    },
+    vols: {
+      type: Array,
+    },
   },
   data() {
     return {
@@ -34,9 +39,9 @@ export default {
     };
   },
   computed: {
-    randVols() {
-      return this.$store.getters.shortListRandVols;
-    },
+    // randVols() {
+    //   return this.$store.getters.shortListRandVols;
+    // },
   },
   methods: {
     filter(skill = "all") {

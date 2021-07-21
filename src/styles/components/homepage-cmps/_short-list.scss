@@ -46,6 +46,7 @@
   }
   @include for-normal-layout {
     flex-wrap: wrap;
+    gap: 1rem;
   }
   @include for-wide-layout {
     flex-wrap: nowrap;

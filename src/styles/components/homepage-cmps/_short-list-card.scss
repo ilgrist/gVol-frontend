@@ -2,12 +2,12 @@
   cursor: pointer;
   background-color: $clr2;
   padding: 10px;
-  height: 370px;
   width: 350px;
+  height: 370px;
   flex-wrap: wrap;
 
   @include for-narrow-layout {
-    max-width: 200px;
+    max-width: 195px;
     max-height: 370px;
   }
   @include for-normal-layout {

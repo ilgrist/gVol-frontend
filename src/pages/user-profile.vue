@@ -80,6 +80,7 @@ export default {
           throw err;
         }
     },
+
     async loadUserVols() {
       const vols = await this.$store.dispatch({
         type: "userVols",

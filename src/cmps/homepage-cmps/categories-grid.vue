@@ -1,7 +1,7 @@
 <template>
   <section class="category-grid-cont main-layout">
     <div class="short-header">
-      <h1>Volunteer in:</h1>
+      <h1>Volunteer with:</h1>
       <p @click="cardClicked">See all</p>
     </div>
     <div class="category-grid">
@@ -22,9 +22,21 @@ export default {
   data() {
     return {
       categories: [
-        { name: "Children", url: "grid1.jpg" },
-        { name: "Elderly", url: "grid2.jpg" },
-        { name: "Animals", url: "grid3.jpg" },
+        {
+          name: "Children",
+          imgUrl:
+            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874522/volApp/categoryImgs/children.jpg",
+        },
+        {
+          name: "Elderly",
+          imgUrl:
+            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874470/volApp/categoryImgs/elderly.jpg",
+        },
+        {
+          name: "Animals",
+          imgUrl:
+            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874460/volApp/categoryImgs/animals.jpg",
+        },
       ],
       filterBy: {
         txt: "",

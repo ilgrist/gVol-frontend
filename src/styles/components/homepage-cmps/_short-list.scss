@@ -15,10 +15,11 @@
   justify-content: space-between;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid lightgray;
+  margin: 0 1rem;
 
   p {
     border-radius: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
     transition: background-color 1s;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -38,7 +39,6 @@
   gap: 0.5rem;
   grid-row: 2/3;
   grid-column: 1/3;
-
   flex-wrap: wrap;
 
   @include for-narrow-layout {

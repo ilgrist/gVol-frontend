@@ -95,8 +95,17 @@ export default {
       this.$store.commit({ type: "setFilter", filterBy });
       this.$router.push("/volApp");
     },
-    leaveVol(vol) {
+    async leaveVol(vol) {
       console.log("user ", this.user.username, " is leavingVol", vol);
+      const volToLeave = JSON.parse(JSON.stringify(vol));
+      const memberIdx = volToLeave.members.findIndex(
+        (member) => member._id === this.user._id
+      );
+      volToLeave.members.splice(memberIdx, 1);
+      await this.$store.dispatch({ type: "saveVol", vol: volToLeave });
+      this.msg = "You left the Vol Successfully";
+      showMsg(this.msg, "success");
+      this.loadUserVols();
     },
   },
   async created() {

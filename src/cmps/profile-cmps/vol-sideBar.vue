@@ -12,7 +12,7 @@
         <img
           v-for="(member, idx) in members"
           :key="idx"
-          class="img-profile"
+          class="sidebar-img-profile"
           :src="member.imgUrl"
           alt="imgProfile"
           @click="goToUserProfile(member._id)"

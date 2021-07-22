@@ -14,12 +14,7 @@
       <section class="main-form">
         <label class="vol-title">
           Title:
-          <input
-            multiple
-            placeholder="Enter Title"
-            v-model="vol.title"
-            type="text"
-          />
+          <input placeholder="Enter Title" v-model="vol.title" type="text" />
         </label>
 
         <label> Description: </label>
@@ -56,6 +51,15 @@
               type="text"
             />
           </div>
+        </label>
+
+        <label for="maxMembers"
+          >Maximum number of Members Needed:
+          <input
+            placeholder="Enter Number of Members Needed"
+            v-model="vol.maxMembers"
+            type="number"
+          />
         </label>
 
         <label for="reqSkills">List Required Skills</label>

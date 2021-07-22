@@ -22,7 +22,11 @@
         class="vol-sidebar-map"
         src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
       /> -->
-      <vol-map class="vol-sidebar-map" :vol="vol" />
+      <vol-map
+        v-if="this.vol.loc.isOnsite"
+        class="vol-sidebar-map"
+        :vol="vol"
+      />
       <section class="vol-sidebar-btn-container">
         <button @click="onVol" class="vol-sidebar-btn volunteer-btn">
           Volunteer

@@ -1,11 +1,23 @@
 .addEdit-modal {
 	margin-top: unset;
-	max-height: 80vh;
-	position: fixed;
+	max-height: 50vh;
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 1;
+
+	@include for-narrow-layout {
+		width: 350px;
+	}
+	@include for-normal-layout {
+		width: 500px;
+	}
+	@include for-wide-layout {
+		max-height: 80vh;
+	}
+	@include for-extra-wide-layout {
+	}
 }
 
 .upload-img {
@@ -38,14 +50,14 @@
 	}
 }
 
-.add-vol-loader{
+.add-vol-loader {
 	width: 50px;
 	height: 50px;
 }
 
 .addEdit-form {
 	padding-top: 80px;
-	width: 500px;
+	// width: 500px;
 	// height: 700px;
 	margin: 0 auto;
 	padding: 1rem;

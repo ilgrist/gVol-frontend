@@ -3,7 +3,13 @@
     <form class="addEdit-form">
       <header>
         <h3>{{ title }} a Vol</h3>
-        <span class="closeModal" @click="closeModal">Close</span>
+        <span
+          class="closeModal"
+          @click="closeModal"
+          @keydown.esc="closeModal"
+          tabindex="0"
+          >Close</span
+        >
       </header>
       <section class="main-form">
         <label class="vol-title">
@@ -101,7 +107,11 @@
             type="file"
             @change.stop.prevent="handleFile"
           />
-          <img v-if="isLoadingImg" class="add-vol-loader" src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"/>
+          <img
+            v-if="isLoadingImg"
+            class="add-vol-loader"
+            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+          />
           <div v-if="this.vol.imgUrls.length" class="img-preview-gallery">
             <div
               class="img-container"
@@ -228,7 +238,7 @@ export default {
     },
 
     async handleFile(ev) {
-      this.isLoadingImg = true
+      this.isLoadingImg = true;
       if (this.vol.imgUrls.length > 4) {
         this.msg = "Not more than 5 Images";
         showMsg(this.msg, "danger");
@@ -237,7 +247,7 @@ export default {
       }
       const file = ev.target.files[0];
       const res = await uploadImg(ev);
-        this.isLoadingImg = false
+      this.isLoadingImg = false;
       this.vol.imgUrls.push(res.url);
       console.log(this.vol);
     },
@@ -247,6 +257,7 @@ export default {
       this.$emit("removeVol", volId);
     },
     closeModal() {
+      console.log("sanity");
       this.$emit("closeModal");
       this.vol = null;
     },
@@ -254,7 +265,7 @@ export default {
     async saveVol() {
       try {
         if (this.vol.loc.isOnsite === null) this.vol.loc.isOnsite = false;
-        this.vol.createdBy = this.$store.getters.loggedinUser._id || 'None'
+        this.vol.createdBy = this.$store.getters.loggedinUser._id || "None";
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 
         if (this.isEdit) this.msg = "Vol Updated!";

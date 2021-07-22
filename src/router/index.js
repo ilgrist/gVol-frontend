@@ -40,11 +40,14 @@ const routes = [
 const router = new VueRouter({
 	routes,
 	linkActiveClass: 'active',
+	scrollBehavior(to, from, savedPosition) {
+		return { x: 0, y: 0 };
+	},
 });
 
 router.beforeEach((to, from, next) => {
-	if(from.name === 'login' && to.name === 'userProfile') next({path:'/'})
-	else next()
-  })
+	if (from.name === 'login' && to.name === 'userProfile') next({ path: '/' });
+	else next();
+});
 
 export default router;

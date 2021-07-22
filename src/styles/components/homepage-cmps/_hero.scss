@@ -6,6 +6,7 @@
 
 	margin: 0 0 1rem 0;
 	height: 550px;
+	min-height: 70vh;
 	display: flex;
 	position: relative;
 }
@@ -20,7 +21,7 @@
 	color: $clr1;
 	// position: relative;
 	font-family: Halant, sans-serif;
-	font-size: 4rem;
+	font-size: 3rem;
 
 	padding-bottom: 1rem;
 

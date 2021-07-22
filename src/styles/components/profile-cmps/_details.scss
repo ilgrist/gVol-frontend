@@ -108,8 +108,21 @@
 .img-gallery {
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: 2fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	// grid-template-columns: 2fr 1fr 1fr;
+	// grid-template-rows: 1fr 1fr;
+
+	@include for-narrow-layout {
+		grid-template-columns: 1fr 1fr;
+		// grid-template-rows: 1fr 1fr;
+	}
+	@include for-normal-layout {
+		grid-template-columns: 2fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+	@include for-wide-layout {
+	}
+	@include for-extra-wide-layout {
+	}
 
 	& > :first-child {
 		border-radius: 10px;

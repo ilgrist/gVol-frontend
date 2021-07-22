@@ -13,6 +13,7 @@
           v-if="userVols"
           :vols="userVols"
           :name="'Volunteering in'"
+          :isLoggedSameAsCurr="isLoggedSameAsCurr"
           class="user-vol-list"
           @filterBy="filterBy"
           @leaveVol="leaveVol"
@@ -84,7 +85,6 @@ export default {
           throw err;
         }
     },
-
     async loadUserVols() {
       const vols = await this.$store.dispatch({
         type: "userVols",

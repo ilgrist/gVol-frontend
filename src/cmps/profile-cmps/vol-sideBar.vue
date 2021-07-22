@@ -19,10 +19,11 @@
           @click="goToUserProfile(member._id)"
         />
       </div>
-      <img
+      <!-- <img
         class="vol-sidebar-map"
         src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
-      />
+      /> -->
+      <vol-map class="vol-sidebar-map" />
       <!-- </template> -->
       <div class="vol-sidebar-btn-container">
         <button @click="onVol" class="vol-sidebar-btn volunteer-btn">
@@ -36,7 +37,11 @@
 
 <script>
 import { showMsg } from "@/services/event-bus.service.js";
+import volMap from "@/cmps/profile-cmps/vol-map.vue";
 export default {
+  components: {
+    volMap,
+  },
   props: {
     vol: {
       type: Object,

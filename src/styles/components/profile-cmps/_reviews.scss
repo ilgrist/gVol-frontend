@@ -64,13 +64,29 @@
 	ul {
 		padding: 0;
 		li {
-			display: flex;
-			gap: 1rem;
+			display: grid;
+			grid-template-columns: 20px 80px 2fr 1fr;
+			grid-template-rows: 1fr 10px ;
+			gap: 0.5rem;
+			// display: flex;
+			// gap: 1rem;
+			background-color: white;
+			padding: 10px;
+			border: 0.3px solid lightgray;
+			border-radius: 5px;
+			.date{
+				grid-row: 2/3;
+				grid-column: 1/-1;
+				font-size: small;
+				color: gray;
+			}
 			.btns-control {
 				align-self: flex-start;
 			}
 		}
 		.reviews-btn {
+			grid-column: 1/2;
+
 			background-color: unset;
 			width: unset;
 			padding: unset;
@@ -105,11 +121,20 @@
 }
 
 .review-user {
+	grid-column: 2/3;
+
 	font-style: italic;
 	font-weight: bold;
 	text-decoration: underline;
 	border-radius: 4px;
 	padding: 1px;
+}
+
+.review-text{
+	grid-column: 3/4;
+}
+.review-stars{
+	grid-column: 4/5;
 }
 
 .review-rating {

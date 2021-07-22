@@ -19,16 +19,17 @@
           @click="goToUserProfile(member._id)"
         />
       </div>
-      <!-- <img
+      <img
         class="vol-sidebar-map"
         src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
-      /> -->
-      <vol-map class="vol-sidebar-map" />
+      />
+      <!-- <vol-map class="vol-sidebar-map" /> -->
       <!-- </template> -->
       <button @click="onVol" class="sidebar-btn volunteer-btn">
         Volunteer
       </button>
-      <!-- <ShareNetwork
+      <ShareNetwork
+      :popup="{width: 500, height: 500}"
       network="facebook"
       :url="url"
       :title="vol.title"
@@ -36,6 +37,7 @@
     Facebook
   </ShareNetwork>
       <ShareNetwork
+      :popup="{width: 500, height: 500}"
       network="twitter"
       :url="url"
       :title="vol.title"
@@ -43,12 +45,13 @@
     Twitter
   </ShareNetwork>
       <ShareNetwork
+      :popup="{width: 500, height: 500}"
       network="whatsapp"
       :url="url"
       :title="vol.title"
       :description="vol.desc">
     WhatsApp
-  </ShareNetwork> -->
+  </ShareNetwork>
     </div>
   </section>
 </template>

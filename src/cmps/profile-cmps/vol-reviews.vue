@@ -12,16 +12,16 @@
     <add-review v-if="isNewReview" @sendReview="sendReview"></add-review>
 
     <ul v-for="(review, idx) in reviews" :key="idx">
-      <li>
+      <li class="review-container">
         <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
           X
         </button>
         <span class="review-user">
-          {{ review.createdBy }}
+          {{ review.createdBy }} :
         </span>
-        "{{ review.txt }}" ({{ starsDisplay(review.rating) }})
-        <!-- <span>{{review.createdAt.toLocaleString()}}</span> -->
-        <span>{{revDate(review.createdAt)}}</span>
+        <span class="review-text">"{{ review.txt }}"</span> 
+        <span class="review-stars">({{ starsDisplay(review.rating) }})</span>
+        <span class="date">{{revDate(review.createdAt)}}</span>
       </li>
     </ul>
   </div>
@@ -39,7 +39,8 @@ export default {
   },
   data() {
     return {
-      msg: "",
+      volRatingStars:'',
+      msg: '',
       isNewReview: false,
       isLoggedinUser: false,
     };
@@ -58,6 +59,7 @@ export default {
       }, 0);
 
       if (!ratingLength) return "None";
+      this.volRatingStars ="⭐".repeat((ratingSum / ratingLength).toFixed(1))
       return (ratingSum / ratingLength).toFixed(2);
     },
   },
@@ -67,7 +69,7 @@ export default {
       return moment(date).format('LLL');
     },
     starsDisplay(rating) {
-      return "★".repeat(rating);
+      return "⭐".repeat(rating);
     },
     addReview() {
       if (this.isLoggedinUser) {

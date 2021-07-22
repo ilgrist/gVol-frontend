@@ -1,9 +1,11 @@
 .user-vol-list {
   .cards-cont {
-    justify-content: flex-start;
-    flex-flow: wrap;
+    gap: 48px 26px;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     .card {
-      max-width: 300px;
+      width: auto;
       .card-title {
         display: flex;
         justify-content: space-between;

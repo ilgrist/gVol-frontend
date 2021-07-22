@@ -23,7 +23,6 @@
 <script>
 import { uploadImg } from "../services/img-upload.service.js";
 import { showMsg } from "../services/event-bus.service.js";
-import { socketService } from "../services/socket.service";
 import signup from "../cmps/login-page.cmps/signup.vue";
 import login from "../cmps/login-page.cmps/login.vue";
 
@@ -60,7 +59,6 @@ export default {
         this.msg = `Welcome back - ${user.username} !`;
         showMsg(this.msg, "success");
         this.msg = "";
-        socketService.emit("user connected", user._id);
         this.$router.go(-1);
       } catch {
         this.msg = `Wrong credentials, try again!`;
@@ -69,9 +67,6 @@ export default {
     },
     logout() {
       this.$store.dispatch({ type: "logout" });
-      socketService.off("user connected", () =>
-        console.log("socket: User connected")
-      );
       this.msg = `Goodbye, - ${this.currUserName} !`;
       showMsg(this.msg, "danger");
     },
@@ -100,11 +95,6 @@ export default {
   components: {
     signup,
     login,
-  },
-  created() {
-    socketService.on("user connected", () =>
-      console.log("socket: User connected")
-    );
   },
 };
 </script>

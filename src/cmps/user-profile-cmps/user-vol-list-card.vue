@@ -2,7 +2,14 @@
   <section class="card-preview card" @click="cardClicked">
     <div class="card-title">
       <h3>{{ title }}</h3>
-      <button class="leave-vol-btn" @click.stop="leaveVol">X</button>
+      <button
+        @click.stop="leaveVol"
+        v-if="isLoggedSameAsCurr"
+        class="leave-vol-btn"
+        title="Leave volunteering"
+      >
+        ✖
+      </button>
     </div>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -47,6 +54,7 @@ import { utilService } from "../../services/util.service.js";
 export default {
   props: {
     vol: Object,
+    isLoggedSameAsCurr: Boolean,
   },
   data() {
     return {

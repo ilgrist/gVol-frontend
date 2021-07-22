@@ -1,25 +1,25 @@
 .card-preview {
-  .badge { 
-   position: absolute;
-   border-radius: 2px;
-   transform: skew(0deg, 10deg);
-   background-color: $clr6;
-   width: 4rem;
-   height: 1.3rem;
-   top: 0.5rem;
-   right: 0;
+  .badge {
+    position: absolute;
+    border-radius: 2px;
+    transform: skew(0deg, 10deg);
+    background-color: $clr6;
+    width: 4rem;
+    height: 1.3rem;
+    top: 0.5rem;
+    right: 0;
   }
-  .badge-text{
-   font-size: smaller;
-   position: absolute;
-   transform: skew(0deg, 10deg);
-   background-color: red;
-   top: 0.5rem;
-   right: 0;
-   color: $clr2;
-   font-family: NunitoSans, sans-serif;
-   z-index: 1;
- }
+  .badge-text {
+    font-size: smaller;
+    position: absolute;
+    transform: skew(0deg, 10deg);
+    background-color: red;
+    top: 0.5rem;
+    right: 0;
+    color: $clr2;
+    font-family: NunitoSans, sans-serif;
+    z-index: 1;
+  }
 
   position: relative;
   cursor: pointer;
@@ -29,7 +29,7 @@
   height: 370px;
   // border: 1px solid lightgray;
   flex-wrap: wrap;
-  
+
   @include for-narrow-layout {
     max-width: 195px;
     max-height: 370px;
@@ -67,7 +67,7 @@
     justify-content: space-between;
     padding: 5px;
     cursor: pointer;
-    background-color: $clr3;
+    background-color: $clr5;
     border-radius: 10px;
     color: $clr2;
     > * {

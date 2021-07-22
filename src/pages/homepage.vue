@@ -10,8 +10,8 @@
     <template v-else> -->
     <short-list
       class="main-layout"
-      v-if="isload" 
-      name='Most Popular'
+      v-if="isload"
+      name="Most Popular"
       :vols="popularVols"
       @filterBy="goExplore"
     />
@@ -19,7 +19,7 @@
       class="main-layout"
       v-if="isload"
       :vols="mostReviewedVols"
-      name='Most Reviewed'
+      name="Most Reviewed"
       @filterBy="goExplore"
     />
     <categories-grid class="main-layout" @filterBy="goExplore" />
@@ -79,8 +79,7 @@ export default {
     },
     handleScrollY() {
       this.scrollY = window.scrollY;
-      this.scrollY ? (this.isTransHeader = false) : (this.isTransHeader = true);
-      // this.isTransHeader =  this.scrollY ? false : true
+      this.isTransHeader = this.scrollY ? false : true;
       this.$store.commit({
         type: "setTransHeader",
         isTransHeader: this.isTransHeader,

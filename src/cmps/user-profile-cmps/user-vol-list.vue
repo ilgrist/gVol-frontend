@@ -8,6 +8,7 @@
         v-for="(vol, idx) in vols"
         :vol="vol"
         :key="idx"
+        :isLoggedSameAsCurr="isLoggedSameAsCurr"
         @cardClicked="goToProfile"
         @filterBySkill="filter"
         @leaveVol="leaveVol"
@@ -22,6 +23,7 @@ export default {
   props: {
     name: String,
     vols: Array,
+    isLoggedSameAsCurr: Boolean,
   },
   data() {
     return {

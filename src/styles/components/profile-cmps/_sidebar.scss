@@ -37,6 +37,39 @@
 	.vol-sidebar-btn-container {
 		display: flex;
 		width: 100%;
+
+		.share-section {
+			display: flex;
+			flex-direction: column;
+			width: 10%;
+			justify-content: center;
+
+			.share-btn {
+				max-width: 30px;
+			}
+
+			.facebook {
+				&:hover {
+					border-radius: 10px;
+					padding: 5px;
+					background-color: #0f91f2;
+				}
+			}
+			.twitter {
+				&:hover {
+					border-radius: 10px;
+					padding: 5px;
+					background-color: #1bb1e4;
+				}
+			}
+			.whataspp {
+				&:hover {
+					border-radius: 10px;
+					padding: 5px;
+					background-color: #1ad03f;
+				}
+			}
+		}
 	}
 }
 
@@ -97,19 +130,6 @@
 // 	text-align: center;
 // 	margin-bottom: 15px;
 
-// @include for-narrow-layout {
-// 	width: 100%;
-// }
-// @include for-normal-layout {
-// 	width: 70%;
-// }
-// @include for-wide-layout {
-// 	width: 70%;
-// }
-// @include for-extra-wide-layout {
-// 	width: 70%;
-// }
-// }
 .vol-sidebar-btn {
 	// outline: none;
 	// height: 40px;
@@ -157,7 +177,7 @@
 	font-size: 1.5rem;
 	color: $clr6;
 	background-color: $clr4;
-	width: 80%;
+	width: 90%;
 	&:hover {
 		color: $clr2;
 		background-color: $clr6;

@@ -101,6 +101,7 @@
             type="file"
             @change.stop.prevent="handleFile"
           />
+          <img v-if="isLoadingImg" class="add-vol-loader" src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"/>
           <div v-if="this.vol.imgUrls.length" class="img-preview-gallery">
             <div
               class="img-container"
@@ -147,6 +148,7 @@ import { uploadImg } from "@/services/img-upload.service.js";
 export default {
   data() {
     return {
+      isLoadingImg: false,
       title: "",
       msg: "",
       vol: null,
@@ -225,8 +227,8 @@ export default {
       );
     },
 
-    // TODO: include loading
     async handleFile(ev) {
+      this.isLoadingImg = true
       if (this.vol.imgUrls.length > 4) {
         this.msg = "Not more than 5 Images";
         showMsg(this.msg, "danger");
@@ -235,7 +237,7 @@ export default {
       }
       const file = ev.target.files[0];
       const res = await uploadImg(ev);
-      // console.log("res:", res);
+        this.isLoadingImg = false
       this.vol.imgUrls.push(res.url);
       console.log(this.vol);
     },
@@ -252,7 +254,7 @@ export default {
     async saveVol() {
       try {
         if (this.vol.loc.isOnsite === null) this.vol.loc.isOnsite = false;
-
+        this.vol.createdBy = this.$store.getters.loggedinUser._id || 'None'
         await this.$store.dispatch({ type: "saveVol", vol: this.vol });
 
         if (this.isEdit) this.msg = "Vol Updated!";

@@ -18,10 +18,10 @@
         </button>
         <span class="review-user">
           {{ review.createdBy }}
-          <!-- <span> {{ review.createdAt }}</span> -->
         </span>
         "{{ review.txt }}" ({{ starsDisplay(review.rating) }})
-        <!-- - {{ review.rating }} Stars -->
+        <!-- <span>{{review.createdAt.toLocaleString()}}</span> -->
+        <span>{{revDate(review.createdAt)}}</span>
       </li>
     </ul>
   </div>
@@ -29,6 +29,7 @@
 
 <script>
 import addReview from "./add-review.vue";
+const moment = require("moment")
 
 export default {
   props: {
@@ -61,6 +62,10 @@ export default {
     },
   },
   methods: {
+    revDate(date){
+      moment.locale('en-il')
+      return moment(date).format('LLL');
+    },
     starsDisplay(rating) {
       return "★".repeat(rating);
     },

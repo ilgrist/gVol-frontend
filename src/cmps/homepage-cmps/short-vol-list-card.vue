@@ -1,5 +1,7 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
+      <div class="badge-text">Only 1 left</div>
+    <div class="badge"></div>
     <h3 class="card-title">{{ title }}</h3>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">

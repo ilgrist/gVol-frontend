@@ -1,5 +1,6 @@
 <template>
   <section class="vol-profile main-layout">
+    <div v-if="isEditing" class="dark-screen"></div>
     <div class="displayProfile">
       <img
         class="loading-img"

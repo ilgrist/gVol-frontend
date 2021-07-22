@@ -11,6 +11,17 @@
 	gap: 1rem;
 }
 
+.dark-screen{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	opacity: 0.8;
+	z-index: 1;
+}
+
 .vol-profile {
 	overflow-x: unset;
 	margin-top: 50px;

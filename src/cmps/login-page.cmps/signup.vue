@@ -39,6 +39,7 @@
         />
         <input id="img" type="file" @change="handleFile" />
       </label>
+        <img v-if="isLoadingImg" class="signup-loader" src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"/>
       <img v-if="isSelectImg" class="img-prev" :src="newUser.imgUrl" />
     </div>
     <div class="signup-btn">
@@ -54,6 +55,7 @@ import { uploadImg } from "../../services/img-upload.service.js";
 export default {
   data() {
     return {
+      isLoadingImg: false,
       isSelectImg: false,
       newUser: {
         fullname: "",
@@ -102,9 +104,11 @@ export default {
 
     // TODO: include loading
     async handleFile(ev) {
+      this.isLoadingImg = true
       const file = ev.target.files[0];
       const res = await uploadImg(ev);
       this.newUser.imgUrl = res.url;
+      this.isLoadingImg = false
       this.isSelectImg = true;
     },
     back() {

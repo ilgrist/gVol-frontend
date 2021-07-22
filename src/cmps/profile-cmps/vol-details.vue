@@ -3,7 +3,7 @@
     <header class="details-header">
       <h2>
         {{ vol.title }}
-        <button title="Edit Vol" @click="openModal"><img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"></button>
+        <button title="Edit Vol" v-if="isCreatedBy" @click="openModal"><img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"></button>
       </h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -89,6 +89,7 @@ export default {
     return {
       displayOnline: "Online",
       isShort: true,
+      isCreatedBy: false,
     };
   },
   methods: {
@@ -109,12 +110,23 @@ export default {
     removeReview(revIdx) {
       this.$emit("removeReview", revIdx);
     },
+    checkCreator() {
+      const creator = this.vol.createdBy
+      const loggeddinUser = this.$store.getters.loggedinUser
+      if(!creator || !loggeddinUser) return
+      if(loggeddinUser._id === creator){
+        this.isCreatedBy = true
+      }
+    },
   },
   computed: {
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
     },
   },
+  created(){
+    this.checkCreator()
+  }
 };
 </script>
 

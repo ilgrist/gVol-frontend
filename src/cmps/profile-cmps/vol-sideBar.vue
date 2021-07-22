@@ -8,7 +8,6 @@
             {{ vol.members.length }} out of {{ vol.maxMembers }} Volunteers
           </h4>
         </div>
-        <!-- <template v-if="members.length > 0"> -->
 
         <img
           v-for="(member, idx) in members"
@@ -19,19 +18,18 @@
           @click="goToUserProfile(member._id)"
         />
       </div>
-      <img
+      <!-- <img
         class="vol-sidebar-map"
         src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
-      />
-      <!-- <vol-map class="vol-sidebar-map" /> -->
-      <!-- </template> -->
+      /> -->
+      <vol-map class="vol-sidebar-map" :vol="vol" />
       <section class="vol-sidebar-btn-container">
         <button @click="onVol" class="vol-sidebar-btn volunteer-btn">
           Volunteer
         </button>
         <div class="share-section">
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="facebook"
             :url="url"
             :title="vol.title"
@@ -46,7 +44,7 @@
           </ShareNetwork>
 
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="whatsapp"
             :url="url"
             :title="vol.title"
@@ -60,7 +58,7 @@
           </ShareNetwork>
 
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="twitter"
             :url="url"
             :title="vol.title"

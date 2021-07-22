@@ -53,6 +53,7 @@
 					border-radius: 10px;
 					padding: 5px;
 					background-color: #0f91f2;
+					transition: 0.2s;
 				}
 			}
 			.twitter {
@@ -60,13 +61,15 @@
 					border-radius: 10px;
 					padding: 5px;
 					background-color: #1bb1e4;
+					transition: 0.2s;
 				}
 			}
 			.whataspp {
 				&:hover {
 					border-radius: 10px;
-					padding: 5px;
+					padding: 3px;
 					background-color: #1ad03f;
+					transition: 0.2s;
 				}
 			}
 		}

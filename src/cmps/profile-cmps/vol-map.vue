@@ -1,9 +1,7 @@
 <template>
-  <GmapMap :center="{ lat: 10, lng: 10 }" :zoom="7" map-type-id="terrain">
+  <GmapMap :center="setLocation" :zoom="7" map-type-id="terrain">
     <GmapMarker
-      :key="index"
-      v-for="(m, index) in markers"
-      :position="england"
+      :position="setLocation"
       :clickable="true"
       :draggable="true"
       @click="center = m.position"
@@ -12,6 +10,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    vol: {
+      type: Object,
+    },
+  },
+
+  computed: {
+    setLocation() {
+      return { lat: this.vol.loc.lat, lng: this.vol.loc.lng };
+    },
+  },
+};
 </script>
 

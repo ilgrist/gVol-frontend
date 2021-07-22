@@ -158,6 +158,7 @@
 import { showMsg } from "@/services/event-bus.service.js";
 import { volService } from "@/services/vol.service.js";
 import { uploadImg } from "@/services/img-upload.service.js";
+import { socketService } from "@/services/socket.service.js";
 
 export default {
   data() {
@@ -225,7 +226,16 @@ export default {
       this.isEdit = false;
       this.vol = volService.getEmptyVol();
       this.title = "Add a New";
+      socketService.on("vol added", (volId) =>
+        console.log("new vol added", volId)
+      );
     }
+  },
+
+  destroyed() {
+    socketService.off("vol added", (volId) =>
+      console.log("new vol added", volId)
+    );
   },
 
   methods: {
@@ -275,7 +285,7 @@ export default {
         if (this.isEdit) this.msg = "Vol Updated!";
         else this.msg = "new Vol added!";
         showMsg(this.msg, "success");
-
+        socketService.emit("new vol", this.vol._id);
         if (this.isEdit) this.closeModal();
         else {
           this.vol = JSON.parse(JSON.stringify(this.$store.getters.currVol));

@@ -19,36 +19,58 @@
           @click="goToUserProfile(member._id)"
         />
       </div>
-      <!-- <img
+      <img
         class="vol-sidebar-map"
         src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
-      /> -->
-      <vol-map class="vol-sidebar-map" />
+      />
+      <!-- <vol-map class="vol-sidebar-map" /> -->
       <!-- </template> -->
-      <button @click="onVol" class="sidebar-btn volunteer-btn">
-        Volunteer
-      </button>
-      <!-- <ShareNetwork
-      network="facebook"
-      :url="url"
-      :title="vol.title"
-      :description="vol.desc">
-    Facebook
-  </ShareNetwork>
-      <ShareNetwork
-      network="twitter"
-      :url="url"
-      :title="vol.title"
-      :description="vol.desc">
-    Twitter
-  </ShareNetwork>
-      <ShareNetwork
-      network="whatsapp"
-      :url="url"
-      :title="vol.title"
-      :description="vol.desc">
-    WhatsApp
-  </ShareNetwork> -->
+      <section class="vol-sidebar-btn-container">
+        <button @click="onVol" class="vol-sidebar-btn volunteer-btn">
+          Volunteer
+        </button>
+        <div class="share-section">
+          <ShareNetwork
+            network="facebook"
+            :url="url"
+            :title="vol.title"
+            :description="vol.desc"
+            class="share-link"
+          >
+            <img
+              class="share-btn facebook"
+              src="../../assets/img/facebook.svg"
+              alt="facebookImg"
+            />
+          </ShareNetwork>
+
+          <ShareNetwork
+            network="whatsapp"
+            :url="url"
+            :title="vol.title"
+            :description="vol.desc"
+          >
+            <img
+              class="share-btn whataspp"
+              src="../../assets/img/whatsapp.svg"
+              alt="whatsappImg"
+            />
+          </ShareNetwork>
+
+          <ShareNetwork
+            network="twitter"
+            :url="url"
+            :title="vol.title"
+            :description="vol.desc"
+          >
+            <img
+              class="share-btn twitter"
+              src="../../assets/img/twitter.svg"
+              alt="twitterImg"
+            />
+          </ShareNetwork>
+        </div>
+      </section>
     </div>
   </section>
 </template>
@@ -69,7 +91,7 @@ export default {
     return {
       msg: "",
       members: this.$store.getters.getMembers,
-      url: window.location.href
+      url: window.location.href,
     };
   },
   methods: {
@@ -81,9 +103,9 @@ export default {
         showMsg("Member Already Registered ", "success");
         return;
       }
-      if(this.members.length >= +this.vol.maxMembers) {
+      if (this.members.length >= +this.vol.maxMembers) {
         showMsg("This volunteering is fully booked", "success");
-        return
+        return;
       }
       if (this.loggedinUser) {
         const vol = this.$store.getters.currVol;

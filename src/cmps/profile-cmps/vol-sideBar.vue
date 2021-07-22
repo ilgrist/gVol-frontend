@@ -1,33 +1,41 @@
 <template>
-  <section class="sidebar-container">
-    <div class="details-sidebar">
-      <div class="sidebar-users">
-        <div class="users-header">
+  <section class="vol-sidebar-container">
+    <div class="vol-details-sidebar">
+      <div class="vol-sidebar-users">
+        <div class="vol-users-header">
           <h4 v-if="!vol.maxMembers">Volunteers</h4>
           <h4 v-else>
             {{ vol.members.length }} out of {{ vol.maxMembers }} Volunteers
           </h4>
         </div>
         <!-- <template v-if="members.length > 0"> -->
+
         <img
           v-for="(member, idx) in members"
           :key="idx"
-          class="sidebar-img-profile"
+          class="vol-img-profile"
           :src="member.imgUrl"
           alt="imgProfile"
           @click="goToUserProfile(member._id)"
         />
       </div>
+      <img
+        class="vol-sidebar-map"
+        src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
+      />
       <!-- </template> -->
-      <button @click="onVol" class="sidebar-btn volunteer-btn">
-        Volunteer
-      </button>
+      <div class="vol-sidebar-btn-container">
+        <button @click="onVol" class="vol-sidebar-btn volunteer-btn">
+          Volunteer
+        </button>
+        <button class="vol-sidebar-btn">Share</button>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import { showMsg } from "../../services/event-bus.service.js";
+import { showMsg } from "@/services/event-bus.service.js";
 export default {
   props: {
     vol: {

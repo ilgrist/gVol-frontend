@@ -1,4 +1,4 @@
-.sidebar-container {
+.vol-sidebar-container {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
@@ -7,7 +7,7 @@
 	right: 0;
 }
 
-.details-sidebar {
+.vol-details-sidebar {
 	background-color: $clr2;
 	box-shadow: 0px 1px 5px 0px $clr6;
 
@@ -27,19 +27,28 @@
 	position: sticky;
 	top: 55px;
 	right: 0;
+
+	.vol-sidebar-map {
+		margin: 0.5rem 0;
+	}
+
+	.vol-sidebar-btn-container {
+		display: flex;
+		width: 100%;
+	}
 }
 
-.title-sidebar {
-	width: 100%;
-	border-bottom: 1px solid $clr6;
-	border-top: 1px solid $clr6;
-	color: $clr6;
-	font-family: Halant;
-}
+// .title-sidebar {
+// 	width: 100%;
+// 	border-bottom: 1px solid $clr6;
+// 	border-top: 1px solid $clr6;
+// 	color: $clr6;
+// 	font-family: Halant;
+// }
 
 // TODO: action bar to turn into slide in navbar
 
-.sidebar-users {
+.vol-sidebar-users {
 	background-color: $clr1;
 	border: 1px solid lightgray;
 	border-radius: 0.5rem;
@@ -48,29 +57,31 @@
 	justify-content: flex-start;
 	width: 100%;
 	// box-shadow: 0px 0px 2px 0px #000000;
-	padding: 0.3rem;
+	padding: 1rem;
 
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-	gap: 1.2rem;
+	grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+	gap: 0.4rem;
+	justify-content: center;
 
-	.users-header {
+	.vol-users-header {
 		grid-row: 1/2;
 		grid-column: 1/-1;
 	}
 
-	h4 {
-		padding-inline-end: 5px;
-	}
-
-	.sidebar-img-profile {
+	.vol-img-profile {
+		@include aspect-ratio(1, 1);
+		// max-width: 100%;
+		// max-width: 3rem;
 		width: 3rem;
 		height: 3rem;
+		// width: 100%;
+		// max-height: 3rem;
 		border-radius: 50%;
-		padding: 0.1rem;
-		object-fit: cover;
-		margin-inline-end: 0.1rem;
 		cursor: pointer;
+		// padding: 0.1rem;
+		// object-fit: cover;
+		// margin-inline-end: 0.1rem;
 		&:hover {
 			opacity: 50%;
 			transition: 0.3s;
@@ -78,32 +89,32 @@
 	}
 }
 
-.btn-container {
-	// width: 70%;
-	height: 100px;
-	text-align: center;
-	margin-bottom: 15px;
+// .btn-container {
+// 	// width: 70%;
+// 	height: 100px;
+// 	text-align: center;
+// 	margin-bottom: 15px;
 
-	// @include for-narrow-layout {
-	// 	width: 100%;
-	// }
-	// @include for-normal-layout {
-	// 	width: 70%;
-	// }
-	// @include for-wide-layout {
-	// 	width: 70%;
-	// }
-	// @include for-extra-wide-layout {
-	// 	width: 70%;
-	// }
-}
-.sidebar-btn {
+// @include for-narrow-layout {
+// 	width: 100%;
+// }
+// @include for-normal-layout {
+// 	width: 70%;
+// }
+// @include for-wide-layout {
+// 	width: 70%;
+// }
+// @include for-extra-wide-layout {
+// 	width: 70%;
+// }
+// }
+.vol-sidebar-btn {
 	// outline: none;
 	// height: 40px;
-	width: 100%;
+	// width: 100%;
 	text-align: center;
 	border-radius: 0.2rem;
-	background: $clr1;
+	background: $clr5;
 	border: none;
 	// border: 2px solid $clr6;
 	color: $clr6;
@@ -141,9 +152,10 @@
 }
 
 .volunteer-btn {
-	font-size: 1rem;
+	font-size: 1.5rem;
 	color: $clr6;
 	background-color: $clr4;
+	width: 80%;
 	&:hover {
 		color: $clr2;
 		background-color: $clr6;

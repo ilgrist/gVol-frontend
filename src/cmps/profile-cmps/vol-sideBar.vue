@@ -1,7 +1,10 @@
 <template>
   <section class="vol-sidebar-container">
     <div class="vol-details-sidebar">
-      <div class="vol-sidebar-users">
+      <div
+        v-if="vol.members.length > 0 || vol.maxMembers"
+        class="vol-sidebar-users"
+      >
         <div class="vol-users-header">
           <h4 v-if="!vol.maxMembers">Volunteers</h4>
           <h4 v-else>

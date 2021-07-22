@@ -261,7 +261,6 @@ export default {
       this.$emit("removeVol", volId);
     },
     closeModal() {
-      console.log("sanity");
       this.$emit("closeModal");
       this.vol = null;
     },

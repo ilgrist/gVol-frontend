@@ -1,6 +1,6 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
-      <div class="badge-text">Only 1 left</div>
+      <div v-if="isOverTen" class="badge-text">{{leftMembers}}</div>
     <h3 class="card-title">{{ title }}</h3>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       reviews: this.vol.reviews,
+      isOverTen: true
     };
   },
   methods: {
@@ -60,6 +61,20 @@ export default {
     },
   },
   computed: {
+    leftMembers(){
+      const members = this.vol.members
+      const maxMembers = +this.vol.maxMembers
+      const left = maxMembers - members.length
+      if(left > 0 && left < 10){
+        this.isOverTen = true
+        return `Only ${left} Left`
+      }else if(left >= 10){
+        this.isOverTen = false
+      }else{
+        this.isOverTen = true
+        return 'Fully Booked'
+      }
+    },
     title() {
       return this.vol.title;
       return utilService.shortTxt(this.vol.title, 25);

@@ -22,6 +22,27 @@
       <button @click="onVol" class="sidebar-btn volunteer-btn">
         Volunteer
       </button>
+      <!-- <ShareNetwork
+      network="facebook"
+      :url="url"
+      :title="vol.title"
+      :description="vol.desc">
+    Facebook
+  </ShareNetwork>
+      <ShareNetwork
+      network="twitter"
+      :url="url"
+      :title="vol.title"
+      :description="vol.desc">
+    Twitter
+  </ShareNetwork>
+      <ShareNetwork
+      network="whatsapp"
+      :url="url"
+      :title="vol.title"
+      :description="vol.desc">
+    WhatsApp
+  </ShareNetwork> -->
     </div>
   </section>
 </template>
@@ -38,6 +59,7 @@ export default {
     return {
       msg: "",
       members: this.$store.getters.getMembers,
+      url: window.location.href
     };
   },
   methods: {
@@ -46,10 +68,12 @@ export default {
     },
     async onVol() {
       if (this.members.find((member) => member._id === this.loggedinUser._id)) {
-        this.msg = "Member Already Registered ";
-        showMsg(this.msg, "success");
-        this.msg = "";
+        showMsg("Member Already Registered ", "success");
         return;
+      }
+      if(this.members.length >= +this.vol.maxMembers) {
+        showMsg("This volunteering is fully booked", "success");
+        return
       }
       if (this.loggedinUser) {
         const vol = this.$store.getters.currVol;
@@ -59,18 +83,13 @@ export default {
         };
         vol.members.push(member);
         await this.$store.dispatch({ type: "saveVol", vol });
-        this.msg = "Your request has been sent!";
-        showMsg(this.msg, "success");
-        this.msg = "";
+        showMsg("Your request has been sent!", "success");
       } else {
         this.$router.push("/login");
       }
     },
-    onShare() {
-      console.log("shared!");
-      this.msg = "Volunteering shared!";
-      showMsg(this.msg, "success");
-      this.msg = "";
+    facebook() {
+      showMsg("Volunteering shared on Facebook!", "success");
     },
   },
   computed: {

@@ -18,7 +18,7 @@
           @click.prevent.stop="removeReview(idx)"
           class="reviews-btn"
         >
-          Delete
+          Delete Review
         </button>
         <div class="review-user">
           <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />

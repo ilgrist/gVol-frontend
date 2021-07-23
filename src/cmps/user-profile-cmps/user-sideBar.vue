@@ -8,13 +8,13 @@
           v-if="isLoggedSameAsCurr"
           class="details-btn focus"
         >
-          Add volunteering
+          Add a Volunteering
         </button>
         <button @click="onExplore" class="details-btn">Explore</button>
         <!-- <button @click="onShare" class="details-btn">Share</button> -->
         <div class="share-user-section">
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="facebook"
             :url="url"
             title="My gVol Profile"
@@ -28,7 +28,7 @@
           </ShareNetwork>
 
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="whatsapp"
             :url="url"
             title="My gVol Profile"
@@ -42,7 +42,7 @@
           </ShareNetwork>
 
           <ShareNetwork
-          :popup="{width: 500, height: 500}"
+            :popup="{ width: 500, height: 500 }"
             network="twitter"
             :url="url"
             title="My gVol Profile"

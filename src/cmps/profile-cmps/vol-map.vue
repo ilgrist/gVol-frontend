@@ -1,7 +1,7 @@
 <template>
   <GmapMap
     :center="setLocation"
-    :zoom="10"
+    :zoom="14"
     map-type-id="terrain"
     :options="{
       zoomControl: true,

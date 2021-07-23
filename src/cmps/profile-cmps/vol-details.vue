@@ -9,7 +9,10 @@
           />
         </button>
       </h2>
-      <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
+      <a href="#reviews" class="vol-stats">
+        ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
+      </a>
+      <!-- <h4>Opportunity offered by "{{ vol.org.name }}"</h4> -->
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
       </p>
@@ -18,8 +21,7 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <p>Rating :({{ ratingStars }})</p>
-
+      <!-- <p>{{ vol.desc }}</p> -->
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
           {{ tag }}
@@ -90,6 +92,7 @@
     </section>
 
     <volReviews
+      id="reviews"
       :volId="vol._id"
       @sendReview="sendReview"
       @removeReview="removeReview"
@@ -122,6 +125,7 @@ export default {
     };
   },
   methods: {
+    goToReviews() {},
     openModal() {
       this.$emit("openModal");
     },
@@ -152,6 +156,19 @@ export default {
     },
   },
   computed: {
+    avgRating() {
+      let ratingLength = 0;
+      let ratingSum = this.vol.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
+        ratingLength++;
+        return acc + review.rating;
+      }, 0);
+
+      if (!ratingLength) return "None";
+      this.volRatingStars = "⭐".repeat((ratingSum / ratingLength).toFixed(1));
+      this.$emit("stars", this.volRatingStars);
+      return (ratingSum / ratingLength).toFixed(2);
+    },
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
     },

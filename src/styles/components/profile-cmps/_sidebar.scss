@@ -61,26 +61,29 @@
 
 	.facebook {
 		&:hover {
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #0f91f2;
+			fill: #0e8ff2;
 			transition: 0.2s;
+			path {
+				fill: #0e8ff2;
+			}
 		}
 	}
 	.twitter {
 		&:hover {
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #1bb1e4;
+			fill: #1bb1e4;
 			transition: 0.2s;
+			path {
+				fill: #1bb1e4;
+			}
 		}
 	}
 	.whataspp {
 		&:hover {
-			border-radius: 10px;
-			padding: 3px;
-			background-color: #1ad03f;
+			fill: #1ad03f;
 			transition: 0.2s;
+			path {
+				fill: #1ad03f;
+			}
 		}
 	}
 }

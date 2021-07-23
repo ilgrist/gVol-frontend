@@ -6,7 +6,18 @@
 }
 
 .details-header > * {
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.vol-stats {
+	color: unset;
+	padding-bottom: 0.5rem;
+	font-weight: bold;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+		// color: $clr4;
+	}
 }
 
 .details-header {

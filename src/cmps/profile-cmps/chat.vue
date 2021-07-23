@@ -15,6 +15,7 @@
           {{ msg.from }}:<span>{{ msg.txt }} </span>
         </li>
       </ul>
+      <p class="emptyState" v-else>Start messaging...</p>
       <p class="chat-isTyping" v-if="isTyping">{{ isTyping }} is typing...</p>
       <form @submit.prevent="sendMsg">
         <input
@@ -74,7 +75,7 @@ export default {
   computed: {
     username() {
       const user = this.$store.getters.loggedinUser;
-      return user ? this.user.fullname : "Guest";
+      return user ? user.fullname : "Guest";
     },
     toggleChatImgSrc() {
       if (this.isChatOpen)

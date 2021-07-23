@@ -1,12 +1,28 @@
 .user-profile {
   width: 60%;
   .user-details {
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 0.5rem;
+
+    .badge-text {
+      font-size: smaller;
+      position: absolute;
+      transform: rotate(32deg);
+      background-color: #facc6b;
+      background-image: linear-gradient(315deg, #facc6b 0%, #fabc3c 74%);
+      padding: 27px 59px 8px;
+      top: 0;
+      right: -55px;
+      color: black;
+      box-shadow: inset 5px 0px 10px -3px rgb(49, 48, 48);
+    }
   }
 }
+
 
 .user-profile-img-cont {
   img {

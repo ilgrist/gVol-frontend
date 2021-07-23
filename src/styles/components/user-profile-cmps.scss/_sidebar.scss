@@ -166,6 +166,39 @@
 	}
 }
 
+.share-user-section{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 10px;
+	a{
+		margin-right: 10px;
+
+		// &.share-link-facebook{
+		// 	&:hover{
+		// 		border-radius: 50%;
+		// 		background-color: #0f91f2;
+		// 	}
+		// }
+		// &.share-link-whatsapp{
+		// 	&:hover{
+		// 		border-radius: 50%;
+		// 		background-color: #1ad03f;
+		// 	}
+		// }
+		// &.share-link-twitter{
+		// 	&:hover{
+		// 		border-radius: 50%;
+		// 		background-color: #1bb1e4;
+		// 	}
+		// }
+	}
+	img{
+		width: 30px;
+		height: 30px;
+	}
+}
+
 .focus {
 	font-size: 1rem;
 	color: $clr6;

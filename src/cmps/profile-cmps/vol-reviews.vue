@@ -4,7 +4,7 @@
       <h3>⭐{{ avgRating }}</h3>
     </header>
     <header class="review-header">
-      <h3>{{ reviews.length }} Review(s):</h3>
+      <h1>{{ reviews.length }} Review(s):</h1>
       <button v-if="!isNewReview" class="review-btn" @click="addReview">
         Add a Review
       </button>
@@ -60,6 +60,7 @@ export default {
 
       if (!ratingLength) return "None";
       this.volRatingStars ="⭐".repeat((ratingSum / ratingLength).toFixed(1))
+      this.$emit('stars', this.volRatingStars )
       return (ratingSum / ratingLength).toFixed(2);
     },
   },

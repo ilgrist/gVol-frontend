@@ -14,6 +14,7 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
+      <p>Rating :({{ratingStars}})</p>
 
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
@@ -61,11 +62,16 @@
           {{ skill }}
         </span>
       </p>
+      <!-- <p>
+        Date:
+          <span class="header-date">01/07/2021 - 30/07/2021</span>
+      </p> -->
     </div>
     <volReviews
       :volId="vol._id"
       @sendReview="sendReview"
       @removeReview="removeReview"
+      @stars="setRatingStars"
     />
   </section>
 </template>
@@ -90,6 +96,7 @@ export default {
       displayOnline: "Online",
       isShort: true,
       isCreatedBy: false,
+      ratingStars: '',
     };
   },
   methods: {
@@ -118,6 +125,9 @@ export default {
         this.isCreatedBy = true
       }
     },
+    setRatingStars(stars){
+      this.ratingStars = stars
+    }
   },
   computed: {
     description() {

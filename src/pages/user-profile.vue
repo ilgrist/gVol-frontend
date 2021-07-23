@@ -8,7 +8,7 @@
     />
     <div v-else class="vol-det">
       <div class="user-profile">
-        <userDetails :user="user" />
+        <userDetails v-if="userVols" :vols="userVols" :user="user" />
         <user-vol-list
           v-if="userVols"
           :vols="userVols"
@@ -24,7 +24,7 @@
         :isLoggedSameAsCurr="isLoggedSameAsCurr"
         @openModal="openModal"
       />
-      <h3 class="empty-state" v-if="!userVols.length">
+      <h3 class="empty-state" v-if="!userVols">
         Nowhere yet!
         <router-link class="explore-link" to="/volApp"
           >Explore Opportunities...</router-link
@@ -53,7 +53,7 @@ export default {
     return {
       user: null,
       isEditing: false,
-      userVols: [],
+      userVols: null,
     };
   },
   computed: {

@@ -5,6 +5,10 @@
 	gap: 0.5rem;
 }
 
+.details-header >*{
+	margin-bottom: 1rem;
+}
+
 .details-header {
 	background-color: $clr2;
 	border-radius: 1rem;
@@ -54,6 +58,7 @@
 	}
 }
 
+
 .more-details {
 	padding: 1rem;
 	border-radius: 10px;
@@ -79,6 +84,8 @@
 
 	p {
 		padding-top: 1rem;
+		// font-weight: bold;
+		// text-decoration: underline;
 	}
 }
 

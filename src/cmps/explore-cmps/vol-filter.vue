@@ -58,6 +58,13 @@
           <option value="typing">Typing</option>
         </select>
       </label>
+      <label for="avalible">
+        Availability:
+        <select id="avalible" v-model="filterBy.availability" @change="filter">
+          <option value="all">All</option>
+          <option value="avalible">Avalible only</option>
+        </select>
+      </label>
     </div>
   </section>
 </template>
@@ -72,6 +79,7 @@ export default {
         skills: "all",
         isOnSite: false,
         isOnLine: false,
+        availability:"all",
       },
     };
   },
@@ -83,7 +91,6 @@ export default {
   },
   created() {
     this.filterBy = this.$store.getters.filterBy;
-    // this.filter()
   },
 };
 </script>

@@ -9,6 +9,7 @@ export default {
 			skills: 'all',
 			isOnSite: false,
 			isOnLine: false,
+			availability:"all"
 		},
 		currVol: null,
 	},

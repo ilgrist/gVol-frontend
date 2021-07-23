@@ -92,7 +92,6 @@ export default {
   },
   data() {
     return {
-      msg: "",
       members: this.$store.getters.getMembers,
       url: window.location.href,
     };

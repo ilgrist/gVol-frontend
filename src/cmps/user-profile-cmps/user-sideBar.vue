@@ -11,7 +11,50 @@
           Add volunteering
         </button>
         <button @click="onExplore" class="details-btn">Explore</button>
-        <button @click="onShare" class="details-btn">Share</button>
+        <!-- <button @click="onShare" class="details-btn">Share</button> -->
+        <div class="share-user-section">
+          <ShareNetwork
+          :popup="{width: 500, height: 500}"
+            network="facebook"
+            :url="url"
+            title="My gVol Profile"
+            class="share-link-facebook"
+          >
+            <img
+              src="../../assets/img/facebook.svg"
+              alt="facebookImg"
+              title="share on facebook"
+            />
+          </ShareNetwork>
+
+          <ShareNetwork
+          :popup="{width: 500, height: 500}"
+            network="whatsapp"
+            :url="url"
+            title="My gVol Profile"
+            class="share-link-whatsapp"
+          >
+            <img
+              src="../../assets/img/whatsapp.svg"
+              alt="whatsappImg"
+              title="share on whatsapp"
+            />
+          </ShareNetwork>
+
+          <ShareNetwork
+          :popup="{width: 500, height: 500}"
+            network="twitter"
+            :url="url"
+            title="My gVol Profile"
+            class="share-link-twitter"
+          >
+            <img
+              src="../../assets/img/twitter.svg"
+              alt="twitterImg"
+              title="share on twitter"
+            />
+          </ShareNetwork>
+        </div>
       </div>
     </div>
   </section>
@@ -32,6 +75,7 @@ export default {
     return {
       msg: "",
       loggedinUser: null,
+      url: window.location.href,
     };
   },
   methods: {

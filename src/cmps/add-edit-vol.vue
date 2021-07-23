@@ -281,12 +281,8 @@ export default {
           this.$router.push(`/volApp/${volId}`);
         }
       } catch (err) {
-        this.msg = "Cannot save Vol";
-        console.log("Cannot Save Vol", err);
-        showMsg(this.msg, "danger");
+        showMsg("Cannot save Vol", "danger");
         throw err;
-      } finally {
-        this.msg = "";
       }
     },
   },

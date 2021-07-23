@@ -1,7 +1,7 @@
 <template>
   <GmapMap
     :center="setLocation"
-    :zoom="7"
+    :zoom="10"
     map-type-id="terrain"
     :options="{
       zoomControl: true,
@@ -13,12 +13,7 @@
       disableDefaultUi: false,
     }"
   >
-    <!-- <GmapMarker
-      :position="setLocation"
-      :clickable="true"
-      :draggable="true"
-      @click="center = m.position"
-    /> -->
+    <GmapMarker :position="setLocation" :clickable="false" :draggable="true" />
   </GmapMap>
 </template>
 
@@ -32,7 +27,17 @@ export default {
 
   computed: {
     setLocation() {
+      console.log(
+        this.vol.title,
+        "lat: ",
+        this.vol.loc.lat,
+        "lng: ",
+        this.vol.loc.lng
+      );
       return { lat: this.vol.loc.lat, lng: this.vol.loc.lng };
+    },
+    clickMarker() {
+      console.log(this.vol.title, "at", this.vol.loc.lat, this.vol.loc.lng);
     },
   },
 };

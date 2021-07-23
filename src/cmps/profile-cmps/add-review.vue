@@ -30,17 +30,20 @@ export default {
         txt: "",
         createdBy: "",
         rating: "",
+        imgUrl: "",
       },
     };
   },
   methods: {
     sendReview() {
       const copyReview = JSON.parse(JSON.stringify(this.review));
+      console.log("file: add-review.vue ~ line 41 ~ copyReview", copyReview);
       this.$emit("sendReview", copyReview);
     },
     setUser() {
       const loggedinUser = this.$store.getters.loggedinUser;
       this.review.createdBy = loggedinUser.username;
+      this.review.imgUrl = loggedinUser.imgUrl;
     },
     getAStar(idx) {
       if (this.review.rating <= idx) return "☆";

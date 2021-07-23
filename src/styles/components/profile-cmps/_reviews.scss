@@ -66,7 +66,8 @@
 		li {
 			display: grid;
 			grid-template-columns: 20px 80px 2fr 1fr;
-			grid-template-rows: 1fr 10px ;
+			// grid-template-rows: 1fr 10px;
+			grid-template-rows: 1fr auto;
 			gap: 0.5rem;
 			// display: flex;
 			// gap: 1rem;
@@ -74,7 +75,7 @@
 			padding: 10px;
 			border: 0.3px solid lightgray;
 			border-radius: 5px;
-			.date{
+			.date {
 				grid-row: 2/3;
 				grid-column: 1/-1;
 				font-size: small;
@@ -85,7 +86,8 @@
 			}
 		}
 		.reviews-btn {
-			grid-column: 1/2;
+			grid-column: 4/5;
+			font-size: 0.7rem;
 
 			background-color: unset;
 			width: unset;
@@ -121,22 +123,44 @@
 }
 
 .review-user {
-	grid-column: 2/3;
+	// grid-column: 2/3;
+	grid-column: 1/-1;
+	grid-row: 1/2;
 
 	font-style: italic;
 	font-weight: bold;
-	text-decoration: underline;
+	// text-decoration: underline;
 	border-radius: 4px;
 	padding: 1px;
+
+	display: flex;
+	.review-user-header {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
 }
 
-.review-text{
-	grid-column: 3/4;
+.review-text {
+	// grid-column: 3/4;
+	grid-column: 1/-1;
+	grid-row: 2/-1;
+	max-width: 100%;
+	// width: 100px;
 }
-.review-stars{
+.review-stars {
 	grid-column: 4/5;
 }
 
 .review-rating {
 	font-weight: bold;
+}
+
+.img-profile {
+	@include aspect-ratio(1, 1);
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	cursor: pointer;
 }

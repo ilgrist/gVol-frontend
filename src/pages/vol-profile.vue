@@ -94,6 +94,7 @@ export default {
         createdBy: newReview.createdBy,
         createdAt: Date.now(),
         rating: newReview.rating,
+        imgUrl: newReview.imgUrl,
       };
 
       try {

@@ -17,6 +17,7 @@
 	align-items: center;
 	align-self: auto;
 	width: 100%;
+	gap: 0.5rem;
 
 	text-align: center;
 	padding: 0.5rem;
@@ -31,75 +32,71 @@
 	.vol-sidebar-map {
 		margin: 0.5rem 0;
 		width: 100%;
-		min-height: 300px;
+		min-height: 200px;
+		border-radius: 10px;
+
+		.vue-map {
+			border-radius: 5px;
+		}
 	}
 
 	.vol-sidebar-btn-container {
 		display: flex;
 		width: 100%;
-
-		.share-section {
-			display: flex;
-			flex-direction: column;
-			width: 10%;
-			justify-content: center;
-
-			.share-btn {
-				max-width: 30px;
-			}
-
-			.facebook {
-				&:hover {
-					border-radius: 10px;
-					padding: 5px;
-					background-color: #0f91f2;
-					transition: 0.2s;
-				}
-			}
-			.twitter {
-				&:hover {
-					border-radius: 10px;
-					padding: 5px;
-					background-color: #1bb1e4;
-					transition: 0.2s;
-				}
-			}
-			.whataspp {
-				&:hover {
-					border-radius: 10px;
-					padding: 3px;
-					background-color: #1ad03f;
-					transition: 0.2s;
-				}
-			}
-		}
 	}
 }
 
-// .title-sidebar {
-// 	width: 100%;
-// 	border-bottom: 1px solid $clr6;
-// 	border-top: 1px solid $clr6;
-// 	color: $clr6;
-// 	font-family: Halant;
-// }
+.share-section {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	flex-wrap: wrap;
 
-// TODO: action bar to turn into slide in navbar
+	justify-content: center;
+	gap: 1rem;
+
+	.share-btn {
+		max-width: 30px;
+	}
+
+	.facebook {
+		&:hover {
+			border-radius: 10px;
+			padding: 5px;
+			background-color: #0f91f2;
+			transition: 0.2s;
+		}
+	}
+	.twitter {
+		&:hover {
+			border-radius: 10px;
+			padding: 5px;
+			background-color: #1bb1e4;
+			transition: 0.2s;
+		}
+	}
+	.whataspp {
+		&:hover {
+			border-radius: 10px;
+			padding: 3px;
+			background-color: #1ad03f;
+			transition: 0.2s;
+		}
+	}
+}
 
 .vol-sidebar-users {
 	background-color: $clr1;
 	border: 1px solid lightgray;
 	border-radius: 0.5rem;
 
-	// flex-direction: column;
 	justify-content: flex-start;
 	width: 100%;
-	// box-shadow: 0px 0px 2px 0px #000000;
-	padding: 1rem;
+	padding: 0.5rem;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
-	gap: 0.4rem;
+	gap: 0.5rem 0.3rem;
 	justify-content: center;
 
 	.vol-users-header {
@@ -109,12 +106,8 @@
 
 	.vol-img-profile {
 		@include aspect-ratio(1, 1);
-		// max-width: 100%;
-		// max-width: 3rem;
-		width: 3rem;
-		height: 3rem;
-		// width: 100%;
-		// max-height: 3rem;
+		width: 2.5rem;
+		height: 2.5rem;
 		border-radius: 50%;
 		cursor: pointer;
 		// padding: 0.1rem;
@@ -133,73 +126,30 @@
 // 	text-align: center;
 // 	margin-bottom: 15px;
 
-.vol-sidebar-btn {
-	// outline: none;
-	// height: 40px;
-	// width: 100%;
+.volunteer-btn {
 	text-align: center;
 	border-radius: 0.2rem;
-	background: $clr5;
 	border: none;
-	// border: 2px solid $clr6;
-	color: $clr6;
 	letter-spacing: 1px;
-	text-shadow: 0;
-	margin: 5px;
-	padding: 1.5rem 0;
-	// outline: none;
-	// height: 40px;
-	// width: 100%;
-	// text-align: center;
-	// border-radius: 40px;
-	// background: $clr1;
-	// border: 2px solid $clr6;
-	// color: $clr6;
-	// letter-spacing: 1px;
-	// text-shadow: 0;
-	// margin: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+	// padding: 1.3rem 0;
 
-	font: {
-		size: 0.8rem;
-		weight: bold;
-	}
-
-	cursor: pointer;
-	transition: all 0.25s ease;
+	transition: all 0.3s ease;
 
 	&:hover {
 		color: $clr2;
 		background-color: $clr6;
 	}
-	&:active {
-		letter-spacing: 2px;
-	}
-}
 
-.volunteer-btn {
 	font-size: 1.5rem;
 	color: $clr6;
 	background-color: $clr4;
-	width: 90%;
+	width: 100%;
+	padding: 0.5rem 0;
+	// max-height: 80%;
 	&:hover {
 		color: $clr2;
 		background-color: $clr6;
-	}
-}
-
-.onclick {
-	width: 40px;
-	border-color: $clr6;
-	border-width: 3px;
-	font-size: 0;
-	border-left-color: $clr2;
-	animation: rotating 2s 0.25s linear infinite;
-
-	&:after {
-		content: '';
-	}
-	&:hover {
-		color: $clr2;
-		background: $clr6;
 	}
 }

@@ -3,7 +3,11 @@
     <header class="details-header">
       <h2>
         {{ vol.title }}
-        <button title="Edit Vol" v-if="isCreatedBy" @click="openModal"><img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"></button>
+        <button title="Edit Vol" v-if="isCreatedBy" @click="openModal">
+          <img
+            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"
+          />
+        </button>
       </h2>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -14,7 +18,7 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <p>Rating :({{ratingStars}})</p>
+      <p>Rating :({{ ratingStars }})</p>
 
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
@@ -29,7 +33,7 @@
       </div>
     </div>
 
-    <div class="more-details">
+    <section class="more-details">
       <h3>
         More Details
         <img
@@ -49,14 +53,31 @@
           alt="readLess"
         />
       </h3>
+
       <h4 v-if="isShort">
         {{ description }}
       </h4>
+
       <h4 v-else>
         {{ vol.desc }}
       </h4>
 
-      <p>
+      <section class="amenities">
+        <article
+          class="amenity"
+          v-for="(amenity, idx) in vol.amenities"
+          :key="idx"
+        >
+          <img
+            class="amenity-img"
+            :src="amenity.imgUrl"
+            alt="amenityImg"
+            :title="amenity.label"
+          />
+          {{ amenity.label }}
+        </article>
+      </section>
+      <p class="skills">
         Required Skills:
         <span class="req-skill" v-for="skill in vol.reqSkills" :key="skill">
           {{ skill }}
@@ -66,7 +87,8 @@
         Date:
           <span class="header-date">01/07/2021 - 30/07/2021</span>
       </p> -->
-    </div>
+    </section>
+
     <volReviews
       :volId="vol._id"
       @sendReview="sendReview"
@@ -96,7 +118,7 @@ export default {
       displayOnline: "Online",
       isShort: true,
       isCreatedBy: false,
-      ratingStars: '',
+      ratingStars: "",
     };
   },
   methods: {
@@ -118,25 +140,25 @@ export default {
       this.$emit("removeReview", revIdx);
     },
     checkCreator() {
-      const creator = this.vol.createdBy
-      const loggeddinUser = this.$store.getters.loggedinUser
-      if(!creator || !loggeddinUser) return
-      if(loggeddinUser._id === creator){
-        this.isCreatedBy = true
+      const creator = this.vol.createdBy;
+      const loggeddinUser = this.$store.getters.loggedinUser;
+      if (!creator || !loggeddinUser) return;
+      if (loggeddinUser._id === creator) {
+        this.isCreatedBy = true;
       }
     },
-    setRatingStars(stars){
-      this.ratingStars = stars
-    }
+    setRatingStars(stars) {
+      this.ratingStars = stars;
+    },
   },
   computed: {
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
     },
   },
-  created(){
-    this.checkCreator()
-  }
+  created() {
+    this.checkCreator();
+  },
 };
 </script>
 

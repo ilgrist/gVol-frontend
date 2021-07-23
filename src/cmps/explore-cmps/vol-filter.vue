@@ -2,6 +2,7 @@
   <section class="explore-filter">
     <div class="online-onsite">
       <label class="online" for="online" title="Volunteer Online">
+        Online
         <input
           id="online"
           type="checkbox"
@@ -14,6 +15,7 @@
         />
       </label>
       <label class="onsite" for="onsite" title="Volunteer Onsite">
+        Onsite
         <input
           id="onsite"
           type="checkbox"
@@ -26,7 +28,7 @@
         />
       </label>
     </div>
-    <label for="search"
+    <label class="search" for="search"
       >Search:
       <input
         id="search"
@@ -36,7 +38,7 @@
         @input="filter"
       />
     </label>
-    <div>
+    <div class="selects">
       <label for="category">
         Category:
         <select id="category" v-model="filterBy.category" @change="filter">
@@ -62,7 +64,7 @@
         Availability:
         <select id="available" v-model="filterBy.availability" @change="filter">
           <option value="all">All</option>
-          <option value="available">Available only</option>
+          <option value="available">Available Only</option>
         </select>
       </label>
     </div>

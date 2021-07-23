@@ -3,9 +3,9 @@
     <h4 class="chat-title" @click="toggleChat">
       Chat about {{ vol.title }}
       <img
-        title="Read More"
+        title="Open chat"
         :src="toggleChatImgSrc"
-        alt="openChat"
+        alt=""
         class="toggleChatImg"
       />
     </h4>
@@ -68,7 +68,7 @@ export default {
     },
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;
-      if (isChatOpen) this.$refs.input.focus();
+      if (this.isChatOpen) this.$refs.input.focus();
     },
   },
   computed: {

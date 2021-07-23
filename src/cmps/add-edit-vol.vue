@@ -93,6 +93,22 @@
           </el-option>
         </el-select>
 
+        <label for="amenities">List Amenities</label>
+        <el-select
+          v-model="vol.amenities"
+          multiple
+          placeholder="Select Amenities"
+          value-key="label"
+        >
+          <el-option
+            v-for="(amentiy, idx) in amenities"
+            :key="idx"
+            :label="amentiy.label"
+            :value="amentiy.value"
+          >
+          </el-option>
+        </el-select>
+
         <!-- <label for="volOrg"> Orgs </label> -->
         <!-- <select v-model="vol.org.name" name="org">
           <option value="org1">Org1</option>
@@ -169,7 +185,72 @@ export default {
       vol: null,
       isEdit: false,
 
-      // TBD: ASK SHACHAR HOW TO DO THIS BETTER AND FROM DB?
+      amenities: [
+        {
+          value: {
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626424950/volApp/icons/online_y28koq.svg",
+            label: "Wifi & Satellite",
+          },
+          label: "Wifi & Satellite",
+        },
+        {
+          value: {
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038823/volApp/icons/hotwater_gi37ut.svg",
+            label: "Hot Water",
+          },
+          label: "Hot Water",
+        },
+        {
+          value: {
+            label: "Electricity",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038820/volApp/icons/electricity_jqfdt9.svg",
+          },
+          label: "Electricity",
+        },
+        {
+          value: {
+            label: "Air Conditioning",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/AC_mme61c.svg",
+          },
+          label: "Air Conditioning",
+        },
+        {
+          value: {
+            label: "Accomodation",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/accomodation_rjjuh4.svg",
+          },
+          label: "Accomodation",
+        },
+        {
+          value: {
+            label: "Pickups and Drop Off",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/pickup_bjlbya.svg",
+          },
+          label: "Pickups and Drop Off",
+        },
+        {
+          value: {
+            label: "Tours",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/tours_hifcun.svg",
+          },
+          label: "Tours",
+        },
+        {
+          value: {
+            label: "Social Activities",
+            imgUrl:
+              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/socials_fzptvf.svg",
+          },
+          label: "Social Activities",
+        },
+      ],
       tags: [
         {
           value: "children",

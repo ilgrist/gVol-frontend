@@ -59,7 +59,7 @@ export default {
   computed: {
     isLoggedSameAsCurr() {
       const loggedUser = this.$store.getters.loggedinUser;
-      return this.user._id === loggedUser._id;
+      if (loggedUser) return this.user._id === loggedUser._id;
     },
   },
   methods: {
@@ -74,6 +74,7 @@ export default {
     },
     async setUser() {
       const { _id } = this.$route.params;
+      console.log("_id:", _id);
       if (_id)
         try {
           this.user = await this.$store.dispatch({

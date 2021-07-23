@@ -8,6 +8,7 @@
       alt="loading"
     />
     <template v-else> -->
+    <homepage-map :volsLocs="volsLocs" />
     <short-list
       class="main-layout"
       v-if="isload"
@@ -30,6 +31,7 @@
 import hero from "../cmps/homepage-cmps/hero.vue";
 import categoriesGrid from "../cmps/homepage-cmps/categories-grid.vue";
 import shortList from "../cmps/homepage-cmps/short-vol-list.vue";
+import homepageMap from "../cmps/homepage-cmps/homepage-map.vue";
 
 export default {
   name: "Home",
@@ -37,6 +39,7 @@ export default {
     hero,
     categoriesGrid,
     shortList,
+    homepageMap,
   },
   data() {
     return {
@@ -48,6 +51,17 @@ export default {
     };
   },
   computed: {
+    volsLocs() {
+      let vols = JSON.parse(JSON.stringify(this.$store.getters.volsToShow));
+      let volsLocs = vols
+        .filter((vol) => vol.loc.lat && vol.loc.lng)
+        .map((vol) => {
+          return Object.assign({ id: vol._id, title: vol.title }, vol.loc);
+        });
+
+      return volsLocs;
+    },
+
     popularVols() {
       let popularVols = JSON.parse(
         JSON.stringify(this.$store.getters.volsToShow)

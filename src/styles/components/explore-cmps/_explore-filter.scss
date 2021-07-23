@@ -1,7 +1,7 @@
 .explore-filter {
 	background-color: $clr1;
-	max-width: 70%;
-	flex-direction: column;
+	max-width: 100%;
+	flex-direction: row;
 	gap: 10px;
 
 	margin: 0 auto;
@@ -22,25 +22,24 @@
 
 	box-shadow: -2px 1px 20px -11px rgba(0, 0, 0, 0.9);
 	transition: box-shadow 0.4s;
-	
 
-	@include for-narrow-layout {
-		max-width: 50%;
-		flex-direction: column;
-		gap: 10px;
-	  }
-	  @include for-normal-layout {
-		  max-width: 60%;
-		  flex-wrap: wrap;
-		  flex-direction: row;
-	  }
-	  @include for-wide-layout {
-		max-width: 70%;
-		flex-wrap: wrap;
-	}
-	@include for-extra-wide-layout {
-		  max-width: 60%;
-	  }
+	// @include for-narrow-layout {
+	// 	max-width: 50%;
+	// 	flex-direction: column;
+	// 	gap: 10px;
+	//   }
+	//   @include for-normal-layout {
+	// 	  max-width: 60%;
+	// 	  flex-wrap: wrap;
+	// 	  flex-direction: row;
+	//   }
+	//   @include for-wide-layout {
+	// 	max-width: 70%;
+	// 	flex-wrap: wrap;
+	// }
+	// @include for-extra-wide-layout {
+	// 	  max-width: 60%;
+	//   }
 
 	&:hover {
 		box-shadow: 0px 0px 25px -11px rgba(0, 0, 0, 0.9);

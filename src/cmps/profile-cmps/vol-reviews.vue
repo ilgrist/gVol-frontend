@@ -13,15 +13,26 @@
 
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li class="review-container">
-        <button @click.prevent.stop="removeReview(idx)" class="reviews-btn">
-          X
+        <button
+          v-if="loggedinUser.username === review.createdBy"
+          @click.prevent.stop="removeReview(idx)"
+          class="reviews-btn"
+        >
+          Delete
         </button>
-        <span class="review-user">
-          {{ review.createdBy }} :
-        </span>
-        <span class="review-text">"{{ review.txt }}"</span> 
-        <span class="review-stars">({{ starsDisplay(review.rating) }})</span>
-        <span class="date">{{revDate(review.createdAt)}}</span>
+        <div class="review-user">
+          <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />
+          <div class="review-user-header">
+            <div>
+              {{ review.createdBy }}
+              <span class="review-stars"
+                >({{ starsDisplay(review.rating) }})</span
+              >
+            </div>
+            <span class="date">{{ revDate(review.createdAt) }}</span>
+          </div>
+        </div>
+        <div class="review-text">{{ review.txt }}</div>
       </li>
     </ul>
   </div>
@@ -29,7 +40,7 @@
 
 <script>
 import addReview from "./add-review.vue";
-const moment = require("moment")
+const moment = require("moment");
 
 export default {
   props: {
@@ -39,10 +50,10 @@ export default {
   },
   data() {
     return {
-      volRatingStars:'',
-      msg: '',
+      volRatingStars: "",
+      msg: "",
       isNewReview: false,
-      isLoggedinUser: false,
+      loggedinUser: false,
     };
   },
 
@@ -59,21 +70,21 @@ export default {
       }, 0);
 
       if (!ratingLength) return "None";
-      this.volRatingStars ="⭐".repeat((ratingSum / ratingLength).toFixed(1))
-      this.$emit('stars', this.volRatingStars )
+      this.volRatingStars = "⭐".repeat((ratingSum / ratingLength).toFixed(1));
+      this.$emit("stars", this.volRatingStars);
       return (ratingSum / ratingLength).toFixed(2);
     },
   },
   methods: {
-    revDate(date){
-      moment.locale('en-il')
-      return moment(date).format('LLL');
+    revDate(date) {
+      moment.locale("en-il");
+      return moment(date).format("LLL");
     },
     starsDisplay(rating) {
       return "⭐".repeat(rating);
     },
     addReview() {
-      if (this.isLoggedinUser) {
+      if (this.loggedinUser) {
         this.isNewReview = true;
       } else {
         this.$router.push("/login");
@@ -90,7 +101,7 @@ export default {
   },
 
   created() {
-    this.isLoggedinUser = this.$store.getters.loggedinUser;
+    this.loggedinUser = this.$store.getters.loggedinUser;
   },
   components: {
     addReview,

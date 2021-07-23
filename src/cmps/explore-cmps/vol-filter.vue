@@ -58,11 +58,11 @@
           <option value="typing">Typing</option>
         </select>
       </label>
-      <label for="avalible">
+      <label for="available">
         Availability:
-        <select id="avalible" v-model="filterBy.availability" @change="filter">
+        <select id="available" v-model="filterBy.availability" @change="filter">
           <option value="all">All</option>
-          <option value="avalible">Avalible only</option>
+          <option value="available">Available only</option>
         </select>
       </label>
     </div>
@@ -79,7 +79,7 @@ export default {
         skills: "all",
         isOnSite: false,
         isOnLine: false,
-        availability:"all",
+        availability: "all",
       },
     };
   },

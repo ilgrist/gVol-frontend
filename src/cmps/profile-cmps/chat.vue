@@ -1,22 +1,32 @@
 <template>
   <section class="chat-cont">
-    <h4>Chat about {{ vol.title }}</h4>
-    <!-- <button @click="toggleChat">></button> -->
-    <ul class="chat-msg-list" v-if="msgs.length">
-      <li class="chat-msg" v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{ msg.from }}:</span> {{ msg.txt }}
-      </li>
-    </ul>
-    <p class="chat-isTyping" v-if="isTyping">{{ isTyping }} is typing...</p>
-    <form @submit.prevent="sendMsg">
-      <input
-        type="text"
-        v-model="txt"
-        placeholder="Type your msg"
-        @input="showTyping"
+    <h4 class="chat-title" @click="toggleChat">
+      Chat about {{ vol.title }}
+      <img
+        title="Read More"
+        :src="toggleChatImgSrc"
+        alt="openChat"
+        class="toggleChatImg"
       />
-      <button class="chat-send-btn">Send</button>
-    </form>
+    </h4>
+    <div class="chat-inner-cont" :class="{ hidden: isChatOpen }">
+      <ul class="chat-msg-list" v-if="msgs.length">
+        <li class="chat-msg" v-for="(msg, idx) in msgs" :key="idx">
+          {{ msg.from }}:<span>{{ msg.txt }} </span>
+        </li>
+      </ul>
+      <p class="chat-isTyping" v-if="isTyping">{{ isTyping }} is typing...</p>
+      <form @submit.prevent="sendMsg">
+        <input
+          ref="input"
+          type="text"
+          v-model="txt"
+          placeholder="Type your msg"
+          @input="showTyping"
+        />
+        <button class="chat-send-btn">Send</button>
+      </form>
+    </div>
   </section>
 </template>
 
@@ -58,12 +68,18 @@ export default {
     },
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;
+      if (isChatOpen) this.$refs.input.focus();
     },
   },
   computed: {
     username() {
       const user = this.$store.getters.loggedinUser;
       return user ? this.user.fullname : "Guest";
+    },
+    toggleChatImgSrc() {
+      if (this.isChatOpen)
+        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/more_rurxqi.svg";
+      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/less_nafgg8.svg";
     },
   },
   created() {

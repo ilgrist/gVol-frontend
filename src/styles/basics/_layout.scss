@@ -24,8 +24,14 @@
   border-radius: 10px;
   transition: 0.3s ease;
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0px 0px 3px 0px darkgray;
+    h3{
+      color: #149b72;
+    }
+    .rev-cont{
+      background-color: #149b72;
+      color: $clr2;
+    }
+    // box-shadow: 0px 0px 3px 0px darkgray;
   }
   .skill-span-cont {
     text-overflow: ellipsis;

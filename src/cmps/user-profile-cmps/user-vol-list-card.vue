@@ -1,5 +1,10 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
+    <el-carousel :autoplay="false" trigger="click" height="200px">
+      <el-carousel-item v-for="img,idx in vol.imgUrls" :key="idx">
+        <img :src="img">
+      </el-carousel-item>
+    </el-carousel>
     <div class="card-title">
       <h3>{{ title }}</h3>
       <button
@@ -21,21 +26,8 @@
         </span>
       </p>
     </div>
-    <img :src="vol.imgUrls[0]" />
-    <div class="rev-cont">
-      <div class="rating">
-        <img
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
-        />
-        <span>{{ avgRating }}</span>
-      </div>
-      <div class="reviews">
-        <span> Reviews ({{ reviewNum }})</span>
-      </div>
-    </div>
-    <hr />
+    <!-- <img :src="vol.imgUrls[0]" /> -->
     <p class="card-description">{{ description }}</p>
-    <hr />
     <article class="skills">
       Skills:
       <p
@@ -46,6 +38,17 @@
         <span @click.stop="filterBySkill(skill)">{{ skill }}</span>
       </p>
     </article>
+      <div class="rev-cont">
+      <div class="rating">
+        <img
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
+        />
+        <span>{{ avgRating }}</span>
+      </div>
+      <div class="reviews">
+        <span> Reviews ({{ reviewNum }})</span>
+      </div>
+    </div>
   </section>
 </template>
 

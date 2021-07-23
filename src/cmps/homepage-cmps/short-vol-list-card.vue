@@ -1,6 +1,11 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
       <div v-if="isOverTen" class="badge-text">{{leftMembers}}</div>
+     <el-carousel :autoplay="false" trigger="click" height="200px">
+      <el-carousel-item v-for="img,idx in vol.imgUrls" :key="idx">
+        <img :src="img">
+      </el-carousel-item>
+    </el-carousel>
     <h3 class="card-title">{{ title }}</h3>
     <div class="details-loc-cont">
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -12,7 +17,17 @@
         </span>
       </p>
     </div>
-    <img :src="vol.imgUrls[0]" />
+    <p class="card-description">{{ description }}</p>
+    <article class="skills">
+      Skills:
+      <p
+        class="skill-span-cont"
+        v-for="(skill, idx) in vol.reqSkills"
+        :key="idx"
+      >
+        <span @click.stop="filterBySkill(skill)">{{ skill }}</span>
+      </p>
+    </article>
     <div class="rev-cont">
       <div class="rating">
         <img
@@ -24,19 +39,6 @@
         <span> Reviews ({{ reviewNum }})</span>
       </div>
     </div>
-    <hr />
-    <p class="card-description">{{ description }}</p>
-    <hr />
-    <article class="skills">
-      Skills:
-      <p
-        class="skill-span-cont"
-        v-for="(skill, idx) in vol.reqSkills"
-        :key="idx"
-      >
-        <span @click.stop="filterBySkill(skill)">{{ skill }}</span>
-      </p>
-    </article>
   </section>
 </template>
 
@@ -49,7 +51,8 @@ export default {
   data() {
     return {
       reviews: this.vol.reviews,
-      isOverTen: true
+      isOverTen: true,
+      false:false
     };
   },
   methods: {

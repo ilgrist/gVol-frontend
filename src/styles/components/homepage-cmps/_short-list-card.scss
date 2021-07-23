@@ -3,12 +3,9 @@
 		font-size: smaller;
 		position: absolute;
 		transform: rotate(32deg);
-		// background-color: #ff764b;
 		background-color: #31a6ba;
 		padding: 27px 59px 8px;
-		// top: -12px;
 		top: -15px;
-		// right: -61px;
 		right: -66px;
 		color: #f5f5f5;
 		box-shadow: inset 0px 0px 20px 0px black;
@@ -16,39 +13,57 @@
 
 	position: relative;
 	cursor: pointer;
-	background-color: $clr2;
-	padding: 10px;
+	// background-color: $clr2;
 	flex-wrap: wrap;
 	overflow: hidden;
 
-	// width: 350px;
-	// height: 370px;
-
 	.card-title {
+		margin: 0;
 		@include text-overflow;
-		margin-bottom: 0.3em;
-		font-family: Nunito800;
+		font-family: Nunito700;
+		font-size: x-large;
+		padding: 10px
+		
+	}
+
+	.details-location{
+		padding: 10px;
 	}
 
 	// TBD Asi
 	.card-description {
+		padding-left: 10px;
+		margin-bottom: 15px;
 		@include flex-overflow(2);
 	}
 	img {
-		height: 150px;
-		border-radius: 5px;
+		height: 200px;
 		object-fit: cover;
+		margin-bottom: 0;
+	}
+
+	.el-carousel__indicator--horizontal{
+		display: none;
+	}
+	.el-carousel__arrow{
+		background-color: rgb(45, 46, 45);
+		opacity: 0.5;
+		&:hover{
+			opacity: 0.9;
+		}
 	}
 
 	.rev-cont {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 5px;
+		padding: 10px;
 		cursor: pointer;
-		background-color: $clr5;
-		border-radius: 10px;
-		color: $clr2;
+		// background-color: $clr5;
+		background-color: rgb(197, 197, 197);
+		// color: $clr2;
+		font-weight: 600;
+		letter-spacing: 2px;
 		> * {
 			display: flex;
 			gap: 5px;
@@ -63,6 +78,7 @@
 		}
 	}
 	.skills {
+		padding: 10px;
 		display: flex;
 		font-weight: bold;
 		overflow: hidden;
@@ -79,3 +95,7 @@
 		}
 	}
 }
+
+
+
+

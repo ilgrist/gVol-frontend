@@ -1,12 +1,12 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
     <el-carousel :autoplay="false" trigger="click" height="200px">
-      <el-carousel-item v-for="img,idx in vol.imgUrls" :key="idx">
-        <img :src="img">
+      <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img :src="img" />
       </el-carousel-item>
     </el-carousel>
-    <div class="card-title">
-      <h3>{{ title }}</h3>
+    <div class="card-title-cont">
+      <h3 class="card-title">{{ title }}</h3>
       <button
         @click.stop="leaveVol"
         v-if="isLoggedSameAsCurr"
@@ -38,7 +38,7 @@
         <span @click.stop="filterBySkill(skill)">{{ skill }}</span>
       </p>
     </article>
-      <div class="rev-cont">
+    <div class="rev-cont">
       <div class="rating">
         <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"

@@ -29,9 +29,10 @@
     overflow: auto;
     margin: 0.5rem 0;
     li {
+      font-style: italic;
       span {
         text-transform: capitalize;
-        font-style: italic;
+        font-style: normal;
       }
     }
   }

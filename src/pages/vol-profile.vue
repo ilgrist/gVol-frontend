@@ -1,25 +1,51 @@
 <template>
   <section class="vol-profile main-layout">
     <div v-if="isEditing" class="dark-screen"></div>
-    <div class="displayProfile">
-      <img
-        class="loading-img"
-        v-if="!vol"
-        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
-        alt="loading"
+    <!-- <div class="displayProfile"> -->
+    <img
+      class="loading-img"
+      v-if="!vol"
+      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      alt="loading"
+    />
+    <div v-else class="vol-det">
+      <header class="profile-header">
+        <h2>
+          {{ vol.title }}
+          <button title="Edit Vol" v-if="isCreatedBy" @click="openModal">
+            <img
+              src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"
+            />
+          </button>
+        </h2>
+        <a href="#reviews" class="vol-stats">
+          ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
+        </a>
+        <!-- <h4>Opportunity offered by "{{ vol.org.name }}"</h4> -->
+        <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
+          Online
+        </p>
+        <p v-else>
+          <span class="details-location">
+            {{ vol.loc.city }}, {{ vol.loc.country }}
+          </span>
+        </p>
+        <p>
+          <span class="details-tag" v-for="tag in vol.tags" :key="tag">
+            {{ tag }}
+          </span>
+        </p>
+      </header>
+      <volDetails
+        @sendReview="sendReview"
+        :vol="vol"
+        @openModal="openModal"
+        @closeModal="closeModal"
+        @removeReview="removeReview"
       />
-      <!-- <div v-if="vol" class="vol-det"> -->
-      <div v-else class="vol-det">
-        <volDetails
-          @sendReview="sendReview"
-          :vol="vol"
-          @openModal="openModal"
-          @closeModal="closeModal"
-          @removeReview="removeReview"
-        />
-        <volSideBar :vol="vol" />
-      </div>
+      <volSideBar :vol="vol" />
     </div>
+    <!-- </div> -->
     <add-edit-vol
       v-if="isEditing"
       @closeModal="closeModal"
@@ -45,6 +71,7 @@ export default {
     return {
       vol: null,
       isEditing: false,
+      isCreatedBy: false,
     };
   },
   methods: {
@@ -118,9 +145,36 @@ export default {
           throw err;
         }
     },
+
+    checkCreator() {
+      const creator = this.vol.createdBy;
+      const loggeddinUser = this.$store.getters.loggedinUser;
+      if (!creator || !loggeddinUser) return;
+      if (loggeddinUser._id === creator) {
+        this.isCreatedBy = true;
+      }
+    },
   },
   async created() {
     this.setVol();
+  },
+  computed: {
+    avgRating() {
+      let ratingLength = 0;
+      let ratingSum = this.vol.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
+        ratingLength++;
+        return acc + review.rating;
+      }, 0);
+
+      if (!ratingLength) return "None";
+      this.volRatingStars = "⭐".repeat((ratingSum / ratingLength).toFixed(1));
+      this.$emit("stars", this.volRatingStars);
+      return (ratingSum / ratingLength).toFixed(2);
+    },
+    description() {
+      return utilService.shortTxt(this.vol.desc, 200);
+    },
   },
 };
 </script>

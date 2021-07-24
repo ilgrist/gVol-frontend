@@ -6,15 +6,19 @@
 	margin-top: 40px; //Header account for
 
 	@include for-narrow-layout {
+		//400px
 		max-width: $break-narrow;
 	}
 	@include for-normal-layout {
+		//720px
 		max-width: $break-normal;
 	}
 	@include for-wide-layout {
+		//1060px
 		max-width: $break-wide;
 	}
 	@include for-extra-wide-layout {
+		//1400px
 		max-width: $break-extra-wide;
 	}
 }

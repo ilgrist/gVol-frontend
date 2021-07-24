@@ -2,7 +2,7 @@
 
 @mixin for-narrow-layout {
 	// @media (min-width: $break-narrow) {
-	@media (min-width: $break-narrow) {
+	@media (max-width: $break-narrow) {
 		@content;
 	}
 }

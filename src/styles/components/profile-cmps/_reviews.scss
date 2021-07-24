@@ -3,15 +3,19 @@
 	padding: 1rem;
 	background-color: $clr2;
 	// grid-row: 7/8;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+
+	// display: flex;
+	// flex-direction: column;
+	// align-items: center;
+
+	display: grid;
 
 	h3 {
 		font-size: 1rem;
 	}
 
 	@include for-narrow-layout {
+		padding-bottom: 0.5rem;
 	}
 	@include for-normal-layout {
 		padding: 1rem;
@@ -62,7 +66,8 @@
 	}
 
 	ul {
-		padding: 0;
+		padding: 0 0.5rem;
+		margin-bottom: unset;
 		li {
 			display: grid;
 			grid-template-columns: 20px 80px 2fr 1fr;
@@ -82,6 +87,16 @@
 			}
 			.btns-control {
 				align-self: flex-start;
+			}
+
+			@include for-narrow-layout {
+			}
+			@include for-normal-layout {
+				gap: unset;
+			}
+			@include for-wide-layout {
+			}
+			@include for-extra-wide-layout {
 			}
 		}
 		.reviews-btn {
@@ -106,8 +121,9 @@
 .review-header {
 	display: flex;
 	justify-content: space-between;
-	flex-direction: column;
-	align-items: center;
+	// flex-direction: row;
+	gap: 0.5rem;
+	// align-items: center;
 
 	@include for-narrow-layout {
 	}

@@ -1,7 +1,7 @@
 <template>
   <div class="details-reviews">
     <header class="rating-header">
-      <h3>⭐{{ avgRating }}</h3>
+      <!-- <h3>⭐{{ avgRating }}</h3> -->
     </header>
     <header class="review-header">
       <h1>{{ reviews.length }} Review(s):</h1>

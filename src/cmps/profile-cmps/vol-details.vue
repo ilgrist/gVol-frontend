@@ -12,7 +12,7 @@
       <a href="#reviews" class="vol-stats">
         ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
       </a>
-      <!-- <h4>Opportunity offered by "{{ vol.org.name }}"</h4> -->
+      <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
       </p>
@@ -21,7 +21,6 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <!-- <p>{{ vol.desc }}</p> -->
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
           {{ tag }}
@@ -34,6 +33,17 @@
         <img class="details-img" :src="img" alt="img-details-grid" />
       </div>
     </div>
+
+    <el-carousel
+      class="img-gallery-tablet"
+      :autoplay="false"
+      trigger="click"
+      height="200px"
+    >
+      <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img :src="img" />
+      </el-carousel-item>
+    </el-carousel>
 
     <section class="more-details">
       <h3>

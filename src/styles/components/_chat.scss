@@ -1,67 +1,72 @@
 .chat-cont {
-  background-color: $clr2;
-  padding: 0.5rem;
-  box-shadow: 0px 1px 5px 0px #022c3c;
-  border-radius: 1rem;
-  transition: all 0.3s;
-  .chat-title {
-    cursor: pointer;
-    display: flex;
-    .toggleChatImg {
-      width: 1rem;
-    }
-  }
-  .chat-inner-cont.hidden {
-    display: none;
-  }
-  .emptyState {
-    margin: 1rem 0;
-  }
-  .chat-msg-list {
-    background-color: white;
-    border-radius: 10px;
-    margin: 0;
-    padding: 0.5rem;
-    max-height: 80px;
-    overflow: auto;
-    margin: 0.5rem 0;
-    li {
-      font-weight: bold;
-      span {
-        text-transform: capitalize;
-        font-weight: normal;
-      }
-    }
-  }
-  .chat-isTyping {
-    font-size: smaller;
-    margin-bottom: 1rem;
-  }
-  form {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 0.5rem;
-    width: 100%;
-    input {
-      border: none;
-      background-color: white;
-      border-radius: 0.2rem;
-      outline: none;
-      line-height: 1rem;
-      caret-color: grey;
-      font-family: NunitoSans, sans-serif;
-    }
-    button {
-      border: none;
-      background-color: $clr4;
-      color: $clr6;
-      transition: 0.3s;
-      border-radius: 0.2rem;
-      font-family: Nunito700, sans-serif;
-      &:hover {
-        color: white;
-        background-color: $clr6;
-      }
-    }
-  }
+	background-color: $clr2;
+	padding: 0.5rem;
+	// box-shadow: 0px 1px 5px 0px #022c3c;
+	border-radius: 1rem;
+	transition: all 0.3s;
+	.chat-title {
+		cursor: pointer;
+		display: flex;
+		.toggleChatImg {
+			width: 1rem;
+		}
+	}
+
+	@include for-normal-layout {
+		//720px
+		box-shadow: 0px 1px 5px 0px $clr6;
+	}
+	.chat-inner-cont.hidden {
+		display: none;
+	}
+	.emptyState {
+		margin: 1rem 0;
+	}
+	.chat-msg-list {
+		background-color: white;
+		border-radius: 10px;
+		margin: 0;
+		padding: 0.5rem;
+		max-height: 80px;
+		overflow: auto;
+		margin: 0.5rem 0;
+		li {
+			font-weight: bold;
+			span {
+				text-transform: capitalize;
+				font-weight: normal;
+			}
+		}
+	}
+	.chat-isTyping {
+		font-size: smaller;
+		margin-bottom: 1rem;
+	}
+	form {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		gap: 0.5rem;
+		width: 100%;
+		input {
+			border: none;
+			background-color: white;
+			border-radius: 0.2rem;
+			outline: none;
+			line-height: 1rem;
+			caret-color: grey;
+			font-family: NunitoSans, sans-serif;
+		}
+		button {
+			border: none;
+			background-color: $clr4;
+			color: $clr6;
+			transition: 0.3s;
+			border-radius: 0.2rem;
+			font-family: Nunito700, sans-serif;
+			&:hover {
+				color: white;
+				background-color: $clr6;
+			}
+		}
+	}
 }

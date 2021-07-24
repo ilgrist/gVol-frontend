@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div
+      class="mobileMenuOverlay"
+      :style="{ visibility: isMobileMenuOpen ? 'visible' : 'hidden' }"
+    ></div>
     <main-header />
     <user-msg />
     <router-view />
@@ -11,7 +15,6 @@
 import mainHeader from "@/cmps/main-layout-cmps/main-header.vue";
 import mainFooter from "@/cmps/main-layout-cmps/main-footer.vue";
 import userMsg from "./cmps/user-msg.vue";
-import { socketService } from "./services/socket.service.js";
 
 export default {
   components: {

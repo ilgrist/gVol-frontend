@@ -1,13 +1,10 @@
 .user-profile {
-  width: 60%;
   .user-details {
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 0.5rem;
-
     .badge-text {
       font-size: smaller;
       position: absolute;
@@ -23,7 +20,22 @@
   }
 }
 
+.vol-det.user-det {
+  @include for-narrow-layout {
+    grid-template-columns: auto;
+  }
+}
 
+.empty-state {
+  .empty-state-title {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid lightgray;
+  }
+  .short-header {
+    margin: 0 0 1rem 0;
+  }
+}
 .user-profile-img-cont {
   img {
     width: 100px;

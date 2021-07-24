@@ -3,7 +3,7 @@
     <h4 class="chat-title" @click="toggleChat">
       Chat about {{ vol.title }}
       <img
-        title="Open chat"
+        :title="arrowTitle"
         :src="toggleChatImgSrc"
         alt=""
         class="toggleChatImg"
@@ -12,7 +12,7 @@
     <div class="chat-inner-cont" :class="{ hidden: !isChatOpen }">
       <ul class="chat-msg-list" v-if="msgs.length">
         <li class="chat-msg" v-for="(msg, idx) in msgs" :key="idx">
-          {{ msg.from }}:<span>{{ msg.txt }} </span>
+          {{ msg.from }}: <span>{{ msg.txt }} </span>
         </li>
       </ul>
       <p class="emptyState" v-else>Start messaging...</p>
@@ -81,6 +81,10 @@ export default {
       if (this.isChatOpen)
         return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/less_nafgg8.svg";
       return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/more_rurxqi.svg";
+    },
+    arrowTitle() {
+      if (this.isChatOpen) return "Close chat";
+      return "Open chat";
     },
   },
   created() {

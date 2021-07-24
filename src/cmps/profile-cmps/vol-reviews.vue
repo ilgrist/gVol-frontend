@@ -14,7 +14,7 @@
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li class="review-container">
         <button
-          v-if="loggedinUser.username === review.createdBy"
+          v-if="loggedinUser && loggedinUser.username === review.createdBy"
           @click.prevent.stop="removeReview(idx)"
           class="reviews-btn"
         >

@@ -1,7 +1,7 @@
 <template>
   <header
     class="main-header"
-    :class="{ transparent: isTransparent && isMobileMenuOpen }"
+    :class="{ transparent: isTransparent && !isMobileMenuOpen }"
   >
     <img
       @click="
@@ -15,16 +15,16 @@
     <img :src="mobileMenuIcon" class="btn-menu" @click="toggleMobileMenu" />
     <nav
       id="nav"
-      :class="{ open: !isMobileMenuOpen }"
-      @click="toggleMobileMenu"
+      :class="{ open: isMobileMenuOpen }"
+      @click.stop="closeMobileMenu"
     >
-      <router-link to="/volApp" @click.native="toggleMobileMenu"
+      <router-link to="/volApp" @click.native="closeMobileMenu"
         >Explore</router-link
       >
       <router-link
         v-if="isLoggedIn"
         :to="'/user/' + currUser._id"
-        @click.native="toggleMobileMenu"
+        @click.native="closeMobileMenu"
         >My profile</router-link
       >
 
@@ -55,7 +55,6 @@ export default {
       if (this.$route.path !== path) this.$router.push("/");
     },
     toggleMobileMenu() {
-      console.log("toggling");
       this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },
     closeMobileMenu() {
@@ -83,8 +82,8 @@ export default {
     },
     mobileMenuIcon() {
       if (this.isMobileMenuOpen)
-        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuOpen_hpmpyq.svg";
-      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuClose_lyusl2.svg";
+        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuClose_lyusl2.svg";
+      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuOpen_hpmpyq.svg";
     },
   },
 };

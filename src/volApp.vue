@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div
-      class="mobileMenuOverlay"
-      :style="{ visibility: isMobileMenuOpen ? 'visible' : 'hidden' }"
-    ></div>
     <main-header />
     <user-msg />
     <router-view />

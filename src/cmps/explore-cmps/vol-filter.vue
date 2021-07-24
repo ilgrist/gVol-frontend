@@ -69,7 +69,7 @@
         </select>
       </div>
     </div>
-    <button class="filter-btn" @click="clearFilter">Clear Selection</button>
+    <button class="filter-btn" @click="clearFilter">Clear</button>
   </section>
 </template>
 

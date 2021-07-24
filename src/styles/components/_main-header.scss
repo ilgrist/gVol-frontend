@@ -94,7 +94,7 @@ header.main-header {
 			position: absolute;
 			top: 0.5rem;
 			right: 0.5rem;
-			z-index: 2;
+			z-index: 8;
 			height: 2rem;
 			width: 2rem;
 			border: none;
@@ -130,7 +130,7 @@ header.main-header {
 	padding: 0;
 	margin: 0;
 	cursor: pointer;
-	z-index: 2;
+	z-index: 8;
 }
 
 #nav {

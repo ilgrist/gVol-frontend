@@ -110,6 +110,7 @@
 import { showMsg } from "@/services/event-bus.service.js";
 import volMap from "@/cmps/profile-cmps/vol-map.vue";
 import chat from "@/cmps/profile-cmps/chat.vue";
+import { socketService } from "../../services/socket.service.js";
 
 export default {
   components: {
@@ -149,7 +150,8 @@ export default {
         };
         vol.members.push(member);
         await this.$store.dispatch({ type: "saveVol", vol });
-        showMsg("Your request has been sent!", "success");
+        socketService.emit("new volunteer", { vol, user: this.loggedinUser });
+        // showMsg("Your request has been sent!", "success");
       } else {
         this.$router.push("/login");
       }

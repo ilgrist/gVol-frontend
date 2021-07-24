@@ -1,7 +1,4 @@
 .chat-cont {
-  position: sticky;
-  top: 525px;
-  right: 0;
   background-color: $clr2;
   padding: 0.5rem;
   box-shadow: 0px 1px 5px 0px #022c3c;
@@ -29,10 +26,10 @@
     overflow: auto;
     margin: 0.5rem 0;
     li {
-      font-style: italic;
+      font-weight: bold;
       span {
         text-transform: capitalize;
-        font-style: normal;
+        font-weight: normal;
       }
     }
   }

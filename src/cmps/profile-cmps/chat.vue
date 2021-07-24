@@ -45,7 +45,7 @@ export default {
       msgs: [],
       topic: this.vol._id,
       isTyping: false,
-      isChatOpen: false,
+      isChatOpen: true,
     };
   },
   methods: {

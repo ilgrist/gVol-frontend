@@ -4,7 +4,9 @@
     <p ref="msg">
       {{ msg.txt }}
       <router-link v-if="this.msg.user" :to="`/user/${this.msg.user._id}`"
-        >{{ this.msg.user.fullname }}
+        ><span class="user-msg-username">
+          {{ this.msg.user.fullname }}
+        </span>
       </router-link>
       <span v-if="this.msg.user"> in </span>
       <router-link v-if="this.msg.vol" :to="`/volApp/${this.msg.vol._id}`">{{

@@ -1,55 +1,51 @@
 .vol-det {
-	height: 100%;
-
-	padding: 10px;
-	margin: 0 1rem;
-
-	position: relative;
-
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  height: 100%;
+  padding: 10px;
+  position: relative;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 
 .dark-screen {
-	position: fixed;
-	// position: absolute;
-	top: 0;
-	right: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: black;
-	opacity: 0.8;
-	z-index: 1;
+  position: fixed;
+  // position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .vol-profile {
-	overflow-x: unset;
-	margin-top: 50px;
-	min-height: 90vh;
+  overflow-x: unset;
+  margin-top: 50px;
+  min-height: 90vh;
 
-	@include for-narrow-layout {
-		max-width: $break-narrow;
-	}
-	@include for-normal-layout {
-		max-width: $break-normal;
-	}
-	@include for-wide-layout {
-		max-width: $break-wide;
-	}
-	@include for-extra-wide-layout {
-		max-width: $break-extra-wide;
-	}
+  @include for-narrow-layout {
+    max-width: $break-narrow;
+  }
+  @include for-normal-layout {
+    max-width: $break-normal;
+  }
+  @include for-wide-layout {
+    max-width: $break-wide;
+  }
+  @include for-extra-wide-layout {
+    max-width: $break-extra-wide;
+  }
 }
 
 .loading-img {
-	width: 15%;
-	position: absolute;
-	margin: auto auto;
+  width: 15%;
+  position: absolute;
+  margin: auto auto;
 
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	// top: 30vh;
-	// right: 70vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // top: 30vh;
+  // right: 70vh;
 }

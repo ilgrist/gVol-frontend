@@ -28,28 +28,28 @@
         />
       </label>
     </div>
-    <label class="search" for="search"
-      >Search:
-      <input
-        id="search"
-        type="text"
-        placeholder=""
-        v-model="filterBy.txt"
-        @input="filter"
-      />
-    </label>
     <div class="selects">
-      <label for="category">
-        Category:
+      <div>
+        <label for="search">Search</label>
+        <input
+          id="search"
+          type="text"
+          placeholder=""
+          v-model="filterBy.txt"
+          @input="filter"
+        />
+      </div>
+      <div>
+        <label for="category">Category</label>
         <select id="category" v-model="filterBy.category" @change="filter">
           <option value="all">All</option>
           <option value="animals">Animals</option>
           <option value="children">Children</option>
           <option value="elderly">Elderly</option>
         </select>
-      </label>
-      <label for="skills">
-        Skills:
+      </div>
+      <div>
+        <label for="skills">Skills</label>
         <select id="skills" v-model="filterBy.skills" @change="filter">
           <option value="all">All</option>
           <option value="teaching">Teaching</option>
@@ -59,15 +59,17 @@
           <option value="dreaming">Dreaming</option>
           <option value="typing">Typing</option>
         </select>
-      </label>
-      <label for="available">
-        Availability:
+      </div>
+
+      <div>
+        <label for="available">Availability</label>
         <select id="available" v-model="filterBy.availability" @change="filter">
           <option value="all">All</option>
           <option value="available">Available Only</option>
         </select>
-      </label>
+      </div>
     </div>
+    <button class="filter-btn" @click="clearFilter">Clear Selection</button>
   </section>
 </template>
 
@@ -86,6 +88,16 @@ export default {
     };
   },
   methods: {
+    clearFilter() {
+      this.filterBy.txt = "";
+      this.filterBy.category = "all";
+      this.filterBy.skills = "all";
+      this.filterBy.isOnSite = false;
+      this.filterBy.isOnLine = false;
+      this.filterBy.availability = "all";
+      this.filter();
+    },
+
     filter() {
       const copyFilterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$emit("filter", copyFilterBy);

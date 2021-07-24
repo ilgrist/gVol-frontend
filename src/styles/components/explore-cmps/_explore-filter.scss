@@ -1,19 +1,17 @@
 .explore-filter {
 	background-color: $clr1;
-	max-width: 100%;
-	flex-direction: row;
-	gap: 10px;
-
-	// position: fixed;
-	// z-index: 5;
-
 	margin: 0 auto;
 	margin-bottom: 1rem;
+	font-weight: bold;
+
+	//
+
 	padding: 0.5rem;
 
-	// font-family: Halant, sans-serif;
-	// font-size: 1.2rem;
-	font-weight: bold;
+	max-width: 95%;
+	flex-direction: column;
+	gap: 10px;
+
 	text-align: center;
 
 	border: 1px solid lightgray;
@@ -23,84 +21,120 @@
 	justify-content: space-around;
 	align-items: center;
 
-	// box-shadow: -2px 1px 20px -11px rgba(0, 0, 0, 0.9);
 	box-shadow: 0 0 5px #ccc;
 	transition: box-shadow 0.4s;
 
-	// @include for-narrow-layout {
-	// 	max-width: 50%;
-	// 	flex-direction: column;
-	// 	gap: 10px;
-	//   }
-	//   @include for-normal-layout {
-	// 	  max-width: 60%;
-	// 	  flex-wrap: wrap;
-	// 	  flex-direction: row;
-	//   }
-	//   @include for-wide-layout {
-	// 	max-width: 70%;
-	// 	flex-wrap: wrap;
-	// }
-	// @include for-extra-wide-layout {
-	// 	  max-width: 60%;
-	//   }
-
-	// &:hover {
-	// box-shadow: 0px 0px 25px -11px rgba(0, 0, 0, 0.9);
-	// transition: box-shadow 0.4s;
-	// }
-
-	input {
-		border: none;
-		border-bottom: 2px solid lightgray;
-		background-color: $clr1;
-		transition: width 0.3s;
-		outline: none;
+	@include for-normal-layout {
+		max-width: 100%;
+		flex-direction: row;
 	}
-	select {
-		// border: 0.5px solid lightgray;
-		// border-radius: 1rem;
-		font-family: NunitoSans;
+
+	// input {
+	// 	border: none;
+	// 	border-bottom: 2px solid lightgray;
+	// 	background-color: $clr1;
+	// 	transition: width 0.3s;
+	// 	outline: none;
+	// 	flex: 1;
+	// }
+	select,
+	input {
+		// font-family: NunitoSans;
 		outline: none;
 		border: none;
 		background-color: $clr1;
 		border-bottom: 2px solid lightgray;
+		max-width: 100%;
+		flex: 1;
+
+		@include for-wide-layout {
+		}
+
+		// line-height: 1.5rem;
+	}
+
+	.selects {
+		display: flex;
+		gap: 1rem;
+
+		flex-direction: column;
+		align-items: flex-start;
+
+		width: 100%;
+		max-width: 300px;
+		padding: 1rem;
+
+		label {
+			text-align: left;
+			width: 90px;
+			display: inline-block;
+
+			@include for-normal-layout {
+				width: unset;
+				text-align: center;
+			}
+		}
+
+		@include for-normal-layout {
+			flex-direction: row;
+			max-width: unset;
+		}
+		@include for-wide-layout {
+			width: unset;
+		}
+
+		div {
+			display: flex;
+			width: 100%;
+
+			@include for-normal-layout {
+				max-width: 150px;
+				flex-direction: column;
+			}
+		}
 	}
 }
 
-.search {
-	display: flex;
-	width: 350px;
-	input {
-		width: 100%;
+.filter-btn {
+	border: none;
+	// border-bottom: 3px solid lightgray;
+	border-radius: 10px;
+	background-color: $clr3;
+	font-weight: bold;
+	padding: 0.5rem;
+	color: $clr2;
+	letter-spacing: 2px;
+	transition: 0.3s ease;
+
+	&:hover {
+		background-color: $clr4;
 	}
 }
 
 .online-onsite {
 	display: flex;
 	gap: 1rem;
-}
 
-.online,
-.onsite {
-	display: flex;
-	flex-direction: column;
-	font-size: 0.8rem;
-	:active {
-		transition: background-color 0.4s;
-	}
-	label {
-		display: inline-block;
-	}
-	img {
-		height: 1.5rem;
-		width: unset;
-		cursor: pointer;
-		// padding: 5px;
-	}
-	input {
-		opacity: 0;
-		display: none;
+	.online,
+	.onsite {
+		display: flex;
+		flex-direction: column;
+		font-size: 0.8rem;
+		:active {
+			transition: background-color 0.4s;
+		}
+		label {
+			display: inline-block;
+		}
+		img {
+			height: 1.5rem;
+			width: unset;
+			cursor: pointer;
+		}
+		input {
+			opacity: 0;
+			display: none;
+		}
 	}
 }
 
@@ -110,28 +144,10 @@ input[type='checkbox']:checked ~ img {
 	//
 }
 
-select {
-	line-height: 1.5rem;
-}
-
-.selects {
-	display: flex;
-	gap: 1rem;
-	// flex-direction: column;
-}
-
-// .online-onsite {
-// 	text-decoration: underline;
-// 	label {
-// 		border-radius: 1rem;
-// 		margin-inline-end: 10px;
-// 		padding: 3px;
-// 		background-color: $clr1;
-// 		cursor: pointer;
-// 		&:hover {
-// 			background-color: $clr3;
-// 			transition: background-color 0.4s;
-// 		}
-
+// .search {
+// 	display: flex;
+// 	// max-width: 350px;
+// 	input {
+// 		width: 100%;
 // 	}
 // }

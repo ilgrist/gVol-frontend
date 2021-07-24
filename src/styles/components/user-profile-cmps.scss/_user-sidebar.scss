@@ -1,0 +1,28 @@
+// The user sidebar uses the vol-sidebar css as main.
+// This file mofidies the behavior of the user sidebar slightly to account for the different elements.
+.vol-sidebar-container.user-sidebar-container {
+  .vol-sidebar-btn-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    .explore-btn {
+      background-color: white;
+      border: 2px solid $clr6;
+      &:hover {
+        background-color: $clr6;
+        color: white;
+      }
+      + .volunteer-btn {
+        width: 70%;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @include for-narrow-layout {
+    grid-row: -1;
+    .vol-details-sidebar {
+      box-shadow: none;
+    }
+  }
+}

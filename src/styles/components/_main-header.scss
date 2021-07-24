@@ -16,6 +16,9 @@ header.main-header {
   top: 0;
   z-index: 1;
   transition: 0.3s;
+  .btn-menu {
+    display: none;
+  }
 
   a {
     color: $clr4;
@@ -51,9 +54,52 @@ header.main-header {
 
   @include for-narrow-layout {
     font-size: 1rem;
-    a .nav-user-img {
-      width: 15px;
-      height: 15px;
+    #nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: $clr2;
+      height: 100vh;
+      width: 100vw;
+      transition: 0.3s all;
+      transform: translateX(100%);
+      z-index: 1;
+      &.open {
+        transform: translateX(0%);
+      }
+      a {
+        font-size: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:not(:nth-last-child(2))::after {
+          content: '\00000a _';
+        }
+      }
+      .welcomeUser {
+        order: -1;
+      }
+      a .nav-user-img {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+    .btn-menu {
+      display: block;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      z-index: 2;
+      height: 2rem;
+      width: 2rem;
+      border: none;
+      background-color: transparent;
+      fill: $clr5;
     }
   }
   @include for-normal-layout {
@@ -84,6 +130,7 @@ header.main-header {
   padding: 0;
   margin: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 #nav {

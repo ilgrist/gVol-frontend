@@ -38,7 +38,7 @@
       class="img-gallery-tablet"
       :autoplay="false"
       trigger="click"
-      height="200px"
+      max-height="650px"
     >
       <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
         <img :src="img" />

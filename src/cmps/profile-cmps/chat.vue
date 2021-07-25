@@ -65,8 +65,8 @@ export default {
     showTyping() {
       socketService.emit("isTyping", this.username);
     },
-    setTyping() {
-      this.isTyping = this.username;
+    setTyping(typerName) {
+      this.isTyping = typerName;
     },
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;

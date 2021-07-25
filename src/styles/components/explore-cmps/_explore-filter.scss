@@ -38,6 +38,9 @@
 		flex-direction: row;
 		gap: 2rem;
 	}
+	@include for-extra-wide-layout {
+		justify-content: space-around;
+	}
 
 	select,
 	input {

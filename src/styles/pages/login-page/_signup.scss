@@ -1,95 +1,96 @@
 .signup {
-  background-color: $clr2;
-  background-color: $clr1;
-  padding: 30px;
-  background-color: $clr1;
-  margin-bottom: 20px;
-  width: 70%;
-  height: 500px;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 30px 1fr 20px;
-  border: 2px solid lightgray;
+	background-color: $clr2;
+	background-color: $clr1;
+	padding: 30px;
+	background-color: $clr1;
+	margin-bottom: 20px;
+	width: 70%;
+	height: 500px;
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 30px 1fr 20px;
+	border: 2px solid lightgray;
 	border-radius: 10px;
-	box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.2)  ; 
-  transition: box-shadow 0.3s;
+	box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.2);
+	transition: box-shadow 0.3s;
 
-  @include for-narrow-layout {
-    width: 60%;
-    height: 500px;
+	@include for-narrow-layout {
+		width: 60%;
+		height: 500px;
 	}
 	@include for-normal-layout {
-    width: 40%;
-    height: 500px;
+		width: 40%;
+		height: 500px;
 	}
 	@include for-wide-layout {
-    width: 28%;
-    height: 500px;
+		width: 28%;
+		height: 500px;
 	}
 	@include for-extra-wide-layout {
-    width: 20%;
-    height: 500px;
+		width: 20%;
+		height: 500px;
 	}
 
-  &:hover {
-    box-shadow: -2px -2px 15px rgba(0, 0, 0, 0.2)  ; 
-    transition: box-shadow 0.3s;
-  }
-  h2 {
-    text-align: center;
-    text-decoration: underline;
-  }
+	&:hover {
+		box-shadow: -2px -2px 15px rgba(0, 0, 0, 0.2);
+		transition: box-shadow 0.3s;
+	}
+	h2 {
+		text-align: center;
+		text-decoration: underline;
+	}
 
-  img {
-    width: 30px;
-    transform: translateY(25%);
-  }
-  .img-prev {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-  }
-  .skills {
-    select {
-      width: 178px;
-    }
-  }
-  .profile-img {
-    margin-bottom: 10px;
-  }
+	img {
+		width: 30px;
+		transform: translateY(25%);
+	}
+	.img-prev {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		@include aspect-ratio(1, 1);
+	}
+	.skills {
+		select {
+			width: 178px;
+		}
+	}
+	.profile-img {
+		margin-bottom: 10px;
+	}
 
-  input {
-    border: none;
+	input {
+		border: none;
 		border-bottom: 1px solid lightgray;
 		background-color: $clr1;
 
-    &#img {
-      display: none;
-    }
-  }
-  .signup-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    > * {
-      // width: 100px;
-      font-family: NunitoSans, sans-serif;
-      width: 50%;
+		&#img {
+			display: none;
+		}
+	}
+	.signup-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		> * {
+			// width: 100px;
+			font-family: NunitoSans, sans-serif;
+			width: 50%;
 			height: 1.5rem;
-    }
-    :first-child {
-      margin-bottom: 5px;
-    }
-  }
-  .label-input {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+		}
+		:first-child {
+			margin-bottom: 5px;
+		}
+	}
+	.label-input {
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-    p {
-      margin: 0;
-    }
-  }
+		p {
+			margin: 0;
+		}
+	}
 }

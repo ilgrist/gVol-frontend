@@ -74,6 +74,11 @@ export default {
       isCreatedBy: false,
     };
   },
+  // computed: {
+  //   vol() {
+  //     return this.$store.getters.currVol;
+  //   },
+  // },
   methods: {
     async removeReview(revIdx) {
       try {
@@ -139,6 +144,7 @@ export default {
       if (_id)
         try {
           this.vol = await this.$store.dispatch({ type: "getVol", _id });
+          // this.vol =
           this.$store.commit({ type: "setCurrVol", vol: this.vol });
         } catch (err) {
           console.log("Vol not available", err);
@@ -155,9 +161,7 @@ export default {
       }
     },
   },
-  async created() {
-    this.setVol();
-  },
+
   computed: {
     avgRating() {
       let ratingLength = 0;
@@ -175,6 +179,14 @@ export default {
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
     },
+  },
+  async created() {
+    this.setVol();
+    socketService.on("got volunteer", ({ vol, user }) => {
+      console.log("sanity from created, vol:", vol);
+      this.$store.commit({ type: "setCurrVol", vol });
+      this.setVol();
+    });
   },
 };
 </script>

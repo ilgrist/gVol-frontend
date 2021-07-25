@@ -1,134 +1,134 @@
 .hero-image {
-	background-image: url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+  background-image: url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-	margin: 0 0 1rem 0;
-	height: 550px;
-	min-height: 70vh;
-	display: flex;
-	position: relative;
+  margin: 0 0 1rem 0;
+  height: 550px;
+  min-height: 70vh;
+  display: flex;
+  position: relative;
 }
 
 .hero-container {
-	position: absolute;
-	left: 5%;
-	top: 20%;
+  position: absolute;
+  left: 5%;
+  top: 20%;
 }
 
 .hero-title {
-	color: $clr1;
-	// position: relative;
-	font-family: Halant, sans-serif;
-	font-size: 3rem;
+  color: $clr1;
+  //   font-family: Oswald, sans-serif;
+  font-family: Halant, sans-serif;
+  font-size: 3rem;
 
-	padding-bottom: 1rem;
+  padding-bottom: 1rem;
 
-	@include for-narrow-layout {
-		font-size: 3rem;
-	}
-	@include for-normal-layout {
-		font-size: 4rem;
-	}
-	@include for-wide-layout {
-		font-size: 4rem;
-	}
-	@include for-extra-wide-layout {
-		font-size: 4rem;
-	}
+  @include for-narrow-layout {
+    font-size: 3rem;
+  }
+  @include for-normal-layout {
+    font-size: 4rem;
+  }
+  @include for-wide-layout {
+    font-size: 4rem;
+  }
+  @include for-extra-wide-layout {
+    font-size: 4rem;
+  }
 }
 
 .filter-form {
-	display: flex;
+  display: flex;
 }
 
 .hero-filter-container {
-	background-color: $clr2;
-	font-family: NunitoSans, sans-serif;
+  background-color: $clr2;
+  font-family: NunitoSans, sans-serif;
 
-	// width: 35rem;
-	width: 20rem;
-	border-radius: 1rem;
-	padding: 0.5rem;
-	margin: 0 auto;
+  // width: 35rem;
+  width: 20rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0 auto;
 
-	display: flex;
+  display: flex;
 
-	position: absolute;
-	text-align: center;
-	left: 45%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  left: 45%;
+  transform: translate(-50%, -50%);
 
-	@include for-narrow-layout {
-		width: 20rem;
-	}
-	@include for-normal-layout {
-		width: 30rem;
-	}
-	@include for-wide-layout {
-		width: 35rem;
-	}
-	@include for-extra-wide-layout {
-		width: 35rem;
-	}
+  @include for-narrow-layout {
+    width: 20rem;
+  }
+  @include for-normal-layout {
+    width: 30rem;
+  }
+  @include for-wide-layout {
+    width: 35rem;
+  }
+  @include for-extra-wide-layout {
+    width: 35rem;
+  }
 }
 
 .hero-input {
-	background-color: $clr2;
-	width: 100%;
+  background-color: $clr2;
+  width: 100%;
 
-	position: relative;
-	left: 10%;
+  position: relative;
+  left: 10%;
 
-	font-family: NunitoSans, sans-serif;
-	font-size: 1.3rem;
+  font-family: NunitoSans, sans-serif;
+  font-size: 1.3rem;
 
-	border-radius: unset;
-	border: none;
-	outline: none;
+  border-radius: unset;
+  border: none;
+  outline: none;
 }
 
 .hero-filter-img {
-	max-width: 15%;
-	position: relative;
-	z-index: 1;
+  max-width: 15%;
+  position: relative;
+  z-index: 1;
 }
 
 .homepage-btn {
-	background-color: $clr5;
-	width: 30%;
+  background-color: $clr5;
+  width: 30%;
 
-	border: none;
-	border-radius: 1rem;
+  border: none;
+  border-radius: 1rem;
 
-	position: relative;
-	// left: 18%;
-	left: 0;
+  position: relative;
+  // left: 18%;
+  left: 0;
 
-	font-family: NunitoSans, sans-serif;
-	// font-size: 1rem;
-	font-size: 0.8rem;
-	font-weight: bold;
+  font-family: NunitoSans, sans-serif;
+  // font-size: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
 
-	transition: 0.3s;
-	&:hover {
-		color: $clr2;
-	}
+  transition: 0.3s;
+  &:hover {
+    color: $clr2;
+  }
 
-	@include for-narrow-layout {
-		left: 0;
-	}
-	@include for-normal-layout {
-		left: 10%;
-		font-size: 1rem;
-	}
-	@include for-wide-layout {
-		left: 18%;
-		font-size: 1rem;
-	}
-	@include for-extra-wide-layout {
-		left: 18%;
-		font-size: 1rem;
-	}
+  @include for-narrow-layout {
+    left: 0;
+  }
+  @include for-normal-layout {
+    left: 10%;
+    font-size: 1rem;
+  }
+  @include for-wide-layout {
+    left: 18%;
+    font-size: 1rem;
+  }
+  @include for-extra-wide-layout {
+    left: 18%;
+    font-size: 1rem;
+  }
 }

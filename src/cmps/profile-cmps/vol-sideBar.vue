@@ -12,7 +12,6 @@
               {{ vol.members.length }} out of {{ vol.maxMembers }} Volunteers
             </h4>
           </div>
-
           <img
             v-for="(member, idx) in members"
             :key="idx"
@@ -22,10 +21,7 @@
             @click="goToUserProfile(member._id)"
           />
         </div>
-        <!-- <img
-        class="vol-sidebar-map"
-        src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg"
-      /> -->
+
         <vol-map
           v-if="this.vol.loc.isOnsite"
           class="vol-sidebar-map"
@@ -124,9 +120,10 @@ export default {
       type: Object,
     },
   },
+
   data() {
     return {
-      members: this.$store.getters.getMembers,
+      // members: this.$store.getters.getMembers,
       url: window.location.href,
     };
   },
@@ -152,8 +149,8 @@ export default {
         };
         vol.members.push(member);
         await this.$store.dispatch({ type: "saveVol", vol });
-        // this.vol = this.$store.getters.currVol;
         socketService.emit("new volunteer", { vol, user: this.loggedinUser });
+
         // showMsg("Your request has been sent!", "success");
       } else {
         this.$router.push("/login");
@@ -164,6 +161,9 @@ export default {
     },
   },
   computed: {
+    members() {
+      return this.$store.getters.getMembers;
+    },
     loggedinUser() {
       return this.$store.getters.loggedinUser;
     },

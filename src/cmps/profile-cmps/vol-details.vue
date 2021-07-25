@@ -10,9 +10,11 @@
         </button>
       </h2>
       <a href="#reviews" class="vol-stats">
-        <img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"> {{ avgRating }} ({{ vol.reviews.length }} Reviews)
+        <img
+          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"
+        />
+        {{ avgRating }} ({{ vol.reviews.length }} Reviews)
       </a>
-      <!-- <h4>Opportunity offered by "{{ vol.org.name }}"</h4> -->
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
       </p>
@@ -22,7 +24,12 @@
         </span>
       </p>
       <p>
-        <span class="details-tag" v-for="tag in vol.tags" :key="tag">
+        <span
+          class="details-tag"
+          v-for="tag in vol.tags"
+          :key="tag"
+          @click="filterTag(tag)"
+        >
           {{ tag }}
         </span>
       </p>
@@ -91,7 +98,12 @@
       </section>
       <p class="skills">
         Required Skills:
-        <span class="req-skill" v-for="skill in vol.reqSkills" :key="skill">
+        <span
+          class="req-skill"
+          v-for="skill in vol.reqSkills"
+          :key="skill"
+          @click="filterSkill(skill)"
+        >
           {{ skill }}
         </span>
       </p>
@@ -132,9 +144,23 @@ export default {
       isShort: true,
       isCreatedBy: false,
       ratingStars: "",
+      filterBy: {
+        category: "all",
+        skills: "all",
+      },
     };
   },
   methods: {
+    filterSkill(skill) {
+      this.filterBy.skills = skill.toLowerCase();
+      let filterBy = JSON.parse(JSON.stringify(this.filterBy));
+      this.$emit("filterBy", filterBy);
+    },
+    filterTag(category) {
+      this.filterBy.category = category.toLowerCase();
+      let filterBy = JSON.parse(JSON.stringify(this.filterBy));
+      this.$emit("filterBy", filterBy);
+    },
     goToReviews() {},
     openModal() {
       this.$emit("openModal");

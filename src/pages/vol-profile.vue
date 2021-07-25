@@ -1,7 +1,6 @@
 <template>
   <section class="vol-profile main-layout">
     <div v-if="isEditing" class="dark-screen"></div>
-    <!-- <div class="displayProfile"> -->
     <img
       class="loading-img"
       v-if="!vol"
@@ -42,6 +41,7 @@
         @openModal="openModal"
         @closeModal="closeModal"
         @removeReview="removeReview"
+        @filterBy="goExplore"
       />
       <volSideBar :vol="vol" />
     </div>
@@ -80,6 +80,11 @@ export default {
   //   },
   // },
   methods: {
+    goExplore(filterBy) {
+      console.log("file: vol-profile.vue ~ line 84 ~ filterBy", filterBy);
+      this.$store.commit({ type: "setFilter", filterBy });
+      this.$router.push("/volApp");
+    },
     async removeReview(revIdx) {
       try {
         await this.$store.dispatch({ type: "removeReview", revIdx });

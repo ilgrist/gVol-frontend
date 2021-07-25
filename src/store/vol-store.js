@@ -60,8 +60,6 @@ export default {
 			state.vols = vols;
 		},
 		setCurrVol(state, { vol }) {
-			console.log('file: vol-store.js ~ line 63 ~ vol', vol);
-
 			state.currVol = vol;
 		},
 	},

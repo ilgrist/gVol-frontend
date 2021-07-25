@@ -27,13 +27,6 @@ export default {
 
   computed: {
     setLocation() {
-      console.log(
-        this.vol.title,
-        "lat: ",
-        this.vol.loc.lat,
-        "lng: ",
-        this.vol.loc.lng
-      );
       return { lat: this.vol.loc.lat, lng: this.vol.loc.lng };
     },
     clickMarker() {

@@ -39,12 +39,12 @@ export default {
 
   data() {
     return {
-      location: { lat: null, lng: null },
+      location: { lat: 31.0461, lng: 34.8516 },
     };
   },
   methods: {
     goToProfile(volId) {
-      console.log("file: homepage-map.vue ~ line 47 ~ volId", volId);
+      // console.log("file: homepage-map.vue ~ line 47 ~ volId", volId);
       this.$router.push(`/volApp/${volId}`);
     },
   },
@@ -55,14 +55,14 @@ export default {
   },
 
   created() {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      this.gettingLocation = false;
-
-      this.location.lat = pos.coords.latitude;
-      this.location.lng = pos.coords.longitude;
-
-      this.setCenter;
-    });
+    // navigator.geolocation.getCurrentPosition((pos) => {
+    //   this.gettingLocation = false;
+    //   this.location.lat = pos.coords.latitude;
+    //   this.location.lng = pos.coords.longitude;
+    //   this.setCenter;
+    // });
+    // this.location.lat = 31.0461;
+    // this.location.lng = 34.8516;
   },
 };
 </script>

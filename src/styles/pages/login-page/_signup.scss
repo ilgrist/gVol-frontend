@@ -50,6 +50,7 @@
 		height: 60px;
 		border-radius: 50%;
 		@include aspect-ratio(1, 1);
+		object-fit: cover;
 	}
 	.skills {
 		select {

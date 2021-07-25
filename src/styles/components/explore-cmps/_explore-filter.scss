@@ -1,7 +1,8 @@
 .explore-filter {
 	background-color: $clr1;
 	margin: 0 auto;
-	margin-bottom: 1rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
 	font-weight: bold;
 
 	//
@@ -18,15 +19,24 @@
 	border-radius: 10px;
 
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+	gap: 3rem;
 	align-items: center;
 
 	box-shadow: 0 3px 5px #ccc;
 	transition: box-shadow 0.4s;
 
 	@include for-normal-layout {
+		// max-width: 100%;
+		// flex-direction: row;
+		max-width: 90%;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	@include for-wide-layout {
 		max-width: 100%;
-		flex-direction: row;
+    	flex-direction: row;
+    	gap: 2rem;
 	}
 
 	select,
@@ -45,9 +55,23 @@
 		// line-height: 1.5rem;
 	}
 
+	.el-select-dropdown__item{
+		color: black;
+	}
+
+	.el-input__inner::placeholder{
+			color: black;
+			font-size: 1.2rem;
+		}
+
+		.el-input__inner{
+			border-radius: unset;
+			font-size: 1.2rem;
+		}
+	
 	.selects {
 		display: flex;
-		gap: 1rem;
+		gap: 1.5rem;
 
 		flex-direction: column;
 		align-items: flex-start;
@@ -55,6 +79,9 @@
 		width: 100%;
 		max-width: 300px;
 		padding: 1rem;
+		// border-radius: 20px;
+		transition: 0.3s;
+		
 
 		label {
 			text-align: left;
@@ -87,20 +114,31 @@
 	}
 }
 
+
 .filter-btn {
 	border: none;
-	// border-bottom: 3px solid lightgray;
 	border-radius: 10px;
 	background-color: $clr3;
-	// font-weight: bold;
 	font-size: 0.8rem;
 	padding: 0.5rem;
 	color: $clr2;
 	letter-spacing: 2px;
 	transition: 0.3s ease;
 
+	&.clear{
+		// transform: translateY(-4px);
+		margin-left: 1rem;
+		background-color: $clr1;
+		border: 1px solid $clr6;
+		color: black;
+		
+			&:hover {
+				color: white;
+			}
+	}
+
 	&:hover {
-		background-color: $clr4;
+		background-color: $clr6;
 	}
 }
 
@@ -113,6 +151,11 @@
 		display: flex;
 		flex-direction: column;
 		font-size: 0.8rem;
+		padding: 3px;
+		transition: 0.3s;
+		&:hover{
+			color: $clr3;
+		}
 		:active {
 			transition: background-color 0.4s;
 		}

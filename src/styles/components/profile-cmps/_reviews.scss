@@ -166,6 +166,13 @@
 }
 .review-stars {
 	grid-column: 4/5;
+	img{
+		width: 15px;
+		height: 15px;
+		&:first-child{
+			margin-left: 5px;
+		}
+	}
 }
 
 .review-rating {

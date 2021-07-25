@@ -30,46 +30,47 @@
     </div>
     <div class="selects">
       <div>
-        <label for="search">Search</label>
-        <input
+        <el-input
           id="search"
           type="text"
-          placeholder=""
+          prefix-icon="el-icon-search"
+          placeholder="Search"
           v-model="filterBy.txt"
-          @input="filter"
+          clearable
         />
       </div>
       <div>
-        <label for="category">Category</label>
-        <select id="category" v-model="filterBy.category" @change="filter">
-          <option value="all">All</option>
-          <option value="animals">Animals</option>
-          <option value="children">Children</option>
-          <option value="elderly">Elderly</option>
-        </select>
+        <el-select id="category" v-model="filterBy.category" placeholder="Category">
+          <el-option value="all">All</el-option>
+          <el-option value="animals">Animals</el-option>
+          <el-option value="children">Children</el-option>
+          <el-option value="elderly">Elderly</el-option>
+        </el-select>
       </div>
       <div>
-        <label for="skills">Skills</label>
-        <select id="skills" v-model="filterBy.skills" @change="filter">
-          <option value="all">All</option>
-          <option value="teaching">Teaching</option>
-          <option value="designing">Designing</option>
-          <option value="translating">Translating</option>
-          <option value="building">Building</option>
-          <option value="dreaming">Dreaming</option>
-          <option value="typing">Typing</option>
-        </select>
+        <el-select id="skills" v-model="filterBy.skills" placeholder="Skills">
+          <el-option value="all">All</el-option>
+          <el-option value="teaching">Teaching</el-option>
+          <el-option value="designing">Designing</el-option>
+          <el-option value="translating">Translating</el-option>
+          <el-option value="building">Building</el-option>
+          <el-option value="dreaming">Dreaming</el-option>
+          <el-option value="typing">Typing</el-option>
+        </el-select>
       </div>
 
       <div>
-        <label for="available">Availability</label>
-        <select id="available" v-model="filterBy.availability" @change="filter">
-          <option value="all">All</option>
-          <option value="available">Available Only</option>
-        </select>
+        <!-- <label for="available">Availability</label> -->
+        <el-select id="available" v-model="filterBy.availability" placeholder="Availability">
+          <el-option value="all">All</el-option>
+          <el-option value="available">Available Only</el-option>
+        </el-select>
       </div>
     </div>
-    <button class="filter-btn" @click="clearFilter">Clear</button>
+    <div>
+    <button class="filter-btn search" @click="filter">Search</button>
+    <button class="filter-btn clear" @click="clearFilter">Clear</button>
+    </div>
   </section>
 </template>
 
@@ -79,11 +80,11 @@ export default {
     return {
       filterBy: {
         txt: "",
-        category: "all",
-        skills: "all",
+        category: "",
+        skills: "",
         isOnSite: false,
         isOnLine: false,
-        availability: "all",
+        availability: "",
       },
     };
   },

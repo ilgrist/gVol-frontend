@@ -1,10 +1,9 @@
 <template>
   <div class="details-reviews">
     <header class="rating-header">
-      <!-- <h3>⭐{{ avgRating }}</h3> -->
     </header>
     <header class="review-header">
-      <h1>{{ reviews.length }} Review(s):</h1>
+      <h1>{{ reviews.length }} Review(s): {{volRatingStars}}</h1>
       <button v-if="!isNewReview" class="review-btn" @click="addReview">
         Add a Review
       </button>
@@ -24,10 +23,10 @@
           <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />
           <div class="review-user-header">
             <div>
-              {{ review.createdBy }}
-              <span class="review-stars"
-                >({{ starsDisplay(review.rating) }})</span
-              >
+              {{ review.createdBy }} 
+              <span  v-for="num in review.rating" :key="num" class="review-stars">
+                <img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png">
+                </span>
             </div>
             <span class="date">{{ revDate(review.createdAt) }}</span>
           </div>
@@ -50,7 +49,7 @@ export default {
   },
   data() {
     return {
-      volRatingStars: "",
+      volRatingStars: '',
       msg: "",
       isNewReview: false,
       loggedinUser: false,
@@ -70,9 +69,9 @@ export default {
       }, 0);
 
       if (!ratingLength) return "None";
-      this.volRatingStars = "⭐".repeat((ratingSum / ratingLength).toFixed(1));
+      this.volRatingStars =(ratingSum / ratingLength).toFixed(1);
       this.$emit("stars", this.volRatingStars);
-      return (ratingSum / ratingLength).toFixed(2);
+      return (ratingSum / ratingLength).toFixed(1);
     },
   },
   methods: {

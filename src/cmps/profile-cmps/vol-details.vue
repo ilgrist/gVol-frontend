@@ -10,7 +10,7 @@
         </button>
       </h2>
       <a href="#reviews" class="vol-stats">
-        ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
+        <img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"> {{ avgRating }} ({{ vol.reviews.length }} Reviews)
       </a>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">

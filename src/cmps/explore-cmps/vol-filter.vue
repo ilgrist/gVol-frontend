@@ -106,5 +106,15 @@ export default {
   created() {
     this.filterBy = this.$store.getters.filterBy;
   },
+  destroyed(){
+    this.filterBy = {
+        txt: "",
+        category: "all",
+        skills: "all",
+        isOnSite: false,
+        isOnLine: false,
+        availability: "all",
+      }
+  }
 };
 </script>

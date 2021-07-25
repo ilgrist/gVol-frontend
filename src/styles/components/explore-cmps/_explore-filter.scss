@@ -35,8 +35,8 @@
 	}
 	@include for-wide-layout {
 		max-width: 100%;
-    	flex-direction: row;
-    	gap: 2rem;
+		flex-direction: row;
+		gap: 2rem;
 	}
 
 	select,
@@ -51,24 +51,8 @@
 
 		@include for-wide-layout {
 		}
-
-		// line-height: 1.5rem;
 	}
 
-	.el-select-dropdown__item{
-		color: black;
-	}
-
-	.el-input__inner::placeholder{
-			color: black;
-			font-size: 1.2rem;
-		}
-
-		.el-input__inner{
-			border-radius: unset;
-			font-size: 1.2rem;
-		}
-	
 	.selects {
 		display: flex;
 		gap: 1.5rem;
@@ -81,7 +65,6 @@
 		padding: 1rem;
 		// border-radius: 20px;
 		transition: 0.3s;
-		
 
 		label {
 			text-align: left;
@@ -114,7 +97,6 @@
 	}
 }
 
-
 .filter-btn {
 	border: none;
 	border-radius: 10px;
@@ -125,16 +107,16 @@
 	letter-spacing: 2px;
 	transition: 0.3s ease;
 
-	&.clear{
+	&.clear {
 		// transform: translateY(-4px);
 		margin-left: 1rem;
 		background-color: $clr1;
 		border: 1px solid $clr6;
 		color: black;
-		
-			&:hover {
-				color: white;
-			}
+
+		&:hover {
+			color: white;
+		}
 	}
 
 	&:hover {
@@ -153,7 +135,7 @@
 		font-size: 0.8rem;
 		padding: 3px;
 		transition: 0.3s;
-		&:hover{
+		&:hover {
 			color: $clr3;
 		}
 		:active {
@@ -187,3 +169,28 @@ input[type='checkbox']:checked ~ img {
 // 		width: 100%;
 // 	}
 // }
+
+.el-select-dropdown__item {
+	color: black;
+}
+
+.el-input__inner:focus,
+.el-select .el-input__inner:focus,
+.el-select .el-input.is-focus .el-input__inner {
+	border-color: $clr3;
+}
+
+.el-select-dropdown__item.selected {
+	color: $clr3;
+}
+
+.el-input__inner,
+.el-input__inner::placeholder {
+	color: black;
+	font-size: 1.2rem;
+}
+
+.el-input__inner {
+	border-radius: unset;
+	font-size: 1.2rem;
+}

@@ -40,36 +40,52 @@
         />
       </div>
       <div>
-        <el-select id="category" v-model="filterBy.category" placeholder="Category">
-          <el-option value="all">All</el-option>
-          <el-option value="animals">Animals</el-option>
-          <el-option value="children">Children</el-option>
-          <el-option value="elderly">Elderly</el-option>
+        <el-select
+          id="category"
+          v-model="filterBy.category"
+          placeholder="Category"
+        >
+          <el-option
+            v-for="category in categories"
+            :key="category.value"
+            :label="category.label"
+            :value="category.value"
+          >
+          </el-option>
         </el-select>
       </div>
       <div>
         <el-select id="skills" v-model="filterBy.skills" placeholder="Skills">
-          <el-option value="all">All</el-option>
-          <el-option value="teaching">Teaching</el-option>
-          <el-option value="designing">Designing</el-option>
-          <el-option value="translating">Translating</el-option>
-          <el-option value="building">Building</el-option>
-          <el-option value="dreaming">Dreaming</el-option>
-          <el-option value="typing">Typing</el-option>
+          <el-option
+            v-for="skill in skills"
+            :key="skill.value"
+            :label="skill.label"
+            :value="skill.value"
+          >
+          </el-option>
         </el-select>
       </div>
 
       <div>
         <!-- <label for="available">Availability</label> -->
-        <el-select id="available" v-model="filterBy.availability" placeholder="Availability">
-          <el-option value="all">All</el-option>
-          <el-option value="available">Available Only</el-option>
+        <el-select
+          id="available"
+          v-model="filterBy.availability"
+          placeholder="Availability"
+        >
+          <el-option
+            v-for="availability in availabilities"
+            :key="availability.value"
+            :label="availability.label"
+            :value="availability.value"
+          >
+          </el-option>
         </el-select>
       </div>
     </div>
     <div>
-    <button class="filter-btn search" @click="filter">Search</button>
-    <button class="filter-btn clear" @click="clearFilter">Clear</button>
+      <button class="filter-btn search" @click="filter">Search</button>
+      <button class="filter-btn clear" @click="clearFilter">Clear</button>
     </div>
   </section>
 </template>
@@ -86,6 +102,71 @@ export default {
         isOnLine: false,
         availability: "",
       },
+
+      availabilities: [
+        {
+          value: "all",
+          label: "All",
+        },
+        {
+          value: "available",
+          label: "Available",
+        },
+        {
+          value: "full",
+          label: "Full",
+        },
+      ],
+
+      skills: [
+        {
+          value: "all",
+          label: "All",
+        },
+        {
+          value: "teaching",
+          label: "Teaching",
+        },
+        {
+          value: "designing",
+          label: "Designing",
+        },
+        {
+          value: "translating",
+          label: "Translating",
+        },
+        {
+          value: "building",
+          label: "Building",
+        },
+        {
+          value: "dreaming",
+          label: "Dreaming",
+        },
+        {
+          value: "typing",
+          label: "Typing",
+        },
+      ],
+      categories: [
+        {
+          value: "all",
+          label: "All",
+        },
+        {
+          value: "animals",
+          label: "Animals",
+        },
+        {
+          value: "children",
+          label: "Children",
+        },
+        {
+          value: "elderly",
+          label: "Elderly",
+        },
+      ],
+      value: "",
     };
   },
   methods: {
@@ -107,15 +188,15 @@ export default {
   created() {
     this.filterBy = this.$store.getters.filterBy;
   },
-  destroyed(){
+  destroyed() {
     this.filterBy = {
-        txt: "",
-        category: "all",
-        skills: "all",
-        isOnSite: false,
-        isOnLine: false,
-        availability: "all",
-      }
-  }
+      txt: "",
+      category: "all",
+      skills: "all",
+      isOnSite: false,
+      isOnLine: false,
+      availability: "all",
+    };
+  },
 };
 </script>

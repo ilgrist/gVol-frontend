@@ -166,10 +166,12 @@
 }
 .review-stars {
 	grid-column: 4/5;
-	img{
+	img {
 		width: 15px;
 		height: 15px;
-		&:first-child{
+		object-fit: cover;
+
+		&:first-child {
 			margin-left: 5px;
 		}
 	}
@@ -181,8 +183,9 @@
 
 .img-profile {
 	@include aspect-ratio(1, 1);
-	width: 2.5rem;
-	height: 2.5rem;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 	cursor: pointer;
+	object-fit: cover;
 }

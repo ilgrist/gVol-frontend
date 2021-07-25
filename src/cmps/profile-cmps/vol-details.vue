@@ -145,8 +145,8 @@ export default {
       isCreatedBy: false,
       ratingStars: "",
       filterBy: {
-        category: "all",
-        skills: "all",
+        category: null,
+        skills: null,
       },
     };
   },

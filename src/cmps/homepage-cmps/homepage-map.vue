@@ -21,7 +21,7 @@
         v-for="(volLoc, idx) in volsLocs"
         :position="volLoc"
         :clickable="true"
-        :draggable="true"
+        :draggable="false"
         @click="goToProfile(volLoc.id)"
         :title="volLoc.title"
       />

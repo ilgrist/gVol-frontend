@@ -1,14 +1,14 @@
 .card-preview {
 	border: 0.5px solid lightgray;
 	.badge-text {
-		font-size: smaller;
+		font-size: medium;
 		position: absolute;
 		transform: rotate(32deg);
-		background-color: #31a6ba;
-		padding: 27px 59px 8px;
+		background-color: #149b72;
+		color: #f5f5f5;
+		padding: 25px 70px 8px;
 		top: -15px;
 		right: -66px;
-		color: #f5f5f5;
 		box-shadow: inset 0px 0px 20px 0px black;
 		z-index: 4;
 	}

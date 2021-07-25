@@ -1,6 +1,6 @@
 <template>
   <section class="hero-image">
-    <div class="hero-container">
+    <div class="hero-container main-layout">
       <h1 class="hero-title">Volunteering. Globally.</h1>
       <div class="hero-filter-container">
         <form class="filter-form" @submit.prevent="filter">

@@ -59,7 +59,7 @@ header.main-header {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
+      gap: 5rem;
       position: absolute;
       right: 0;
       top: 0;
@@ -77,9 +77,6 @@ header.main-header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        &:not(:nth-last-child(2))::after {
-          content: '\00000a _';
-        }
       }
       .welcomeUser {
         order: -1;

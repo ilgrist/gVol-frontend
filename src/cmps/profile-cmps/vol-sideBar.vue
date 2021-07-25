@@ -168,12 +168,5 @@ export default {
       return this.$store.getters.loggedinUser;
     },
   },
-
-  // created() {
-  //   socketService.on("got volunteer", ({ vol, user }) => {
-  //     console.log("sanity from store, vol:", vol);
-  //     this.$store.commit({ type: "setCurrVol" }, vol);
-  //   });
-  // },
 };
 </script>

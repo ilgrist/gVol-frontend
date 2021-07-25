@@ -70,12 +70,12 @@ export default {
       const left = maxMembers - members.length
       if(left > 0 && left < 10){
         this.isOverTen = true
-        return `Only ${left} Left`
+        return `${left} Left`
       }else if(left >= 10){
         this.isOverTen = false
       }else{
         this.isOverTen = true
-        return 'Fully Booked'
+        return 'Full'
       }
     },
     title() {

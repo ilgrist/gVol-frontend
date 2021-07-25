@@ -1,5 +1,7 @@
 .hero-image {
-	background-image: url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
+	// background-image: url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
+	background-image: linear-gradient(transparent, white),
+		url('https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281319/volApp/hero_fsuptp.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;

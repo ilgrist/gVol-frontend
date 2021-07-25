@@ -11,6 +11,12 @@
             <h4 v-else>
               {{ vol.members.length }} out of {{ vol.maxMembers }} Volunteers
             </h4>
+            <el-progress
+              :text-inside="true"
+              :stroke-width="24"
+              :percentage="(vol.members.length / vol.maxMembers) * 100"
+              status="success"
+            ></el-progress>
           </div>
           <img
             v-for="(member, idx) in members"

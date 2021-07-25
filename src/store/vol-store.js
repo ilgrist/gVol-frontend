@@ -18,7 +18,6 @@ export default {
 		getMembers(state) {
 			return state.currVol.members;
 		},
-
 		currVol(state) {
 			return state.currVol;
 		},

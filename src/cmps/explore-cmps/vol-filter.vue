@@ -2,6 +2,7 @@
   <section class="explore-filter">
     <div class="online-onsite">
       <label class="online" for="online" title="Volunteer Online">
+        Online
         <input
           id="online"
           type="checkbox"
@@ -14,6 +15,7 @@
         />
       </label>
       <label class="onsite" for="onsite" title="Volunteer Onsite">
+        Onsite
         <input
           id="onsite"
           type="checkbox"
@@ -26,28 +28,28 @@
         />
       </label>
     </div>
-    <label for="search"
-      >Search:
-      <input
-        id="search"
-        type="text"
-        placeholder=""
-        v-model="filterBy.txt"
-        @input="filter"
-      />
-    </label>
-    <div>
-      <label for="category">
-        Category:
+    <div class="selects">
+      <div>
+        <label for="search">Search</label>
+        <input
+          id="search"
+          type="text"
+          placeholder=""
+          v-model="filterBy.txt"
+          @input="filter"
+        />
+      </div>
+      <div>
+        <label for="category">Category</label>
         <select id="category" v-model="filterBy.category" @change="filter">
           <option value="all">All</option>
           <option value="animals">Animals</option>
           <option value="children">Children</option>
           <option value="elderly">Elderly</option>
         </select>
-      </label>
-      <label for="skills">
-        Skills:
+      </div>
+      <div>
+        <label for="skills">Skills</label>
         <select id="skills" v-model="filterBy.skills" @change="filter">
           <option value="all">All</option>
           <option value="teaching">Teaching</option>
@@ -57,15 +59,17 @@
           <option value="dreaming">Dreaming</option>
           <option value="typing">Typing</option>
         </select>
-      </label>
-      <label for="avalible">
-        Availability:
-        <select id="avalible" v-model="filterBy.availability" @change="filter">
+      </div>
+
+      <div>
+        <label for="available">Availability</label>
+        <select id="available" v-model="filterBy.availability" @change="filter">
           <option value="all">All</option>
-          <option value="avalible">Avalible only</option>
+          <option value="available">Available Only</option>
         </select>
-      </label>
+      </div>
     </div>
+    <button class="filter-btn" @click="clearFilter">Clear</button>
   </section>
 </template>
 
@@ -79,11 +83,21 @@ export default {
         skills: "all",
         isOnSite: false,
         isOnLine: false,
-        availability:"all",
+        availability: "all",
       },
     };
   },
   methods: {
+    clearFilter() {
+      this.filterBy.txt = "";
+      this.filterBy.category = "all";
+      this.filterBy.skills = "all";
+      this.filterBy.isOnSite = false;
+      this.filterBy.isOnLine = false;
+      this.filterBy.availability = "all";
+      this.filter();
+    },
+
     filter() {
       const copyFilterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$emit("filter", copyFilterBy);

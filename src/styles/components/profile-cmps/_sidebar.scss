@@ -1,15 +1,29 @@
 .vol-sidebar-container {
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	width: 38%;
-	position: absolute;
+	position: relative;
+	grid-row: 2/3;
+
+	@include for-normal-layout {
+		//720px
+		position: sticky;
+		grid-row: unset;
+	}
+}
+.sticky-sidebar-container {
+	position: sticky;
+	top: 60px;
 	right: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	@include for-normal-layout {
+		//720px
+		position: sticky;
+	}
 }
 
 .vol-details-sidebar {
 	background-color: $clr2;
-	box-shadow: 0px 1px 5px 0px $clr6;
 
 	display: flex;
 	flex-direction: column;
@@ -18,26 +32,40 @@
 	align-self: auto;
 	width: 100%;
 	gap: 0.5rem;
-
 	text-align: center;
 	padding: 0.5rem;
-
-	// border: 1px solid gray;
 	border-radius: 1rem;
-
-	position: sticky;
-	top: 55px;
-	right: 0;
 
 	.vol-sidebar-map {
 		margin: 0.5rem 0;
 		width: 100%;
-		min-height: 200px;
 		border-radius: 10px;
 
-		.vue-map {
-			border-radius: 5px;
+		@include for-narrow-layout {
+			//400px
+			max-height: 200px;
 		}
+		@include for-normal-layout {
+			//720px
+			margin: 0.5rem 0;
+			width: 100%;
+			max-height: 200px;
+			border-radius: 10px;
+		}
+		@include for-wide-layout {
+			//1060px
+			min-height: 200px;
+		}
+
+		// .vue-map {
+		// 	border-radius: 5px;
+		// }
+	}
+
+	@include for-normal-layout {
+		//720px
+		box-shadow: 0px 1px 5px 0px $clr6;
+		position: sticky;
 	}
 
 	.vol-sidebar-btn-container {
@@ -61,26 +89,29 @@
 
 	.facebook {
 		&:hover {
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #0f91f2;
+			fill: #0e8ff2;
 			transition: 0.2s;
+			path {
+				fill: #0e8ff2;
+			}
 		}
 	}
 	.twitter {
 		&:hover {
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #1bb1e4;
+			fill: #1bb1e4;
 			transition: 0.2s;
+			path {
+				fill: #1bb1e4;
+			}
 		}
 	}
 	.whataspp {
 		&:hover {
-			border-radius: 10px;
-			padding: 3px;
-			background-color: #1ad03f;
+			fill: #1ad03f;
 			transition: 0.2s;
+			path {
+				fill: #1ad03f;
+			}
 		}
 	}
 }

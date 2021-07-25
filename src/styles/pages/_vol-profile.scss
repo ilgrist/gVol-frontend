@@ -1,19 +1,53 @@
 .vol-det {
 	height: 100%;
-
 	padding: 10px;
-	margin: 0 1rem;
-
 	position: relative;
-
-	display: flex;
-	flex-direction: column;
 	gap: 1rem;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+
+	@include for-normal-layout {
+		grid-template-columns: 60% 40%;
+	}
+	.profile-header {
+		background-color: $clr2;
+		border-radius: 1rem;
+
+		margin-bottom: 0.5rem;
+		padding: 1rem;
+
+		grid-row: 1/2;
+
+		h2 {
+			display: flex;
+			justify-content: space-between;
+
+			button {
+				border: none;
+				background-color: transparent;
+				height: 2rem;
+				&:hover {
+					border-radius: 5px;
+					background-color: $clr5;
+				}
+
+				@include for-normal-layout {
+					height: 3rem;
+					width: 3rem;
+				}
+			}
+		}
+
+		@include for-normal-layout {
+			display: none;
+			//720px
+		}
+	}
 }
 
 .dark-screen {
 	position: fixed;
-	// position: absolute;
 	top: 0;
 	right: 0;
 	width: 100vw;
@@ -27,19 +61,6 @@
 	overflow-x: unset;
 	margin-top: 50px;
 	min-height: 90vh;
-
-	@include for-narrow-layout {
-		max-width: $break-narrow;
-	}
-	@include for-normal-layout {
-		max-width: $break-normal;
-	}
-	@include for-wide-layout {
-		max-width: $break-wide;
-	}
-	@include for-extra-wide-layout {
-		max-width: $break-extra-wide;
-	}
 }
 
 .loading-img {
@@ -50,6 +71,4 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	// top: 30vh;
-	// right: 70vh;
 }

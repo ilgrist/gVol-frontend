@@ -6,11 +6,11 @@
       src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
       alt="loading"
     />
-    <div v-else class="vol-det">
+    <div v-else class="vol-det user-det">
       <div class="user-profile">
         <userDetails v-if="userVols" :vols="userVols" :user="user" />
         <user-vol-list
-          v-if="userVols"
+          v-if="userVols && userVols.length"
           :vols="userVols"
           :name="'Volunteering in'"
           :isLoggedSameAsCurr="isLoggedSameAsCurr"
@@ -18,18 +18,26 @@
           @filterBy="filterBy"
           @leaveVol="leaveVol"
         />
+        <div class="empty-state" v-if="userVols && !userVols.length">
+          <h3 class="empty-state-title">
+            <router-link class="explore-link" to="/volApp"
+              ><h2>Explore Volunteering Opportunities:</h2></router-link
+            >
+          </h3>
+          <short-list
+            class="main-layout"
+            name="Most Popular"
+            :vols="popularVols"
+            @filterBy="filterBy"
+          />
+        </div>
       </div>
+
       <userSideBar
         :user="user"
         :isLoggedSameAsCurr="isLoggedSameAsCurr"
         @openModal="openModal"
       />
-      <h3 class="empty-state" v-if="!userVols">
-        Nowhere yet!
-        <router-link class="explore-link" to="/volApp"
-          >Explore Opportunities...</router-link
-        >
-      </h3>
     </div>
     <add-edit-vol v-if="isEditing" @closeModal="closeModal" />
   </section>
@@ -41,6 +49,7 @@ import userDetails from "@/cmps/user-profile-cmps/user-details.vue";
 import userVolList from "@/cmps/user-profile-cmps/user-vol-list.vue";
 import addEditVol from "@/cmps/add-edit-vol.vue";
 import { showMsg } from "../services/event-bus.service.js";
+import shortList from "../cmps/homepage-cmps/short-vol-list.vue";
 
 export default {
   components: {
@@ -48,6 +57,7 @@ export default {
     userDetails,
     addEditVol,
     userVolList,
+    shortList,
   },
   data() {
     return {
@@ -60,6 +70,16 @@ export default {
     isLoggedSameAsCurr() {
       const loggedUser = this.$store.getters.loggedinUser;
       if (loggedUser) return this.user._id === loggedUser._id;
+    },
+    popularVols() {
+      let popularVols = JSON.parse(
+        JSON.stringify(this.$store.getters.volsToShow)
+      );
+
+      popularVols.sort((volA, volB) => {
+        return volB.members.length - volA.members.length;
+      });
+      return popularVols.slice(0, 4);
     },
   },
   methods: {

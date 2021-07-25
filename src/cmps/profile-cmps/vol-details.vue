@@ -9,6 +9,9 @@
           />
         </button>
       </h2>
+      <a href="#reviews" class="vol-stats">
+        ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
+      </a>
       <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
@@ -18,8 +21,6 @@
           {{ vol.loc.city }}, {{ vol.loc.country }}
         </span>
       </p>
-      <p>Rating :({{ ratingStars }})</p>
-
       <p>
         <span class="details-tag" v-for="tag in vol.tags" :key="tag">
           {{ tag }}
@@ -32,6 +33,17 @@
         <img class="details-img" :src="img" alt="img-details-grid" />
       </div>
     </div>
+
+    <el-carousel
+      class="img-gallery-tablet"
+      :autoplay="false"
+      trigger="click"
+      max-height="650px"
+    >
+      <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img :src="img" />
+      </el-carousel-item>
+    </el-carousel>
 
     <section class="more-details">
       <h3>
@@ -90,6 +102,7 @@
     </section>
 
     <volReviews
+      id="reviews"
       :volId="vol._id"
       @sendReview="sendReview"
       @removeReview="removeReview"
@@ -122,6 +135,7 @@ export default {
     };
   },
   methods: {
+    goToReviews() {},
     openModal() {
       this.$emit("openModal");
     },
@@ -152,6 +166,19 @@ export default {
     },
   },
   computed: {
+    avgRating() {
+      let ratingLength = 0;
+      let ratingSum = this.vol.reviews.reduce((acc, review) => {
+        if (!review.rating) return acc;
+        ratingLength++;
+        return acc + review.rating;
+      }, 0);
+
+      if (!ratingLength) return "None";
+      this.volRatingStars = "⭐".repeat((ratingSum / ratingLength).toFixed(1));
+      this.$emit("stars", this.volRatingStars);
+      return (ratingSum / ratingLength).toFixed(2);
+    },
     description() {
       return utilService.shortTxt(this.vol.desc, 200);
     },

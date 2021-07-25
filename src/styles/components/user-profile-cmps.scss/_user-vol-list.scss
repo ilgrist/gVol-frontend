@@ -6,16 +6,24 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     .card {
       width: auto;
-      .card-title {
+      .card-title-cont {
         display: flex;
         justify-content: space-between;
         gap: 0.5rem;
+        .card-title {
+          margin: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-family: Nunito700;
+          font-size: x-large;
+          padding: 10px;
+        }
         button {
           position: absolute;
           top: 5px;
           right: 5px;
           z-index: 2;
-          font-size: large;
           padding: 5px;
           border: none;
           background-color: white;
@@ -23,7 +31,7 @@
           border-radius: 10px;
           transition: all 0.3s;
           &:hover {
-            background-color: $clr4;
+            background-color: $clr5;
           }
         }
       }

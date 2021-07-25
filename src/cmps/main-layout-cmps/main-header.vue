@@ -1,18 +1,38 @@
 <template>
-  <header class="main-header" :class="{ transparent: isTransparent }">
+  <header
+    class="main-header"
+    :class="{ transparent: isTransparent && !isMobileMenuOpen }"
+  >
     <img
-      @click="goToHome"
+      @click="
+        goToHome();
+        closeMobileMenu();
+      "
       class="logo"
       src="../../assets/img/logo4.png"
       alt="logo"
     />
-    <nav id="nav">
-      <router-link to="/volApp">Explore</router-link>
-      <router-link v-if="isLoggedIn" :to="'/user/' + currUser._id"
+    <img :src="mobileMenuIcon" class="btn-menu" @click="toggleMobileMenu" />
+    <nav
+      id="nav"
+      :class="{ open: isMobileMenuOpen }"
+      @click.stop="closeMobileMenu"
+    >
+      <router-link to="/volApp" @click.native="closeMobileMenu"
+        >Explore</router-link
+      >
+      <router-link
+        v-if="isLoggedIn"
+        :to="'/user/' + currUser._id"
+        @click.native="closeMobileMenu"
         >My profile</router-link
       >
 
-      <router-link to="/login">
+      <router-link
+        to="/login"
+        class="welcomeUser"
+        @click.native="toggleMobileMenu"
+      >
         Welcome {{ loggedinUser.username }}
         <img class="nav-user-img" :src="loggedinUser.imgUrl"
       /></router-link>
@@ -26,12 +46,19 @@ export default {
     return {
       isLoggedIn: false,
       currUser: null,
+      isMobileMenuOpen: false,
     };
   },
   methods: {
     goToHome() {
       const path = "/";
       if (this.$route.path !== path) this.$router.push("/");
+    },
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    },
+    closeMobileMenu() {
+      this.isMobileMenuOpen = false;
     },
   },
   computed: {
@@ -52,6 +79,11 @@ export default {
         imgUrl:
           "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626419180/volApp/icons/account_circle_black_24dp_meg4mh.svg",
       };
+    },
+    mobileMenuIcon() {
+      if (this.isMobileMenuOpen)
+        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuClose_lyusl2.svg";
+      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuOpen_hpmpyq.svg";
     },
   },
 };

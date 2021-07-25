@@ -120,5 +120,10 @@ export default {
 		async getVol(context, { _id }) {
 			return await volService.getById(_id);
 		},
+
+		// async setCurrVolById(context, { volId }) {
+		// 	const vol = await context.dispatch({ type: 'getVol', volId });
+		// 	context.commit({ type: 'setCurrVol', vol });
+		// },
 	},
 };

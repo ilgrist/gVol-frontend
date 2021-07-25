@@ -1,7 +1,7 @@
 <template>
   <div class="details-reviews">
     <header class="rating-header">
-      <h3>⭐{{ avgRating }}</h3>
+      <!-- <h3>⭐{{ avgRating }}</h3> -->
     </header>
     <header class="review-header">
       <h1>{{ reviews.length }} Review(s):</h1>
@@ -14,11 +14,11 @@
     <ul v-for="(review, idx) in reviews" :key="idx">
       <li class="review-container">
         <button
-          v-if="loggedinUser.username === review.createdBy"
+          v-if="loggedinUser && loggedinUser.username === review.createdBy"
           @click.prevent.stop="removeReview(idx)"
           class="reviews-btn"
         >
-          Delete
+          Delete Review
         </button>
         <div class="review-user">
           <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />

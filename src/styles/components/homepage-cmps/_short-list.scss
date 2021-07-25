@@ -9,10 +9,6 @@
   }
 }
 
-
-
-    
-
 .short-header {
   grid-row: 1/2;
   grid-column: 1/3;
@@ -21,7 +17,6 @@
   padding-bottom: 0.5rem;
   border-bottom: 1px solid lightgray;
   margin: 0 1rem 1rem 1rem;
-
   p {
     border-radius: 1rem;
     padding: 0.5rem 0;
@@ -35,13 +30,14 @@
       color: $clr2;
     }
   }
-  h1{
-    font-family: Halant, sans-serif ;
+  h1 {
+    font-family: Halant, sans-serif;
+    font-size: 1.5rem;
   }
 }
 
 .cards-cont {
-   gap: 48px 26px;
+  gap: 48px 26px;
   margin-bottom: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -49,7 +45,6 @@
   grid-row: 2/3;
   grid-column: 1/3;
   flex-wrap: wrap;
-  
 
   @include for-narrow-layout {
     flex-wrap: wrap;

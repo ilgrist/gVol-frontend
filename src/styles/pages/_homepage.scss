@@ -1,3 +1,21 @@
 .homepage {
-  margin-top: 0;
+	margin-top: 0;
+}
+
+.vue-map-container {
+	height: 300px;
+	border-radius: 200px 200px 0 0;
+	margin-top: 10px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.placeholder-map {
+	height: 340px;
+}
+
+.map-layout {
+	margin-top: -200px;
+	@extend .main-layout;
 }

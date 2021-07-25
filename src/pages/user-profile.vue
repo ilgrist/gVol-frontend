@@ -67,9 +67,12 @@ export default {
     };
   },
   computed: {
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
     isLoggedSameAsCurr() {
-      const loggedUser = this.$store.getters.loggedinUser;
-      if (loggedUser) return this.user._id === loggedUser._id;
+      // const loggedUser = this.$store.getters.loggedinUser;
+      if (this.loggedinUser) return this.user._id === this.loggedinUser._id;
     },
     popularVols() {
       let popularVols = JSON.parse(

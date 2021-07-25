@@ -8,13 +8,12 @@
     .explore-btn {
       background-color: white;
       border: 2px solid $clr6;
+      width: 60%;
+      font-size: 1rem;
+
       &:hover {
         background-color: $clr6;
         color: white;
-      }
-      + .volunteer-btn {
-        width: 70%;
-        font-size: 1rem;
       }
     }
   }

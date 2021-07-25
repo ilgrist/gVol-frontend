@@ -3,40 +3,34 @@
     class="main-header"
     :class="{ transparent: isTransparent && !isMobileMenuOpen }"
   >
-    <img
-      @click="
-        goToHome();
-        closeMobileMenu();
-      "
-      class="logo"
-      src="../../assets/img/logo4.png"
-      alt="logo"
-    />
-    <img :src="mobileMenuIcon" class="btn-menu" @click="toggleMobileMenu" />
-    <nav
-      id="nav"
-      :class="{ open: isMobileMenuOpen }"
-      @click.stop="closeMobileMenu"
-    >
-      <router-link to="/volApp" @click.native="closeMobileMenu"
-        >Explore</router-link
+    <section class="content main-layout">
+      <img
+        @click="
+          goToHome();
+          closeMobileMenu();
+        "
+        class="logo"
+        src="../../assets/img/logo4.png"
+        alt="logo"
+      />
+      <img :src="mobileMenuIcon" class="btn-menu" @click="toggleMobileMenu" />
+      <nav
+        id="nav"
+        :class="{ open: isMobileMenuOpen }"
+        @click.stop="closeMobileMenu"
       >
-      <router-link
-        v-if="isLoggedIn"
-        :to="'/user/' + currUser._id"
-        @click.native="closeMobileMenu"
-        >My profile</router-link
-      >
-
-      <router-link
-        to="/login"
-        class="welcomeUser"
-        @click.native="toggleMobileMenu"
-      >
-        Welcome {{ loggedinUser.username }}
-        <img class="nav-user-img" :src="loggedinUser.imgUrl"
-      /></router-link>
-    </nav>
+        <router-link to="/volApp" @click.native="closeMobileMenu"
+          >Explore</router-link
+        >
+        <router-link
+          :to="userImgLink"
+          class="welcomeUser"
+          @click.native="toggleMobileMenu"
+        >
+          <img class="nav-user-img" :src="loggedinUser.imgUrl"
+        /></router-link>
+      </nav>
+    </section>
   </header>
 </template>
 
@@ -64,6 +58,9 @@ export default {
   computed: {
     isTransparent() {
       return this.$store.getters.isTransHeader;
+    },
+    userImgLink() {
+      return this.isLoggedIn ? "/user/" + this.currUser._id : "/login";
     },
     loggedinUser() {
       const user = this.$store.getters.loggedinUser;

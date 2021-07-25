@@ -1,84 +1,84 @@
 .addVol-page {
-	margin-top: unset;
-	padding-top: 60px;
-	min-height: 95vh;
+  margin-top: unset;
+  padding-top: 60px;
+  min-height: 95vh;
 }
 
 .form-container {
-	// background-color: yellow;
-	background-color: $clr1;
-	width: 500px;
-	margin: 0 auto;
-	padding: 1rem;
-	border-radius: 1rem;
-	border: 1px solid lightgray;
+  // background-color: yellow;
+  background-color: $clr1;
+  width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid lightgray;
 
-	display: flex;
-	h3 {
-		font-family: Halant;
-		width: 35%;
-	}
+  display: flex;
+  h3 {
+    font-family: Lato-Bold;
+    width: 35%;
+  }
 }
 
 .addVol-form {
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	font-weight: bold;
-	width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  width: 100%;
 
-	.vol-title {
-		width: 90%;
-	}
+  .vol-title {
+    width: 90%;
+  }
 
-	label {
-		font-size: 0.8rem;
-		padding-bottom: 5px;
-		gap: 10px;
-	}
+  label {
+    font-size: 0.8rem;
+    padding-bottom: 5px;
+    gap: 10px;
+  }
 
-	textarea {
-		border: 1px solid lightgray;
-		outline: none;
-		resize: none;
-		font-family: NunitoSans, sans-serif;
-		font-size: 0.8rem;
-		width: 80%;
-		height: 100px;
-		&:focus {
-			border: 1px solid lightgray;
-		}
-	}
+  textarea {
+    border: 1px solid lightgray;
+    outline: none;
+    resize: none;
+    font-family: NunitoSans, sans-serif;
+    font-size: 0.8rem;
+    width: 80%;
+    height: 100px;
+    &:focus {
+      border: 1px solid lightgray;
+    }
+  }
 
-	input {
-		border: none;
-		background-color: white;
-		outline: none;
-		font-size: 0.8rem;
-		padding-top: 5px;
-		border-radius: 10px;
-		width: 80%;
-	}
-	&:focus {
-		border: none;
-	}
+  input {
+    border: none;
+    background-color: white;
+    outline: none;
+    font-size: 0.8rem;
+    padding-top: 5px;
+    border-radius: 10px;
+    width: 80%;
+  }
+  &:focus {
+    border: none;
+  }
 
-	.el-select,
-	.el-input {
-		width: 80%;
-		background-color: white;
-		border-radius: 10px;
-	}
-	select {
-		border: none;
-		background-color: white;
-		font-size: 0.8rem;
-	}
+  .el-select,
+  .el-input {
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+  }
+  select {
+    border: none;
+    background-color: white;
+    font-size: 0.8rem;
+  }
 
-	.loc-label {
-		display: flex;
-		flex-direction: column;
-	}
+  .loc-label {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 // .edit-btn {
@@ -100,71 +100,71 @@
 // }
 
 .switch-button {
-	background: rgba(255, 255, 255, 0.56);
-	border-radius: 10px;
-	overflow: hidden;
-	width: 240px;
-	text-align: center;
-	font-size: 0.8rem;
-	letter-spacing: 1px;
-	color: black;
-	position: relative;
-	padding-right: 120px;
-	position: relative;
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: black;
+  position: relative;
+  padding-right: 120px;
+  position: relative;
 
-	&:before {
-		content: 'On-Site';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		width: 120px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 3;
-		pointer-events: none;
-	}
+  &:before {
+    content: 'On-Site';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
 
-	&-checkbox {
-		cursor: pointer;
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		z-index: 2;
+  &-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
 
-		&:checked + .switch-button-label:before {
-			transform: translateX(120px);
-			transition: transform 300ms linear;
-		}
+    &:checked + .switch-button-label:before {
+      transform: translateX(120px);
+      transition: transform 300ms linear;
+    }
 
-		& + .switch-button-label {
-			position: relative;
-			padding: 0.05rem 0;
-			display: block;
-			user-select: none;
-			pointer-events: none;
+    & + .switch-button-label {
+      position: relative;
+      padding: 0.05rem 0;
+      display: block;
+      user-select: none;
+      pointer-events: none;
 
-			&:before {
-				content: '';
-				background: $clr3;
-				height: 100%;
-				width: 100%;
-				position: absolute;
-				left: 0;
-				top: 0;
-				border-radius: 10px;
-				transform: translateX(0);
-				transition: transform 300ms;
-			}
+      &:before {
+        content: '';
+        background: $clr3;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        transform: translateX(0);
+        transition: transform 300ms;
+      }
 
-			.switch-button-label-span {
-				position: relative;
-			}
-		}
-	}
+      .switch-button-label-span {
+        position: relative;
+      }
+    }
+  }
 }

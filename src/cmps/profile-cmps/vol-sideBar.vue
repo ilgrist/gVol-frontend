@@ -152,6 +152,7 @@ export default {
         };
         vol.members.push(member);
         await this.$store.dispatch({ type: "saveVol", vol });
+        // this.vol = this.$store.getters.currVol;
         socketService.emit("new volunteer", { vol, user: this.loggedinUser });
         // showMsg("Your request has been sent!", "success");
       } else {

@@ -17,6 +17,10 @@
 	flex-wrap: wrap;
 	overflow: hidden;
 
+	.details-location{
+		padding-left: 10px;
+	}
+	
 	.card-title {
 		margin: 0;
 		@include text-overflow;

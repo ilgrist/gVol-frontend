@@ -60,6 +60,8 @@ export default {
 			state.vols = vols;
 		},
 		setCurrVol(state, { vol }) {
+			console.log('file: vol-store.js ~ line 63 ~ vol', vol);
+
 			state.currVol = vol;
 		},
 	},
@@ -120,10 +122,5 @@ export default {
 		async getVol(context, { _id }) {
 			return await volService.getById(_id);
 		},
-
-		// async setCurrVolById(context, { volId }) {
-		// 	const vol = await context.dispatch({ type: 'getVol', volId });
-		// 	context.commit({ type: 'setCurrVol', vol });
-		// },
 	},
 };

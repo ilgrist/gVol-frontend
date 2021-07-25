@@ -12,7 +12,7 @@
       <a href="#reviews" class="vol-stats">
         ⭐{{ avgRating }} ({{ vol.reviews.length }} Reviews)
       </a>
-      <h4>Opportunity offered by "{{ vol.org.name }}"</h4>
+      <!-- <h4>Opportunity offered by "{{ vol.org.name }}"</h4> -->
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
         Online
       </p>

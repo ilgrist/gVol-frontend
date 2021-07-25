@@ -24,6 +24,9 @@
   @include for-narrow-layout {
     grid-template-columns: auto;
   }
+  .details-header {
+    display: block;
+  }
 }
 
 .empty-state {

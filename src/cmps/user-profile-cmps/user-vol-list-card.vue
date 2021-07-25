@@ -40,10 +40,11 @@
     </article>
     <div class="rev-cont">
       <div class="rating">
-        <img
+        <!-- <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
-        />
-        <span>{{ avgRating }}</span>
+        /> -->
+
+        <span> &#9733; {{ avgRating }}</span>
       </div>
       <div class="reviews">
         <span> Reviews ({{ reviewNum }})</span>
@@ -51,6 +52,8 @@
     </div>
   </section>
 </template>
+
+
 
 <script>
 import { utilService } from "../../services/util.service.js";

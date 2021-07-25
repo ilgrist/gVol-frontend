@@ -1,9 +1,9 @@
 <template>
   <section class="card-preview card" @click="cardClicked">
-      <div v-if="isOverTen" class="badge-text">{{leftMembers}}</div>
-     <el-carousel :autoplay="false" trigger="click" height="200px">
-      <el-carousel-item v-for="img,idx in vol.imgUrls" :key="idx">
-        <img :src="img">
+    <div v-if="isOverTen" class="badge-text">{{ leftMembers }}</div>
+    <el-carousel :autoplay="false" trigger="click" height="200px">
+      <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img :src="img" />
       </el-carousel-item>
     </el-carousel>
     <h3 class="card-title">{{ title }}</h3>
@@ -30,10 +30,10 @@
     </article>
     <div class="rev-cont">
       <div class="rating">
-        <img
+        <!-- <img
           src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
-        />
-        <span>{{ avgRating }}</span>
+        /> -->
+        <span> &#9733; {{ avgRating }}</span>
       </div>
       <div class="reviews">
         <span> Reviews ({{ reviewNum }})</span>
@@ -52,7 +52,7 @@ export default {
     return {
       reviews: this.vol.reviews,
       isOverTen: true,
-      false:false
+      false: false,
     };
   },
   methods: {
@@ -64,18 +64,18 @@ export default {
     },
   },
   computed: {
-    leftMembers(){
-      const members = this.vol.members
-      const maxMembers = +this.vol.maxMembers
-      const left = maxMembers - members.length
-      if(left > 0 && left < 10){
-        this.isOverTen = true
-        return `${left} Left`
-      }else if(left >= 10){
-        this.isOverTen = false
-      }else{
-        this.isOverTen = true
-        return 'Full'
+    leftMembers() {
+      const members = this.vol.members;
+      const maxMembers = +this.vol.maxMembers;
+      const left = maxMembers - members.length;
+      if (left > 0 && left < 10) {
+        this.isOverTen = true;
+        return `${left} Left`;
+      } else if (left >= 10) {
+        this.isOverTen = false;
+      } else {
+        this.isOverTen = true;
+        return "Full";
       }
     },
     title() {

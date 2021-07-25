@@ -12,7 +12,8 @@
     <div class="chat-inner-cont" :class="{ hidden: !isChatOpen }">
       <ul class="chat-msg-list" v-if="msgs.length">
         <li class="chat-msg" v-for="(msg, idx) in msgs" :key="idx">
-          {{ msg.from }}: <span>{{ msg.txt }} </span>
+          <span>{{ msg.from }}</span
+          >: {{ msg.txt }}
         </li>
       </ul>
       <p class="emptyState" v-else>Start messaging...</p>

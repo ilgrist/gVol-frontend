@@ -8,7 +8,7 @@
       alt="loading"
     />
     <template v-else> -->
-    <homepage-map :volsLocs="volsLocs" />
+    <homepage-map />
     <short-list
       class="main-layout"
       v-if="isload"
@@ -46,21 +46,19 @@ export default {
       isload: false,
       scrollY: 0,
       isHeaderTrans: true,
-
-      // isLoading: false,
     };
   },
   computed: {
-    volsLocs() {
-      let vols = JSON.parse(JSON.stringify(this.$store.getters.volsToShow));
-      let volsLocs = vols
-        .filter((vol) => vol.loc.lat && vol.loc.lng)
-        .map((vol) => {
-          return Object.assign({ id: vol._id, title: vol.title }, vol.loc);
-        });
+    // volsLocs() {
+    //   let vols = JSON.parse(JSON.stringify(this.$store.getters.volsToShow));
+    //   let volsLocs = vols
+    //     .filter((vol) => vol.loc.lat && vol.loc.lng)
+    //     .map((vol) => {
+    //       return Object.assign({ id: vol._id, title: vol.title }, vol.loc);
+    //     });
 
-      return volsLocs;
-    },
+    //   return volsLocs;
+    // },
 
     popularVols() {
       let popularVols = JSON.parse(

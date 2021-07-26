@@ -347,6 +347,7 @@ export default {
       this.vol = null;
     },
 
+    /*~ Code from add-edit component, when usre adds a new vol - it dynamically locates and stores its lat and lng    ~*/
     async setLatLng() {
       const API_GEO_KEY = "AIzaSyDFLr3uGnbOAi3ol3M6bV6xrtQ0vwHvcOk";
       let locationString = this.vol.loc.country + " " + this.vol.loc.city;
@@ -356,11 +357,13 @@ export default {
 
       try {
         let newLoc = await axios.get(URL);
+        console.log("file: add-edit-vol.vue ~ line 359 ~ newLoc", newLoc);
         this.vol.loc.lat = newLoc.data.results[0].geometry.location.lat;
         this.vol.loc.lng = newLoc.data.results[0].geometry.location.lng;
         console.log(this.vol);
       } catch (err) {
         console.log("error is", err);
+        throw err;
       }
     },
     async saveVol() {

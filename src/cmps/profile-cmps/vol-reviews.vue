@@ -1,9 +1,8 @@
 <template>
   <div class="details-reviews">
-    <header class="rating-header">
-    </header>
+    <header class="rating-header"></header>
     <header class="review-header">
-      <h1>{{ reviews.length }} Review(s): {{volRatingStars}}</h1>
+      <h1>{{ reviews.length }} Review(s): {{ volRatingStars }}</h1>
       <button v-if="!isNewReview" class="review-btn" @click="addReview">
         Add a Review
       </button>
@@ -20,13 +19,25 @@
         </button>
         
         <div class="review-user">
-          <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />
+          <img
+            class="img-profile"
+            :src="review.imgUrl"
+            alt="reviewImg"
+            @click="goToUserProfile(review.userId)"
+          />
           <div class="review-user-header">
             <div>
-              {{ review.createdBy }} 
-              <span  v-for="num in review.rating" :key="num" class="review-stars">
-                <img src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png">
-                </span>
+              {{ review.createdBy }}
+              <span
+                v-for="num in review.rating"
+                :key="num"
+                class="review-stars"
+              >
+                <img
+                  @click="goToUserProfile(member._id)"
+                  src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"
+                />
+              </span>
             </div>
             <span class="date">{{ revDate(review.createdAt) }}</span>
           </div>
@@ -49,7 +60,7 @@ export default {
   },
   data() {
     return {
-      volRatingStars: '',
+      volRatingStars: "",
       msg: "",
       isNewReview: false,
       loggedinUser: false,
@@ -69,12 +80,17 @@ export default {
       }, 0);
 
       if (!ratingLength) return "None";
-      this.volRatingStars =(ratingSum / ratingLength).toFixed(1);
+      this.volRatingStars = (ratingSum / ratingLength).toFixed(1);
       this.$emit("stars", this.volRatingStars);
       return (ratingSum / ratingLength).toFixed(1);
     },
   },
   methods: {
+    goToUserProfile(userId) {
+      if (userId) {
+        this.$router.push(`/user/${userId}`);
+      }
+    },
     revDate(date) {
       moment.locale("en-il");
       return moment(date).format("LLL");

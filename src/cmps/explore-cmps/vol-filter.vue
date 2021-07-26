@@ -112,10 +112,6 @@ export default {
           value: "available",
           label: "Available",
         },
-        {
-          value: "full",
-          label: "Full",
-        },
       ],
 
       skills: [

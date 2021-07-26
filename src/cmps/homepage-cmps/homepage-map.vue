@@ -31,12 +31,6 @@
 
 <script>
 export default {
-  props: {
-    volsLocs: {
-      type: Array,
-    },
-  },
-
   data() {
     return {
       location: { lat: 31.0461, lng: 34.8516 },
@@ -44,11 +38,19 @@ export default {
   },
   methods: {
     goToProfile(volId) {
-      // console.log("file: homepage-map.vue ~ line 47 ~ volId", volId);
       this.$router.push(`/volApp/${volId}`);
     },
   },
   computed: {
+    volsLocs() {
+      let vols = JSON.parse(JSON.stringify(this.$store.getters.volsToShow));
+      let volsLocs = vols
+        .filter((vol) => vol.loc.lat && vol.loc.lng)
+        .map((vol) => {
+          return Object.assign({ id: vol._id, title: vol.title }, vol.loc);
+        });
+      return volsLocs;
+    },
     setCenter() {
       return this.location;
     },

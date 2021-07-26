@@ -71,13 +71,14 @@
 .details-tag {
 	background-color: $clr6;
 	color: whitesmoke;
+	border-radius: 10px;
 
 	font-style: italic;
 	font-size: 0.8rem;
 
 	text-align: center;
 
-	padding: 0.2rem;
+	padding: 0.3rem;
 	margin: 0.2rem;
 
 	//tbd if to keep
@@ -143,8 +144,9 @@
 	background-color: lightgray;
 	font-style: italic;
 	text-align: center;
-	padding: 0.2rem;
+	padding: 0.3rem;
 	margin: 0.2rem;
+	border-radius: 10px;
 
 	font-weight: bold;
 	font-size: 0.8rem;

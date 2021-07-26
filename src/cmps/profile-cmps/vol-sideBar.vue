@@ -129,7 +129,6 @@ export default {
 
   data() {
     return {
-      // members: this.$store.getters.getMembers,
       url: window.location.href,
     };
   },
@@ -139,14 +138,6 @@ export default {
       this.$router.push(`/user/${userId}`);
     },
     async onVol() {
-      if (this.members.find((member) => member._id === this.loggedinUser._id)) {
-        showMsg("Member Already Registered ", "success");
-        return;
-      }
-      if (this.members.length >= +this.vol.maxMembers) {
-        showMsg("This volunteering is fully booked", "success");
-        return;
-      }
       if (this.loggedinUser) {
         const vol = this.$store.getters.currVol;
         const member = {
@@ -157,7 +148,16 @@ export default {
         await this.$store.dispatch({ type: "saveVol", vol });
         socketService.emit("new volunteer", { vol, user: this.loggedinUser });
 
-        // showMsg("Your request has been sent!", "success");
+        if (
+          this.members.find((member) => member._id === this.loggedinUser._id)
+        ) {
+          showMsg("Member Already Registered ", "success");
+          return;
+        }
+        if (this.members.length >= +this.vol.maxMembers) {
+          showMsg("This volunteering is fully booked", "success");
+          return;
+        }
       } else {
         this.$router.push("/login");
       }

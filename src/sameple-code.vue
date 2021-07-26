@@ -1,9 +1,8 @@
-<template>
+ <template>
   <section class="map-layout">
     <div class="placeholder-map" v-if="!location.lat"></div>
     <GmapMap
       v-if="location.lat"
-      :center="setCenter"
       :zoom="2"
       map-type-id="terrain"
       :options="{
@@ -22,20 +21,17 @@
         :position="volLoc"
         :clickable="true"
         :draggable="false"
-        @click="goToProfile(volLoc.id)"
         :title="volLoc.title"
+        @click="goToProfile(volLoc.id)"
       />
     </GmapMap>
   </section>
 </template>
-
-<script>
+ 
+ <script>
 export default {
-  data() {
-    return {
-      location: { lat: 31.0461, lng: 34.8516 },
-    };
-  },
+  /* ~ Method from homepage-map component, which dynamically renders all existing vols in the database ~  */
+
   methods: {
     goToProfile(volId) {
       this.$router.push(`/volApp/${volId}`);
@@ -51,21 +47,29 @@ export default {
         });
       return volsLocs;
     },
-    setCenter() {
-      return this.location;
-    },
   },
 
-  created() {
-    // navigator.geolocation.getCurrentPosition((pos) => {
-    //   this.gettingLocation = false;
-    //   this.location.lat = pos.coords.latitude;
-    //   this.location.lng = pos.coords.longitude;
-    //   this.setCenter;
-    // });
-    // this.location.lat = 31.0461;
-    // this.location.lng = 34.8516;
+  /* ~ Method from add-edit-vol component, which dynamically locates and stores the coordinates of 
+  a new vol, added by a user ~  */
+
+  methods: {
+    async setLatLng() {
+      let locationString = this.vol.loc.country + " " + this.vol.loc.city;
+      locationString = locationString.replace(" ", "+");
+      const URL = `
+    https://maps.googleapis.com/maps/api/geocode/json?address=${locationString}&key=${API_GEO_KEY}`;
+
+      try {
+        let newLoc = await axios.get(URL);
+        this.vol.loc.lat = newLoc.data.results[0].geometry.location.lat;
+        this.vol.loc.lng = newLoc.data.results[0].geometry.location.lng;
+      } catch (err) {
+        console.log("error is", err);
+        throw err;
+      }
+    },
   },
 };
 </script>
-
+ 
+ 

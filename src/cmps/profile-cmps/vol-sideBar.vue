@@ -161,6 +161,7 @@ export default {
         vol.members.push(member);
         await this.$store.dispatch({ type: "saveVol", vol });
         socketService.emit("new volunteer", { vol, user: this.loggedinUser });
+        showMsg("You registered successfully!", "success");
       } else {
         this.$router.push("/login");
       }

@@ -53,7 +53,7 @@
 		border: 2px solid $clr6;
 		color: $clr6;
 		background-color: white;
-		border-radius: 15px;
+		border-radius: 10px;
 		padding: 5px;
 		width: 150px;
 		max-height: 30px;
@@ -75,9 +75,6 @@
 			gap: 0.5rem;
 			padding: 10px;
 
-			// background-color: white;
-			// border: 0.3px solid lightgray;
-			// border-radius: 5px;
 			border-bottom: 0.3px solid lightgray;
 			.date {
 				grid-row: 2/3;
@@ -145,7 +142,7 @@
 	font-style: italic;
 	font-weight: bold;
 	// text-decoration: underline;
-	border-radius: 4px;
+	// border-radius: 4px;
 	padding: 1px;
 
 	display: flex;
@@ -190,7 +187,7 @@
 	object-fit: cover;
 }
 
-.el-rate{
+.el-rate {
 	display: inline-block;
 	margin-left: 10px;
 	transform: translateY(-2px);

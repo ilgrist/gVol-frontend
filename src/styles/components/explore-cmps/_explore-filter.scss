@@ -161,7 +161,8 @@
 
 input[type='checkbox']:checked ~ img {
 	background-color: $clr3;
-	border-radius: 1rem;
+	// border-radius: 1rem;
+	border-radius: 10px;
 	//
 }
 

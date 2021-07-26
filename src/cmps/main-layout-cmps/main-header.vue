@@ -4,15 +4,21 @@
     :class="{ transparent: isTransparent && !isMobileMenuOpen }"
   >
     <section class="content main-layout">
-      <img
+      <div
+        class="logo-cont"
         @click="
           goToHome();
           closeMobileMenu();
         "
-        class="logo"
-        src="../../assets/img/logo4.png"
-        alt="logo"
-      />
+      >
+        <img class="logo" :src="logoImg" alt="logo" />
+        <h2
+          class="logo-txt"
+          :style="{ color: isTransparent ? `#f8f8ff` : `#149b72` }"
+        >
+          gVol
+        </h2>
+      </div>
       <img :src="mobileMenuIcon" class="btn-menu" @click="toggleMobileMenu" />
       <nav
         id="nav"
@@ -20,7 +26,7 @@
         @click.stop="closeMobileMenu"
       >
         <router-link to="/volApp" @click.native="closeMobileMenu"
-          >Explore</router-link
+          ><h3>Explore</h3></router-link
         >
         <router-link
           :to="userImgLink"
@@ -81,6 +87,11 @@ export default {
       if (this.isMobileMenuOpen)
         return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuClose_lyusl2.svg";
       return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuOpen_hpmpyq.svg";
+    },
+    logoImg() {
+      if (this.isTransparent)
+        return require("../../assets/img/logo/logoNewNeg.png");
+      return require("../../assets/img/logo/logoNew.png");
     },
   },
 };

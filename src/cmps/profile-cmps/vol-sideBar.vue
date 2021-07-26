@@ -145,9 +145,11 @@ export default {
           _id: this.loggedinUser._id,
           imgUrl: this.loggedinUser.imgUrl,
         };
-        vol.members.push(member);
-        await this.$store.dispatch({ type: "saveVol", vol });
-        socketService.emit("new volunteer", { vol, user: this.loggedinUser });
+
+        if (this.members.length >= +this.vol.maxMembers) {
+          showMsg("This volunteering is fully booked", "success");
+          return;
+        }
 
         if (
           this.members.find((member) => member._id === this.loggedinUser._id)
@@ -155,10 +157,10 @@ export default {
           showMsg("Member Already Registered ", "success");
           return;
         }
-        if (this.members.length >= +this.vol.maxMembers) {
-          showMsg("This volunteering is fully booked", "success");
-          return;
-        }
+
+        vol.members.push(member);
+        await this.$store.dispatch({ type: "saveVol", vol });
+        socketService.emit("new volunteer", { vol, user: this.loggedinUser });
       } else {
         this.$router.push("/login");
       }

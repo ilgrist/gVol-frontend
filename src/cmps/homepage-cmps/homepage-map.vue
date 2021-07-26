@@ -17,6 +17,7 @@
       }"
     >
       <GmapMarker
+        class="map-marker"
         :key="idx"
         v-for="(volLoc, idx) in volsLocs"
         :position="volLoc"
@@ -24,6 +25,7 @@
         :draggable="false"
         @click="goToProfile(volLoc.id)"
         :title="volLoc.title"
+        icon="/img/icons/marker2.png"
       />
     </GmapMap>
   </section>
@@ -33,7 +35,7 @@
 export default {
   data() {
     return {
-      location: { lat: 31.0461, lng: 34.8516 },
+      location: { lat: -2.5353325648652874, lng: 23.826824003139016 },
     };
   },
   methods: {

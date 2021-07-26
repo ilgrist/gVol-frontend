@@ -13,7 +13,12 @@
       disableDefaultUi: false,
     }"
   >
-    <GmapMarker :position="setLocation" :clickable="false" :draggable="true" />
+    <GmapMarker
+      :position="setLocation"
+      :clickable="false"
+      :draggable="true"
+      icon="/img/icons/marker3.png"
+    />
   </GmapMap>
 </template>
 

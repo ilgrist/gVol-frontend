@@ -12,6 +12,7 @@
               {{ vol.members.length }} out of {{ vol.maxMembers }} Volunteers
             </h4>
             <el-progress
+              v-if="vol.maxMembers"
               :text-inside="true"
               :stroke-width="24"
               :percentage="(vol.members.length / vol.maxMembers) * 100"

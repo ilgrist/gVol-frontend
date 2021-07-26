@@ -61,12 +61,16 @@ export default {
     },
     addMsg(msg) {
       this.msgs.push(msg);
+      this.isTyping = false;
     },
     showTyping() {
       socketService.emit("isTyping", this.username);
     },
     setTyping(typerName) {
       this.isTyping = typerName;
+    },
+    stoppedTyping() {
+      this.isTyping = false;
     },
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;
@@ -88,12 +92,20 @@ export default {
       return "Open chat";
     },
   },
+  watch: {
+    txt: function () {
+      if (!this.txt.length) {
+        socketService.emit("stoppedTyping");
+      }
+    },
+  },
   created() {
     if (this.vol.msgs?.length)
       this.msgs = JSON.parse(JSON.stringify(this.vol.msgs));
     socketService.emit("chat topic", this.topic);
     socketService.on("chat addMsg", this.addMsg);
     socketService.on("getTyping", this.setTyping);
+    socketService.on("stoppedTyping", this.stoppedTyping);
   },
   destroyed() {
     socketService.off("chat addMsg", this.addMsg);

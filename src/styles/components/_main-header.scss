@@ -50,10 +50,11 @@ header.main-header {
 		}
 
 		.nav-user-img {
-			width: 15px;
-			height: 15px;
+			width: 30px;
+			height: 30px;
 			border-radius: 50%;
 			transform: translateY(10%);
+			object-fit: cover;
 		}
 
 		&.router-link-exact-active {

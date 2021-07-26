@@ -1,147 +1,148 @@
 header.main-header {
-  width: 100%;
-  background-color: $clr1;
-  border-bottom: 1px solid $clr5;
-  color: $clr5;
-  font-family: Lato-Bold, sans-serif;
-  font-size: 1rem;
-  position: fixed;
-  top: 0;
-  z-index: 5;
-  transition: 0.3s;
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .btn-menu {
-    display: none;
-  }
-  #nav {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem 0;
-  }
-  .logo-cont {
-    transition: 0.3s all;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    z-index: 8;
+	width: 100%;
+	background-color: $clr1;
+	border-bottom: 1px solid $clr5;
+	color: $clr5;
+	font-family: Lato-Bold, sans-serif;
+	font-size: 1rem;
+	position: fixed;
+	top: 0;
+	z-index: 5;
+	transition: 0.3s;
+	.content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.btn-menu {
+		display: none;
+	}
+	#nav {
+		display: flex;
+		gap: 1rem;
+		padding: 0.5rem 0;
+	}
+	.logo-cont {
+		transition: 0.3s all;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		cursor: pointer;
+		z-index: 8;
 
-    .logo {
-      width: 3rem;
-      padding: 0;
-      margin: 0;
-    }
-  }
-  a {
-    color: $clr4;
-    transition: 0.3s;
-    &:not(.welcomeUser) {
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      &:hover {
-        box-shadow: inset 0px -2px 0px 0px $clr5;
-      }
-    }
+		.logo {
+			width: 3rem;
+			padding: 0;
+			margin: 0;
+		}
+	}
+	a {
+		color: $clr4;
+		transition: 0.3s;
+		&:not(.welcomeUser) {
+			align-self: stretch;
+			display: flex;
+			align-items: center;
+			&:hover {
+				box-shadow: inset 0px -2px 0px 0px $clr5;
+			}
+		}
 
-    .nav-user-img {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      transform: translateY(10%);
-    }
+		.nav-user-img {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			transform: translateY(10%);
+		}
 
-    &.router-link-exact-active {
-      cursor: pointer;
-      color: $clr5;
-    }
-  }
+		&.router-link-exact-active {
+			cursor: pointer;
+			color: $clr5;
+		}
+	}
 
-  &.transparent {
-    background-color: transparent;
-    border-bottom: none;
-    background-image: unset;
-    a {
-      color: $clr2;
-      &:not(.welcomeUser):hover {
-        box-shadow: inset 0px -2px 0px 0px $clr2;
-      }
-    }
-  }
+	&.transparent {
+		background-color: transparent;
+		border-bottom: none;
+		background-image: unset;
+		a {
+			color: $clr2;
+			&:not(.welcomeUser):hover {
+				box-shadow: inset 0px -2px 0px 0px $clr2;
+			}
+		}
+	}
 
-  @include for-narrow-layout {
-    font-size: 1rem;
-    #nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5rem;
-      position: absolute;
-      right: 0;
-      top: 0;
-      background-color: $clr2;
-      height: 100vh;
-      width: 100vw;
-      transition: 0.3s all;
-      transform: translateX(100%);
-      z-index: 5;
-      &.open {
-        transform: translateX(0%);
-      }
-      a {
-        font-size: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .welcomeUser {
-        order: -1;
-      }
-      a .nav-user-img {
-        @include aspect-ratio(1, 1);
-        width: 8rem;
-        height: 8rem;
-        object-fit: cover;
-      }
-    }
-    .btn-menu {
-      display: block;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      z-index: 8;
-      height: 2rem;
-      width: 2rem;
-      border: none;
-      background-color: transparent;
-      fill: $clr5;
-    }
-  }
-  @include for-normal-layout {
-    font-size: 1.5rem;
-    a .nav-user-img {
-      width: 40px;
-      height: 40px;
-    }
-  }
-  @include for-wide-layout {
-    font-size: 1.5rem;
-    a .nav-user-img {
-      width: 40px;
-      height: 40px;
-    }
-  }
-  @include for-extra-wide-layout {
-    font-size: 1.5rem;
-    a .nav-user-img {
-      width: 40px;
-      height: 40px;
-    }
-  }
+	@include for-narrow-layout {
+		font-size: 1rem;
+		#nav {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 5rem;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background-color: $clr2;
+			height: 100vh;
+			width: 100vw;
+			transition: 0.3s all;
+			transform: translateX(100%);
+			z-index: 5;
+			&.open {
+				transform: translateX(0%);
+			}
+			a {
+				font-size: 2rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.welcomeUser {
+				order: -1;
+			}
+			a .nav-user-img {
+				@include aspect-ratio(1, 1);
+				width: 8rem;
+				height: 8rem;
+				object-fit: cover;
+			}
+		}
+		.btn-menu {
+			display: block;
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			z-index: 8;
+			height: 2rem;
+			width: 2rem;
+			border: none;
+			background-color: transparent;
+			fill: $clr5;
+		}
+	}
+	@include for-normal-layout {
+		font-size: 1.5rem;
+		a .nav-user-img {
+			width: 40px;
+			height: 40px;
+			object-fit: cover;
+		}
+	}
+	@include for-wide-layout {
+		font-size: 1.5rem;
+		a .nav-user-img {
+			width: 40px;
+			height: 40px;
+		}
+	}
+	@include for-extra-wide-layout {
+		font-size: 1.5rem;
+		a .nav-user-img {
+			width: 40px;
+			height: 40px;
+		}
+	}
 }

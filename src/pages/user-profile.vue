@@ -3,7 +3,7 @@
     <img
       class="loading-img"
       v-if="!user"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      src="/img/icons/loading_dmwaqp.gif"
       alt="loading"
     />
     <div v-else class="vol-det user-det">

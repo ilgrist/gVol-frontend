@@ -4,7 +4,7 @@
     <img
       class="loading-img"
       v-if="!vol"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+      src="/img/icons/loading_dmwaqp.gif"
       alt="loading"
     />
     <div v-else class="vol-det">
@@ -12,9 +12,7 @@
         <h2>
           {{ vol.title }}
           <button title="Edit Vol" v-if="isCreatedBy" @click="openModal">
-            <img
-              src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"
-            />
+            <img src="/img/edit_note_black_24dp_zmb8jd.svg" />
           </button>
         </h2>
         <a href="#reviews" class="vol-stats">

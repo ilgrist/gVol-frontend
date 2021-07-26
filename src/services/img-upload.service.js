@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const uploadImg = async (ev) => {
 	// Defining our variables
-	const CLOUD_NAME = 'dzuqvua7k';
+	const CLOUD_NAME = 'dsdhfmggx';
 	const UPLOAD_PRESET = 'volApp';
 	const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 

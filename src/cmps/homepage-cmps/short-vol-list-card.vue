@@ -30,9 +30,6 @@
     </article>
     <div class="rev-cont">
       <div class="rating">
-        <!-- <img
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626365333/volApp/icons/star_black_24dp_jgdioo.svg"
-        /> -->
         <span> &#9733; {{ avgRating }}</span>
       </div>
       <div class="reviews">

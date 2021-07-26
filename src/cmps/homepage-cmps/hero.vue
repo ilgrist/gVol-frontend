@@ -16,7 +16,7 @@
         <button class="homepage-btn" @click="filter">
           <img
             class="hero-filter-img"
-            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626286701/volApp/icons/search_z9wby8.svg"
+            src="img/icons/search_z9wby8.svg"
             alt="search"
           />
         </button>

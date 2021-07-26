@@ -4,15 +4,11 @@
       <h2>
         {{ vol.title }}
         <button title="Edit Vol" v-if="isCreatedBy" @click="openModal">
-          <img
-            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626876387/edit_note_black_24dp_zmb8jd.svg"
-          />
+          <img src="/img/icons/edit_note_black_24dp_zmb8jd_kxigkd.svg" />
         </button>
       </h2>
       <a href="#reviews" class="vol-stats">
-        <img
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"
-        />
+        <img src="img/icons/star_rwjmbm.png" />
         {{ avgRating }} ({{ vol.reviews.length }} Reviews)
       </a>
       <p class="details-location" v-if="!vol.loc.city && !vol.loc.country">
@@ -49,7 +45,7 @@
           v-if="isShort && vol.desc.length > 200"
           class="toggleMore"
           @click="toggleMore"
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/more_rurxqi.svg"
+          src="/img/icons/more_rurxqi.svg"
           alt="readMore"
         />
         <img
@@ -57,7 +53,7 @@
           v-if="!isShort && vol.desc.length > 200"
           class="toggleMore"
           @click="toggleMore"
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/less_nafgg8.svg"
+          src="/img/icons/less_nafgg8.svg"
           alt="readLess"
         />
       </h3>

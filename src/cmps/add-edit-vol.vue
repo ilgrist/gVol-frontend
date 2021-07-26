@@ -117,10 +117,7 @@
 
         <label class="vol-imgs" for="img"
           >Upload Images (up to 5 Images):
-          <img
-            class="upload-img"
-            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626782582/volApp/icons/uploadImg_ysu2jj.svg"
-          />
+          <img class="upload-img" src="img/icons/uploadImg_ysu2jj.svg" />
           <input
             click.stop.prevent
             id="img"
@@ -130,7 +127,7 @@
           <img
             v-if="isLoadingImg"
             class="add-vol-loader"
-            src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
+            src="img/icons/loading_dmwaqp.gif"
           />
           <div v-if="this.vol.imgUrls.length" class="img-preview-gallery">
             <div
@@ -145,7 +142,7 @@
               />
               <img
                 class="clear-img"
-                src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626788807/volApp/icons/whiteClear_izkynd.svg"
+                src="img/icons/whiteClear_izkynd.svg"
                 alt="removeImg"
                 @click.stop.prevent="removeImg(idx)"
               />
@@ -188,16 +185,14 @@ export default {
       amenities: [
         {
           value: {
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626424950/volApp/icons/online_y28koq.svg",
+            imgUrl: "img/icons/online_y28koq.svg",
             label: "Wifi & Satellite",
           },
           label: "Wifi & Satellite",
         },
         {
           value: {
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038823/volApp/icons/hotwater_gi37ut.svg",
+            imgUrl: "img/icons/hotwater_gi37ut.svg",
             label: "Hot Water",
           },
           label: "Hot Water",
@@ -205,48 +200,42 @@ export default {
         {
           value: {
             label: "Electricity",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038820/volApp/icons/electricity_jqfdt9.svg",
+            imgUrl: "img/icons/electricity_jqfdt9.svg",
           },
           label: "Electricity",
         },
         {
           value: {
             label: "Air Conditioning",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/AC_mme61c.svg",
+            imgUrl: "img/icons/AC_mme61c.svg",
           },
           label: "Air Conditioning",
         },
         {
           value: {
             label: "Accomodation",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/accomodation_rjjuh4.svg",
+            imgUrl: "img/icons/accomodation_rjjuh4.svg",
           },
           label: "Accomodation",
         },
         {
           value: {
             label: "Pickups and Drop Off",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/pickup_bjlbya.svg",
+            imgUrl: "img/icons/pickup_bjlbya.svg",
           },
           label: "Pickups and Drop Off",
         },
         {
           value: {
             label: "Tours",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/tours_hifcun.svg",
+            imgUrl: "img/icons/tours_hifcun.svg",
           },
           label: "Tours",
         },
         {
           value: {
             label: "Social Activities",
-            imgUrl:
-              "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627038760/volApp/icons/socials_fzptvf.svg",
+            imgUrl: "img/icons/socials_fzptvf.svg",
           },
           label: "Social Activities",
         },

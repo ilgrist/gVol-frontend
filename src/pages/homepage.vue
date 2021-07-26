@@ -1,13 +1,7 @@
 <template>
   <div>
     <hero @filterBy="goExplore" />
-    <!-- <img
-      class="loading-img"
-      v-if="isLoading"
-      src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
-      alt="loading"
-    />
-    <template v-else> -->
+
     <homepage-map />
     <short-list
       class="main-layout"
@@ -24,7 +18,6 @@
       @filterBy="goExplore"
     />
     <categories-grid class="main-layout" @filterBy="goExplore" />
-    <!-- </template> -->
   </div>
 </template>
 <script>

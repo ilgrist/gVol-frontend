@@ -83,9 +83,8 @@ export default {
       return user ? user.fullname : "Guest";
     },
     toggleChatImgSrc() {
-      if (this.isChatOpen)
-        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/less_nafgg8.svg";
-      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626603292/volApp/icons/more_rurxqi.svg";
+      if (this.isChatOpen) return "/img/icons/less_nafgg8.svg";
+      return "/img/icons/more_rurxqi.svg";
     },
     arrowTitle() {
       if (this.isChatOpen) return "Close chat";

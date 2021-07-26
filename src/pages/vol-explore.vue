@@ -2,10 +2,7 @@
   <div class="explore-page main-layout">
     <vol-filter @filter="filter"></vol-filter>
     <div class="loading-container" v-if="isLoading">
-      <img
-        src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"
-        alt="loading"
-      />
+      <img src="/img/icons/loading_dmwaqp.gif" alt="loading" />
     </div>
     <vol-list v-else :vols="vols" />
   </div>

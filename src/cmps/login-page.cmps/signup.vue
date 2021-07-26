@@ -34,12 +34,14 @@
       </label>
       <label class="profile-img" for="img"
         >Profile img:
-        <img
-          src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626419180/volApp/icons/account_circle_black_24dp_meg4mh.svg"
-        />
+        <img src="/img/icons/account_circle_black_24dp_meg4mh.svg" />
         <input id="img" type="file" @change="handleFile" />
       </label>
-        <img v-if="isLoadingImg" class="signup-loader" src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1626461956/volApp/icons/loading_dmwaqp.gif"/>
+      <img
+        v-if="isLoadingImg"
+        class="signup-loader"
+        src="/img/icons/loading_dmwaqp.gif"
+      />
       <img v-if="isSelectImg" class="img-prev" :src="newUser.imgUrl" />
     </div>
     <div class="signup-btn">
@@ -97,18 +99,16 @@ export default {
     signup() {
       const newUserCopy = JSON.parse(JSON.stringify(this.newUser));
       if (!newUserCopy.imgUrl)
-        newUserCopy.imgUrl =
-          "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626590331/volApp/volImgs/no_avatar_cyv8iq.jpg";
+        newUserCopy.imgUrl = "/img/icons/no_avatar_cyv8iq.jpg";
       this.$emit("signup", newUserCopy);
     },
 
-    // TODO: include loading
     async handleFile(ev) {
-      this.isLoadingImg = true
+      this.isLoadingImg = true;
       const file = ev.target.files[0];
       const res = await uploadImg(ev);
       this.newUser.imgUrl = res.url;
-      this.isLoadingImg = false
+      this.isLoadingImg = false;
       this.isSelectImg = true;
     },
     back() {

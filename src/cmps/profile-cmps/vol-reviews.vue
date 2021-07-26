@@ -34,9 +34,7 @@
                 :key="num"
                 class="review-stars"
               >
-                <img
-                  src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"
-                />
+                <img src="/img/icons/star_rwjmbm.png" />
               </span>
             </div>
             <span class="date">{{ revDate(review.createdAt) }}</span>

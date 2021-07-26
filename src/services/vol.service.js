@@ -23,7 +23,7 @@ async function save(vol) {
 		vol.reviews = [];
 		if (!vol.imgUrls.length)
 			vol.imgUrls = [
-				'https://res.cloudinary.com/dzuqvua7k/image/upload/v1626281304/volApp/volImgs/dragon_tra1ec.jpg',
+				'https://res.cloudinary.com/dsdhfmggx/image/upload/v1627316741/hero_fsuptp_mh3rkg.jpg',
 			];
 		return await httpService.post('vol', vol);
 	}

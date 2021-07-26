@@ -79,14 +79,12 @@ export default {
       }
       return {
         username: "Guest",
-        imgUrl:
-          "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626419180/volApp/icons/account_circle_black_24dp_meg4mh.svg",
+        imgUrl: "/img/icons/account_circle_black_24dp_meg4mh.svg",
       };
     },
     mobileMenuIcon() {
-      if (this.isMobileMenuOpen)
-        return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuClose_lyusl2.svg";
-      return "https://res.cloudinary.com/dzuqvua7k/image/upload/v1627146447/volApp/icons/mobileMenuOpen_hpmpyq.svg";
+      if (this.isMobileMenuOpen) return "/img/icons/mobileMenuClose_lyusl2.svg";
+      return "/img/icons/mobileMenuOpen_hpmpyq.svg";
     },
     logoImg() {
       if (this.isTransparent)

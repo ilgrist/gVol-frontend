@@ -25,17 +25,17 @@ export default {
         {
           name: "Children",
           imgUrl:
-            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874522/volApp/categoryImgs/children.jpg",
+            "https://res.cloudinary.com/dsdhfmggx/image/upload/v1627316772/category-children_qsh3xy.jpg",
         },
         {
           name: "Elderly",
           imgUrl:
-            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874470/volApp/categoryImgs/elderly.jpg",
+            "https://res.cloudinary.com/dsdhfmggx/image/upload/v1627316775/category-elderly_ykw98b.jpg",
         },
         {
           name: "Animals",
           imgUrl:
-            "https://res.cloudinary.com/dzuqvua7k/image/upload/v1626874460/volApp/categoryImgs/animals.jpg",
+            "https://res.cloudinary.com/dsdhfmggx/image/upload/v1627316774/category-animals_e7jo9w.jpg",
         },
       ],
       filterBy: {

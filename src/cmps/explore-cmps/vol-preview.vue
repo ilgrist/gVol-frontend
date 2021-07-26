@@ -8,7 +8,7 @@
     <img :src="vol.imgUrls[0]" />
     <div class="rev-cont">
       <div class="rating">
-        <img src="img/icons/star_black_24dp_jgdioo.svg" />
+        <img src="/img/icons/star_black_24dp_jgdioo.svg" />
         <span>{{ avgRating }}</span>
       </div>
       <div class="reviews">

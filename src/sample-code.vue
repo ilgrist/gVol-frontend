@@ -39,8 +39,7 @@ export default {
   },
   computed: {
     volsLocs() {
-      let vols = JSON.parse(JSON.stringify(this.$store.getters.volsToShow));
-      let volsLocs = vols
+      let volsLocs = this.$store.getters.volsToShow
         .filter((vol) => vol.loc.lat && vol.loc.lng)
         .map((vol) => {
           return Object.assign({ id: vol._id, title: vol.title }, vol.loc);

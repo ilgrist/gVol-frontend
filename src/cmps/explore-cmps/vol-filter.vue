@@ -9,7 +9,7 @@
           v-model="filterBy.isOnLine"
           @change="filter"
         />
-        <img src="img/icons/online_y28koq.svg" alt="online-img" />
+        <img src="/img/icons/online_y28koq.svg" alt="online-img" />
       </label>
       <label class="onsite" for="onsite" title="Volunteer Onsite">
         Onsite
@@ -19,7 +19,7 @@
           v-model="filterBy.isOnSite"
           @change="filter"
         />
-        <img src="img/icons/onsite_ufyohr.svg" alt="onsite-img" />
+        <img src="/img/icons/onsite_ufyohr.svg" alt="onsite-img" />
       </label>
     </div>
     <div class="selects">

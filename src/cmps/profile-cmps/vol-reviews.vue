@@ -14,10 +14,11 @@
         <button
           v-if="loggedinUser && loggedinUser.username === review.createdBy"
           @click.prevent.stop="removeReview(idx)"
-          class="reviews-btn el-icon-delete">
+          class="reviews-btn el-icon-delete"
+        >
           Delete Review
         </button>
-        
+
         <div class="review-user">
           <img
             class="img-profile"
@@ -34,7 +35,6 @@
                 class="review-stars"
               >
                 <img
-                  @click="goToUserProfile(member._id)"
                   src="https://res.cloudinary.com/dzuqvua7k/image/upload/v1627220320/star_rwjmbm.png"
                 />
               </span>
@@ -87,6 +87,7 @@ export default {
   },
   methods: {
     goToUserProfile(userId) {
+      console.log("file: vol-reviews.vue ~ line 90 ~ userId", userId);
       if (userId) {
         this.$router.push(`/user/${userId}`);
       }

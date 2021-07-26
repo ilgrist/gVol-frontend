@@ -132,6 +132,7 @@ export default {
         createdAt: Date.now(),
         rating: newReview.rating,
         imgUrl: newReview.imgUrl,
+        userId: newReview.userId,
       };
 
       try {

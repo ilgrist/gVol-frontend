@@ -3,7 +3,7 @@
     <label>
       <div class="rating">
         Rate the Vol:
-          <el-rate v-model="value1" @change="saveRate"></el-rate>
+        <el-rate v-model="value" @change="saveRate"></el-rate>
       </div>
     </label>
     <label for="txt">
@@ -24,12 +24,13 @@
 export default {
   data() {
     return {
-      value1: '',
+      value: 0,
       review: {
         txt: "",
         createdBy: "",
         rating: "",
         imgUrl: "",
+        userId: "",
       },
     };
   },

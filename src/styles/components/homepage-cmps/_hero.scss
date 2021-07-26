@@ -13,15 +13,12 @@
 }
 
 .hero-container {
-	// position: absolute;
 	left: 0;
 	width: 100%;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-
-	// position: fixed;
 }
 
 .hero-title {
@@ -30,12 +27,14 @@
 	font-size: 3rem;
 
 	padding-bottom: 2rem;
+	margin-left: 30px;
 
 	@include for-narrow-layout {
 		font-size: 3rem;
 	}
 	@include for-normal-layout {
 		font-size: 4rem;
+		margin-left: unset;
 	}
 	@include for-wide-layout {
 		font-size: 4rem;
@@ -47,33 +46,27 @@
 
 .filter-form {
 	display: flex;
-	// background-color: green;
+	flex: 1;
+	padding: 5px;
 }
 
 .hero-filter-container {
 	background-color: $clr2;
 	font-family: NunitoSans, sans-serif;
-	// background-color: yellow;
 
-	// width: 35rem;
 	width: 20rem;
 	border-radius: 1rem;
-	padding: 0.5rem;
 	margin-bottom: 150px;
-	// margin: 0 auto;
-
+	margin-left: 30px;
+	overflow: hidden;
 	display: flex;
-
-	// position: absolute;
-	// text-align: center;
-	// left: 45%;
-	// transform: translate(-50%, -50%);
 
 	@include for-narrow-layout {
 		width: 20rem;
 	}
 	@include for-normal-layout {
 		width: 30rem;
+		margin-left: unset;
 	}
 	@include for-wide-layout {
 		width: 35rem;
@@ -84,33 +77,40 @@
 	background-color: $clr2;
 	width: 100%;
 
-	// position: relative;
-	// left: 10%;
-	// left: 0;
-
 	font-family: NunitoSans, sans-serif;
-	font-size: 1.3rem;
+	font-size: 1rem;
 
 	border-radius: unset;
 	border: none;
 	outline: none;
+
+	@include for-narrow-layout {
+		font-size: 1rem;
+	}
+	@include for-normal-layout {
+		font-size: 1.3rem;
+	}
+	@include for-wide-layout {
+	}
 }
 
 .hero-filter-img {
-	max-width: 15%;
+	// max-width: 15%;
 	position: relative;
 	z-index: 1;
+	height: 100%;
 }
 
 .homepage-btn {
 	background-color: $clr5;
-	width: 30%;
+	// padding: 0 1rem;
+	// line-height: 1.2rem;
 
 	border: none;
-	border-radius: 1rem;
+	width: 75px;
+	padding: 5px 20px;
 
 	position: relative;
-	left: 0;
 
 	font-family: NunitoSans, sans-serif;
 	font-size: 0.8rem;
@@ -122,18 +122,14 @@
 	}
 
 	@include for-narrow-layout {
-		left: 0;
 	}
 	@include for-normal-layout {
-		left: 10%;
 		font-size: 1rem;
 	}
 	@include for-wide-layout {
-		left: 18%;
 		font-size: 1rem;
 	}
 	@include for-extra-wide-layout {
-		left: 18%;
 		font-size: 1rem;
 	}
 }

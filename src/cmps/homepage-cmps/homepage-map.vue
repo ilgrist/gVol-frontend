@@ -17,6 +17,7 @@
       }"
     >
       <GmapMarker
+        class="map-marker"
         :key="idx"
         v-for="(volLoc, idx) in volsLocs"
         :position="volLoc"
@@ -24,6 +25,7 @@
         :draggable="false"
         @click="goToProfile(volLoc.id)"
         :title="volLoc.title"
+        icon="/img/icons/marker2.png"
       />
     </GmapMap>
   </section>

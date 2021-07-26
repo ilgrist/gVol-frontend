@@ -3,9 +3,7 @@
     <label>
       <div class="rating">
         Rate the Vol:
-        <span v-for="(star, idx) in 5" :key="idx" @click="saveRate(star)">
-          {{ getAStar(idx) }}
-        </span>
+          <el-rate v-model="value1" @change="saveRate"></el-rate>
       </div>
     </label>
     <label for="txt">
@@ -26,6 +24,7 @@
 export default {
   data() {
     return {
+      value1: '',
       review: {
         txt: "",
         createdBy: "",

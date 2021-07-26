@@ -15,10 +15,10 @@
         <button
           v-if="loggedinUser && loggedinUser.username === review.createdBy"
           @click.prevent.stop="removeReview(idx)"
-          class="reviews-btn"
-        >
+          class="reviews-btn el-icon-delete">
           Delete Review
         </button>
+        
         <div class="review-user">
           <img class="img-profile" :src="review.imgUrl" alt="reviewImg" />
           <div class="review-user-header">

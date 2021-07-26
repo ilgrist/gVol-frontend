@@ -30,12 +30,18 @@
 		padding: 10px;
 	}
 
+	p.details-location{
+		// font-weight: normal;
+		font-size: small;
+		margin-inline-start: 5px;
+	}
 	.details-location {
 		padding: 10px;
 	}
 
 	// TBD Asi
 	.card-description {
+		min-height: 45px;
 		padding-left: 10px;
 		margin-bottom: 15px;
 		@include flex-overflow(2);

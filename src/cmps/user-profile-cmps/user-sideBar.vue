@@ -133,8 +133,9 @@ export default {
       this.loggedinUser = this.$store.getters.loggedinUser;
     },
     logout() {
+      const username = this.loggedinUser.username
       this.$store.dispatch({ type: "logout" });
-      this.msg = `Goodbye, - ${this.currUserName} !`;
+      this.msg = `Goodbye, - ${username} !`;
       showMsg(this.msg, "danger");
     },
   },

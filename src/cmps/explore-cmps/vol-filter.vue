@@ -172,8 +172,8 @@ export default {
   methods: {
     clearFilter() {
       this.filterBy.txt = "";
-      this.filterBy.category = "all";
-      this.filterBy.skills = "all";
+      this.filterBy.category = "";
+      this.filterBy.skills = "";
       this.filterBy.isOnSite = false;
       this.filterBy.isOnLine = false;
       this.filterBy.availability = "all";
@@ -191,12 +191,13 @@ export default {
   destroyed() {
     this.filterBy = {
       txt: "",
-      category: "all",
-      skills: "all",
+      category: "",
+      skills: "",
       isOnSite: false,
       isOnLine: false,
       availability: "all",
     };
+    this.filter()
   },
 };
 </script>

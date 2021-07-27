@@ -1,78 +1,78 @@
 .vol-det {
-	height: 100%;
-	padding: 10px;
-	position: relative;
-	gap: 1rem;
-	display: grid;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
+  height: 100%;
+  padding: 10px;
+  position: relative;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-auto-rows: auto;
 
-	@include for-normal-layout {
-		grid-template-columns: 60% 40%;
-		gap: 2rem;
-	}
-	@include for-extra-wide-layout {
-		gap: 3rem;
-	}
-	.profile-header {
-		background-color: $clr2;
-		border-radius: 1rem;
+  @include for-normal-layout {
+    grid-template-columns: 60% 1fr;
+    gap: 2rem;
+  }
+  @include for-extra-wide-layout {
+    gap: 3rem;
+  }
+  .profile-header {
+    background-color: $clr2;
+    border-radius: 1rem;
 
-		margin-bottom: 0.5rem;
-		padding: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
 
-		grid-row: 1/2;
+    grid-row: 1/2;
 
-		h2 {
-			display: flex;
-			justify-content: space-between;
+    h2 {
+      display: flex;
+      justify-content: space-between;
 
-			button {
-				border: none;
-				background-color: transparent;
-				height: 2rem;
-				&:hover {
-					border-radius: 5px;
-					background-color: $clr5;
-				}
+      button {
+        border: none;
+        background-color: transparent;
+        height: 2rem;
+        &:hover {
+          border-radius: 5px;
+          background-color: $clr5;
+        }
 
-				@include for-normal-layout {
-					height: 3rem;
-					width: 3rem;
-				}
-			}
-		}
+        @include for-normal-layout {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+    }
 
-		@include for-normal-layout {
-			display: none;
-			//720px
-		}
-	}
+    @include for-normal-layout {
+      display: none;
+      //720px
+    }
+  }
 }
 
 .dark-screen {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: black;
-	opacity: 0.8;
-	z-index: 1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .vol-profile {
-	overflow-x: unset;
-	margin-top: 70px;
-	min-height: 90vh;
+  overflow-x: unset;
+  margin-top: 70px;
+  min-height: 90vh;
 }
 
 .loading-img {
-	width: 15%;
-	position: absolute;
-	margin: auto auto;
+  width: 15%;
+  position: absolute;
+  margin: auto auto;
 
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -10,7 +10,7 @@
       />
     </h4>
     <div class="chat-inner-cont" :class="{ hidden: !isChatOpen }">
-      <ul class="chat-msg-list" v-if="msgs.length">
+      <ul class="chat-msg-list" v-if="msgs.length" ref="msgList">
         <li class="chat-msg" v-for="(msg, idx) in msgs" :key="idx">
           <span>{{ msg.from }}</span
           >: {{ msg.txt }}
@@ -62,6 +62,7 @@ export default {
     addMsg(msg) {
       this.msgs.push(msg);
       this.isTyping = false;
+      this.scrollToBottom();
     },
     showTyping() {
       socketService.emit("isTyping", this.username);
@@ -75,6 +76,10 @@ export default {
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;
       if (this.isChatOpen) this.$refs.input.focus();
+    },
+    scrollToBottom() {
+      const el = this.$refs.msgList;
+      el.scrollTop = el.scrollHeight;
     },
   },
   computed: {
@@ -109,6 +114,9 @@ export default {
   destroyed() {
     socketService.off("chat addMsg", this.addMsg);
     socketService.off("getTyping", this.setTyping);
+  },
+  mounted() {
+    this.scrollToBottom();
   },
 };
 </script>

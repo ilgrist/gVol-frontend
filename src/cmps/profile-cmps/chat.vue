@@ -61,8 +61,8 @@ export default {
     },
     addMsg(msg) {
       this.msgs.push(msg);
-      this.scrollToBottom();
       this.isTyping = false;
+      this.scrollToBottom();
     },
     showTyping() {
       socketService.emit("isTyping", this.username);
@@ -79,7 +79,6 @@ export default {
     },
     scrollToBottom() {
       const el = this.$refs.msgList;
-      // el.scrollIntoView(false);
       el.scrollTop = el.scrollHeight;
     },
   },

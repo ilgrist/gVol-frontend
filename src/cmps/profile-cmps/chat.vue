@@ -79,7 +79,9 @@ export default {
     },
     scrollToBottom() {
       const el = this.$refs.msgList;
-      el.scrollTop = el.scrollHeight;
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
     },
   },
   computed: {

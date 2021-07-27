@@ -37,6 +37,17 @@
       </div>
     </div>
 
+    <el-carousel
+      class="img-gallery-tablet"
+      :autoplay="false"
+      trigger="click"
+      max-height="650px"
+    >
+      <el-carousel-item v-for="(img, idx) in vol.imgUrls" :key="idx">
+        <img :src="img" />
+      </el-carousel-item>
+    </el-carousel>
+
     <section class="more-details">
       <h3>
         More Details
